@@ -9,7 +9,6 @@ importers:
       '@types/node': ^18.7.18
       bumpp: ^8.2.1
       eslint: ^8.23.1
-      esno: ^0.16.3
       pnpm: ^7.12.0
       rimraf: ^3.0.2
       tsup: ^6.5.0
@@ -23,7 +22,6 @@ importers:
       '@types/node': 18.7.18
       bumpp: 8.2.1
       eslint: 8.23.1
-      esno: 0.16.3
       pnpm: 7.12.0
       rimraf: 3.0.2
       tsup: 6.5.0_typescript@4.8.3
@@ -1632,13 +1630,6 @@ packages:
       - supports-color
     dev: true
 
-  /esno/0.16.3:
-    resolution: {integrity: sha512-6slSBEV1lMKcX13DBifvnDFpNno5WXhw4j/ff7RI0y51BZiDqEe5dNhhjhIQ3iCOQuzsm2MbVzmwqbN78BBhPg==}
-    hasBin: true
-    dependencies:
-      tsx: 3.12.1
-    dev: true
-
   /espree/9.4.0:
     resolution: {integrity: sha512-DQmnRpLj7f6TgN/NYb0MTzJXL+vJF9h3pHy4JhCIs3zwcgez8xmGg3sXHcEO97BrmO2OSvCwMdfdlyl+E9KjOw==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
@@ -2726,8 +2717,8 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /rollup/3.7.4:
-    resolution: {integrity: sha512-jN9rx3k5pfg9H9al0r0y1EYKSeiRANZRYX32SuNXAnKzh6cVyf4LZVto1KAuDnbHT03E1CpsgqDKaqQ8FZtgxw==}
+  /rollup/3.8.1:
+    resolution: {integrity: sha512-4yh9eMW7byOroYcN8DlF9P/2jCpu6txVIHjEqquQVSx7DI0RgyCCN3tjrcy4ra6yVtV336aLBB3v2AarYAxePQ==}
     engines: {node: '>=14.18.0', npm: '>=8.0.0'}
     hasBin: true
     optionalDependencies:
@@ -3018,7 +3009,7 @@ packages:
       joycon: 3.1.1
       postcss-load-config: 3.1.4
       resolve-from: 5.0.0
-      rollup: 3.7.4
+      rollup: 3.8.1
       source-map: 0.8.0-beta.0
       sucrase: 3.29.0
       tree-kill: 1.2.2

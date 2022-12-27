@@ -2,7 +2,7 @@
   "name": "utopia-utils",
   "type": "module",
   "version": "0.0.1",
-  "packageManager": "pnpm@7.12.0",
+  "packageManager": "^pnpm@7.20.0",
   "description": "",
   "author": "greatauk11@gmail.com",
   "license": "MIT",
@@ -41,6 +41,7 @@
     "lint": "eslint .",
     "prepublishOnly": "nr build",
     "release": "bumpp",
+    "publish": "pnpm publish --access public --no-git-checks --registry=https://registry.npmjs.org/",
     "start": "tsx src/index.ts",
     "test": "vitest",
     "typecheck": "tsc --noEmit"
@@ -53,6 +54,8 @@
     "eslint": "^8.23.1",
     "pnpm": "^7.12.0",
     "rimraf": "^3.0.2",
+    "tsup": "^6.5.0",
+    "tsx": "^3.12.1",
     "typescript": "^4.8.3",
     "vite": "^3.1.2",
     "vitest": "^0.23.4"
