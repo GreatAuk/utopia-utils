@@ -16,8 +16,8 @@
     }
   ] as const
   const enumLevel = createEnumFromOptions(optionsLevel)
-  console.log(enumLevel.level1)
-  console.log(enumLevel['0'])
+  console.log(enumLevel.level1) // 0
+  console.log(enumLevel['0']) // 'level1'
  * ```
  */
 export function createEnumFromOptions<T extends readonly Option[]>(options: T) {
