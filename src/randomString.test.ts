@@ -8,8 +8,8 @@ describe('randomString', () => {
   })
 
   it('should return a random string with custom chars', () => {
-    const str = randomString(10, 'abcdef')
-    expect(str).toHaveLength(10)
+    const str = randomString(50, 'abcdef')
+    expect(str).toHaveLength(50)
     expect(str).toMatch(/^[abcdef]+$/)
   })
 })
