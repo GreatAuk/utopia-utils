@@ -7,10 +7,10 @@ interface Options {
 }
 
 /**
- * Tree Structure - Breadth-First Traverse (BFS or 广度优先遍历)
+ * Breadth-First Traverse (BFS or 广度优先遍历)
  * @param {TreeNode[] | TreeNode} tree - The tree to traverse.
- * @param options
- * @returns
+ * @param action - (node: TreeNode) => unknown ; function called for each node in the tree, return false to stop traverse
+ * @param {Options} [options]
  * @example
  * ```
     const tree = [
@@ -32,7 +32,7 @@ interface Options {
     // output 'a', 'c', 'b'
   * ```
  */
-export function breadthFirstTraverse<TreeNode>(tree: TreeNode[] | TreeNode, action: (node: TreeNode) => void, options?: Options) {
+export function breadthFirstTraverse<TreeNode>(tree: TreeNode[] | TreeNode, action: (node: TreeNode) => unknown, options?: Options) {
   if (!action) {
     console.warn('traverse action is required')
     return
@@ -47,7 +47,10 @@ export function breadthFirstTraverse<TreeNode>(tree: TreeNode[] | TreeNode, acti
     if (!node)
       continue
 
-    action(node)
+    // if action return false, stop traverse
+    if (action(node) === false)
+      break
+
     // @ts-expect-error - This is ok
     if (node[children])
     // @ts-expect-error - This is ok

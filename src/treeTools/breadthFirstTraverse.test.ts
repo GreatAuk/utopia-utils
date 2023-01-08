@@ -41,7 +41,7 @@ describe('breadthFirstTraverse', () => {
     expect(titles).toEqual(['节点1', '节点2', '节点1-1', '节点1-2', '节点2-1', '节点1-2-1'])
   })
   it('snapshot', () => {
-    const rootNode = [
+    const tree = [
       {
         name: 'a',
         Children_: [
@@ -54,7 +54,7 @@ describe('breadthFirstTraverse', () => {
     ]
 
     const names: string[] = []
-    breadthFirstTraverse(rootNode, node => names.push(node.name), {
+    breadthFirstTraverse(tree, node => names.push(node.name), {
       fieldNames: {
         children: 'Children_',
       },
@@ -66,5 +66,24 @@ describe('breadthFirstTraverse', () => {
         "b",
       ]
     `)
+  })
+  it('if action returns false, should stop traversing', () => {
+    const tree = [
+      {
+        name: 'a',
+        children: [
+          { name: 'b' },
+        ],
+      },
+      {
+        name: 'c',
+      },
+    ]
+    let count = 0
+    breadthFirstTraverse(tree, (node) => {
+      count++
+      return node.name !== 'c'
+    })
+    expect(count).toBe(2)
   })
 })
