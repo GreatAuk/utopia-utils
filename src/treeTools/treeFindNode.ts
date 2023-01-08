@@ -2,7 +2,7 @@ import { DEFAULT_FIELD_NAMES } from './constant'
 import type { FieldNames } from './type'
 
 interface Options {
-  /** Customize node children field name */
+  /** Customize node field name */
   fieldNames?: Pick<FieldNames, 'children'>
   /** whether to find all nodes, default is find first node */
   isFindAll?: boolean
