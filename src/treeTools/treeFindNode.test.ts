@@ -37,4 +37,11 @@ describe('treeFindNode', () => {
     const res = treeFindNode(customTree, node => node.name === 'b', { fieldNames: { children: 'Children_' } })
     expect(res).toEqual([{ name: 'b' }])
   })
+  it('options.onEachTraverse should be called for each node', () => {
+    const ids: string[] = []
+    treeFindNode(tree, node => node.name === 'b', {
+      onEachTraverse: node => ids.push(node.name),
+    })
+    expect(ids).toEqual(['a', 'c', 'b'])
+  })
 })
