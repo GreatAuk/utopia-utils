@@ -5,7 +5,8 @@
  * @returns A map of the values and labels of the options.
  * @example
  * ```ts
- * const optionsLevel = [
+ *
+  const optionsLevel = [
     {
       value: 0,
       label: 'level1',
@@ -13,11 +14,19 @@
     {
       value: 1,
       label: 'level2',
-    }
-  ] as const
+    },
+  ] as const // as const is required to make the type safe
+
   const enumLevel = createEnumFromOptions(optionsLevel)
   console.log(enumLevel.level1) // 0
   console.log(enumLevel['0']) // 'level1'
+  console.log(enumLevel)
+  // {
+  //   "0": "level1",
+  //   "1": "level2",
+  //   "level1": 0,
+  //   "level2": 1
+  // }
  * ```
  */
 export function createEnumFromOptions<T extends readonly Option[]>(options: T) {
@@ -59,3 +68,4 @@ type ArrayFindLabel<
   // @ts-expect-error - This is ok
   ? F extends { value: infer Res; label: L } ? Res : Tail extends unknown[] ? never : ArrayFindLabel<Tail, L>
   : never
+
