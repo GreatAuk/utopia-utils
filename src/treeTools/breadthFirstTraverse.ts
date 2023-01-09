@@ -16,7 +16,7 @@ interface Options {
     const tree = [
       {
         name: 'a',
-        children: [
+        Children_: [
           { name: 'b' }
         ],
       },

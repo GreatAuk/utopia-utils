@@ -1,11 +1,13 @@
 import type { FieldNames } from './type'
 import { breadthFirstTraverse } from './breadthFirstTraverse'
 
-interface Options {
+interface Options<TreeNode> {
   /** Customize node field name */
   fieldNames?: Pick<FieldNames, 'children'>
   /** whether to find all nodes, default is find first node */
   isFindAll?: boolean
+  /** Function called for each node in the tree */
+  onEachTraverse?: (node: TreeNode) => void
 }
 
 /**
@@ -27,8 +29,8 @@ interface Options {
     const res = treeFindNode(tree, node => node.name === 'b') // res is [{ name: 'b' }]
  * ```
  */
-export function treeFindNode<TreeNode>(tree: TreeNode[] | TreeNode, predicate: (node: TreeNode) => boolean, options?: Options) {
-  const { isFindAll, fieldNames } = options || {}
+export function treeFindNode<TreeNode>(tree: TreeNode[] | TreeNode, predicate: (node: TreeNode) => boolean, options?: Options<TreeNode>) {
+  const { isFindAll, fieldNames, onEachTraverse } = options || {}
   if (!predicate) {
     console.warn('predicate is required')
     return []
@@ -39,6 +41,7 @@ export function treeFindNode<TreeNode>(tree: TreeNode[] | TreeNode, predicate: (
   breadthFirstTraverse<TreeNode>(
     tree,
     (node) => {
+      onEachTraverse?.(node)
       if (predicate(node)) {
         res.push(node)
         if (!isFindAll)
