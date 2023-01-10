@@ -1,3 +1,6 @@
 export * from './buildTreeFromList'
 export * from './breadthFirstTraverse'
 export * from './treeFindNode'
+export * from './treeFilterNode'
+export * from './flattenTree'
+export * from './treeFindPath'
