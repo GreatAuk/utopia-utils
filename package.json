@@ -38,6 +38,7 @@
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch",
+    "example": "vite",
     "lint": "eslint .",
     "prepublishOnly": "nr build",
     "release": "bumpp",
