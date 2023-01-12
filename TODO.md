@@ -1,4 +1,5 @@
 # TODO
-- [ ] waitForElement
+- [ x ] waitForSelector
 - [ ] throttle
 - [ ] debounce
+- [ ] mitt

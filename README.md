@@ -19,6 +19,7 @@
 * isArray
 * isRegExp
 * isMap
+* isPromise
 * isSet
 * isDate
 * isPlainObject
@@ -30,11 +31,16 @@
 
 * randomString: 随机生成指定长度、指定字符集的字符串。
 
+### Dom
+
+* waitForSelector: 等待指定的选择器匹配的元素出现在页面中，如果调用此方法时已经有匹配的元素，那么此方法立即返回。 如果指定的选择器在超时时间后扔不出现，返回 null。
+
 ### 杂项
 
 * [createEnumFromOptions](#createEnumFromOptions): 通过 `options` 自动生成对应的 `enum`， 后期只需要维护 `options`。**类型安全**。
+* sleep: 等待指定的时间。
 
-
+* retry: 重试函数（如果函数抛出错误）直到成功或者达到最大重试次数。
 
 ------
 
@@ -69,6 +75,23 @@ console.log(enumLevel)
 //   "level1": 0,
 //   "level2": 1
 // }
+```
+
+##### retry
+重试函数（如果函数抛出错误）直到成功或者达到最大重试次数。
+
+```ts
+let callNum = 0
+const fn = () => {
+  callNum++
+  return Promise.reject(new Error('foo'))
+}
+const [err, res] = await retry(fn, 2, (attemptTime) => {
+  return attemptTime * 5
+})
+// output
+// err is Error, res is null, callNum is 3
+// execute time is greater than or equal to 15
 ```
 
 
