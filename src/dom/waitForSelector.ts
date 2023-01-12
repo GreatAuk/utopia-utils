@@ -16,7 +16,6 @@ export function waitForSelector<T extends Element>(selector: string, options?: W
     if (typeof window.MutationObserver === 'undefined')
       throw new Error('MutationObserver is not supported in this browser')
 
-    checkDom()
     const { timeoutMillisecond = 30000, target = document.body } = options || {}
     const timeoutId = setTimeout(onTimeoutDone, timeoutMillisecond)
 
@@ -30,6 +29,8 @@ export function waitForSelector<T extends Element>(selector: string, options?: W
       childList: true,
       subtree: true,
     })
+
+    checkDom()
 
     function checkDom() {
       const dom = document.querySelector(selector)
