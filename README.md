@@ -39,9 +39,10 @@
 
 * [createEnumFromOptions](#createEnumFromOptions): 通过 `options` 自动生成对应的 `enum`， 后期只需要维护 `options`。**类型安全**。
 * sleep: 等待指定的时间。
-
-* retry: 重试函数（如果函数抛出错误）直到成功或者达到最大重试次数。
-
+* capitalize: 首字母大写。
+* [retry](#retry): 重试函数（如果函数抛出错误）直到成功或者达到最大重试次数。
+* objectKeys: 带类型的 Object.keys()。
+* omit: 删除 object 对象的指定属性。
 ------
 
 
