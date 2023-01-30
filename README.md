@@ -37,7 +37,9 @@
 
 ### 杂项
 
-* [createEnumFromOptions](#createEnumFromOptions): 通过 `options` 自动生成对应的 `enum`， 后期只需要维护 `options`。**类型安全**。
+* [defineDictionary](#defineDictionary): 定义业务字典。 **type safe**
+
+* [createEnumFromOptions](#createEnumFromOptions): 通过 `options` 自动生成对应的 `enum`， 后期只需要维护 `options`。**type safe**。
 * sleep: 等待指定的时间。
 * capitalize: 首字母大写。
 * [retry](#retry): 重试函数（如果函数抛出错误）直到成功或者达到最大重试次数。
@@ -47,11 +49,86 @@
 
 
 
-##### createEnumFromOptions
+##### defineDictionary
 
-通过 `options` 自动生成对应的 `enum`， 后期只需要维护 `options`。
+定义业务字典, **type safe**
 
-type safe
+```ts
+const { get_MUSIC_TYPE_KEYS, get_MUSIC_TYPE_KV, get_MUSIC_TYPE_MAP, get_MUSIC_TYPE_MAP_BY_KEY, get_MUSIC_TYPE_MAP_BY_VALUE, get_MUSIC_TYPE_OPTIONS, get_MUSIC_TYPE_VALUES, get_MUSIC_TYPE_VK } = defineDictionary([
+  {
+    key: 'POP',
+    value: 1,
+    label: '流行音乐',
+    color: 'red',
+  },
+  {
+    key: 'ROCK',
+    value: 2,
+    label: '摇滚音乐',
+    color: 'blue',
+  },
+] as const, 'MUSIC_TYPE') // !!! as const is required for type safe
+
+const MUSIC_TYPE_KEYS = get_MUSIC_TYPE_KEYS()
+// ['POP', 'ROCK']
+const MUSIC_TYPE_VALUES = get_MUSIC_TYPE_VALUES()
+// [1, 2]
+const MUSIC_TYPE_KV = get_MUSIC_TYPE_KV()
+// { POP: 1, ROCK: 2 }
+const MUSIC_TYPE_VK = get_MUSIC_TYPE_VK()
+// { 1: 'POP', 2: 'ROCK' }
+const MUSIC_TYPE_MAP_BY_KEY = get_MUSIC_TYPE_MAP_BY_KEY()
+// POP: {
+//   key: 'POP',
+//   value: 1,
+//   label: '流行音乐',
+//   color: 'red',
+// },
+// ROCK: {
+//   key: 'ROCK',
+//   value: 2,
+//   label: '摇滚音乐',
+//   color: 'blue',
+// },
+const MUSIC_TYPE_MAP_BY_VALUE = get_MUSIC_TYPE_MAP_BY_VALUE()
+// 1: {
+//   key: 'POP',
+//   value: 1,
+//   label: '流行音乐',
+//   color: 'red',
+// },
+// 2: {
+//   key: 'ROCK',
+//   value: 2,
+//   label: '摇滚音乐',
+//   color: 'blue',
+// },
+const MUSIC_TYPE_MAP = get_MUSIC_TYPE_MAP()
+// { POP: 1, ROCK: 2 }
+const MUSIC_TYPE_OPTIONS = get_MUSIC_TYPE_OPTIONS()
+// [
+//   {
+//     key: 'POP',
+//     value: 1,
+//     label: '流行音乐',
+//     color: 'red',
+//   },
+//   {
+//     key: 'ROCK',
+//     value: 2,
+//     label: '摇滚音乐',
+//     color: 'blue',
+//   }
+// ]
+```
+
+
+
+##### ~~createEnumFromOptions~~
+
+通过 `options` 自动生成对应的 `enum`， 后期只需要维护 `options`。**type safe**
+
+废弃, 使用 [defineDictionary](#defineDictionary) 代替。
 
 ```ts
 // example
