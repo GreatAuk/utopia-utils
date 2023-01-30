@@ -3,6 +3,7 @@
  * each other
  * @param {T} options - T: The options that you want to create an enum from.
  * @returns A map of the values and labels of the options.
+ * @deprecated Use `defineDictionary` instead.
  * @example
  * ```ts
  *
@@ -68,4 +69,3 @@ type ArrayFindLabel<
   // @ts-expect-error - This is ok
   ? F extends { value: infer Res; label: L } ? Res : Tail extends unknown[] ? never : ArrayFindLabel<Tail, L>
   : never
-
