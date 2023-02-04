@@ -57,4 +57,3 @@ export function breadthFirstTraverse<TreeNode>(tree: TreeNode[] | TreeNode, acti
       queue.push(...node[children])
   }
 }
-

@@ -9,6 +9,29 @@
 * [treeFindPath](#treeFindPath): 查打符合条件节点的路径。
 * [treeFilterNode](#treeFilterNode): 过滤不符合条件的树节点。
 
+### 字符串
+
+* randomString: 随机生成指定长度、指定字符集的字符串。
+
+### Dom
+
+* waitForSelector: 等待指定的选择器匹配的元素出现在页面中，如果调用此方法时已经有匹配的元素，那么此方法立即返回。 如果指定的选择器在超时时间后扔不出现，返回 `null`。
+
+### 杂项
+
+* [defineDictionary](#defineDictionary): 定义业务字典。 **type safe**
+
+* [createEnumFromOptions](#createEnumFromOptions): 通过 `options` 自动生成对应的 `enum`， 后期只需要维护 `options`。**type safe**。
+* sleep: 等待指定的时间。
+* capitalize: 首字母大写。
+* [retry](#retry): 重试函数（如果函数抛出错误）直到成功或者达到最大重试次数。
+* objectKeys: 带类型的 `Object.keys()`。
+* omit: 删除 `object` 对象的指定属性。
+* randomInt: 生成指定范围内`[min, max]`的整数。
+* [awaitTo](https://github.com/scopsy/await-to-js): Async await wrapper for easy error handling without try-catch。
+* escapeStringRegexp: 把字符串中的特殊字符转义为它可以在正则表达式中使用的形式。
+* isMobile: 判断是否是移动端浏览器。
+* toFixed: `Number.toFixed` 并移除末尾的零。
 ### 类型判断
 
 * isBoolean
@@ -27,24 +50,6 @@
 
 * isIntegerKey
 
-### 字符串
-
-* randomString: 随机生成指定长度、指定字符集的字符串。
-
-### Dom
-
-* waitForSelector: 等待指定的选择器匹配的元素出现在页面中，如果调用此方法时已经有匹配的元素，那么此方法立即返回。 如果指定的选择器在超时时间后扔不出现，返回 null。
-
-### 杂项
-
-* [defineDictionary](#defineDictionary): 定义业务字典。 **type safe**
-
-* [createEnumFromOptions](#createEnumFromOptions): 通过 `options` 自动生成对应的 `enum`， 后期只需要维护 `options`。**type safe**。
-* sleep: 等待指定的时间。
-* capitalize: 首字母大写。
-* [retry](#retry): 重试函数（如果函数抛出错误）直到成功或者达到最大重试次数。
-* objectKeys: 带类型的 Object.keys()。
-* omit: 删除 object 对象的指定属性。
 ------
 
 

@@ -5,7 +5,7 @@ interface Options<TreeNode> {
   /**
    * customize node field name
    *
-   * default is { id: 'id', parentId: 'parentId', children: 'children' }
+   * @default { id: 'id', parentId: 'parentId', children: 'children' }
    * */
   fieldNames?: FieldNames
   /** Function called for each node in the tree */

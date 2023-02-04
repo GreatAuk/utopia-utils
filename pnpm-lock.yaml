@@ -35,6 +35,28 @@ importers:
       vite: 4.0.4_@types+node@18.11.18
       vitest: 0.28.3_happy-dom@8.2.0
 
+  packages/cli:
+    specifiers: {}
+
+  packages/core:
+    specifiers:
+      '@utopia-utils/dom': workspace:*
+      '@utopia-utils/share': workspace:*
+      '@utopia-utils/tree': workspace:*
+    dependencies:
+      '@utopia-utils/dom': link:../dom
+      '@utopia-utils/share': link:../share
+      '@utopia-utils/tree': link:../tree
+
+  packages/dom:
+    specifiers: {}
+
+  packages/share:
+    specifiers: {}
+
+  packages/tree:
+    specifiers: {}
+
 packages:
 
   /@antfu/eslint-config-basic/0.35.1_rgsbjvszw2fpvql2lkaldg7z6q:

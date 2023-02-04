@@ -1,5 +1,5 @@
+import { isFunction, isNumber } from '@utopia-utils/share'
 import { sleep } from './sleep'
-import { isFunction, isNumber } from './is'
 
 type RetryDelay = number | ((attemptTime: number) => Promise<void>) | ((attemptTime: number) => number)
 

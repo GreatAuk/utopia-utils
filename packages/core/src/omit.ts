@@ -1,10 +1,10 @@
-import { isArray } from './is'
+import { isArray } from '@utopia-utils/share'
 
 /**
  * It takes an object and an array of keys, and returns a new object with the keys omitted
- * @param {T} obj - T - The object to omit properties from.
+ * @param obj - T - The object to omit properties from.
  * @param {K[] | K} key - K[] | K
- * @returns { a: 1, b: 2 }
+ * @returns
  * @example
  * ```
     const obj = { a: 1, b: 2, c: 3 }

@@ -186,44 +186,44 @@ export function defineDictionary<
     [`${prefix}KEYS`]: () => options.map(item => item.key),
     [`${prefix}VALUES`]: () => options.map(item => item.value),
     [`${prefix}KV`]: () => options.reduce(
-      (map, item) => ({
-        ...map,
-        [item.key]: item.value,
+      (prev, cur) => ({
+        ...prev,
+        [cur.key]: cur.value,
       }),
       {},
     ),
     [`${prefix}VK`]: () => options.reduce(
-      (map, item) => ({
-        ...map,
-        [item.value]: item.key,
+      (prev, cur) => ({
+        ...prev,
+        [cur.value]: cur.key,
       }),
       {},
     ),
     [`${prefix}MAP_BY_KEY`]: () => options.reduce(
-      (map, item) => ({
-        ...map,
-        [item.key]: item,
+      (prev, cur) => ({
+        ...prev,
+        [cur.key]: cur,
       }),
       {},
     ),
     [`${prefix}MAP_BY_VALUE`]: () => options.reduce(
-      (map, item) => ({
-        ...map,
-        [item.value]: item,
+      (prev, cur) => ({
+        ...prev,
+        [cur.value]: cur,
       }),
       {},
     ),
     [`${prefix}KEY_MAP`]: () => options.reduce(
-      (map, item) => ({
-        ...map,
-        [item.key]: item,
+      (prev, cur) => ({
+        ...prev,
+        [cur.key]: cur,
       }),
       {},
     ),
     [`${prefix}MAP`]: () => options.reduce(
-      (map, item) => ({
-        ...map,
-        [item.key]: item.value,
+      (prev, cur) => ({
+        ...prev,
+        [cur.key]: cur.value,
       }),
       {},
     ),

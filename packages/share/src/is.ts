@@ -19,3 +19,14 @@ export const isIntegerKey = (key: unknown) =>
   && key !== 'NaN'
   && key[0] !== '-'
   && `${parseInt(key, 10)}` === key
+
+/**
+ * If the value is a string, return true if it can be converted to a number, otherwise return false.
+ * @param {string} val - The value to check
+ * @returns boolean.
+ */
+export const isStringNumber = (val: string): boolean => {
+  if (!isString(val))
+    return false
+  return !Number.isNaN(Number(val))
+}

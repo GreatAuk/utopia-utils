@@ -5,13 +5,13 @@ interface Options {
   /**
    * custom list field names
    *
-   * default is { id: 'id', parentId: 'parentId', children: 'children' }
+   * @default { id: 'id', parentId: 'parentId', children: 'children' }
    */
   listFieldNames?: FieldNames
   /**
    * custom tree field names
    *
-   * default is { id: 'id', parentId: 'parentId', children: 'children' }
+   * @default { id: 'id', parentId: 'parentId', children: 'children' }
    */
   treeFieldNames?: FieldNames
 }

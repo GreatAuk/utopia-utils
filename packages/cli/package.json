@@ -1,0 +1,40 @@
+{
+  "name": "@utopia-utils/cli",
+  "version": "0.1.0",
+  "description": "Collection of common cli utils",
+  "author": "Utopia <https://github.com/GreatAuk>",
+  "license": "MIT",
+  "homepage": "https://github.com/GreatAuk/utopia-utils#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GreatAuk/utopia-utils.git",
+    "directory": "packages/cli"
+  },
+  "bugs": {
+    "url": "https://github.com/GreatAuk/utopia-utils/issues"
+  },
+  "keywords": [
+    "utils",
+    "cli-utils"
+  ],
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.js"
+    }
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "lint": "eslint .",
+    "start": "tsx src/index.ts",
+    "test": "vitest",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {}
+}

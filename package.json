@@ -1,10 +1,10 @@
 {
-  "name": "utopia-util",
+  "name": "@utopia-utils/monorepo",
   "type": "module",
   "version": "0.1.0",
   "packageManager": "^pnpm@7.20.0",
   "description": "",
-  "author": "greatauk11@gmail.com",
+  "author": "Utopia <https://github.com/GreatAuk>",
   "license": "MIT",
   "homepage": "https://github.com/GreatAuk/utopia-utils#readme",
   "repository": {
@@ -13,32 +13,8 @@
   },
   "bugs": "https://github.com/GreatAuk/utopia-utils/issues",
   "keywords": [],
-  "sideEffects": false,
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "require": "./dist/index.cjs",
-      "import": "./dist/index.js"
-    }
-  },
-  "main": "./dist/index.js",
-  "module": "./dist/index.js",
-  "types": "./dist/index.d.ts",
-  "typesVersions": {
-    "*": {
-      "*": [
-        "./dist/*",
-        "./dist/index.d.ts"
-      ]
-    }
-  },
-  "files": [
-    "dist"
-  ],
   "scripts": {
-    "build": "tsup",
-    "dev": "tsup --watch",
-    "example": "vite",
+    "build": "pnpm --filter=./packages/** build",
     "lint": "eslint .",
     "prepublishOnly": "nr build",
     "release": "bumpp",
