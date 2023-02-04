@@ -12,7 +12,7 @@ import { isArray } from '@utopia-utils/share'
     const res2 = omit(obj, ['a', 'c']) // { b: 2 }
  * ```
  */
-export function omit<T extends object, K extends keyof T>(obj: T, key: K[] | K) {
+export function omit<T extends object, K extends keyof T>(obj: T, key: K[] | K): Omit<T, K> {
   const shallowCopy = { ...obj }
   const keys = isArray(key) ? key : [key]
   keys.forEach(key => Reflect.deleteProperty(shallowCopy, key))
