@@ -25,18 +25,21 @@ pnpm add @utopia-utils/core
 ### 杂项
 
 * [defineDictionary](#defineDictionary): 定义业务字典。 **type safe**
-
 * [createEnumFromOptions](#createEnumFromOptions): 通过 `options` 自动生成对应的 `enum`， 后期只需要维护 `options`。**type safe**。
 * sleep: 等待指定的时间。
 * capitalize: 首字母大写。
 * [retry](#retry): 重试函数（如果函数抛出错误）直到成功或者达到最大重试次数。
 * objectKeys: 带类型的 `Object.keys()`。
 * omit: 删除 `object` 对象的指定属性。
+* pick: 从 `object` 对象中获取指定属性。
 * randomInt: 生成指定范围内`[min, max]`的整数。
 * [awaitTo](https://github.com/scopsy/await-to-js): Async await wrapper for easy error handling without try-catch。
 * escapeStringRegexp: 把字符串中的特殊字符转义为它可以在正则表达式中使用的形式。
 * isMobile: 判断是否是移动端浏览器。
 * toFixed: `Number.toFixed` 并移除末尾的零。
+* [debounce](https://github.com/niksy/throttle-debounce#debounce): 防抖。
+* [throttle](https://github.com/niksy/throttle-debounce#throttle): 节流。
+* callLimit: 限制函数调用次数。
 ### 类型判断
 
 * isBoolean
@@ -52,7 +55,6 @@ pnpm add @utopia-utils/core
 * isDate
 * isPlainObject
 * isObject
-
 * isIntegerKey
 
 ------
