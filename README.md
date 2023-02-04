@@ -1,5 +1,10 @@
 # Utopia-Utils
 
+### Install
+```
+pnpm add @utopia-utils/core
+```
+
 ### 树结构工具
 
 * [breadthFirstTraverse](#breadthFirstTraverse): 广度优先遍历。
