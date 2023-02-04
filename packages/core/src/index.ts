@@ -3,6 +3,7 @@ export * from '@utopia-utils/dom'
 export * from '@utopia-utils/share'
 
 export * from './awaitTo'
+export * from './callLimit'
 export * from './capitalize'
 export * from './createEnumFromOptions'
 export * from './defineDictionary'
