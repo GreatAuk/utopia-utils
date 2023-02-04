@@ -12,6 +12,9 @@ export const isSet = (val: unknown): val is Set<any> => toTypeString(val) === '[
 export const isDate = (val: unknown): val is Date => toTypeString(val) === '[object Date]'
 export const isPlainObject = (val: unknown): val is object => toTypeString(val) === '[object Object]'
 export const isPromise = (val: unknown): val is Promise<any> => toTypeString(val) === '[object Promise]'
+export const isPrimitive = (val: unknown): val is string | number | boolean | symbol | null | undefined =>
+  ['string', 'number', 'boolean', 'symbol', 'null', 'undefined'].includes(typeof val)
+
 export const isObject = (val: unknown): val is Record<any, any> =>
   val !== null && typeof val === 'object'
 export const isIntegerKey = (key: unknown) =>
