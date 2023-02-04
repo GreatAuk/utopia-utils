@@ -38,6 +38,10 @@
   "dependencies": {
     "@utopia-utils/dom": "workspace:*",
     "@utopia-utils/share": "workspace:*",
-    "@utopia-utils/tree": "workspace:*"
+    "@utopia-utils/tree": "workspace:*",
+    "throttle-debounce": "^5.0.0"
+  },
+  "devDependencies": {
+    "@types/throttle-debounce": "^5.0.0"
   }
 }
