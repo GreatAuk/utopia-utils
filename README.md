@@ -7,39 +7,41 @@ pnpm add @utopia-utils/core
 
 ### 树结构工具
 
-* [breadthFirstTraverse](#breadthFirstTraverse): 广度优先遍历。
-* [treeFindNode](#treeFindNode): 查找符合条件的单个节点或多个节点，通过广度优先遍历查找。
-* [buildTreeFromList](#buildTreeFromList): 列表结构转树结构。
-* [flattenTree](#flattenTree): 打平，树结构转列表结构。
-* [treeFindPath](#treeFindPath): 查打符合条件节点的路径。
-* [treeFilterNode](#treeFilterNode): 过滤不符合条件的树节点。
+* [breadthFirstTraverse](#breadthFirstTraverse): 广度优先遍历。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/tree/src/breadthFirstTraverse.ts)
+* [treeFindNode](#treeFindNode): 查找符合条件的单个节点或多个节点，通过广度优先遍历查找。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/tree/src/treeFindNode.ts)
+* [buildTreeFromList](#buildTreeFromList): 列表结构转树结构。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/tree/src/buildTreeFromList.ts)
+* [flattenTree](#flattenTree): 打平，树结构转列表结构。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/tree/src/flattenTree.ts)
+* [treeFindPath](#treeFindPath): 查打符合条件节点的路径。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/tree/src/treeFindPath.ts)
+* [treeFilterNode](#treeFilterNode): 过滤不符合条件的树节点。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/tree/src/treeFilterNode.ts)
 
 ### 字符串
 
-* randomString: 随机生成指定长度、指定字符集的字符串。
+* randomString: 随机生成指定长度、指定字符集的字符串。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/randomString.ts)
 
 ### Dom
 
-* waitForSelector: 等待指定的选择器匹配的元素出现在页面中，如果调用此方法时已经有匹配的元素，那么此方法立即返回。 如果指定的选择器在超时时间后扔不出现，返回 `null`。
+* waitForSelector: 等待指定的选择器匹配的元素出现在页面中，如果调用此方法时已经有匹配的元素，那么此方法立即返回。 如果指定的选择器在超时时间后扔不出现，返回 `null`。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/dom/src/waitForSelector.ts)
 
 ### 杂项
-
-* [defineDictionary](#defineDictionary): 定义业务字典。 **type safe**
-* [createEnumFromOptions](#createEnumFromOptions): 通过 `options` 自动生成对应的 `enum`， 后期只需要维护 `options`。**type safe**。
-* sleep: 等待指定的时间。
-* capitalize: 首字母大写。
-* [retry](#retry): 重试函数（如果函数抛出错误）直到成功或者达到最大重试次数。
-* objectKeys: 带类型的 `Object.keys()`。
-* omit: 删除 `object` 对象的指定属性。
-* pick: 从 `object` 对象中获取指定属性。
-* randomInt: 生成指定范围内`[min, max]`的整数。
-* [awaitTo](https://github.com/scopsy/await-to-js): Async await wrapper for easy error handling without try-catch。
-* escapeStringRegexp: 把字符串中的特殊字符转义为它可以在正则表达式中使用的形式。
-* isMobile: 判断是否是移动端浏览器。
-* toFixed: `Number.toFixed` 并移除末尾的零。
+* [defineDictionary](#defineDictionary): 定义业务字典。 **type safe** [source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/defineDictionary.ts)
+* [createEnumFromOptions](#createEnumFromOptions): 通过 `options` 自动生成对应的 `enum`， 后期只需要维护 `options`。**type safe**。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/createEnumFromOptions.ts)
+* sleep: 等待指定的时间。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/sleep.ts)
+* capitalize: 首字母大写。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/capitalize.ts)
+* [retry](#retry): 重试函数（如果函数抛出错误）直到成功或者达到最大重试次数。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/retry.ts)
+* objectKeys: 带类型的 `Object.keys()`。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/objectKeys.ts)
+* omit: 删除 `object` 对象的指定属性。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/omit.ts)
+* pick: 从 `object` 对象中获取指定属性。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/pick.ts)
+* randomInt: 生成指定范围内`[min, max]`的整数。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/randomInt.ts)
+* [awaitTo](https://github.com/scopsy/await-to-js): Async await wrapper for easy error handling without try-catch。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/awaitTo.ts)
+* escapeStringRegexp: 把字符串中的特殊字符转义为它可以在正则表达式中使用的形式。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/escapeStringRegexp.ts)
+* isMobile: 判断是否是移动端浏览器。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/isMobile.ts)
+* toFixed: `Number.toFixed` 并移除末尾的零。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/math/toFixed.ts)
+* average: 计算数组的平均值。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/math/average.ts)
 * [debounce](https://github.com/niksy/throttle-debounce#debounce): 防抖。
 * [throttle](https://github.com/niksy/throttle-debounce#throttle): 节流。
-* callLimit: 限制函数调用次数。
+* callLimit: 限制函数调用次数。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/callLimit.ts)
+* encryptPhone: 加密手机号, 中间 4 位显示成 *。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/encryptPhone.ts)
+* getByPath: 通过路径获取对象的值。**type safe**[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/getByPath.ts)
 ### 类型判断
 
 * isBoolean
