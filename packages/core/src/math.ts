@@ -1,10 +1,10 @@
 /**
- * tofFixed and remove trailing zeroes
+ * toFixedWithoutZeros and remove trailing zeroes
  * @param num
  * @param precision
  * @returns
  */
-export function toFixed(num: number, precision: number): number {
+export function toFixedWithoutZeros(num: number, precision: number): number {
   return Number(num.toFixed(precision))
 }
 

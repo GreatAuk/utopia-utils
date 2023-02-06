@@ -20,6 +20,7 @@ describe('retry', async () => {
       attempt++
       return Promise.resolve('foo')
     }
+
     const [err, res] = await retry(fn, 2)
     expect(err).toBe(null)
     expect(res).toBe('foo')
