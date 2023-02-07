@@ -10,6 +10,9 @@ export const isRegExp = (val: unknown): val is RegExp => toTypeString(val) === '
 export const isMap = (val: unknown): val is Map<any, any> => toTypeString(val) === '[object Map]'
 export const isSet = (val: unknown): val is Set<any> => toTypeString(val) === '[object Set]'
 export const isDate = (val: unknown): val is Date => toTypeString(val) === '[object Date]'
+/**
+ * Check if the value is a plain object, that is, the object created by the Object constructor
+ */
 export const isPlainObject = (val: unknown): val is object => toTypeString(val) === '[object Object]'
 export const isPromise = (val: unknown): val is Promise<any> => toTypeString(val) === '[object Promise]'
 export const isPrimitive = (val: unknown): val is string | number | boolean | symbol | null | undefined =>
