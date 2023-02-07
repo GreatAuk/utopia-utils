@@ -35,13 +35,14 @@ pnpm add @utopia-utils/core
 * [awaitTo](https://github.com/scopsy/await-to-js): Async await wrapper for easy error handling without try-catch。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/awaitTo.ts)
 * escapeStringRegexp: 把字符串中的特殊字符转义为它可以在正则表达式中使用的形式。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/escapeStringRegexp.ts)
 * isMobile: 判断是否是移动端浏览器。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/isMobile.ts)
-* toFixed: `Number.toFixed` 并移除末尾的零。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/math/toFixed.ts)
-* average: 计算数组的平均值。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/math/average.ts)
+* toFixedWithoutZeros: `Number.toFixedWithoutZeros` 并移除末尾的零。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/math.ts)
+* average: 计算数组的平均值。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/math.ts)
 * [debounce](https://github.com/niksy/throttle-debounce#debounce): 防抖。
 * [throttle](https://github.com/niksy/throttle-debounce#throttle): 节流。
 * callLimit: 限制函数调用次数。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/callLimit.ts)
 * encryptPhone: 加密手机号, 中间 4 位显示成 *。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/encryptPhone.ts)
 * getByPath: 通过路径获取对象的值。**type safe**[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/getByPath.ts)
+* arrayToCSV: 数组转换为 CSV 字符串。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/csv.ts)
 ### 类型判断
 
 * isBoolean
@@ -58,7 +59,7 @@ pnpm add @utopia-utils/core
 * isPlainObject
 * isObject
 * isIntegerKey
-
+* isEmpty
 ------
 
 
