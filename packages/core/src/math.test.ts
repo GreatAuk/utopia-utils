@@ -1,5 +1,3 @@
-import { describe, expect, it } from 'vitest'
-
 import { average, toFixedWithoutZeros } from './math'
 
 describe('math functions', () => {

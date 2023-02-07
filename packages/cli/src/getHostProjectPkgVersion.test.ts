@@ -1,4 +1,3 @@
-import { describe, expect, it } from 'vitest'
 import { getHostProjectPkgVersion } from './getHostProjectPkgVersion'
 
 describe('getHostProjectPkgVersion', () => {

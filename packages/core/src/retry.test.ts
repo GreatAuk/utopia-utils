@@ -1,4 +1,3 @@
-import { describe, expect, it } from 'vitest'
 import { retry } from './retry'
 import { sleep } from './sleep'
 

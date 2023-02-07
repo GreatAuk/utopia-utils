@@ -1,4 +1,3 @@
-import { describe, expect, it } from 'vitest'
 import { sleep } from './sleep'
 
 describe('sleep', () => {

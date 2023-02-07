@@ -1,5 +1,3 @@
-import { describe, expect, it } from 'vitest'
-
 import { arrayToCSV } from './csv'
 
 describe('csv', () => {
@@ -44,7 +42,7 @@ describe('csv', () => {
     `)
   })
 
-  it('arrayToCSV: with headers', () => {
+  it('arrayToCSV: options.headers', () => {
     const csv = arrayToCSV([
       { a: 1, b: 2, c: 3 },
     ], {
@@ -65,7 +63,7 @@ describe('csv', () => {
 
     expect(csv).toMatchInlineSnapshot('"11,12,13"')
   })
-  it('arrayToCSV: with separator', () => {
+  it('arrayToCSV: options.separator', () => {
     const csv = arrayToCSV([
       { a: 1, b: 2, c: 3 },
       { a: 10, b: 20, c: 30 },
@@ -94,7 +92,7 @@ describe('csv', () => {
       \\"\\",2,\\"\\"  \\"\\""
     `)
   })
-  it('arrayToCSV: item value with prefix', () => {
+  it('arrayToCSV: options.prefix', () => {
     const csv = arrayToCSV([[1, 2, 3]], {
       headers: ['A', 'B', 'C'],
       withPrefix: true,

@@ -1,7 +1,6 @@
 /**
  * @vitest-environment happy-dom
  */
-import { describe, expect, it } from 'vitest'
 import { waitForSelector } from './waitForSelector'
 
 describe('waitForSelector', () => {

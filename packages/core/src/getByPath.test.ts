@@ -1,5 +1,3 @@
-import { describe, expect, it } from 'vitest'
-
 import { getByPath } from './getByPath'
 
 describe('getByPath', () => {

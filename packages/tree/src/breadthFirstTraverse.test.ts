@@ -1,5 +1,3 @@
-import { describe, expect, it } from 'vitest'
-
 import { breadthFirstTraverse } from './breadthFirstTraverse'
 
 describe('breadthFirstTraverse', () => {

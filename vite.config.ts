@@ -6,5 +6,6 @@ export default defineConfig({
       provider: 'c8',
       reporter: ['html'],
     },
+    globals: true,
   },
 })

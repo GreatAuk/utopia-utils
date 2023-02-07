@@ -1,4 +1,3 @@
-import { describe, expect, it } from 'vitest'
 import { encryptPhone } from './encryptPhone'
 
 describe('encryptPhone', () => {

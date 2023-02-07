@@ -1,4 +1,3 @@
-import { describe, expect, it } from 'vitest'
 import { flattenTree } from './flattenTree'
 
 describe('flattenTree', () => {
