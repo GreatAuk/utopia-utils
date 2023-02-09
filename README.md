@@ -1,6 +1,19 @@
 # Utopia-Utils
 
+**目录**
+
+* [Install](#Install)
+* [树结构工具](#树结构工具)
+* [字符串](#字符串)
+* [Dom](#Dom)
+* [杂项](#杂项)
+* [类型判断](#类型判断)
+* [类型判断](#类型判断)
+* [vendor](#vendor)
+* [推荐的工具库](#推荐的工具库)
+
 ### Install
+
 ```
 pnpm add @utopia-utils/core
 ```
@@ -23,8 +36,8 @@ pnpm add @utopia-utils/core
 * waitForSelector: 等待指定的选择器匹配的元素出现在页面中，如果调用此方法时已经有匹配的元素，那么此方法立即返回。 如果指定的选择器在超时时间后扔不出现，返回 `null`。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/dom/src/waitForSelector.ts)
 
 ### 杂项
-* [defineDictionary](#defineDictionary): 定义业务字典。 **type safe** [source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/defineDictionary.ts)
-* [createEnumFromOptions](#createEnumFromOptions): 通过 `options` 自动生成对应的 `enum`， 后期只需要维护 `options`。**type safe**。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/createEnumFromOptions.ts)
+* [defineDictionary](#defineDictionary): 定义业务字典。 **typesafe** [source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/defineDictionary.ts)
+* [createEnumFromOptions](#createEnumFromOptions): 通过 `options` 自动生成对应的 `enum`， 后期只需要维护 `options`。**typesafe**。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/createEnumFromOptions.ts)
 * sleep: 等待指定的时间。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/sleep.ts)
 * capitalize: 首字母大写。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/capitalize.ts)
 * [retry](#retry): 重试函数（如果函数抛出错误）直到成功或者达到最大重试次数。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/retry.ts)
@@ -34,16 +47,18 @@ pnpm add @utopia-utils/core
 * randomInt: 生成指定范围内`[min, max]`的整数。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/randomInt.ts)
 * [awaitTo](https://github.com/scopsy/await-to-js): Async await wrapper for easy error handling without try-catch。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/awaitTo.ts)
 * escapeStringRegexp: 把字符串中的特殊字符转义为它可以在正则表达式中使用的形式。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/escapeStringRegexp.ts)
-* isMobile: 判断是否是移动端浏览器。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/isMobile.ts)
+* isMobile: 判断是否是移动端浏览器。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/share/src/isMobile.ts)
 * toFixedWithoutZeros: `Number.toFixedWithoutZeros` 并移除末尾的零。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/math.ts)
 * average: 计算数组的平均值。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/math.ts)
 * [debounce](https://github.com/niksy/throttle-debounce#debounce): 防抖。
 * [throttle](https://github.com/niksy/throttle-debounce#throttle): 节流。
 * callLimit: 限制函数调用次数。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/callLimit.ts)
+* once: 限制函数只能调用一次。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/once.ts)
 * encryptPhone: 加密手机号, 中间 4 位显示成 *。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/encryptPhone.ts)
-* getByPath: 通过路径获取对象的值。**type safe**[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/getByPath.ts)
+* getByPath: 通过路径获取对象的值。**typesafe**[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/getByPath.ts)
 * arrayToCSV: 数组转换为 CSV 字符串。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/csv.ts)
 * memoize: 创建一个会缓存返回结果的函数。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/memoize.ts)
+* getFileName: 获取文件名。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/getFileName.ts)
 ### 类型判断
 
 * isBoolean
@@ -63,11 +78,23 @@ pnpm add @utopia-utils/core
 * isEmpty
 ------
 
+### vendor
+* [debounce](https://github.com/niksy/throttle-debounce#debounce): 防抖。
+* [throttle](https://github.com/niksy/throttle-debounce#throttle): 节流。
+* [mitt](https://github.com/developit/mitt): 🥊 Tiny 200 byte functional event emitter / pubsub. typesafe
+
+### 推荐的工具库
+
+[`mitt`](https://github.com/developit/mitt): 🥊 Tiny 200 byte functional event emitter / pubsub.
+[`FileSaver`](https://github.com/eligrey/FileSaver.js): An HTML5 saveAs() FileSaver implementation.
+[`zod`](https://github.com/colinhacks/zod): TypeScript-first schema validation with static type inference.
+[`dayjs`](https://github.com/iamkun/dayjs): ⏰ Day.js 2kB immutable date-time library alternative to Moment.js with the same modern API.
+[`js-cookie`](https://github.com/js-cookie/js-cookie): A simple, lightweight JavaScript API for handling browser cookies.
 
 
 ##### defineDictionary
 
-定义业务字典, **type safe**
+定义业务字典, **typesafe**
 
 ```ts
 const { get_MUSIC_TYPE_KEYS, get_MUSIC_TYPE_KV, get_MUSIC_TYPE_MAP, get_MUSIC_TYPE_MAP_BY_KEY, get_MUSIC_TYPE_MAP_BY_VALUE, get_MUSIC_TYPE_OPTIONS, get_MUSIC_TYPE_VALUES, get_MUSIC_TYPE_VK } = defineDictionary([
@@ -83,7 +110,7 @@ const { get_MUSIC_TYPE_KEYS, get_MUSIC_TYPE_KV, get_MUSIC_TYPE_MAP, get_MUSIC_TY
     label: '摇滚音乐',
     color: 'blue',
   },
-] as const, 'MUSIC_TYPE') // !!! as const is required for type safe
+] as const, 'MUSIC_TYPE') // !!! as const is required for typesafe
 
 const MUSIC_TYPE_KEYS = get_MUSIC_TYPE_KEYS()
 // ['POP', 'ROCK']
@@ -142,7 +169,7 @@ const MUSIC_TYPE_OPTIONS = get_MUSIC_TYPE_OPTIONS()
 
 ##### ~~createEnumFromOptions~~
 
-通过 `options` 自动生成对应的 `enum`， 后期只需要维护 `options`。**type safe**
+通过 `options` 自动生成对应的 `enum`， 后期只需要维护 `options`。**typesafe**
 
 废弃, 使用 [defineDictionary](#defineDictionary) 代替。
 
@@ -157,7 +184,7 @@ const optionsLevel = [
     value: 1,
     label: 'level2',
   },
-] as const // as const is required to make the type safe
+] as const // as const is required to make the typesafe
 
 const enumLevel = createEnumFromOptions(optionsLevel)
 console.log(enumLevel.level1) // 0
