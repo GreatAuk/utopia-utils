@@ -11,6 +11,7 @@ importers:
       bumpp: ^8.2.1
       eslint: ^8.33.0
       happy-dom: ^8.2.0
+      mitt: ^3.0.0
       pnpm: ^7.26.2
       rimraf: ^4.1.2
       tsup: ^6.5.0
@@ -20,6 +21,7 @@ importers:
       vitest: ^0.28.3
     dependencies:
       happy-dom: 8.2.0
+      mitt: 3.0.0
     devDependencies:
       '@antfu/eslint-config': 0.35.1_zkdaqh7it7uc4cvz2haft7rc6u
       '@antfu/ni': 0.19.0
@@ -2988,6 +2990,10 @@ packages:
   /minimist/1.2.6:
     resolution: {integrity: sha512-Jsjnk4bw3YJqYzbdyBiNsPWHPfO++UGG749Cxs6peCu5Xg4nrena6OVxOYxrQTqww0Jmwt+Ref8rggumkTLz9Q==}
     dev: true
+
+  /mitt/3.0.0:
+    resolution: {integrity: sha512-7dX2/10ITVyqh4aOSVI9gdape+t9l2/8QxHrFmUXu4EEUpdlxl6RudZUPZoc+zuY2hk1j7XxVroIVIan/pD/SQ==}
+    dev: false
 
   /mlly/1.1.0:
     resolution: {integrity: sha512-cwzBrBfwGC1gYJyfcy8TcZU1f+dbH/T+TuOhtYP2wLv/Fb51/uV7HJQfBPtEupZ2ORLRU1EKFS/QfS3eo9+kBQ==}

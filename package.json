@@ -22,7 +22,8 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "happy-dom": "^8.2.0"
+    "happy-dom": "^8.2.0",
+    "mitt": "^3.0.0"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.35.1",
