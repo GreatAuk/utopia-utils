@@ -106,6 +106,7 @@ type ToValueKey<T> = T extends readonly [infer A, ...infer B]
  * @returns
  * @example
  * ```ts
+    // at src/constant.ts
     const { get_MUSIC_TYPE_KEYS, get_MUSIC_TYPE_KV, get_MUSIC_TYPE_MAP, get_MUSIC_TYPE_MAP_BY_KEY, get_MUSIC_TYPE_MAP_BY_VALUE, get_MUSIC_TYPE_OPTIONS, get_MUSIC_TYPE_VALUES, get_MUSIC_TYPE_VK } = defineDictionary([
       {
         key: 'POP',
@@ -121,15 +122,15 @@ type ToValueKey<T> = T extends readonly [infer A, ...infer B]
       },
     ] as const, 'MUSIC_TYPE') // !!! as const is required for type safe
 
-    const MUSIC_TYPE_KEYS = get_MUSIC_TYPE_KEYS()
+    export const { MUSIC_TYPE_KEYS } = get_MUSIC_TYPE_KEYS()
     // ['POP', 'ROCK']
-    const MUSIC_TYPE_VALUES = get_MUSIC_TYPE_VALUES()
+    export const { MUSIC_TYPE_VALUES } = get_MUSIC_TYPE_VALUES()
     // [1, 2]
-    const MUSIC_TYPE_KV = get_MUSIC_TYPE_KV()
+    export const { MUSIC_TYPE_KV } = get_MUSIC_TYPE_KV()
     // { POP: 1, ROCK: 2 }
-    const MUSIC_TYPE_VK = get_MUSIC_TYPE_VK()
+    export const { MUSIC_TYPE_VK } = get_MUSIC_TYPE_VK()
     // { 1: 'POP', 2: 'ROCK' }
-    const MUSIC_TYPE_MAP_BY_KEY = get_MUSIC_TYPE_MAP_BY_KEY()
+    export const { MUSIC_TYPE_MAP_BY_KEY } = get_MUSIC_TYPE_MAP_BY_KEY()
     // POP: {
     //   key: 'POP',
     //   value: 1,
@@ -142,7 +143,7 @@ type ToValueKey<T> = T extends readonly [infer A, ...infer B]
     //   label: '摇滚音乐',
     //   color: 'blue',
     // },
-    const MUSIC_TYPE_MAP_BY_VALUE = get_MUSIC_TYPE_MAP_BY_VALUE()
+    export const { MUSIC_TYPE_MAP_BY_VALUE } = get_MUSIC_TYPE_MAP_BY_VALUE()
     // 1: {
     //   key: 'POP',
     //   value: 1,
@@ -155,9 +156,9 @@ type ToValueKey<T> = T extends readonly [infer A, ...infer B]
     //   label: '摇滚音乐',
     //   color: 'blue',
     // },
-    const MUSIC_TYPE_MAP = get_MUSIC_TYPE_MAP()
+    export const { MUSIC_TYPE_MAP } = get_MUSIC_TYPE_MAP()
     // { POP: 1, ROCK: 2 }
-    const MUSIC_TYPE_OPTIONS = get_MUSIC_TYPE_OPTIONS()
+    export const { MUSIC_TYPE_OPTIONS } = get_MUSIC_TYPE_OPTIONS()
     // [
     //   {
     //     key: 'POP',
@@ -183,68 +184,114 @@ export function defineDictionary<
 
   const prefix = `get_${namespace}_`
   return {
-    [`${prefix}KEYS`]: () => options.map(item => item.key),
-    [`${prefix}VALUES`]: () => options.map(item => item.value),
-    [`${prefix}KV`]: () => options.reduce(
-      (prev, cur) => ({
-        ...prev,
-        [cur.key]: cur.value,
-      }),
-      {},
-    ),
-    [`${prefix}VK`]: () => options.reduce(
-      (prev, cur) => ({
-        ...prev,
-        [cur.value]: cur.key,
-      }),
-      {},
-    ),
-    [`${prefix}MAP_BY_KEY`]: () => options.reduce(
-      (prev, cur) => ({
-        ...prev,
-        [cur.key]: cur,
-      }),
-      {},
-    ),
-    [`${prefix}MAP_BY_VALUE`]: () => options.reduce(
-      (prev, cur) => ({
-        ...prev,
-        [cur.value]: cur,
-      }),
-      {},
-    ),
-    [`${prefix}KEY_MAP`]: () => options.reduce(
-      (prev, cur) => ({
-        ...prev,
-        [cur.key]: cur,
-      }),
-      {},
-    ),
-    [`${prefix}MAP`]: () => options.reduce(
-      (prev, cur) => ({
-        ...prev,
-        [cur.key]: cur.value,
-      }),
-      {},
-    ),
-    [`${prefix}OPTIONS`]: () => options,
+    [`${prefix}KEYS`]: () => ({
+      [`${namespace}_KEYS`]: options.map(item => item.key),
+    }),
+    [`${prefix}VALUES`]: () => ({
+      [`${namespace}_VALUES`]: options.map(item => item.value),
+    }),
+    [`${prefix}KV`]: () => {
+      return {
+        [`${namespace}_KV`]: options.reduce(
+          (prev, cur) => ({
+            ...prev,
+            [cur.key]: cur.value,
+          }),
+          {},
+        ),
+      }
+    },
+    [`${prefix}VK`]: () => {
+      return {
+        [`${namespace}_VK`]: options.reduce(
+          (prev, cur) => ({
+            ...prev,
+            [cur.value]: cur.key,
+          }),
+          {},
+        ),
+      }
+    },
+    [`${prefix}MAP_BY_KEY`]: () => {
+      return {
+        [`${namespace}_MAP_BY_KEY`]: options.reduce(
+          (prev, cur) => ({
+            ...prev,
+            [cur.key]: cur,
+          }),
+          {},
+        ),
+      }
+    },
+    [`${prefix}MAP_BY_VALUE`]: () => {
+      return {
+        [`${namespace}_MAP_BY_VALUE`]: options.reduce(
+          (prev, cur) => ({
+            ...prev,
+            [cur.value]: cur,
+          }),
+          {},
+        ),
+      }
+    },
+    [`${prefix}KEY_MAP`]: () => {
+      return {
+        [`${namespace}_KEY_MAP`]: options.reduce(
+          (prev, cur) => ({
+            ...prev,
+            [cur.key]: cur,
+          }),
+          {},
+        ),
+      }
+    },
+    [`${prefix}MAP`]: () => {
+      return {
+        [`${namespace}_MAP`]: options.reduce(
+          (prev, cur) => ({
+            ...prev,
+            [cur.key]: cur.value,
+          }),
+          {},
+        ),
+      }
+    },
+    [`${prefix}OPTIONS`]: () => ({
+      [`${namespace}_OPTIONS`]: options,
+    }),
   } as MergeIntersection<
     {
-      [Key in ToProperty<'KV', N>]: () => ToKeyValue<T>;
+      [Key in ToProperty<'KV', N>]: () => {
+        [K in `${N}_KV`]: ToKeyValue<T>
+      };
     } & {
-      [Key in ToProperty<'VK', N>]: () => ToValueKey<T>;
+      [Key in ToProperty<'VK', N>]: () => {
+        [K in `${N}_VK`]: ToValueKey<T>
+      };
     } & {
-      [Key in ToProperty<'KEYS', N>]: () => ToKeys<T>;
+      [Key in ToProperty<'KEYS', N>]: () => {
+        [K in `${N}_KEYS`]: ToKeys<T>
+      };
     } & {
-      [Key in ToProperty<'VALUES', N>]: () => ToValues<T>;
+      [Key in ToProperty<'VALUES', N>]: () => {
+        [K in `${N}_VALUES`]: ToValues<T>
+      };
     } & {
-      [Key in ToProperty<'MAP_BY_KEY', N>]: () => ToKeyMap<T>;
+      [Key in ToProperty<'MAP_BY_KEY', N>]: () => {
+        [K in `${N}_MAP_BY_KEY`]: ToKeyMap<T>
+      };
     } & {
-      [Key in ToProperty<'MAP_BY_VALUE', N>]: () => ToValueMap<T>;
+      [Key in ToProperty<'MAP_BY_VALUE', N>]: () => {
+        [K in `${N}_MAP_BY_VALUE`]: ToValueMap<T>
+      };
     } & {
-      [Key in ToProperty<'MAP', N>]: () => ToKeyValue<T>;
+      [Key in ToProperty<'MAP', N>]: () => {
+        [K in `${N}_MAP`]: ToKeyValue<T>
+      };
     } & {
-      [Key in ToProperty<'OPTIONS', N>]: () => T;
+      [Key in ToProperty<'OPTIONS', N>]: () => {
+        [K in `${N}_OPTIONS`]: T
+      };
     }
   >
 }
