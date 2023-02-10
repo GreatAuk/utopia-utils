@@ -1,5 +1,6 @@
 {
   "name": "@utopia-utils/cli",
+  "type": "module",
   "version": "0.3.1",
   "description": "Collection of common cli utils",
   "author": "Utopia <https://github.com/GreatAuk>",
