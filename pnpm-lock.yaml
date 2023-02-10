@@ -42,7 +42,7 @@ importers:
       '@playwright/test': ^1.28.1
       '@rushstack/eslint-patch': ^1.1.4
       '@types/node': ^18.11.12
-      '@utopia-utils/core': workspace:^0.3.1
+      '@utopia-utils/core': workspace:*
       '@vitejs/plugin-vue': ^4.0.0
       '@vue/eslint-config-typescript': ^11.0.0
       '@vue/tsconfig': ^0.1.3
