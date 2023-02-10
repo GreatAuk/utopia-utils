@@ -34,10 +34,11 @@ pnpm add @utopia-utils/core
 ### Dom
 
 * waitForSelector: 等待指定的选择器匹配的元素出现在页面中，如果调用此方法时已经有匹配的元素，那么此方法立即返回。 如果指定的选择器在超时时间后扔不出现，返回 `null`。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/dom/src/waitForSelector.ts)
+* panzoom: 为指定的元素添加拖拽缩放功能。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/dom/src/panzoom/core.ts
 
 ### 杂项
 * [defineDictionary](#defineDictionary): 定义业务字典。 **typesafe** [source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/defineDictionary.ts)
-* [createEnumFromOptions](#createEnumFromOptions): 通过 `options` 自动生成对应的 `enum`， 后期只需要维护 `options`。**typesafe**。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/createEnumFromOptions.ts)
+* ~~[createEnumFromOptions](#createEnumFromOptions): 通过 `options` 自动生成对应的 `enum`， 后期只需要维护 `options`。**typesafe**。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/createEnumFromOptions.ts)~~
 * sleep: 等待指定的时间。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/sleep.ts)
 * capitalize: 首字母大写。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/capitalize.ts)
 * [retry](#retry): 重试函数（如果函数抛出错误）直到成功或者达到最大重试次数。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/retry.ts)
@@ -85,18 +86,21 @@ pnpm add @utopia-utils/core
 
 ### 推荐的工具库
 
-[`mitt`](https://github.com/developit/mitt): 🥊 Tiny 200 byte functional event emitter / pubsub.
-[`FileSaver`](https://github.com/eligrey/FileSaver.js): An HTML5 saveAs() FileSaver implementation.
-[`zod`](https://github.com/colinhacks/zod): TypeScript-first schema validation with static type inference.
-[`dayjs`](https://github.com/iamkun/dayjs): ⏰ Day.js 2kB immutable date-time library alternative to Moment.js with the same modern API.
-[`js-cookie`](https://github.com/js-cookie/js-cookie): A simple, lightweight JavaScript API for handling browser cookies.
-
+[`mitt`](https://github.com/developit/mitt): 🥊 Tiny 200 byte functional event emitter / pubsub
+[`FileSaver`](https://github.com/eligrey/FileSaver.js): An HTML5 saveAs() FileSaver implementation
+[`zod`](https://github.com/colinhacks/zod): TypeScript-first schema validation with static type inference
+[`dayjs`](https://github.com/iamkun/dayjs): ⏰ Day.js 2kB immutable date-time library alternative to Moment.js with the same modern API
+[`js-cookie`](https://github.com/js-cookie/js-cookie): A simple, lightweight JavaScript API for handling browser cookies
+[`any-rule`](https://any-rule.vercel.app/): 常用正则大全
+[fast-deep-equal](https://github.com/epoberezkin/fast-deep-equal): The fastest deep equality check with Date, RegExp and ES6 Map, Set and typed arrays support
+[nanoclone](https://github.com/kelin2025/nanoclone): Tiny util to deep clone
 
 ##### defineDictionary
 
 定义业务字典, **typesafe**
 
 ```ts
+// at src/constant.ts
 const { get_MUSIC_TYPE_KEYS, get_MUSIC_TYPE_KV, get_MUSIC_TYPE_MAP, get_MUSIC_TYPE_MAP_BY_KEY, get_MUSIC_TYPE_MAP_BY_VALUE, get_MUSIC_TYPE_OPTIONS, get_MUSIC_TYPE_VALUES, get_MUSIC_TYPE_VK } = defineDictionary([
   {
     key: 'POP',
@@ -110,17 +114,17 @@ const { get_MUSIC_TYPE_KEYS, get_MUSIC_TYPE_KV, get_MUSIC_TYPE_MAP, get_MUSIC_TY
     label: '摇滚音乐',
     color: 'blue',
   },
-] as const, 'MUSIC_TYPE') // !!! as const is required for typesafe
+] as const, 'MUSIC_TYPE') // !!! as const is required for type safe
 
-const MUSIC_TYPE_KEYS = get_MUSIC_TYPE_KEYS()
+export const { MUSIC_TYPE_KEYS } = get_MUSIC_TYPE_KEYS()
 // ['POP', 'ROCK']
-const MUSIC_TYPE_VALUES = get_MUSIC_TYPE_VALUES()
+export const { MUSIC_TYPE_VALUES } = get_MUSIC_TYPE_VALUES()
 // [1, 2]
-const MUSIC_TYPE_KV = get_MUSIC_TYPE_KV()
+export const { MUSIC_TYPE_KV } = get_MUSIC_TYPE_KV()
 // { POP: 1, ROCK: 2 }
-const MUSIC_TYPE_VK = get_MUSIC_TYPE_VK()
+export const { MUSIC_TYPE_VK } = get_MUSIC_TYPE_VK()
 // { 1: 'POP', 2: 'ROCK' }
-const MUSIC_TYPE_MAP_BY_KEY = get_MUSIC_TYPE_MAP_BY_KEY()
+export const { MUSIC_TYPE_MAP_BY_KEY } = get_MUSIC_TYPE_MAP_BY_KEY()
 // POP: {
 //   key: 'POP',
 //   value: 1,
@@ -133,7 +137,7 @@ const MUSIC_TYPE_MAP_BY_KEY = get_MUSIC_TYPE_MAP_BY_KEY()
 //   label: '摇滚音乐',
 //   color: 'blue',
 // },
-const MUSIC_TYPE_MAP_BY_VALUE = get_MUSIC_TYPE_MAP_BY_VALUE()
+export const { MUSIC_TYPE_MAP_BY_VALUE } = get_MUSIC_TYPE_MAP_BY_VALUE()
 // 1: {
 //   key: 'POP',
 //   value: 1,
@@ -146,9 +150,9 @@ const MUSIC_TYPE_MAP_BY_VALUE = get_MUSIC_TYPE_MAP_BY_VALUE()
 //   label: '摇滚音乐',
 //   color: 'blue',
 // },
-const MUSIC_TYPE_MAP = get_MUSIC_TYPE_MAP()
+export const { MUSIC_TYPE_MAP } = get_MUSIC_TYPE_MAP()
 // { POP: 1, ROCK: 2 }
-const MUSIC_TYPE_OPTIONS = get_MUSIC_TYPE_OPTIONS()
+export const { MUSIC_TYPE_OPTIONS } = get_MUSIC_TYPE_OPTIONS()
 // [
 //   {
 //     key: 'POP',
