@@ -18,6 +18,11 @@ export const isPromise = (val: unknown): val is Promise<any> => toTypeString(val
 export const isPrimitive = (val: unknown): val is string | number | boolean | symbol | null | undefined =>
   ['string', 'number', 'boolean', 'symbol', 'null', 'undefined'].includes(typeof val)
 
+/**
+ * "If the value is null or undefined, return true, otherwise return false."
+ */
+export const isNil = (val: unknown): val is null | undefined => val === null || val === undefined
+
 export const isObject = (val: unknown): val is Record<any, any> =>
   val !== null && typeof val === 'object'
 export const isIntegerKey = (key: unknown) =>
