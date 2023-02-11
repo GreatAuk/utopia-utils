@@ -20,3 +20,15 @@
 export type Prettify<T> = {
   [K in keyof T]: T[K]
 } & {}
+
+/**
+ * Matches any type that is a primitive type.
+ */
+export type Primitive =
+  | null
+  | undefined
+  | string
+  | number
+  | boolean
+  | symbol
+  | bigint
