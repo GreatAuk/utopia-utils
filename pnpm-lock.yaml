@@ -15,9 +15,7 @@ importers:
       '@vitest/coverage-c8': ^0.28.4
       bumpp: ^8.2.1
       eslint: ^8.34.0
-      file-saver: ^2.0.5
       happy-dom: ^8.2.6
-      mitt: ^3.0.0
       pnpm: ^7.27.0
       rimraf: ^4.1.2
       tsup: ^6.6.0
@@ -26,9 +24,7 @@ importers:
       vite: ^4.1.1
       vitest: ^0.28.4
     dependencies:
-      file-saver: 2.0.5
       happy-dom: 8.2.6
-      mitt: 3.0.0
     devDependencies:
       '@antfu/eslint-config': 0.35.2_7kw3g6rralp5ps6mg3uyzz6azm
       '@antfu/ni': 0.20.0
@@ -88,6 +84,7 @@ importers:
       '@utopia-utils/dom': workspace:*
       '@utopia-utils/share': workspace:*
       '@utopia-utils/tree': workspace:*
+      mitt: ^3.0.0
       throttle-debounce: ^5.0.0
     dependencies:
       '@utopia-utils/dom': link:../dom
@@ -95,6 +92,7 @@ importers:
       '@utopia-utils/tree': link:../tree
     devDependencies:
       '@types/throttle-debounce': 5.0.0
+      mitt: 3.0.0
       throttle-debounce: 5.0.0
 
   packages/dom:
@@ -2714,10 +2712,6 @@ packages:
       flat-cache: 3.0.4
     dev: true
 
-  /file-saver/2.0.5:
-    resolution: {integrity: sha512-P9bmyZ3h/PRG+Nzga+rbdI4OEpNDzAVyy74uVO9ATgzLK6VtAsYybF/+TOCvrc0MO793d6+42lLyZTw7/ArVzA==}
-    dev: false
-
   /fill-range/7.0.1:
     resolution: {integrity: sha512-qOo9F+dMUmC2Lcb4BbVvnKJxTPjCm+RRpe4gDuGrzkL7mEVl/djYSu2OdQ2Pa302N4oqkSg9ir6jaLWJ2USVpQ==}
     engines: {node: '>=8'}
@@ -3477,7 +3471,7 @@ packages:
 
   /mitt/3.0.0:
     resolution: {integrity: sha512-7dX2/10ITVyqh4aOSVI9gdape+t9l2/8QxHrFmUXu4EEUpdlxl6RudZUPZoc+zuY2hk1j7XxVroIVIan/pD/SQ==}
-    dev: false
+    dev: true
 
   /mlly/1.1.0:
     resolution: {integrity: sha512-cwzBrBfwGC1gYJyfcy8TcZU1f+dbH/T+TuOhtYP2wLv/Fb51/uV7HJQfBPtEupZ2ORLRU1EKFS/QfS3eo9+kBQ==}

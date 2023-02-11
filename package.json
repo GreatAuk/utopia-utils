@@ -22,9 +22,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "file-saver": "^2.0.5",
-    "happy-dom": "^8.2.6",
-    "mitt": "^3.0.0"
+    "happy-dom": "^8.2.6"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.35.2",
