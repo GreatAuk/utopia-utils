@@ -1,12 +1,16 @@
 lockfileVersion: 5.4
 
+patchedDependencies:
+  tsup@6.6.0:
+    hash: npa3wgiesnbkukwwyjh24xvetq
+    path: patches/tsup@6.6.0.patch
+
 importers:
 
   .:
     specifiers:
       '@antfu/eslint-config': ^0.35.2
       '@antfu/ni': ^0.20.0
-      '@types/file-saver': ^2.0.5
       '@types/node': ^18.13.0
       '@vitest/coverage-c8': ^0.28.4
       bumpp: ^8.2.1
@@ -28,14 +32,13 @@ importers:
     devDependencies:
       '@antfu/eslint-config': 0.35.2_7kw3g6rralp5ps6mg3uyzz6azm
       '@antfu/ni': 0.20.0
-      '@types/file-saver': 2.0.5
       '@types/node': 18.13.0
       '@vitest/coverage-c8': 0.28.4_happy-dom@8.2.6
       bumpp: 8.2.1
       eslint: 8.34.0
       pnpm: 7.27.0
       rimraf: 4.1.2
-      tsup: 6.6.0_typescript@4.9.5
+      tsup: 6.6.0_npa3wgiesnbkukwwyjh24xvetq_typescript@4.9.5
       tsx: 3.12.3
       typescript: 4.9.5
       vite: 4.1.1_@types+node@18.13.0
@@ -90,9 +93,9 @@ importers:
       '@utopia-utils/dom': link:../dom
       '@utopia-utils/share': link:../share
       '@utopia-utils/tree': link:../tree
-      throttle-debounce: 5.0.0
     devDependencies:
       '@types/throttle-debounce': 5.0.0
+      throttle-debounce: 5.0.0
 
   packages/dom:
     specifiers: {}
@@ -804,10 +807,6 @@ packages:
 
   /@types/chai/4.3.4:
     resolution: {integrity: sha512-KnRanxnpfpjUTqTCXslZSEdLfXExwgNxYPdiO2WGUj8+HDjFi8R3k5RVKPeSCzLjCcshCAtVO2QBbVuAV4kTnw==}
-    dev: true
-
-  /@types/file-saver/2.0.5:
-    resolution: {integrity: sha512-zv9kNf3keYegP5oThGLaPk8E081DFDuwfqjtiTzm6PoxChdJ1raSuADf2YGCVIyrSynLrgc8JWv296s7Q7pQSQ==}
     dev: true
 
   /@types/istanbul-lib-coverage/2.0.4:
@@ -4310,7 +4309,7 @@ packages:
   /throttle-debounce/5.0.0:
     resolution: {integrity: sha512-2iQTSgkkc1Zyk0MeVrt/3BvuOXYPl/R8Z0U2xxo9rjwNciaHDG3R+Lm6dh4EeUci49DanvBnuqI6jshoQQRGEg==}
     engines: {node: '>=12.22'}
-    dev: false
+    dev: true
 
   /tinybench/2.3.1:
     resolution: {integrity: sha512-hGYWYBMPr7p4g5IarQE7XhlyWveh1EKhy4wUBS1LrHXCKYgvz+4/jCqgmJqZxxldesn05vccrtME2RLLZNW7iA==}
@@ -4368,7 +4367,7 @@ packages:
     resolution: {integrity: sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==}
     dev: true
 
-  /tsup/6.6.0_typescript@4.9.5:
+  /tsup/6.6.0_npa3wgiesnbkukwwyjh24xvetq_typescript@4.9.5:
     resolution: {integrity: sha512-HxZE7Hj5yNxLFftCXdcJ+Jsax8dI4oKb0bt8fIvd1g/W0FZ46sU1pFBVo15WpOERFcEMH7Hykey/Q+hKO4s9RQ==}
     engines: {node: '>=14'}
     hasBin: true
@@ -4403,6 +4402,7 @@ packages:
       - supports-color
       - ts-node
     dev: true
+    patched: true
 
   /tsutils/3.21.0_typescript@4.7.4:
     resolution: {integrity: sha512-mHKK3iUXL+3UF6xL5k0PEhKRUBKPBCv/+RkEOpjRWxxx27KKRBmmA60A9pgOUvMi8GKhRMPEmjBRPzs2W7O1OA==}

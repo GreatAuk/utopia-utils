@@ -7,7 +7,9 @@ export default defineConfig((options) => { // The options here is derived from C
     },
     sourcemap: true,
     clean: true,
-    dts: true,
+    dts: {
+      respectExternal: true,
+    },
     format: ['cjs', 'esm'],
     minify: !options.watch,
   }
