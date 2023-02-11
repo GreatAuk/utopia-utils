@@ -22,12 +22,14 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "file-saver": "^2.0.5",
     "happy-dom": "^8.2.0",
     "mitt": "^3.0.0"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.35.1",
     "@antfu/ni": "^0.19.0",
+    "@types/file-saver": "^2.0.5",
     "@types/node": "^18.11.18",
     "@vitest/coverage-c8": "^0.28.3",
     "bumpp": "^8.2.1",
