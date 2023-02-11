@@ -14,11 +14,19 @@
 
 ### Install
 
-```
+```bash
+# 包含所有的 utils
 pnpm add @utopia-utils/core
 ```
 
 ### 树结构工具
+
+```bash
+# 如果只需要使用树结构 utils
+pnpm add @utopia-utils/tree
+```
+
+
 
 * [breadthFirstTraverse](#breadthFirstTraverse): 广度优先遍历。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/tree/src/breadthFirstTraverse.ts)
 * [treeFindNode](#treeFindNode): 查找符合条件的单个节点或多个节点，通过广度优先遍历查找。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/tree/src/treeFindNode.ts)
@@ -32,6 +40,11 @@ pnpm add @utopia-utils/core
 * randomString: 随机生成指定长度、指定字符集的字符串。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/randomString.ts)
 
 ### Dom
+
+```bash
+# 如果只需要使用 Dom utils
+pnpm add @utopia-utils/dom
+```
 
 * waitForSelector: 等待指定的选择器匹配的元素出现在页面中，如果调用此方法时已经有匹配的元素，那么此方法立即返回。 如果指定的选择器在超时时间后扔不出现，返回 `null`。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/dom/src/waitForSelector.ts)
 * panzoom: 为指定的元素添加拖拽缩放功能。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/dom/src/panzoom/core.ts
@@ -49,10 +62,10 @@ pnpm add @utopia-utils/core
 * [awaitTo](https://github.com/scopsy/await-to-js): Async await wrapper for easy error handling without try-catch。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/awaitTo.ts)
 * escapeStringRegexp: 把字符串中的特殊字符转义为它可以在正则表达式中使用的形式。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/escapeStringRegexp.ts)
 * isMobile: 判断是否是移动端浏览器。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/share/src/isMobile.ts)
-* toFixedWithoutZeros: `Number.toFixedWithoutZeros` 并移除末尾的零。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/math.ts)
+* toFixedWithoutZeros: `Number.toFixed` 并移除末尾的零。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/math.ts)
 * average: 计算数组的平均值。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/math.ts)
-* [debounce](https://github.com/niksy/throttle-debounce#debounce): 防抖。
-* [throttle](https://github.com/niksy/throttle-debounce#throttle): 节流。
+* [debounce](https://github.com/niksy/throttle-debounce#debounce): 防抖。（export from [throttle-debounce](https://github.com/niksy/throttle-debounce)）
+* [throttle](https://github.com/niksy/throttle-debounce#throttle): 节流。（export from [throttle-debounce](https://github.com/niksy/throttle-debounce)）
 * callLimit: 限制函数调用次数。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/callLimit.ts)
 * once: 限制函数只能调用一次。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/once.ts)
 * encryptPhone: 加密手机号, 中间 4 位显示成 *。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/encryptPhone.ts)
@@ -60,7 +73,18 @@ pnpm add @utopia-utils/core
 * arrayToCSV: 数组转换为 CSV 字符串。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/csv.ts)
 * memoize: 创建一个会缓存返回结果的函数。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/memoize.ts)
 * getFileName: 获取文件名。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/getFileName.ts)
+* [Cookies](https://github.com/js-cookie/js-cookie#basic-usage): cookie utils.（export from [js-cookie](https://github.com/js-cookie/js-cookie)）
+* [mitt](https://github.com/developit/mitt): event emitter / pubsub, typesafe.（export from [mitt](https://github.com/developit/mitt)）
+* unique: 数组去重。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/unique.ts)
+* uniqueWith: 数组去重，使用自定义的比较函数。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/uniqueWith.ts)
 ### 类型判断
+
+```bash
+# 如果只需要使用类型判断 utils
+pnpm add @utopia-utils/share
+```
+
+
 
 * isBoolean
 * isString
@@ -80,20 +104,23 @@ pnpm add @utopia-utils/core
 ------
 
 ### vendor
+
+> @utopia-utils/core 导出了下面这些 package
+
 * [debounce](https://github.com/niksy/throttle-debounce#debounce): 防抖。
 * [throttle](https://github.com/niksy/throttle-debounce#throttle): 节流。
-* [mitt](https://github.com/developit/mitt): 🥊 Tiny 200 byte functional event emitter / pubsub. typesafe
+* [js-cookie](https://github.com/js-cookie/js-cookie): A simple, lightweight JavaScript API for handling browser cookies.
+* [mitt](https://github.com/developit/mitt): 🥊 Tiny 200 byte functional event emitter / pubsub. typesafe.
 
-### 推荐的工具库
+### 推荐的工具
 
-[`mitt`](https://github.com/developit/mitt): 🥊 Tiny 200 byte functional event emitter / pubsub
-[`FileSaver`](https://github.com/eligrey/FileSaver.js): An HTML5 saveAs() FileSaver implementation
-[`zod`](https://github.com/colinhacks/zod): TypeScript-first schema validation with static type inference
-[`dayjs`](https://github.com/iamkun/dayjs): ⏰ Day.js 2kB immutable date-time library alternative to Moment.js with the same modern API
-[`js-cookie`](https://github.com/js-cookie/js-cookie): A simple, lightweight JavaScript API for handling browser cookies
-[`any-rule`](https://any-rule.vercel.app/): 常用正则大全
-[fast-deep-equal](https://github.com/epoberezkin/fast-deep-equal): The fastest deep equality check with Date, RegExp and ES6 Map, Set and typed arrays support
-[nanoclone](https://github.com/kelin2025/nanoclone): Tiny util to deep clone
+* [`saveAs`](https://github.com/eligrey/FileSaver.js): An HTML5 saveAs() FileSaver implementation.
+
+* [`zod`](https://github.com/colinhacks/zod): TypeScript-first schema validation with static type inference.
+* [`dayjs`](https://github.com/iamkun/dayjs): ⏰ Day.js 2kB immutable date-time library alternative to Moment.js with the same modern API.
+* [`any-rule`](https://any-rule.vercel.app/): 常用正则大全.
+* [`fast-deep-equal`](https://github.com/epoberezkin/fast-deep-equal): The fastest deep equality check with Date, RegExp and ES6 Map, Set and typed arrays support.
+* [`nanoclone`](https://github.com/kelin2025/nanoclone): Tiny util to deep clone.
 
 ##### defineDictionary
 
@@ -223,6 +250,16 @@ const [err, res] = await retry(fn, 2, (attemptTime) => {
 
 ### Tree Utils
 
+> 所有的 Tree utils 支持定义 fieldName
+>
+> ```ts
+> export interface FieldNames {
+>   id?: string
+>   children?: string
+>   parentId?: string
+> }
+> ```
+
 ##### breadthFirstTraverse
 
 广度优先遍历。
@@ -234,7 +271,7 @@ const [err, res] = await retry(fn, 2, (attemptTime) => {
 const tree = [
   {
     name: 'a',
-    children: [
+    Children_: [
       { name: 'b' },
     ],
   },

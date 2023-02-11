@@ -2,6 +2,8 @@ import { isArray } from '@utopia-utils/share'
 
 /**
  * It takes an array of any type, and returns an array, with all duplicates removed
+ *
+ * just use `[...new Set(arr)]`
  * @param {T[]} arr - The array to filter.
  * @returns array
  * @example
