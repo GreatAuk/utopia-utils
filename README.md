@@ -1,6 +1,8 @@
 # Utopia-Utils
 <p align="center">
-    <a href='https://coveralls.io/github/GreatAuk/utopia-utils'><img src='https://coveralls.io/repos/github/GreatAuk/utopia-utils/badge.svg?colorB=51C838' alt='Coverage Status' /></a>
+    <a href="https://codecov.io/gh/GreatAuk/utopia-utils" >
+    <img src="https://codecov.io/gh/GreatAuk/utopia-utils/branch/main/graph/badge.svg?token=KU3KJCHA4V"/>
+    </a>
     <a href="https://www.npmjs.com/package/@utopia-utils/core" target="__blank">
       <img src="https://img.shields.io/npm/v/@utopia-utils/core.svg?style=flat-square&colorB=51C838" alt="NPM Version" />
     </a>
