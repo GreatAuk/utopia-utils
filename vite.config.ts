@@ -4,7 +4,7 @@ export default defineConfig({
   test: {
     coverage: {
       provider: 'c8',
-      reporter: ['html'],
+      reporter: ['html', 'lcov'],
     },
     globals: true,
     // exclude: ['example/**'],
