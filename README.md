@@ -1,4 +1,18 @@
 # Utopia-Utils
+<p align="center">
+    <a href='https://coveralls.io/github/GreatAuk/utopia-utils'><img src='https://coveralls.io/repos/github/GreatAuk/utopia-utils/badge.svg' alt='Coverage Status' /></a>
+    <a href="https://www.npmjs.com/package/@utopia-utils/core" target="__blank">
+      <img src="https://img.shields.io/npm/v/@utopia-utils/core.svg?style=flat-square&colorB=51C838" alt="NPM Version" />
+    </a>
+    <!-- <a href="https://www.npmjs.com/package/@plugin-web-update-notification/core" target="__blank"><img alt="NPM Downloads" src="https://img.shields.io/npm/dm/@plugin-web-update-notification/core?color=50a36f&label="></a> -->
+    <a href="https://github.com/GreatAuk/utopia-utils/blob/main/LICENSE">
+      <img src="https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square" alt="License" />
+    </a>
+    <!-- <a href="https://github.com/GreatAuk/plugin-web-update-notification/discussions" target="__blank">
+      <img src="https://img.shields.io/badge/discussions-on%20github-blue?style=flat-square&colorB=51C838" alt="discussions-image" />
+    </a> -->
+    <br>
+</p>
 
 **目录**
 
@@ -26,8 +40,6 @@ pnpm add @utopia-utils/core
 pnpm add @utopia-utils/tree
 ```
 
-
-
 * [breadthFirstTraverse](#breadthFirstTraverse): 广度优先遍历。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/tree/src/breadthFirstTraverse.ts)
 * [treeFindNode](#treeFindNode): 查找符合条件的单个节点或多个节点，通过广度优先遍历查找。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/tree/src/treeFindNode.ts)
 * [buildTreeFromList](#buildTreeFromList): 列表结构转树结构。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/tree/src/buildTreeFromList.ts)
@@ -47,8 +59,8 @@ pnpm add @utopia-utils/dom
 ```
 
 * waitForSelector: 等待指定的选择器匹配的元素出现在页面中，如果调用此方法时已经有匹配的元素，那么此方法立即返回。 如果指定的选择器在超时时间后扔不出现，返回 `null`。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/dom/src/waitForSelector.ts)
-* panzoom: 为指定的元素添加拖拽缩放功能。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/dom/src/panzoom/core.ts
-
+* panzoom: 为指定的元素添加拖拽缩放功能。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/dom/src/panzoom/core.ts)
+* compressImg: 压缩图片。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/dom/src/compressImg.ts)
 ### 杂项
 * [defineDictionary](#defineDictionary): 定义业务字典。 **typesafe** [source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/defineDictionary.ts)
 * ~~[createEnumFromOptions](#createEnumFromOptions): 通过 `options` 自动生成对应的 `enum`， 后期只需要维护 `options`。**typesafe**。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/createEnumFromOptions.ts)~~
@@ -77,14 +89,13 @@ pnpm add @utopia-utils/dom
 * [mitt](https://github.com/developit/mitt): event emitter / pubsub, typesafe.（export from [mitt](https://github.com/developit/mitt)）
 * unique: 数组去重。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/unique.ts)
 * uniqueWith: 数组去重，使用自定义的比较函数。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/uniqueWith.ts)
+* deepClone: 深拷贝。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/deepClone.ts)
 ### 类型判断
 
 ```bash
 # 如果只需要使用类型判断 utils
 pnpm add @utopia-utils/share
 ```
-
-
 
 * isBoolean
 * isString
@@ -118,10 +129,10 @@ pnpm add @utopia-utils/share
 
 * [`zod`](https://github.com/colinhacks/zod): TypeScript-first schema validation with static type inference.
 * [`dayjs`](https://github.com/iamkun/dayjs): ⏰ Day.js 2kB immutable date-time library alternative to Moment.js with the same modern API.
-* [`any-rule`](https://any-rule.vercel.app/): 常用正则大全.
+* [`any-rule`](https://any-rule.vercel.app/): 常用正则大全。
 * [`fast-deep-equal`](https://github.com/epoberezkin/fast-deep-equal): The fastest deep equality check with Date, RegExp and ES6 Map, Set and typed arrays support.
-* [`nanoclone`](https://github.com/kelin2025/nanoclone): Tiny util to deep clone.
-
+* [big.js](https://github.com/MikeMcl/big.js): 一个小型，快速的 JavaScript 库，用于任意精度的十进制算术运算。
+* [browser-image-compression](https://github.com/Donaldcwl/browser-image-compression): Javascript module to be run in the web browser for image compression.
 ##### defineDictionary
 
 定义业务字典, **typesafe**
@@ -245,8 +256,6 @@ const [err, res] = await retry(fn, 2, (attemptTime) => {
 // err is Error, res is null, callNum is 3
 // execute time is greater than or equal to 15
 ```
-
-
 
 ### Tree Utils
 

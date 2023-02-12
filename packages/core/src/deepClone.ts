@@ -64,10 +64,11 @@ function clone<T>(src: T, seen = new Map()) {
 
 /**
  * It takes a source object and returns a deep clone of it
- *
  * fork from nanoclone, and add type definition. https://github.com/Kelin2025/nanoclone
  * @param {T} src - The object to be cloned.
  * @returns A new object with the same properties as the original object.
+ *
+ * JSON.parse(JSON.stringify(obj)) performance is very bad. https://miro.medium.com/v2/resize:fit:1400/format:webp/1*MqzPusKjyc5uRk6qaalWwA.png
  */
 export function deepClone<T>(src: T): T {
   return clone(src, new Map())

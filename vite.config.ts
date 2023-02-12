@@ -7,5 +7,6 @@ export default defineConfig({
       reporter: ['html'],
     },
     globals: true,
+    // exclude: ['example/**'],
   },
 })
