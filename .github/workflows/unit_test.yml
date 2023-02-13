@@ -1,10 +1,11 @@
 name: unit_test
 
 on:
-  # push:
-  #   branches: [ coverage ]
-  # pull_request:
-  #   branches: [ coverage ]
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
   # 允许手动从 Actions tab 运行这个 workflows
   workflow_dispatch:
 

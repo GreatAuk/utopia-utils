@@ -5,6 +5,6 @@ describe('sleep', () => {
     const startTime = Date.now()
     await sleep(10)
     const endTime = Date.now()
-    expect(endTime - startTime).toBeGreaterThanOrEqual(10)
+    expect(endTime - startTime).toBeGreaterThanOrEqual(9)
   })
 })

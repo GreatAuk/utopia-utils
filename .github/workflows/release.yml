@@ -63,6 +63,9 @@ jobs:
       - name: PNPM build
         run: pnpm build
 
+      - name: PNPM test
+        run: pnpm test
+
       - name: Publish to NPM
         run: pnpm --filter=./packages/** publish --access public --no-git-checks
         env:

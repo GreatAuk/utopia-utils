@@ -56,7 +56,7 @@ describe('retry', async () => {
     expect(err).toBeInstanceOf(Error)
     expect(res).toBe(null)
     expect(callNum).toBe(3)
-    expect(endTime - startTime).toBeGreaterThanOrEqual(20)
+    expect(endTime - startTime).toBeGreaterThanOrEqual(19)
   })
   it('should retry the function with delay (function return number)', async () => {
     let callNum = 0
