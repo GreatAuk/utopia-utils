@@ -84,4 +84,26 @@ describe('breadthFirstTraverse', () => {
     })
     expect(count).toBe(2)
   })
+  it('throw error if action is not function', () => {
+    const tree = [
+      {
+        name: 'a',
+        children: [
+          { name: 'b' },
+        ],
+      },
+    ]
+    expect(() => breadthFirstTraverse(tree, null as any)).toThrowError('traverse action should be a function')
+  })
+  it('support argument tree be a object instead of array', () => {
+    const tree = {
+      name: 'a',
+      children: [
+        { name: 'b' },
+      ],
+    }
+    const names: string[] = []
+    breadthFirstTraverse(tree, node => names.push(node.name))
+    expect(names).toEqual(['a', 'b'])
+  })
 })

@@ -43,4 +43,9 @@ describe('treeFindNode', () => {
     })
     expect(ids).toEqual(['a', 'c', 'b'])
   })
+  it('should throw error if predicate is not a function', () => {
+    expect(() => {
+      treeFindNode(tree, 'not a function' as any)
+    }).toThrowError('predicate should be a function')
+  })
 })

@@ -149,4 +149,34 @@ describe('treeFilterNode', () => {
       ]
     `)
   })
+  it('support argument tree be a object instead of array', () => {
+    const tree = {
+      id: '1',
+      title: '节点1',
+      children: [
+        {
+          id: '1-1',
+          title: '节点1-1',
+        },
+        {
+          id: '1-2',
+          title: '节点1-2',
+        },
+      ],
+    }
+    expect(treeFilterNode(tree, node => node.id === '1-1')).toMatchInlineSnapshot(`
+      [
+        {
+          "children": [
+            {
+              "id": "1-1",
+              "title": "节点1-1",
+            },
+          ],
+          "id": "1",
+          "title": "节点1",
+        },
+      ]
+    `)
+  })
 })

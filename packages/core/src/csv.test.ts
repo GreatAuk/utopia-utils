@@ -103,4 +103,20 @@ describe('csv', () => {
       1,2,3"
     `)
   })
+  it('should throw error if options.separator is not valid', () => {
+    expect(() => {
+      arrayToCSV([
+        { a: 1, b: 2, c: 3 },
+      ], {
+        separator: '',
+      })
+    }).toThrowError('The separator cannot be empty')
+    expect(() => {
+      arrayToCSV([
+        { a: 1, b: 2, c: 3 },
+      ], {
+        separator: '||',
+      })
+    }).toThrowError('The separator must be single-character and cannot be a newline or double quotes')
+  })
 })

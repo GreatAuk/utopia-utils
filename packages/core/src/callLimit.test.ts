@@ -20,4 +20,8 @@ describe('callLimit', () => {
     expect(res2).toEqual(2)
     expect(res3).toEqual(2)
   })
+  it('should throw error if params is not valid', () => {
+    expect(() => callLimit(1 as any, 1)).toThrowError('fn expected a function')
+    expect(() => callLimit(() => {}, '11' as any)).toThrowError('limit expected a number')
+  })
 })

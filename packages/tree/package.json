@@ -37,5 +37,7 @@
     "test": "vitest",
     "typecheck": "tsc --noEmit"
   },
-  "dependencies": {}
+  "dependencies": {
+    "@utopia-utils/share": "workspace:*"
+  }
 }

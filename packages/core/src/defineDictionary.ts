@@ -234,17 +234,17 @@ export function defineDictionary<
         ),
       }
     },
-    [`${prefix}KEY_MAP`]: () => {
-      return {
-        [`${namespace}_KEY_MAP`]: options.reduce(
-          (prev, cur) => ({
-            ...prev,
-            [cur.key]: cur,
-          }),
-          {},
-        ),
-      }
-    },
+    // [`${prefix}KEY_MAP`]: () => {
+    //   return {
+    //     [`${namespace}_KEY_MAP`]: options.reduce(
+    //       (prev, cur) => ({
+    //         ...prev,
+    //         [cur.key]: cur,
+    //       }),
+    //       {},
+    //     ),
+    //   }
+    // },
     [`${prefix}MAP`]: () => {
       return {
         [`${namespace}_MAP`]: options.reduce(

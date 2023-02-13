@@ -106,7 +106,10 @@ importers:
     specifiers: {}
 
   packages/tree:
-    specifiers: {}
+    specifiers:
+      '@utopia-utils/share': workspace:*
+    dependencies:
+      '@utopia-utils/share': link:../share
 
 packages:
 

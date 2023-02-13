@@ -74,4 +74,15 @@ describe('defineDictionary', () => {
       },
     ])
   })
+  it('throw a error if namespace is not defined', () => {
+    expect(() => defineDictionary(
+      [
+        {
+          key: 'POP',
+          value: 1,
+        },
+      ] as const,
+      '',
+    )).toThrowError('namespace is required')
+  })
 })

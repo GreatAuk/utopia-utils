@@ -1,3 +1,6 @@
+/**
+ * @vitest-environment happy-dom
+ */
 import { deepClone } from './deepClone'
 
 describe('deepClone', () => {
@@ -176,5 +179,12 @@ describe('deepClone', () => {
 
     expect(src.a === copy.a).toBeFalsy()
     expect(src.test.get('key') === copy.test.get('key')).toBeFalsy()
+  })
+  it('clone dom', () => {
+    const div = document.createElement('div')
+    div.innerHTML = '<span>hello</span>'
+    const clone = deepClone(div)
+    expect(clone).not.toBe(div)
+    expect(clone.innerHTML).toBe('<span>hello</span>')
   })
 })

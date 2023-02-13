@@ -1,3 +1,4 @@
+import { isFunction } from '@utopia-utils/share'
 import { DEFAULT_FIELD_NAMES } from './constant'
 import type { FieldNames } from './type'
 
@@ -33,10 +34,8 @@ interface Options {
   * ```
  */
 export function breadthFirstTraverse<TreeNode>(tree: TreeNode[] | TreeNode, action: (node: TreeNode) => unknown, options?: Options) {
-  if (!action) {
-    console.warn('traverse action is required')
-    return
-  }
+  if (!isFunction(action))
+    throw new Error('traverse action should be a function')
 
   const { fieldNames } = options || {}
   const { children } = { ...DEFAULT_FIELD_NAMES, ...fieldNames }

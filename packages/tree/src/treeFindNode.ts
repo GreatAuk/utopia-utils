@@ -1,3 +1,4 @@
+import { isFunction } from '@utopia-utils/share'
 import type { FieldNames } from './type'
 import { breadthFirstTraverse } from './breadthFirstTraverse'
 
@@ -31,10 +32,8 @@ interface Options<TreeNode> {
  */
 export function treeFindNode<TreeNode>(tree: TreeNode[] | TreeNode, predicate: (node: TreeNode) => boolean, options?: Options<TreeNode>) {
   const { isFindAll, fieldNames, onEachTraverse } = options || {}
-  if (!predicate) {
-    console.warn('predicate is required')
-    return []
-  }
+  if (!isFunction(predicate))
+    throw new Error('predicate should be a function')
 
   const res: TreeNode[] = []
 
