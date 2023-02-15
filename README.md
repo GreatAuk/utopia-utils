@@ -90,7 +90,9 @@ pnpm add @utopia-utils/dom
 * [Cookies](https://github.com/js-cookie/js-cookie#basic-usage): cookie utils.（export from [js-cookie](https://github.com/js-cookie/js-cookie)）
 * [mitt](https://github.com/developit/mitt): event emitter / pubsub, typesafe.（export from [mitt](https://github.com/developit/mitt)）
 * unique: 数组去重。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/unique.ts)
+* union: 数组并集。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/union.ts)
 * uniqueWith: 数组去重，使用自定义的比较函数。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/uniqueWith.ts)
+* intersection: 两个数组交集。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/intersection.ts)
 * deepClone: 深拷贝。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/deepClone.ts)
 ### 类型判断
 
@@ -127,14 +129,13 @@ pnpm add @utopia-utils/share
 
 ### 推荐的工具
 
-* [`saveAs`](https://github.com/eligrey/FileSaver.js): An HTML5 saveAs() FileSaver implementation.
-
+* [`file-saver`](https://github.com/eligrey/FileSaver.js): An HTML5 saveAs() FileSaver implementation.
 * [`zod`](https://github.com/colinhacks/zod): TypeScript-first schema validation with static type inference.
 * [`dayjs`](https://github.com/iamkun/dayjs): ⏰ Day.js 2kB immutable date-time library alternative to Moment.js with the same modern API.
 * [`any-rule`](https://any-rule.vercel.app/): 常用正则大全。
 * [`fast-deep-equal`](https://github.com/epoberezkin/fast-deep-equal): The fastest deep equality check with Date, RegExp and ES6 Map, Set and typed arrays support.
-* [big.js](https://github.com/MikeMcl/big.js): 一个小型，快速的 JavaScript 库，用于任意精度的十进制算术运算。
-* [browser-image-compression](https://github.com/Donaldcwl/browser-image-compression): Javascript module to be run in the web browser for image compression.
+* [`big.js`](https://github.com/MikeMcl/big.js): 一个小型，快速的 JavaScript 库，用于任意精度的十进制算术运算。
+* [`browser-image-compression`](https://github.com/Donaldcwl/browser-image-compression): Javascript module to be run in the web browser for image compression.
 ##### defineDictionary
 
 定义业务字典, **typesafe**

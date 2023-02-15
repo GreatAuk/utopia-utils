@@ -1,5 +1,7 @@
 # TODO
 - [ x ] waitForSelector
-- [ ] throttle
-- [ ] debounce
-- [ ] mitt
+- [ x ] throttle
+- [ x ] debounce
+- [ x ] mitt
+- [ x ] intersection
+- [ x ] union
