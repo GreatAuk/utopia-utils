@@ -6,15 +6,15 @@ export const isNumber = (val: unknown): val is number => typeof val === 'number'
 export const isFunction = (val: unknown): val is Function => typeof val === 'function'
 export const isSymbol = (val: unknown): val is symbol => typeof val === 'symbol'
 export const isArray = Array.isArray
-export const isRegExp = (val: unknown): val is RegExp => toTypeString(val) === '[object RegExp]'
-export const isMap = (val: unknown): val is Map<any, any> => toTypeString(val) === '[object Map]'
-export const isSet = (val: unknown): val is Set<any> => toTypeString(val) === '[object Set]'
-export const isDate = (val: unknown): val is Date => toTypeString(val) === '[object Date]'
+export const isRegExp = (val: unknown): val is RegExp => toTypeString(val) === 'RegExp'
+export const isMap = (val: unknown): val is Map<any, any> => toTypeString(val) === 'Map'
+export const isSet = (val: unknown): val is Set<any> => toTypeString(val) === 'Set'
+export const isDate = (val: unknown): val is Date => toTypeString(val) === 'Date]'
 /**
  * Check if the value is a plain object, that is, the object created by the Object constructor
  */
-export const isPlainObject = (val: unknown): val is object => toTypeString(val) === '[object Object]'
-export const isPromise = (val: unknown): val is Promise<any> => toTypeString(val) === '[object Promise]'
+export const isPlainObject = (val: unknown): val is object => toTypeString(val) === 'Object'
+export const isPromise = (val: unknown): val is Promise<any> => toTypeString(val) === 'Promise'
 export const isPrimitive = (val: unknown): val is string | number | boolean | symbol | null | undefined =>
   ['string', 'number', 'boolean', 'symbol', 'null', 'undefined'].includes(typeof val)
 
