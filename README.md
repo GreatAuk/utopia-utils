@@ -75,7 +75,6 @@ pnpm add @utopia-utils/dom
 * randomInt: 生成指定范围内`[min, max]`的整数。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/randomInt.ts)
 * [awaitTo](https://github.com/scopsy/await-to-js): Async await wrapper for easy error handling without try-catch。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/awaitTo.ts)
 * escapeStringRegexp: 把字符串中的特殊字符转义为它可以在正则表达式中使用的形式。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/escapeStringRegexp.ts)
-* isMobile: 判断是否是移动端浏览器。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/share/src/isMobile.ts)
 * toFixedWithoutZeros: `Number.toFixed` 并移除末尾的零。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/math.ts)
 * average: 计算数组的平均值。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/math.ts)
 * [debounce](https://github.com/niksy/throttle-debounce#debounce): 防抖。（export from [throttle-debounce](https://github.com/niksy/throttle-debounce)）
@@ -116,6 +115,7 @@ pnpm add @utopia-utils/share
 * isObject
 * isIntegerKey
 * isEmpty
+* isMobile: 判断是否是移动端浏览器。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/share/src/isMobile.ts)
 ------
 
 ### vendor
