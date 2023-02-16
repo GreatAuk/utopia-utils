@@ -1,7 +1,7 @@
 {
   "name": "@utopia-utils/share",
   "type": "module",
-  "version": "0.3.4",
+  "version": "0.3.5",
   "description": "Collection of common share utils",
   "author": "Utopia <https://github.com/GreatAuk>",
   "license": "MIT",
