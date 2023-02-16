@@ -16,14 +16,14 @@ describe('defineDictionary', () => {
         color: 'blue',
       },
     ] as const, 'MUSIC_TYPE')
-    const { MUSIC_TYPE_KEYS } = get_MUSIC_TYPE_KEYS()
-    const { MUSIC_TYPE_VALUES } = get_MUSIC_TYPE_VALUES()
-    const { MUSIC_TYPE_KV } = get_MUSIC_TYPE_KV()
-    const { MUSIC_TYPE_VK } = get_MUSIC_TYPE_VK()
-    const { MUSIC_TYPE_MAP_BY_KEY } = get_MUSIC_TYPE_MAP_BY_KEY()
-    const { MUSIC_TYPE_MAP_BY_VALUE } = get_MUSIC_TYPE_MAP_BY_VALUE()
-    const { MUSIC_TYPE_MAP } = get_MUSIC_TYPE_MAP()
-    const { MUSIC_TYPE_OPTIONS } = get_MUSIC_TYPE_OPTIONS()
+    const MUSIC_TYPE_KEYS = get_MUSIC_TYPE_KEYS()
+    const MUSIC_TYPE_VALUES = get_MUSIC_TYPE_VALUES()
+    const MUSIC_TYPE_KV = get_MUSIC_TYPE_KV()
+    const MUSIC_TYPE_VK = get_MUSIC_TYPE_VK()
+    const MUSIC_TYPE_MAP_BY_KEY = get_MUSIC_TYPE_MAP_BY_KEY()
+    const MUSIC_TYPE_MAP_BY_VALUE = get_MUSIC_TYPE_MAP_BY_VALUE()
+    const MUSIC_TYPE_MAP = get_MUSIC_TYPE_MAP()
+    const MUSIC_TYPE_OPTIONS = get_MUSIC_TYPE_OPTIONS()
 
     expect(MUSIC_TYPE_KEYS).toEqual(['POP', 'ROCK'])
     expect(MUSIC_TYPE_VALUES).toEqual([1, 2])

@@ -93,6 +93,7 @@ pnpm add @utopia-utils/dom
 * uniqueWith: 数组去重，使用自定义的比较函数。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/uniqueWith.ts)
 * intersection: 两个数组交集。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/intersection.ts)
 * deepClone: 深拷贝。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/deepClone.ts)
+* deepEqual: 深拷贝。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/deepEqual.ts)
 ### 类型判断
 
 ```bash
@@ -127,7 +128,7 @@ pnpm add @utopia-utils/share
 * [js-cookie](https://github.com/js-cookie/js-cookie): A simple, lightweight JavaScript API for handling browser cookies.
 * [mitt](https://github.com/developit/mitt): 🥊 Tiny 200 byte functional event emitter / pubsub. typesafe.
 
-### 推荐的工具
+### 推荐的工具库
 
 * [`file-saver`](https://github.com/eligrey/FileSaver.js): An HTML5 saveAs() FileSaver implementation.
 * [`zod`](https://github.com/colinhacks/zod): TypeScript-first schema validation with static type inference.
@@ -157,15 +158,15 @@ const { get_MUSIC_TYPE_KEYS, get_MUSIC_TYPE_KV, get_MUSIC_TYPE_MAP, get_MUSIC_TY
   },
 ] as const, 'MUSIC_TYPE') // !!! as const is required for type safe
 
-export const { MUSIC_TYPE_KEYS } = get_MUSIC_TYPE_KEYS()
+export const MUSIC_TYPE_KEYS = get_MUSIC_TYPE_KEYS()
 // ['POP', 'ROCK']
-export const { MUSIC_TYPE_VALUES } = get_MUSIC_TYPE_VALUES()
+export const MUSIC_TYPE_VALUES = get_MUSIC_TYPE_VALUES()
 // [1, 2]
-export const { MUSIC_TYPE_KV } = get_MUSIC_TYPE_KV()
+export const MUSIC_TYPE_KV = get_MUSIC_TYPE_KV()
 // { POP: 1, ROCK: 2 }
-export const { MUSIC_TYPE_VK } = get_MUSIC_TYPE_VK()
+export const MUSIC_TYPE_VK = get_MUSIC_TYPE_VK()
 // { 1: 'POP', 2: 'ROCK' }
-export const { MUSIC_TYPE_MAP_BY_KEY } = get_MUSIC_TYPE_MAP_BY_KEY()
+export const MUSIC_TYPE_MAP_BY_KEY = get_MUSIC_TYPE_MAP_BY_KEY()
 // POP: {
 //   key: 'POP',
 //   value: 1,
@@ -178,7 +179,7 @@ export const { MUSIC_TYPE_MAP_BY_KEY } = get_MUSIC_TYPE_MAP_BY_KEY()
 //   label: '摇滚音乐',
 //   color: 'blue',
 // },
-export const { MUSIC_TYPE_MAP_BY_VALUE } = get_MUSIC_TYPE_MAP_BY_VALUE()
+export const MUSIC_TYPE_MAP_BY_VALUE = get_MUSIC_TYPE_MAP_BY_VALUE()
 // 1: {
 //   key: 'POP',
 //   value: 1,
@@ -191,9 +192,9 @@ export const { MUSIC_TYPE_MAP_BY_VALUE } = get_MUSIC_TYPE_MAP_BY_VALUE()
 //   label: '摇滚音乐',
 //   color: 'blue',
 // },
-export const { MUSIC_TYPE_MAP } = get_MUSIC_TYPE_MAP()
+export const MUSIC_TYPE_MAP = get_MUSIC_TYPE_MAP()
 // { POP: 1, ROCK: 2 }
-export const { MUSIC_TYPE_OPTIONS } = get_MUSIC_TYPE_OPTIONS()
+export const MUSIC_TYPE_OPTIONS = get_MUSIC_TYPE_OPTIONS()
 // [
 //   {
 //     key: 'POP',
