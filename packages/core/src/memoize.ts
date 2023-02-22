@@ -29,12 +29,11 @@ export interface MemoizedFn<T extends (this: any, ...args: any[]) => any> {
     addMemoized(1, 2) // => 3 from cache
 
     // clear cache
-    fn.clear()
+    addMemoized.clear()
 
     // Modify the result cache.
-    fn.cache.set(object, ['a', 'b'])
-    values(object)
-    // => ['a', 'b']
+    addMemoized.cache.set(JSON.stringify([1, 2]), 4)
+    addMemoized(1, 2) // => 4 from cache
  * ```
  */
 export function memoize<T extends (...args: any[]) => any>(fn: T, options?: MemoizeOptions<T>): MemoizedFn<T> {

@@ -4,8 +4,8 @@
  * @param precision
  * @returns
  */
-export function toFixedWithoutZeros(num: number, precision: number): number {
-  return Number(num.toFixed(precision))
+export function toFixedWithoutZeros(num: number, precision: number): string {
+  return `${Number(num.toFixed(precision))}`
 }
 
 /**

@@ -52,7 +52,7 @@ pnpm add @utopia-utils/tree
 ### 字符串
 
 * randomString: 随机生成指定长度、指定字符集的字符串。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/randomString.ts)
-
+* capitalize: 首字母大写。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/capitalize.ts)
 ### Dom
 
 ```bash
@@ -62,12 +62,10 @@ pnpm add @utopia-utils/dom
 
 * waitForSelector: 等待指定的选择器匹配的元素出现在页面中，如果调用此方法时已经有匹配的元素，那么此方法立即返回。 如果指定的选择器在超时时间后扔不出现，返回 `null`。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/dom/src/waitForSelector.ts)
 * panzoom: 为指定的元素添加拖拽缩放功能。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/dom/src/panzoom/core.ts)
-* compressImg: 压缩图片。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/dom/src/compressImg.ts)
 ### 杂项
 * [defineDictionary](#defineDictionary): 定义业务字典。 **typesafe** [source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/defineDictionary.ts)
 * ~~[createEnumFromOptions](#createEnumFromOptions): 通过 `options` 自动生成对应的 `enum`， 后期只需要维护 `options`。**typesafe**。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/createEnumFromOptions.ts)~~
 * sleep: 等待指定的时间。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/sleep.ts)
-* capitalize: 首字母大写。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/capitalize.ts)
 * [retry](#retry): 重试函数（如果函数抛出错误）直到成功或者达到最大重试次数。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/retry.ts)
 * objectKeys: 带类型的 `Object.keys()`。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/objectKeys.ts)
 * omit: 删除 `object` 对象的指定属性。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/omit.ts)
