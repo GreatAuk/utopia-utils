@@ -27,7 +27,7 @@ export function compose(...fns: Function[]) {
     return <T extends unknown[]>(...args: T) => args
 
   const fn = fns.pop()!
-  return function (this: any, ...args: any[]) {
-    return fns.reduceRight((acc, cur) => cur.call(this, acc), fn(...args))
+  return function (this: any, ...args: unknown[]) {
+    return fns.reduceRight((acc, cur) => cur.call(this, acc), fn.call(this, ...args))
   }
 }
