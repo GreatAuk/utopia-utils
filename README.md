@@ -94,6 +94,7 @@ pnpm add @utopia-utils/dom
 * intersection: 两个数组交集。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/intersection.ts)
 * deepClone: 深拷贝。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/deepClone.ts)
 * deepEqual: 深拷贝。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/deepEqual.ts)
+* compose: 函数组合, 从右到左执行。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/compose.ts)
 ### 类型判断
 
 ```bash
