@@ -5,6 +5,6 @@
 - [ x ] mitt
 - [ x ] intersection
 - [ x ] union
-- [ ] compose
-- [ ] pipe
+- [ x ] compose
+- [ x ] pipe
 - [ ] curry

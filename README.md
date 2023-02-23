@@ -93,6 +93,7 @@ pnpm add @utopia-utils/dom
 * deepClone: 深拷贝。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/deepClone.ts)
 * deepEqual: 深拷贝。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/deepEqual.ts)
 * compose: 函数组合, 从右到左执行。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/compose.ts)
+* pipe: 函数组合, 从左到右执行。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/pipe.ts)
 ### 类型判断
 
 ```bash
