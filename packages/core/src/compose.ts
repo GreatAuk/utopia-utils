@@ -1,5 +1,5 @@
-type Fn<Arg, V> = (args: Arg) => V
-type Fn2<Args extends unknown[], V> = (...args: Args) => V
+type Fn<Arg, R> = (args: Arg) => R
+type Fn2<Args extends unknown[], R> = (...args: Args) => R
 
 /**
  * Composes single-argument functions from right to left. The rightmost
@@ -10,6 +10,7 @@ type Fn2<Args extends unknown[], V> = (...args: Args) => V
  *   to left. For example, `compose(f, g, h)` is identical to doing
  *   `(...args) => f(g(h(...args)))`.
  */
+export function compose<Args extends unknown[]>(): (...args: Args) => Args
 export function compose<Args extends unknown[], R1>(f1: Fn2<Args, R1>): (...args: Args) => R1
 export function compose<Args extends unknown[], R1, R2>(f1: Fn<R2, R1>, f2: Fn2<Args, R2>): (...args: Args) => R1
 export function compose<Args extends unknown[], R1, R2, R3>(f1: Fn<R2, R1>, f2: Fn<R3, R2>, f3: Fn2<Args, R3>): (...args: Args) => R1

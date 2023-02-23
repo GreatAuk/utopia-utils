@@ -48,9 +48,7 @@ describe('compose', () => {
   })
 
   it('returns the given arguments if given no functions', () => {
-    // @ts-expect-error for test
     expect(compose()(1, 2)).toEqual([1, 2])
-    // @ts-expect-error for test
     expect(compose()(3)).toEqual([3])
   })
 })
