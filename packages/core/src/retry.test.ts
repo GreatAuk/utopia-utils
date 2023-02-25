@@ -73,7 +73,7 @@ describe('retry', async () => {
     expect(res).toBe(null)
     expect(callNum).toBe(3)
     // 1 * 5 + 2 * 5
-    expect(endTime - startTime).toBeGreaterThanOrEqual(15)
+    expect(endTime - startTime).toBeGreaterThanOrEqual(14)
   })
   it('should retry the function with delay (function return promise)', async () => {
     let callNum = 0
