@@ -1,13 +1,24 @@
+import { parseQuery } from './parseQuery'
+import type { LocationQuery } from './parseQuery'
 /**
  * It takes a URL and returns an object with the query parameters as properties
  * @param {string} url - The URL to parse.
- * @returns A proxy object that wraps a URLSearchParams object.
+ * @returns {LocationQuery} a query object
  */
-export function getQueryParams<T extends Record<string, string>>(url: string) {
-  const url_ = new URL(url)
-  const params = new Proxy(new URLSearchParams(url_.search), {
-    get: (searchParams, prop) => typeof prop === 'string' ? searchParams.get(prop) : null,
-  })
+export function getQueryParams<T extends LocationQuery>(location: string) {
+  let query: LocationQuery = {}
 
-  return params as unknown as T
+  const searchPos = location.indexOf('?')
+  let searchString = location.slice(
+    searchPos + 1,
+    location.length,
+  )
+
+  const hashPos = searchString.indexOf('#')
+  if (hashPos > -1) // maybe http://url.com/page?name=Adam&surname=Smith&id#home
+    searchString = searchString.slice(0, hashPos)
+
+  query = parseQuery(searchString)
+
+  return query as Partial<T>
 }
