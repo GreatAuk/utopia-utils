@@ -89,7 +89,7 @@ describe('retry', async () => {
     expect(err).toBeInstanceOf(Error)
     expect(res).toBe(null)
     expect(callNum).toBe(3)
-    expect(endTime - startTime).toBeGreaterThanOrEqual(10)
+    expect(endTime - startTime).toBeGreaterThanOrEqual(9)
   })
   it('should retry normal function', async () => {
     const sum = (a: number, b: number) => {

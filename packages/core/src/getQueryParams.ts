@@ -4,6 +4,19 @@ import type { LocationQuery } from './parseQuery'
  * It takes a URL and returns an object with the query parameters as properties
  * @param {string} url - The URL to parse.
  * @returns {LocationQuery} a query object
+ * @example
+ * ```ts
+    const params = getQueryParams<{
+      name: string[]
+      id: string
+      foo: string
+    }>('http://url.com/page#?name=Adam&name=Smith&id=1&foo#home')
+    // {
+    //   name: ['Adam', 'Smith'],
+    //   id: "1",
+    //   foo: null
+    // }
+ * ```
  */
 export function getQueryParams<T extends LocationQuery>(location: string) {
   let query: LocationQuery = {}
