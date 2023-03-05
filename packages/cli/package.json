@@ -1,7 +1,7 @@
 {
   "name": "@utopia-utils/cli",
   "type": "module",
-  "version": "0.3.5",
+  "version": "0.3.6",
   "description": "Collection of common cli utils",
   "author": "Utopia <https://github.com/GreatAuk>",
   "license": "MIT",
