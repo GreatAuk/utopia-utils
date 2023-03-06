@@ -96,6 +96,7 @@ pnpm add @utopia-utils/dom
 * pipe: 函数组合, 从左到右执行。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/pipe.ts)
 * onlyResolvesLast: 解决竞态问题，只保留最后一次调用的结果。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/onlyResolvesLast.ts)
 * parseQuery: 解析 url query。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/parseQuery.ts)
+* groupBy: 数组根据指定的 key 分组。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/groupBy.ts)
 ### 类型判断
 
 ```bash
