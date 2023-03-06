@@ -1,4 +1,5 @@
 export * from './panzoom'
 export * from './isMobile'
+export * from './isIOS'
 export * from './isWeixin'
 export * from './waitForSelector'
