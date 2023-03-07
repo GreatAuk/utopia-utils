@@ -1,6 +1,3 @@
-/**
- * @vitest-environment happy-dom
- */
 import { isWeixin } from './isWeixin'
 
 describe('isWeixin', () => {

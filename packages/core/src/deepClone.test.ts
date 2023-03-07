@@ -1,6 +1,3 @@
-/**
- * @vitest-environment happy-dom
- */
 import { deepClone } from './deepClone'
 
 describe('deepClone', () => {

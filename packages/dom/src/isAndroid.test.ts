@@ -1,6 +1,3 @@
-/**
- * @vitest-environment happy-dom
- */
 import { isAndroid } from './isAndroid'
 
 describe('isAndroid', () => {

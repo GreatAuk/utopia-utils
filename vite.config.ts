@@ -6,6 +6,7 @@ export default defineConfig({
       provider: 'c8',
       reporter: ['html', 'lcov'],
     },
+    environment: 'happy-dom',
     globals: true,
     // exclude: ['example/**'],
   },

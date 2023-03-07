@@ -1,6 +1,3 @@
-/**
- * @vitest-environment happy-dom
- */
 import { isIOS } from './isIOS'
 
 describe('isIOS', () => {

@@ -1,6 +1,3 @@
-/**
- * @vitest-environment happy-dom
- */
 import { waitForSelector } from './waitForSelector'
 
 describe('waitForSelector', () => {
