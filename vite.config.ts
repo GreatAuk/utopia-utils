@@ -6,7 +6,11 @@ export default defineConfig({
       provider: 'c8',
       reporter: ['html', 'lcov'],
     },
-    environment: 'happy-dom',
+    // environment: 'happy-dom',
+    environmentMatchGlobs: [
+      // all tests in packages/dom/** will run in happy-dom
+      ['packages/dom/**', 'happy-dom'],
+    ],
     globals: true,
     // exclude: ['example/**'],
   },
