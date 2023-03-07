@@ -1,10 +1,30 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
+import { loadScript } from '@utopia-utils/core'
+
+let unload_
+
+const foo = () => {
+  console.log('[9]-App.vue', unload_)
+  unload_()
+}
+
+const loadScript_ = () => {
+  const { unload } = loadScript('https://unpkg.com/browse/axios@1.3.224/index.js', {
+    appendPosition: 'body',
+    onStatusChange: (status) => {
+      console.log(status)
+    },
+  })
+  unload_ = unload
+}
 </script>
 
 <template>
   <header>
+    <button @click="loadScript_">load</button>
+    <button @click="foo">unload</button>
     <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
 
     <div class="wrapper">

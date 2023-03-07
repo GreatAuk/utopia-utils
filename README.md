@@ -66,6 +66,7 @@ pnpm add @utopia-utils/dom
 * isIOS: 判断是否是 IOS 系统。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/dom/src/isIOS.ts)
 * isWeixin: 判断是否是微信浏览器。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/dom/src/isWeixin.ts)
 * isMobile: 判断是否是移动端浏览器。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/share/src/isMobile.ts)
+* loadScript: 动态加载脚本。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/share/src/loadScript.ts)
 ### 杂项
 * [defineDictionary](#defineDictionary): 定义业务字典。 **typesafe** [source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/defineDictionary.ts)
 * ~~[createEnumFromOptions](#createEnumFromOptions): 通过 `options` 自动生成对应的 `enum`， 后期只需要维护 `options`。**typesafe**。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/createEnumFromOptions.ts)~~
@@ -84,7 +85,7 @@ pnpm add @utopia-utils/dom
 * callLimit: 限制函数调用次数。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/callLimit.ts)
 * once: 限制函数只能调用一次。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/once.ts)
 * encryptPhone: 加密手机号, 中间 4 位显示成 *。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/encryptPhone.ts)
-* getByPath: 通过路径获取对象的值。**typesafe**[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/getByPath.ts)
+* getByPath: 通过路径获取对象的值。**typesafe** [source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/getByPath.ts)
 * arrayToCSV: 数组转换为 CSV 字符串。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/csv.ts)
 * memoize: 创建一个会缓存返回结果的函数。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/memoize.ts)
 * getFileName: 获取文件名。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/getFileName.ts)
@@ -95,7 +96,7 @@ pnpm add @utopia-utils/dom
 * uniqueWith: 数组去重，使用自定义的比较函数。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/uniqueWith.ts)
 * intersection: 两个数组交集。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/intersection.ts)
 * deepClone: 深拷贝。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/deepClone.ts)
-* deepEqual: 深拷贝。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/deepEqual.ts)
+* deepEqual: 深比较。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/deepEqual.ts)
 * compose: 函数组合, 从右到左执行。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/compose.ts)
 * pipe: 函数组合, 从左到右执行。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/pipe.ts)
 * onlyResolvesLast: 解决竞态问题，只保留最后一次调用的结果。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/onlyResolvesLast.ts)
