@@ -65,8 +65,8 @@ pnpm add @utopia-utils/dom
 * isAndroid: 判断是否是 Android 系统。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/dom/src/isAndroid.ts)
 * isIOS: 判断是否是 IOS 系统。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/dom/src/isIOS.ts)
 * isWeixin: 判断是否是微信浏览器。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/dom/src/isWeixin.ts)
-* isMobile: 判断是否是移动端浏览器。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/share/src/isMobile.ts)
-* loadScript: 动态加载脚本。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/share/src/loadScript.ts)
+* isMobile: 判断是否是移动端浏览器。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/dom/src/isMobile.ts)
+* loadScript: 动态加载脚本。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/dom/src/loadScript.ts)
 ### 杂项
 * [defineDictionary](#defineDictionary): 定义业务字典。 **typesafe** [source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/defineDictionary.ts)
 * ~~[createEnumFromOptions](#createEnumFromOptions): 通过 `options` 自动生成对应的 `enum`， 后期只需要维护 `options`。**typesafe**。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/createEnumFromOptions.ts)~~
