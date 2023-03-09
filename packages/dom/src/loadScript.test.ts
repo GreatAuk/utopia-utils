@@ -1,12 +1,6 @@
 import { loadScript } from './loadScript'
 
-// TODO 每个用户单独跑没问题，但一直跑就会报错
-describe.todo('loadScript', () => {
-  afterEach(() => {
-    vi.resetAllMocks()
-    document.body.innerHTML = ''
-    document.head.innerHTML = ''
-  })
+describe('loadScript', () => {
   const src = 'https://unpkg.com/@plugin-web-update-notification/core@1.3.1/dist/webUpdateNoticeInjectScript.js'
   const getScriptTag = (): HTMLScriptElement | null =>
     document.head.querySelector(`script[src="${src}"]`)
@@ -41,6 +35,7 @@ describe.todo('loadScript', () => {
 
     expect(scriptTag1).not.toBeNull()
     expect(scriptTag2).not.toBeNull()
+    // expect(document.documentElement.innerHTML).toMatchInlineSnapshot()
     expect(document.querySelectorAll(`script[src="${src}"]`)).toHaveLength(1)
 
     expect(addChildListener).toBeCalledTimes(1)
