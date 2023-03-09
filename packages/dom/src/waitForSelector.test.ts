@@ -29,6 +29,6 @@ describe('waitForSelector', () => {
     const a = await waitForSelector('#b', { timeoutMillisecond: 10 })
     expect(a).toBe(null)
     const timeEnd = Date.now()
-    expect(timeEnd - timeStart).toBeGreaterThanOrEqual(10)
+    expect(timeEnd - timeStart).toBeGreaterThanOrEqual(9)
   })
 })

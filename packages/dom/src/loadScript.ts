@@ -34,6 +34,14 @@ interface LoadScriptOptions {
   onStatusChange?: (status: 'loading' | 'loaded' | 'error') => void
 }
 
+/**
+ * It loads a script tag into the DOM
+ * @param {string} src - The URL of the script to load.
+ * @param {LoadScriptOptions} [options] - LoadScriptOptions
+ * @returns An object with two properties:
+ *   - unload: a function that removes the script tag
+ *   - scriptTag: the script tag that was created
+ */
 export function loadScript(src: string, options?: LoadScriptOptions) {
   const {
     async = true,
