@@ -86,7 +86,8 @@ pnpm add @utopia-utils/dom
 * callLimit: 限制函数调用次数。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/callLimit.ts)
 * once: 限制函数只能调用一次。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/once.ts)
 * encryptPhone: 加密手机号, 中间 4 位显示成 *。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/encryptPhone.ts)
-* getByPath: 通过路径获取对象的值。**typesafe** [source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/getByPath.ts)
+* getByPath: 通过路径获取对象的值。**typesafe** [source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/doPathValue.ts)
+* setByPath: 通过路径设置对象的值。**typesafe** [source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/doPathValue.ts)
 * arrayToCSV: 数组转换为 CSV 字符串。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/csv.ts)
 * memoize: 创建一个会缓存返回结果的函数。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/memoize.ts)
 * getFileName: 获取文件名。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/getFileName.ts)
@@ -103,6 +104,7 @@ pnpm add @utopia-utils/dom
 * onlyResolvesLast: 解决竞态问题，只保留最后一次调用的结果。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/onlyResolvesLast.ts)
 * parseQuery: 解析 url query。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/parseQuery.ts)
 * groupBy: 数组根据指定的 key 分组。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/groupBy.ts)
+* arrLast: 获取数组最后一个元素。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/arrLast.ts)
 ### 类型判断
 
 ```bash

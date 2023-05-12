@@ -1,3 +1,4 @@
+// forked from https://github.com/g-makarov/dot-path-value
 export type Primitive = null | undefined | string | number | boolean | symbol | bigint
 
 type ArrayKey = number
@@ -42,7 +43,9 @@ export type PathValue<T, TPath extends Path<T> | ArrayPath<T>> = T extends any
   ? TPath extends `${infer K}.${infer R}`
     ? K extends keyof T
       ? R extends Path<T[K]>
-        ? PathValue<T[K], R>
+        ? undefined extends T[K]
+          ? PathValue<T[K], R> | undefined
+          : PathValue<T[K], R>
         : never
       : K extends `${ArrayKey}`
         ? T extends readonly (infer V)[]
@@ -57,7 +60,6 @@ export type PathValue<T, TPath extends Path<T> | ArrayPath<T>> = T extends any
           : never
         : never
   : never
-
 /**
  * It takes an object and a path, and returns the value at that path, type safe.
  * @param {T} obj - The object to get the value from.
@@ -82,9 +84,29 @@ export function getByPath<T extends Record<string, any>, TPath extends Path<T>>(
   obj: T,
   path: TPath,
 ): PathValue<T, TPath> {
-  return path
-    .replace(/\[([^\[\]]*)\]/g, '.$1.')
-    .split('.')
-    .filter(t => t !== '')
-    .reduce((prev, cur) => prev && prev[cur], obj) as PathValue<T, TPath>
+  return path.split('.').reduce((acc, key) => acc?.[key], obj) as PathValue<T, TPath>
+}
+
+export function setByPath<T extends Record<string, any>, TPath extends Path<T>>(
+  obj: T,
+  path: TPath,
+  value: PathValue<T, TPath>,
+) {
+  const segments = path.split('.') as TPath[]
+  const lastKey = segments.pop()
+
+  let target: T = obj
+
+  for (let i = 0; i < segments.length; i++) {
+    const key = segments[i] as TPath
+    if (!(key in target))
+      target[key] = {} as PathValue<T, TPath>
+
+    target = target[key]
+  }
+
+  if (lastKey)
+    target[lastKey] = value
+
+  return obj
 }
