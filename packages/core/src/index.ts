@@ -2,6 +2,7 @@ export * from '@utopia-utils/tree'
 export * from '@utopia-utils/dom'
 export * from '@utopia-utils/share'
 
+export * from './arrLast'
 export * from './awaitTo'
 export * from './callLimit'
 export * from './capitalize'
