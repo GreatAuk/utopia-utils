@@ -50,9 +50,9 @@ export function breadthFirstTraverse<TreeNode>(tree: TreeNode[] | TreeNode, acti
     if (action(node) === false)
       break
 
-    // @ts-expect-error - This is ok
+    // @ts-expect-error - children field is dynamic
     if (node[children])
-    // @ts-expect-error - This is ok
+    // @ts-expect-error - children field is dynamic
       queue.push(...node[children])
   }
 }

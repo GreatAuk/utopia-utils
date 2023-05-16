@@ -43,6 +43,7 @@ pnpm add @utopia-utils/tree
 ```
 
 * [breadthFirstTraverse](#breadthFirstTraverse): 广度优先遍历。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/tree/src/breadthFirstTraverse.ts)
+* deepFirstTraverse: 深度优先遍历。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/tree/src/deepFirstTraverse.ts)
 * [treeFindNode](#treeFindNode): 查找符合条件的单个节点或多个节点，通过广度优先遍历查找。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/tree/src/treeFindNode.ts)
 * [buildTreeFromList](#buildTreeFromList): 列表结构转树结构。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/tree/src/buildTreeFromList.ts)
 * [flattenTree](#flattenTree): 打平，树结构转列表结构。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/tree/src/flattenTree.ts)
