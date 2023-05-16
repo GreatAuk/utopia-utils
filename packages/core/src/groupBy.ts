@@ -12,7 +12,7 @@
     // { '20': [ { name: 'John', age: 20 } ], '25': [ { name: 'Jane', age: 25 } ] }
  * ```
  */
-export function groupBy<T>(array: T[], iteratee: (item: T) => string): Record<string, T[]> {
+export function groupBy<T, K extends string>(array: T[], iteratee: (item: T) => K): Record<K, T[]> {
   return array.reduce<Record<string, T[]>>((acc, item) => {
     const key = iteratee(item)
     if (acc[key])
