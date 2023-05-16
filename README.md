@@ -127,7 +127,8 @@ pnpm add @utopia-utils/share
 * isPlainObject
 * isObject
 * isIntegerKey
-* isEmpty
+* isEmpty  [source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/share/src/isEmpty.ts)
+* isValidUrl  [source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/share/src/isValidUrl.ts)
 ------
 
 ### vendor
