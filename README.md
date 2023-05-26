@@ -128,6 +128,7 @@ pnpm add @utopia-utils/share
 * isObject
 * isIntegerKey
 * isEmpty  [source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/share/src/isEmpty.ts)
+* isNumberLike  [source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/share/src/isNumberLike.ts)
 * isValidUrl  [source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/share/src/isValidUrl.ts)
 ------
 
