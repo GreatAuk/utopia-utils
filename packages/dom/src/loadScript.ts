@@ -41,6 +41,7 @@ interface LoadScriptOptions {
  * @returns An object with two properties:
  *   - unload: a function that removes the script tag
  *   - scriptTag: the script tag that was created
+ * @source https://github.com/GreatAuk/utopia-utils/blob/main/packages/dom/src/loadScript.ts
  */
 export function loadScript(src: string, options?: LoadScriptOptions) {
   const {

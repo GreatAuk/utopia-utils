@@ -1,6 +1,9 @@
 import type { PanZoomOptions, Transform } from './type'
 import { applyTransform, getScaleMultiplier } from './utils'
 
+/**
+ * @source https://github.com/GreatAuk/utopia-utils/blob/main/packages/dom/src/panzoom/index.ts
+ */
 export function panzoom(target: HTMLElement, {
   zoomFactor = 1,
   maxZoom = 5,

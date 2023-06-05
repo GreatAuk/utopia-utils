@@ -1,6 +1,7 @@
 type Fn<Arg, V> = (args: Arg) => V
 type Fn2<Args extends unknown[], V> = (...args: Args) => V
 
+
 export function pipe<Args extends unknown[]>(): (...args: Args) => Args
 export function pipe<Args extends unknown[], R1>(f1: Fn2<Args, R1>): (...args: Args) => R1
 export function pipe<Args extends unknown[], R1, R2>(f1: Fn2<Args, R1>, f2: Fn<R1, R2>): (...args: Args) => R2

@@ -12,6 +12,7 @@ type ArrayLast<T extends readonly unknown[]> = T extends readonly [...infer _, i
  * arrLast([{ a: 1 }, { b: 2 }, { c: 3 }, { d: 4 }]) // { d: 4 }
  * arrLast(['a', 1, true, /r/g]) // /r/g
  * ```
+ * @source https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/arrLast.ts
  */
 export function arrLast<T extends readonly unknown[]>(arr: T): ArrayLast<T>
 export function arrLast<T extends unknown[]>(arr: T): T[number] {

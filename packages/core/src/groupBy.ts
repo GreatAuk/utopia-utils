@@ -19,6 +19,7 @@ interface GroupByOptions {
     groupBy([{ name: 'John', age: 20 }, { name: 'Jane', age: 25 }], item => `${item.age}`, { oneToOne: true })}})
     // { '20': { name: 'John', age: 20 }, '25': { name: 'Jane', age: 25 } }
  * ```
+ * @source https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/groupBy.ts
  */
 export function groupBy<T, K extends string>(array: T[], iteratee: (item: T) => K): Record<K, T[]>
 export function groupBy<T, K extends string>(array: T[], iteratee: (item: T) => K, options: { oneToOne: false }): Record<K, T[]>

@@ -12,6 +12,7 @@ interface WaitForOptions {
  * @param {string} selector - The CSS selector to wait for.
  * @param {WaitForOptions} [options]
  * @returns A promise that resolves to an element that matches the selector.
+ * @source https://github.com/GreatAuk/utopia-utils/blob/main/packages/dom/src/waitForSelector.ts
  */
 export function waitForSelector<T extends Element>(selector: string, options?: WaitForOptions): Promise<T | null> {
   return new Promise((resolve) => {

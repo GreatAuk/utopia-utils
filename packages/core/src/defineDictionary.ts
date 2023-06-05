@@ -174,6 +174,7 @@ type ToValueKey<T> = T extends readonly [infer A, ...infer B]
     //   }
     // ]
  * ```
+ * @source https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/defineDictionary.ts
  */
 export function defineDictionary<
   T extends readonly BaseOption[],

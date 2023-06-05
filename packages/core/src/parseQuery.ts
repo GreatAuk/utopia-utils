@@ -14,6 +14,7 @@ const PLUS_RE = /\+/g // %2B
  *
  * @param text - string to decode
  * @returns decoded string
+ * @source https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/parseQuery.ts
  */
 export function decode(text: string | number): string {
   try {

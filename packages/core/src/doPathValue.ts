@@ -79,6 +79,7 @@ export type PathValue<T, TPath extends Path<T> | ArrayPath<T>> = T extends any
  * getByPath(obj, 'a.b.c[0].d') // 1
  * getByPath(obj, 'a.b.c.0') // { d: 1 }
  * ```
+ * @source https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/doPathValue.ts
  */
 export function getByPath<T extends Record<string, any>, TPath extends Path<T>>(
   obj: T,

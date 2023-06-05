@@ -9,7 +9,8 @@
     expect(isValidUrl('www.domain.com')).toBe(false)
     expect(isValidUrl('http://www.domain.com')).toBe(true)
     expect(isValidUrl('tcp://www.domain.com')).toBe(true)
-  * ```
+ * ```
+ * @source https://github.com/GreatAuk/utopia-utils/blob/main/packages/share/src/isValidUrl.ts
  */
 export function isValidUrl(urlString: string) {
   try {

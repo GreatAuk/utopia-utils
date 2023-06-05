@@ -19,6 +19,7 @@ import { isArray } from '@utopia-utils/share'
       { id: 2, name: 'User2' },
     ])
  * ```
+ * @source https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/uniqueWith.ts
  */
 export function uniqueWith<T>(arr: T[], comparator: (a: T, b: T) => boolean): T[] {
   if (!isArray(arr))
