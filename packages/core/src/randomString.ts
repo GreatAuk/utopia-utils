@@ -4,7 +4,7 @@
  * @param [chars=ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789] - The characters to
  * use in the random string.
  * @returns A random string of the length specified.
- * @source https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/randomString.ts
+ * @linkcode https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/randomString.ts
  */
 export const randomString = (length: number, chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789') => {
   const maxPos = chars.length

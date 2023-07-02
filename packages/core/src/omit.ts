@@ -11,7 +11,7 @@ import { isArray } from '@utopia-utils/share'
     const res1 = omit(obj, 'a') // { b: 2, c: 3 }
     const res2 = omit(obj, ['a', 'c']) // { b: 2 }
  * ```
- * @source https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/omit.ts
+ * @linkcode https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/omit.ts
  */
 export function omit<T extends object, K extends keyof T>(obj: T, key: K[] | K): Omit<T, K> {
   const shallowCopy = { ...obj }

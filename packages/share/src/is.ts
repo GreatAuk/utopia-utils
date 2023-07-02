@@ -35,7 +35,7 @@ export const isIntegerKey = (key: unknown) =>
  * If the value is a string, return true if it can be converted to a number, otherwise return false.
  * @param {string} val - The value to check
  * @returns boolean.
- * @source https://github.com/GreatAuk/utopia-utils/blob/main/packages/share/src/is.ts
+ * @linkcode https://github.com/GreatAuk/utopia-utils/blob/main/packages/share/src/is.ts
  */
 export const isStringNumber = (val: string): boolean => {
   if (!isString(val))

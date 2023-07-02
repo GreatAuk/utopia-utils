@@ -3,7 +3,7 @@
  * @param num
  * @param precision
  * @returns
- * @source https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/math.ts
+ * @linkcode https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/math.ts
  */
 export function toFixedWithoutZeros(num: number, precision: number): string {
   return `${Number(num.toFixed(precision))}`
@@ -16,7 +16,7 @@ export function toFixedWithoutZeros(num: number, precision: number): string {
  * average(1, 2, 3) // 2
  * average(...[1, 2, 3]) // 2
  * ```
- * @source https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/math.ts
+ * @linkcode https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/math.ts
  */
 export function average(...args: number[]): number {
   return args.reduce((a, b) => a + b, 0) / args.length

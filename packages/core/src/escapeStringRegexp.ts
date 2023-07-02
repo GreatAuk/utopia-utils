@@ -3,7 +3,7 @@
  *
  * fork from {@link https://github.com/sindresorhus/escape-string-regexp}
  * @param [string] - The string to escape. Defaults to an empty string.
- * @source https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/escapeStringRegexp.ts
+ * @linkcode https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/escapeStringRegexp.ts
  */
 export const escapeStringRegexp = (string = '') =>
   string.replace(/[|\\{}()[\]^$+*?.]/g, '\\$&').replace(/-/g, '\\x2d')

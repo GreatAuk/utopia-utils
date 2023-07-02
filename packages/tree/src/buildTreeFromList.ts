@@ -21,6 +21,7 @@ interface Options {
  * @param {any[]} list - the list of items to be converted to a tree
  * @param {Options} [options] - {
  * @returns A tree structure
+ * @linkcode https://github.com/GreatAuk/utopia-utils/blob/main/packages/tree/src/buildTreeFromList.ts
  * @example
   * ```
     const list = [

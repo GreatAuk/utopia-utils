@@ -1,7 +1,7 @@
 /**
  * detect current environment is a mobile device
  * @returns A boolean value.
- * @source https://github.com/GreatAuk/utopia-utils/blob/main/packages/dom/src/isMobile.ts
+ * @linkcode https://github.com/GreatAuk/utopia-utils/blob/main/packages/dom/src/isMobile.ts
  */
 export function isMobile() {
   if (typeof navigator === 'undefined' || typeof window === 'undefined')

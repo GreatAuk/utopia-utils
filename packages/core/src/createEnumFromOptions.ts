@@ -29,7 +29,7 @@
   //   "level2": 1
   // }
  * ```
- * @source https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/createEnumFromOptions.ts
+ * @linkcode https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/createEnumFromOptions.ts
  */
 export function createEnumFromOptions<T extends readonly Option[]>(options: T) {
   const res: Record<string, unknown> = {}

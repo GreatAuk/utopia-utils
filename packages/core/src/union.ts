@@ -9,7 +9,7 @@ import { unique } from './unique'
     union([1, 2, 3], [2, 3]) // [1, 2, 3]
     union([1, 2, 3], [2, 3], [4]) // [1, 2, 3, 4]
  * ```
- * @source https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/union.ts
+ * @linkcode https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/union.ts
  */
 export function union<T>(...arrays: T[][]): T[] {
   return unique(arrays.flat())

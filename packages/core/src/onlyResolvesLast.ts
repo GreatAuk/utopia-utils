@@ -10,7 +10,7 @@
     foo(2).then(() => console.log('resolved')) // promise will never resolve
     foo(3).then(() => console.log('resolved')) // promise will resolve with response
  * ```
- * @source https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/onlyResolvesLast.ts
+ * @linkcode https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/onlyResolvesLast.ts
  */
 export function onlyResolvesLast<T extends (...args: any) => Promise<any>>(fn: T) {
   let time = 0

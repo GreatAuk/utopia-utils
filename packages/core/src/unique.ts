@@ -12,7 +12,7 @@ import { isArray } from '@utopia-utils/share'
     const uniqueArr = unique(arr)
     // uniqueArr: [1, 2, null, 'a']
  * ```
- * @source https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/unique.ts
+ * @linkcode https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/unique.ts
  */
 export function unique<T>(arr: T[]): T[] {
   if (!isArray(arr))

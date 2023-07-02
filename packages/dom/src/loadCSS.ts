@@ -18,7 +18,7 @@ interface LoadCSSOptions {
  * @returns An object with two properties:
  *   - unload: a function that removes the script tag
  *   - linkTag: the link tag that was created
- * @source https://github.com/GreatAuk/utopia-utils/blob/main/packages/dom/src/loadCSS.ts
+ * @linkcode https://github.com/GreatAuk/utopia-utils/blob/main/packages/dom/src/loadCSS.ts
  */
 export function loadCSS(path: string, options?: LoadCSSOptions) {
   const {

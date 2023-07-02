@@ -17,6 +17,7 @@ interface Options<TreeNode> {
  * @param {TreeNode | TreeNode[]} tree - The tree to flatten.
  * @param [options]
  * @returns An array of all the nodes in the tree.
+ * @linkcode https://github.com/GreatAuk/utopia-utils/blob/main/packages/tree/src/flattenTree.ts
  * @example
  * ```
     const tree = {

@@ -12,6 +12,7 @@ interface Options {
  * @param predicate - (node: TreeNode) => boolean
  * @param {Options}
  * @returns A path to a node in a tree that matches the predicate.
+ * @linkcode https://github.com/GreatAuk/utopia-utils/blob/main/packages/tree/src/treeFindPath.ts
  * @example
  * ```ts
     const tree = [

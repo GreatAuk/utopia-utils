@@ -5,7 +5,7 @@ import { isArray } from '@utopia-utils/share'
  * @param {T} obj - T
  * @param {K[] | K} keys - K[] | K
  * @returns Pick<T, K>
- * @source https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/pick.ts
+ * @linkcode https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/pick.ts
  */
 export function pick<T extends object, K extends keyof T>(obj: T, keys: K[] | K): Pick<T, K> {
   const res: any = {}

@@ -7,7 +7,7 @@
  * 1, '1', 1.1, '1.1', -1, '-1', Infinity, 'Infinity', 1.1e2  => true
  * NaN, 'NaN', '', ' ', null, undefined, '1.1.1', [], {}, '1.1.e2', false, true  => false
  * ```
- * @source https://github.com/GreatAuk/utopia-utils/blob/main/packages/share/src/isNumberLike.ts
+ * @linkcode https://github.com/GreatAuk/utopia-utils/blob/main/packages/share/src/isNumberLike.ts
  */
 export function isNumberLike(val: unknown) {
   return (typeof val === 'number' && !Number.isNaN(val))

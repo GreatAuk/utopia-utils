@@ -5,7 +5,7 @@ import { toTypeString } from '@utopia-utils/share'
  * @param {any} value1 - The first value to be compared for equality with the second value.
  * @param {any} value2 - The second value to be compared in the deepEqual function.
  * @returns {boolean} - true if the values are deeply equal, otherwise false.
- * @source https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/deepEqual.ts
+ * @linkcode https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/deepEqual.ts
  */
 export function deepEqual(value1: any, value2: any): boolean {
   if (value1 === value2)

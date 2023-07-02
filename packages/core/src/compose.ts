@@ -9,7 +9,7 @@ type Fn2<Args extends unknown[], R> = (...args: Args) => R
  * @returns A function obtained by composing the argument functions from right
  *   to left. For example, `compose(f, g, h)` is identical to doing
  *   `(...args) => f(g(h(...args)))`.
- * @source https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/compose.ts
+ * @linkcode https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/compose.ts
  */
 export function compose<Args extends unknown[]>(): (...args: Args) => Args
 export function compose<Args extends unknown[], R1>(f1: Fn2<Args, R1>): (...args: Args) => R1

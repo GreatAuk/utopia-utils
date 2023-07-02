@@ -22,6 +22,7 @@ interface TraverseAction<TreeNode> {
  * three arguments: the current node, its parent node (or null if it's the root node), and the current
  * level of the node in the tree. If the action function returns false, the traversal will be stopped.
  * @param {Options} [options]
+ * @linkcode https://github.com/GreatAuk/utopia-utils/blob/main/packages/tree/src/deepFirstTraverse.ts
  * @example
  * ```ts
  * const tree = [

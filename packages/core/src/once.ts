@@ -13,7 +13,7 @@ import { callLimit } from './callLimit'
     expect(res).toEqual(2)
     expect(res2).toEqual(2) // if call times more than 1, return latest called value
  * ```
- * @source https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/once.ts
+ * @linkcode https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/once.ts
  */
 export function once<T extends (...args: any[]) => any>(fn: T) {
   return callLimit(fn, 1)

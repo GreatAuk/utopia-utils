@@ -15,6 +15,7 @@ interface Options<TreeNode> {
  * @param predicate - (node: TreeNode) => boolean
  * @param {Options} [options] - {
  * @returns A filtered tree
+ * @linkcode https://github.com/GreatAuk/utopia-utils/blob/main/packages/tree/src/treeFilterNode.ts
  */
 export function treeFilterNode<TreeNode>(tree: TreeNode[] | TreeNode, predicate: (node: TreeNode) => boolean, options?: Options<TreeNode>) {
   const { fieldNames, onEachTraverse } = options || {}

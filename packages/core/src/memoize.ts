@@ -35,7 +35,7 @@ export interface MemoizedFn<T extends (this: any, ...args: any[]) => any> {
     addMemoized.cache.set(JSON.stringify([1, 2]), 4)
     addMemoized(1, 2) // => 4 from cache
  * ```
- * @source https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/memoize.ts
+ * @linkcode https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/memoize.ts
  */
 export function memoize<T extends (...args: any[]) => any>(fn: T, options?: MemoizeOptions<T>): MemoizedFn<T> {
   const { serializer = serializerDefault } = options || {}
