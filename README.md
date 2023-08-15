@@ -106,6 +106,7 @@ pnpm add @utopia-utils/dom
 * parseQuery: 解析 url query。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/parseQuery.ts)
 * groupBy: 数组根据指定的 key 分组。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/groupBy.ts)
 * arrLast: 获取数组最后一个元素。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/arrLast.ts)
+* onTimeout: wrap for setTimeout, return a function to remove the timeout。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/onTimeout.ts)
 ### 类型判断
 
 ```bash
