@@ -63,6 +63,9 @@ pnpm add @utopia-utils/dom
 
 * waitForSelector: 等待指定的选择器匹配的元素出现在页面中，如果调用此方法时已经有匹配的元素，那么此方法立即返回。 如果指定的选择器在超时时间后扔不出现，返回 `null`。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/dom/src/waitForSelector.ts)
 * panzoom: 为指定的元素添加拖拽缩放功能。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/dom/src/panzoom/core.ts)
+* canUseDom: 判断是否可以使用 `document` 和 `window` 对象，判断是否是 ssr 场景。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/dom/src/canUseDom.ts)
+* domContains: 原生 `Node.contains()` 的兼容写法 。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/dom/src/domContains.ts)
+* updateCSS: 注入 css 样式（通过动态插入 style 标签）。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/dom/src/dyncmicCSS.ts)
 * isAndroid: 判断是否是 Android 系统。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/dom/src/isAndroid.ts)
 * isIOS: 判断是否是 IOS 系统。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/dom/src/isIOS.ts)
 * isWeixin: 判断是否是微信浏览器。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/dom/src/isWeixin.ts)
