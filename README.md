@@ -154,6 +154,7 @@ pnpm add @utopia-utils/share
 * [`fast-deep-equal`](https://github.com/epoberezkin/fast-deep-equal): The fastest deep equality check with Date, RegExp and ES6 Map, Set and typed arrays support.
 * [`big.js`](https://github.com/MikeMcl/big.js): 一个小型，快速的 JavaScript 库，用于任意精度的十进制算术运算。
 * [`browser-image-compression`](https://github.com/Donaldcwl/browser-image-compression): Javascript module to be run in the web browser for image compression.
+* [`hashids`](https://github.com/niieani/hashids.js): generate YouTube-like ids from numbers.
 ##### defineDictionary
 
 定义业务字典, **typesafe**
