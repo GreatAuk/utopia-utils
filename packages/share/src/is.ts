@@ -24,7 +24,10 @@ export const isPrimitive = (val: unknown): val is string | number | boolean | sy
 export const isNil = (val: unknown): val is null | undefined => val === null || val === undefined
 
 export const isObject = (val: unknown): val is Record<any, any> =>
-  val !== null && typeof val === 'object'
+  val !== null && toTypeString(val) === 'Object'
+
+export const isWindow = (val: unknown): boolean => typeof window !== 'undefined' && toTypeString(val) === 'Window'
+
 export const isIntegerKey = (key: unknown) =>
   isString(key)
   && key !== 'NaN'
