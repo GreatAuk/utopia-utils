@@ -97,6 +97,8 @@ pnpm add @utopia-utils/dom
 * getFileName: 获取文件名。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/getFileName.ts)
 * [Cookies](https://github.com/js-cookie/js-cookie#basic-usage): cookie utils.（export from [js-cookie](https://github.com/js-cookie/js-cookie)）
 * [mitt](https://github.com/developit/mitt): event emitter / pubsub, typesafe.（export from [mitt](https://github.com/developit/mitt)）
+* [merge](https://github.com/TehShrike/deepmerge): Merge two objects x and y deeply, returning a new merged object with the elements from both x and y.（export from [deepmerge](https://github.com/TehShrike/deepmerge)）
+* [merge.all](https://github.com/TehShrike/deepmerge): Merges any number of objects into a single result object.（export from [deepmerge](https://github.com/TehShrike/deepmerge)）
 * unique: 数组去重。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/unique.ts)
 * union: 数组并集。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/union.ts)
 * uniqueWith: 数组去重，使用自定义的比较函数。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/uniqueWith.ts)

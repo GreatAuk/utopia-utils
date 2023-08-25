@@ -39,7 +39,8 @@
   "dependencies": {
     "@utopia-utils/dom": "workspace:*",
     "@utopia-utils/share": "workspace:*",
-    "@utopia-utils/tree": "workspace:*"
+    "@utopia-utils/tree": "workspace:*",
+    "deepmerge": "^4.3.1"
   },
   "devDependencies": {
     "@types/js-cookie": "^3.0.2",
