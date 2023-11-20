@@ -1,8 +1,12 @@
-import { describe, expect, it } from 'vitest'
+import { afterEach, describe, expect, it } from 'vitest'
 
 import { setCssVar } from './setCssVar'
 
 describe('setCssVar', () => {
+  afterEach(() => {
+    document.documentElement.style.removeProperty('--color')
+    document.documentElement.style.removeProperty('--size')
+  })
   it('should set CSS variables on the root element of a document using the provided variables object', () => {
     const root = document.createElement('div')
     const variables = {

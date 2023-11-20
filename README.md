@@ -114,6 +114,7 @@ pnpm add @utopia-utils/dom
 * arrLast: 获取数组最后一个元素。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/arrLast.ts)
 * onTimeout: wrap for setTimeout, return a function to remove the timeout。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/onTimeout.ts)
 * onWindowFocus: 监听 window focus 和 visibilitychange 事件，当窗口可见时，触发回调。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/onWindowFocus.ts)
+* formatNumberThousand: 数字千分位格式化。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/formatNumberThousand.ts)
 ### 类型判断
 
 ```bash
