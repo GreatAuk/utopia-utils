@@ -16,6 +16,7 @@ import { isFunction, isNumber } from '@utopia-utils/share'
     expect(res).toEqual(2)
     expect(res2).toEqual(2) // if call times more than limit, return latest called value
  * ```
+ * @linkcode https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/callLimit.ts
  */
 export function callLimit<T extends (...args: any[]) => any>(fn: T, limit = 1) {
   if (!isFunction(fn))

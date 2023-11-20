@@ -66,6 +66,7 @@ interface ArrayToCSVOptions<T> {
       }
       // csv3 === '11;12;13\n20;30;40'
  * ```
+ * @linkcode https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/csv.ts
  */
 export function arrayToCSV<T extends (any[] | object)>(arr: T[], options: ArrayToCSVOptions<T> = {}) {
   const { headers, separator = ',', getRow, withPrefix } = options

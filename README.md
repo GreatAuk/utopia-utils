@@ -63,6 +63,9 @@ pnpm add @utopia-utils/dom
 
 * waitForSelector: 等待指定的选择器匹配的元素出现在页面中，如果调用此方法时已经有匹配的元素，那么此方法立即返回。 如果指定的选择器在超时时间后扔不出现，返回 `null`。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/dom/src/waitForSelector.ts)
 * panzoom: 为指定的元素添加拖拽缩放功能。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/dom/src/panzoom/core.ts)
+* canUseDom: 判断是否可以使用 `document` 和 `window` 对象，判断是否是 ssr 场景。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/dom/src/canUseDom.ts)
+* domContains: 原生 `Node.contains()` 的兼容写法 。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/dom/src/domContains.ts)
+* updateCSS: 注入 css 样式（通过动态插入 style 标签）。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/dom/src/dyncmicCSS.ts)
 * isAndroid: 判断是否是 Android 系统。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/dom/src/isAndroid.ts)
 * isIOS: 判断是否是 IOS 系统。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/dom/src/isIOS.ts)
 * isWeixin: 判断是否是微信浏览器。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/dom/src/isWeixin.ts)
@@ -95,6 +98,8 @@ pnpm add @utopia-utils/dom
 * getFileName: 获取文件名。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/getFileName.ts)
 * [Cookies](https://github.com/js-cookie/js-cookie#basic-usage): cookie utils.（export from [js-cookie](https://github.com/js-cookie/js-cookie)）
 * [mitt](https://github.com/developit/mitt): event emitter / pubsub, typesafe.（export from [mitt](https://github.com/developit/mitt)）
+* [merge](https://github.com/TehShrike/deepmerge): Merge two objects x and y deeply, returning a new merged object with the elements from both x and y.（export from [deepmerge](https://github.com/TehShrike/deepmerge)）
+* [merge.all](https://github.com/TehShrike/deepmerge): Merges any number of objects into a single result object.（export from [deepmerge](https://github.com/TehShrike/deepmerge)）
 * unique: 数组去重。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/unique.ts)
 * union: 数组并集。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/union.ts)
 * uniqueWith: 数组去重，使用自定义的比较函数。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/uniqueWith.ts)
@@ -107,6 +112,8 @@ pnpm add @utopia-utils/dom
 * parseQuery: 解析 url query。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/parseQuery.ts)
 * groupBy: 数组根据指定的 key 分组。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/groupBy.ts)
 * arrLast: 获取数组最后一个元素。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/arrLast.ts)
+* onTimeout: wrap for setTimeout, return a function to remove the timeout。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/onTimeout.ts)
+* onWindowFocus: 监听 window focus 和 visibilitychange 事件，当窗口可见时，触发回调。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/onWindowFocus.ts)
 ### 类型判断
 
 ```bash
@@ -151,6 +158,7 @@ pnpm add @utopia-utils/share
 * [`fast-deep-equal`](https://github.com/epoberezkin/fast-deep-equal): The fastest deep equality check with Date, RegExp and ES6 Map, Set and typed arrays support.
 * [`big.js`](https://github.com/MikeMcl/big.js): 一个小型，快速的 JavaScript 库，用于任意精度的十进制算术运算。
 * [`browser-image-compression`](https://github.com/Donaldcwl/browser-image-compression): Javascript module to be run in the web browser for image compression.
+* [`hashids`](https://github.com/niieani/hashids.js): generate YouTube-like ids from numbers.
 ##### defineDictionary
 
 定义业务字典, **typesafe**

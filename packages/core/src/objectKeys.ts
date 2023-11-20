@@ -1,6 +1,7 @@
 /**
  * strict type Object.keys()
  * @param {T} obj - T
+ * @linkcode https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/objectKeys.ts
  */
 export function objectKeys<T extends object>(obj: T) {
   return Object.keys(obj) as (keyof T & (string | number | boolean | null | undefined))[]

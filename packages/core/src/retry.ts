@@ -24,6 +24,7 @@ type RetryDelay = number | ((attemptTime: number) => Promise<void>) | ((attemptT
     // err is Error, res is null, callNum is 3
     // execute time is greater than or equal to 15
  * ```
+ * @linkcode https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/retry.ts
  */
 export async function retry<T, E = Error>(fn: (() => Promise<T>) | (() => T), retryTime: number, delay?: RetryDelay): Promise<[E, null] | [null, T]> {
   if (!isNumber(retryTime) || retryTime < 0)

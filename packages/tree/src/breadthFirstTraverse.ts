@@ -12,6 +12,7 @@ interface Options {
  * @param {TreeNode[] | TreeNode} tree - The tree to traverse.
  * @param action - (node: TreeNode) => unknown ; function called for each node in the tree, return false to stop traverse
  * @param {Options} [options]
+ * @linkcode https://github.com/GreatAuk/utopia-utils/blob/main/packages/tree/src/breadthFirstTraverse.ts
  * @example
  * ```
     const tree = [

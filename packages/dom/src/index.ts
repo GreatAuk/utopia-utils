@@ -1,4 +1,7 @@
 export * from './panzoom'
+export * from './canUseDom'
+export * from './domContains'
+export * from './dynamicCSS'
 export * from './isAndroid'
 export * from './isIOS'
 export * from './isMobile'

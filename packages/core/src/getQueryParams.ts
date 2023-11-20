@@ -17,6 +17,7 @@ import type { LocationQuery } from './parseQuery'
     //   foo: null
     // }
  * ```
+ * @linkcode https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/getQueryParams.ts
  */
 export function getQueryParams<T extends LocationQuery>(location: string) {
   let query: LocationQuery = {}

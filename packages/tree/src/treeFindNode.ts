@@ -17,6 +17,7 @@ interface Options<TreeNode> {
  * @param predicate - (node: TreeNode) => boolean
  * @param {Options} [options]
  * @returns {TreeNode[]} - a array of TreeNode that matches the predicate
+ * @linkcode https://github.com/GreatAuk/utopia-utils/blob/main/packages/tree/src/treeFindNode.ts
  * @example
  * ```
     const tree = [

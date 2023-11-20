@@ -24,7 +24,10 @@ export const isPrimitive = (val: unknown): val is string | number | boolean | sy
 export const isNil = (val: unknown): val is null | undefined => val === null || val === undefined
 
 export const isObject = (val: unknown): val is Record<any, any> =>
-  val !== null && typeof val === 'object'
+  val !== null && toTypeString(val) === 'Object'
+
+export const isWindow = (val: unknown): boolean => typeof window !== 'undefined' && toTypeString(val) === 'Window'
+
 export const isIntegerKey = (key: unknown) =>
   isString(key)
   && key !== 'NaN'
@@ -35,6 +38,7 @@ export const isIntegerKey = (key: unknown) =>
  * If the value is a string, return true if it can be converted to a number, otherwise return false.
  * @param {string} val - The value to check
  * @returns boolean.
+ * @linkcode https://github.com/GreatAuk/utopia-utils/blob/main/packages/share/src/is.ts
  */
 export const isStringNumber = (val: string): boolean => {
   if (!isString(val))

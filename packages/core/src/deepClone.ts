@@ -69,6 +69,7 @@ function clone<T>(src: T, seen = new Map()) {
  * @returns A new object with the same properties as the original object.
  *
  * JSON.parse(JSON.stringify(obj)) performance is very bad. https://miro.medium.com/v2/resize:fit:1400/format:webp/1*MqzPusKjyc5uRk6qaalWwA.png
+ * @linkcode https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/deepClone.ts
  */
 export function deepClone<T>(src: T): T {
   return clone(src, new Map())
