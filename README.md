@@ -116,6 +116,7 @@ pnpm add @utopia-utils/dom
 * onWindowFocus: 监听 window focus 和 visibilitychange 事件，当窗口可见时，触发回调。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/onWindowFocus.ts)
 * formatNumberThousand: 数字千分位格式化。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/formatNumberThousand.ts)
 * base64ToFile: base64 转 File, 如图片裁剪时，我们获取到的是 base64，但上传接口一般需要 formData 上传。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/ base64ToFile.ts)
+* toBase64: 将 File | Blob | imgUrl 转 base64。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/toBase64.ts)
 ### 类型判断
 
 ```bash
