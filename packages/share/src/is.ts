@@ -10,6 +10,9 @@ export const isRegExp = (val: unknown): val is RegExp => toTypeString(val) === '
 export const isMap = (val: unknown): val is Map<any, any> => toTypeString(val) === 'Map'
 export const isSet = (val: unknown): val is Set<any> => toTypeString(val) === 'Set'
 export const isDate = (val: unknown): val is Date => toTypeString(val) === 'Date]'
+export const isFile = (val: unknown): val is File => toTypeString(val) === 'File'
+export const isBlob = (val: unknown): val is Blob => toTypeString(val) === 'Blob'
+
 /**
  * Check if the value is a plain object, that is, the object created by the Object constructor
  */
