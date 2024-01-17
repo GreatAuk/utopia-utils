@@ -118,6 +118,7 @@ pnpm add @utopia-utils/dom
 * formatNumberThousand: 数字千分位格式化。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/formatNumberThousand.ts)
 * base64ToFile: base64 转 File, 如图片裁剪时，我们获取到的是 base64，但上传接口一般需要 formData 上传。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/base64ToFile.ts)
 * toBase64: 将 File | Blob | imgUrl 转 base64。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/toBase64.ts)
+* yuanToFen: 人民币：元转分。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/yuanToFen.ts)
 ### 类型判断
 
 ```bash
