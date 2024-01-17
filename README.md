@@ -97,6 +97,7 @@ pnpm add @utopia-utils/dom
 * memoize: 创建一个会缓存返回结果的函数。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/memoize.ts)
 * getFileName: 获取文件名。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/getFileName.ts)
 * [Cookies](https://github.com/js-cookie/js-cookie#basic-usage): cookie utils.（export from [js-cookie](https://github.com/js-cookie/js-cookie)）
+* [NP](https://github.com/nefe/number-precision): 🚀1K tiny & 解决浮点数计算错误.（export from [number-precision](https://github.com/nefe/number-precision)）
 * [mitt](https://github.com/developit/mitt): event emitter / pubsub, typesafe.（export from [mitt](https://github.com/developit/mitt)）
 * [merge](https://github.com/TehShrike/deepmerge): Merge two objects x and y deeply, returning a new merged object with the elements from both x and y.（export from [deepmerge](https://github.com/TehShrike/deepmerge)）
 * [merge.all](https://github.com/TehShrike/deepmerge): Merges any number of objects into a single result object.（export from [deepmerge](https://github.com/TehShrike/deepmerge)）
@@ -115,7 +116,7 @@ pnpm add @utopia-utils/dom
 * onTimeout: wrap for setTimeout, return a function to remove the timeout。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/onTimeout.ts)
 * onWindowFocus: 监听 window focus 和 visibilitychange 事件，当窗口可见时，触发回调。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/onWindowFocus.ts)
 * formatNumberThousand: 数字千分位格式化。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/formatNumberThousand.ts)
-* base64ToFile: base64 转 File, 如图片裁剪时，我们获取到的是 base64，但上传接口一般需要 formData 上传。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/ base64ToFile.ts)
+* base64ToFile: base64 转 File, 如图片裁剪时，我们获取到的是 base64，但上传接口一般需要 formData 上传。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/base64ToFile.ts)
 * toBase64: 将 File | Blob | imgUrl 转 base64。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/toBase64.ts)
 ### 类型判断
 

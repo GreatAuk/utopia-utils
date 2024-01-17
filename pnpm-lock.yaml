@@ -132,6 +132,9 @@ importers:
       mitt:
         specifier: ^3.0.1
         version: 3.0.1
+      number-precision:
+        specifier: ^1.6.0
+        version: 1.6.0
       throttle-debounce:
         specifier: ^5.0.0
         version: 5.0.0
@@ -3679,6 +3682,10 @@ packages:
     resolution: {integrity: sha512-lqjrjmaOoAnWfMmBPL+XNnynZh2+swxiX3WUE0s4yEHI6m+AwrK2UZOimIRl3X/4QctVqS8AiZjFqyOGrMXb/w==}
     dependencies:
       boolbase: 1.0.0
+    dev: true
+
+  /number-precision@1.6.0:
+    resolution: {integrity: sha512-05OLPgbgmnixJw+VvEh18yNPUo3iyp4BEWJcrLu4X9W05KmMifN7Mu5exYvQXqxxeNWhvIF+j3Rij+HmddM/hQ==}
     dev: true
 
   /object-assign@4.1.1:
