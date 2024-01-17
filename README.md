@@ -120,6 +120,7 @@ pnpm add @utopia-utils/dom
 * toBase64: 将 File | Blob | imgUrl 转 base64。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/toBase64.ts)
 * yuanToFen: 人民币：元转分。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/yuanToFen.ts)
 * fenToYuan: 人民币：分转元。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/fenToYuan.ts)
+* yuanFormat: 人民币格式化（单位默认是分，会进行分转元再格式化）。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/yuanFormat.ts)
 ### 类型判断
 
 ```bash
