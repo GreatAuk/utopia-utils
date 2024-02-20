@@ -72,7 +72,9 @@ pnpm add @utopia-utils/dom
 * isMobile: 判断是否是移动端浏览器。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/dom/src/isMobile.ts)
 * loadCSS: 动态加载 CSS。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/dom/src/loadCSS.ts)
 * loadScript: 动态加载脚本。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/dom/src/loadScript.ts)
-* setCssVar: 设置 `css` 变量。 [source](*https://github.com/GreatAuk/utopia-utils/blob/main/packages/dom/src/setCssVar.ts*)
+* setCssVar: 设置 `css` 变量。 [source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/dom/src/setCssVar.ts)
+* checkWebpFeature: 检测浏览器是否支持 webp 的一些特性（'lossy' | 'lossless' | 'alpha' | 'animation'）。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/dom/src/webp.ts)
+* checkWebpSupport: 检测浏览器是否支持 webp。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/dom/src/webp.ts)
 ### 杂项
 * [defineDictionary](#defineDictionary): 定义业务字典。 **typesafe** [source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/defineDictionary.ts)
 * ~~[createEnumFromOptions](#createEnumFromOptions): 通过 `options` 自动生成对应的 `enum`， 后期只需要维护 `options`。**typesafe**。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/createEnumFromOptions.ts)~~
