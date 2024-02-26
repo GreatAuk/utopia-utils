@@ -18,14 +18,16 @@ import { debounce } from './vendor'
 export function onWindowFocus(callback: (...args: any[]) => any) {
   const listener = debounce(100, callback)
 
-  window.addEventListener('focus', listener, false)
-  window.addEventListener('visibilitychange', () => {
+  const visibilitychangeListener = () => {
     if (document.visibilityState === 'visible')
       listener()
-  }, false)
+  }
+
+  window.addEventListener('focus', listener, false)
+  window.addEventListener('visibilitychange', visibilitychangeListener, false)
 
   return () => {
     window.removeEventListener('focus', listener)
-    window.removeEventListener('visibilitychange', listener)
+    window.removeEventListener('visibilitychange', visibilitychangeListener)
   }
 }
