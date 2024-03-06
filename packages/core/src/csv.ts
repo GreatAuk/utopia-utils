@@ -1,6 +1,6 @@
 import { isArray, isPlainObject } from '@utopia-utils/share'
 
-function escapeDoubleQuotes(val: string) {
+function escapeDoubleQuotes(val: string): string {
   return val.replace(/"/g, '""')
 }
 
@@ -8,7 +8,7 @@ function escapeDoubleQuotes(val: string) {
  * check separator is valid
  * @param {string} separator
  */
-function checkSeparator(separator: string) {
+function checkSeparator(separator: string): void {
   if (!separator)
     throw new Error('The separator cannot be empty')
 
@@ -68,7 +68,7 @@ interface ArrayToCSVOptions<T> {
  * ```
  * @linkcode https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/csv.ts
  */
-export function arrayToCSV<T extends (any[] | object)>(arr: T[], options: ArrayToCSVOptions<T> = {}) {
+export function arrayToCSV<T extends (any[] | object)>(arr: T[], options: ArrayToCSVOptions<T> = {}): string {
   const { headers, separator = ',', getRow, withPrefix } = options
 
   checkSeparator(separator)

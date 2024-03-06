@@ -6,6 +6,6 @@
  * @returns file name
  * @linkcode https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/getFileName.ts
  */
-export function getFileName(path: string) {
+export function getFileName(path: string): string {
   return path.replace(/^.*(\\|\/)/, '')
 }

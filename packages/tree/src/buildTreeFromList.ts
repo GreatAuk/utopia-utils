@@ -43,7 +43,7 @@ interface Options {
     })
  * ```
  */
-export function buildTreeFromList<TreeNode>(list: any[], options?: Options) {
+export function buildTreeFromList<TreeNode>(list: any[], options?: Options): TreeNode[] {
   const { listFieldNames, treeFieldNames } = options || {}
   const { id: listIdField, parentId: listParentIdField } = { ...DEFAULT_FIELD_NAMES, ...listFieldNames }
   const { id: treeIdField, parentId: treeParentIdField, children: treeChildrenField } = { ...DEFAULT_FIELD_NAMES, ...treeFieldNames }

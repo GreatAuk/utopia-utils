@@ -15,6 +15,6 @@ import { callLimit } from './callLimit'
  * ```
  * @linkcode https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/once.ts
  */
-export function once<T extends (...args: any[]) => any>(fn: T) {
+export function once<T extends (...args: any[]) => any>(fn: T): (this: ThisParameterType<T>, ...args: Parameters<T>) => ReturnType<T> {
   return callLimit(fn, 1)
 }

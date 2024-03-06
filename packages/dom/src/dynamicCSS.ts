@@ -23,7 +23,7 @@ interface Options {
   mark?: string
 }
 
-function getMark({ mark }: Options = {}) {
+function getMark({ mark }: Options = {}): string {
   if (mark)
     return mark.startsWith('data-') ? mark : `data-${mark}`
 
@@ -48,13 +48,13 @@ function getOrder(prepend?: Prepend): AppendType {
 /**
  * Find style which inject by rc-util
  */
-function findStyles(container: ContainerType) {
+function findStyles(container: ContainerType): HTMLStyleElement[] {
   return Array.from(
     (containerCache.get(container) || container).children,
   ).filter(node => node.tagName === 'STYLE') as HTMLStyleElement[]
 }
 
-export function injectCSS(css: string, option: Options = {}) {
+export function injectCSS(css: string, option: Options = {}): HTMLStyleElement | null {
   if (!canUseDom())
     return null
 
@@ -111,7 +111,7 @@ export function injectCSS(css: string, option: Options = {}) {
   return styleNode
 }
 
-function findExistNode(key: string, option: Options = {}) {
+function findExistNode(key: string, option: Options = {}): HTMLStyleElement | undefined {
   const container = getContainer(option)
 
   return findStyles(container).find(
@@ -119,7 +119,7 @@ function findExistNode(key: string, option: Options = {}) {
   )
 }
 
-export function removeCSS(key: string, option: Options = {}) {
+export function removeCSS(key: string, option: Options = {}): void {
   const existNode = findExistNode(key, option)
   if (existNode) {
     const container = getContainer(option)
@@ -130,7 +130,7 @@ export function removeCSS(key: string, option: Options = {}) {
 /**
  * qiankun will inject `appendChild` to insert into other
  */
-function syncRealContainer(container: ContainerType, option: Options) {
+function syncRealContainer(container: ContainerType, option: Options): void {
   const cachedRealContainer = containerCache.get(container)
 
   // Find real container when not cached or cached container removed
@@ -149,7 +149,7 @@ function syncRealContainer(container: ContainerType, option: Options) {
 /**
  * manually clear container cache to avoid global cache in unit testes
  */
-export function clearContainerCache() {
+export function clearContainerCache(): void {
   containerCache.clear()
 }
 
@@ -166,7 +166,7 @@ export function clearContainerCache() {
  * updateCSS('body { color: red }', 'my-style')
  * ```
  * */
-export function updateCSS(css: string, key: string, option: Options = {}) {
+export function updateCSS(css: string, key: string, option: Options = {}): HTMLStyleElement | undefined {
   const container = getContainer(option)
 
   // Sync real parent

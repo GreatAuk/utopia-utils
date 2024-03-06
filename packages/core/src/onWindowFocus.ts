@@ -15,7 +15,7 @@ import { debounce } from './vendor'
  * ```
  *
  */
-export function onWindowFocus(callback: (...args: any[]) => any) {
+export function onWindowFocus(callback: (...args: any[]) => any): () => void {
   const listener = debounce(100, callback)
 
   window.addEventListener('focus', listener, false)

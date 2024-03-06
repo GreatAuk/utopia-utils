@@ -31,7 +31,7 @@ interface Options {
     console.log(path?.map(v => v.name)) // ['a', 'b']
  * ```
  */
-export function treeFindPath<TreeNode>(tree: TreeNode[] | TreeNode, predicate: (node: TreeNode) => boolean, options?: Options) {
+export function treeFindPath<TreeNode>(tree: TreeNode[] | TreeNode, predicate: (node: TreeNode) => boolean, options?: Options): TreeNode[] | null {
   const { fieldNames } = options || {}
   const { children } = { ...DEFAULT_FIELD_NAMES, ...fieldNames }
 

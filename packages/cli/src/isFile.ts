@@ -5,7 +5,7 @@ import fs from 'node:fs/promises'
  * @param {string} path - The path to the file to check.
  * @returns A boolean value.
  */
-export async function isFile(path: string) {
+export async function isFile(path: string): Promise<boolean> {
   try {
     const stat = await fs.stat(path)
     return stat.isFile()

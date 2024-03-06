@@ -9,7 +9,7 @@
  * otherwise.
  * @linkcode https://github.com/GreatAuk/utopia-utils/blob/main/packages/dom/src/contains.ts
  */
-export function domContains(root: Node | null | undefined, n: Node | null) {
+export function domContains(root: Node | null | undefined, n: Node | null): boolean {
   if (!root)
     return false
 

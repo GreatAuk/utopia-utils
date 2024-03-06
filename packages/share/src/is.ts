@@ -31,7 +31,7 @@ export const isObject = (val: unknown): val is Record<any, any> =>
 
 export const isWindow = (val: unknown): boolean => typeof window !== 'undefined' && toTypeString(val) === 'Window'
 
-export const isIntegerKey = (key: unknown) =>
+export const isIntegerKey = (key: unknown): boolean =>
   isString(key)
   && key !== 'NaN'
   && key[0] !== '-'

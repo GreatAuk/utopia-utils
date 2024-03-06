@@ -19,7 +19,7 @@ interface Options {
  * ```
  * @linkcode https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/formatNumberThousand.ts
  */
-export function formatNumberThousand(num: number, options: Options = {}) {
+export function formatNumberThousand(num: number, options: Options = {}): string {
   if (Number.isNaN(num))
     return ''
 

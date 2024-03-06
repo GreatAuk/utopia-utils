@@ -107,7 +107,16 @@ type ToValueKey<T> = T extends readonly [infer A, ...infer B]
  * @example
  * ```ts
     // at src/constant.ts
-    const { get_MUSIC_TYPE_KEYS, get_MUSIC_TYPE_KV, get_MUSIC_TYPE_MAP, get_MUSIC_TYPE_MAP_BY_KEY, get_MUSIC_TYPE_MAP_BY_VALUE, get_MUSIC_TYPE_OPTIONS, get_MUSIC_TYPE_VALUES, get_MUSIC_TYPE_VK } = defineDictionary([
+    const {
+      get_MUSIC_TYPE_KEYS,
+      get_MUSIC_TYPE_KV,
+      get_MUSIC_TYPE_MAP,
+      get_MUSIC_TYPE_MAP_BY_KEY,
+      get_MUSIC_TYPE_MAP_BY_VALUE,
+      get_MUSIC_TYPE_OPTIONS,
+      get_MUSIC_TYPE_VALUES,
+      get_MUSIC_TYPE_VK
+    } = defineDictionary([
       {
         key: 'POP',
         value: 1,

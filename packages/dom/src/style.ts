@@ -13,13 +13,13 @@ export const hasClass = (el: Element, cls: string): boolean => {
   return el.classList.contains(cls)
 }
 
-export const addClass = (el: Element, cls: string) => {
+export const addClass = (el: Element, cls: string): void => {
   if (!el || !cls.trim())
     return
   el.classList.add(...classNameToArray(cls))
 }
 
-export const removeClass = (el: Element, cls: string) => {
+export const removeClass = (el: Element, cls: string): void => {
   if (!el || !cls.trim())
     return
   el.classList.remove(...classNameToArray(cls))

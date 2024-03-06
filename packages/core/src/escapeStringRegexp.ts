@@ -5,5 +5,5 @@
  * @param [string] - The string to escape. Defaults to an empty string.
  * @linkcode https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/escapeStringRegexp.ts
  */
-export const escapeStringRegexp = (string = '') =>
+export const escapeStringRegexp = (string = ''): string =>
   string.replace(/[|\\{}()[\]^$+*?.]/g, '\\$&').replace(/-/g, '\\x2d')

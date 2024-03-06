@@ -31,7 +31,7 @@ interface Options<TreeNode> {
     const res = treeFindNode(tree, node => node.name === 'b') // res is [{ name: 'b' }]
  * ```
  */
-export function treeFindNode<TreeNode>(tree: TreeNode[] | TreeNode, predicate: (node: TreeNode) => boolean, options?: Options<TreeNode>) {
+export function treeFindNode<TreeNode>(tree: TreeNode[] | TreeNode, predicate: (node: TreeNode) => boolean, options?: Options<TreeNode>): TreeNode[] {
   const { isFindAll, fieldNames, onEachTraverse } = options || {}
   if (!isFunction(predicate))
     throw new Error('predicate should be a function')

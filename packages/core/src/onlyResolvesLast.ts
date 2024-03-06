@@ -12,7 +12,7 @@
  * ```
  * @linkcode https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/onlyResolvesLast.ts
  */
-export function onlyResolvesLast<T extends (...args: any) => Promise<any>>(fn: T) {
+export function onlyResolvesLast<T extends (...args: any) => Promise<any>>(fn: T): (this: ThisParameterType<T>, ...args: Parameters<T>) => ReturnType<T> {
   let time = 0
   function wrappedFn(this: ThisParameterType<T>, ...args: Parameters<T>): ReturnType<T> {
     const currentTime = time + 1
