@@ -48,3 +48,7 @@ export const isStringNumber = (val: string): boolean => {
     return false
   return !Number.isNaN(Number(val))
 }
+
+export const isDef = <T>(val: T): val is NonNullable<T> => val !== undefined && val !== null
+
+export const isUndef = (val: any): val is (undefined | null) => val === undefined || val === null
