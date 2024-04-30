@@ -8,5 +8,6 @@ describe('getFileName', () => {
     expect(getFileName('C:\\foo\\bar\\baz\\name.txt')).toBe('name.txt')
     // linux file path
     expect(getFileName('/foo/bar/baz/name.txt')).toBe('name.txt')
+    expect(getFileName('name.test.text')).toBe('name.test.text')
   })
 })
