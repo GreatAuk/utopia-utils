@@ -1,3 +1,6 @@
+/**
+ * Options for {@link waitForSelector}
+ */
 interface WaitForOptions {
   /** Maximum time to wait in milliseconds, default is 30000 (30s) */
   timeoutMillisecond?: number

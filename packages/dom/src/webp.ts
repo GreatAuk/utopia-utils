@@ -4,7 +4,7 @@
  * @returns A promise that resolves to a boolean indicating whether the feature is supported.
  * @link Official way by Google: https://developers.google.com/speed/webp/faq?hl=zh-cn#how_can_i_detect_browser_support_for_webp
  */
-export async function checkWebpFeature(feature: 'lossy' | 'lossless' | 'alpha' | 'animation' = 'lossy') {
+export async function checkWebpFeature(feature: 'lossy' | 'lossless' | 'alpha' | 'animation' = 'lossy'): Promise<boolean> {
   return new Promise<boolean>((resolve) => {
     const kTestImages = {
       lossy: 'UklGRiIAAABXRUJQVlA4IBYAAAAwAQCdASoBAAEADsD+JaQAA3AAAAAA',
@@ -28,6 +28,6 @@ export async function checkWebpFeature(feature: 'lossy' | 'lossless' | 'alpha' |
  * Checks the browser's support for WebP image format.
  * @returns A promise that resolves to a boolean indicating whether WebP is supported.
  */
-export async function checkWebpSupport() {
+export async function checkWebpSupport(): Promise<boolean> {
   return checkWebpFeature('lossy')
 }

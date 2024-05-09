@@ -18,7 +18,7 @@ import { isFunction, isNumber } from '@utopia-utils/share'
  * ```
  * @linkcode https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/callLimit.ts
  */
-export function callLimit<T extends (...args: any[]) => any>(fn: T, limit = 1) {
+export function callLimit<T extends (...args: any[]) => any>(fn: T, limit = 1): (this: ThisParameterType<T>, ...args: Parameters<T>) => ReturnType<T> {
   if (!isFunction(fn))
     throw new TypeError('fn expected a function')
 

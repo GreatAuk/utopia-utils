@@ -1,4 +1,4 @@
-function clone<T>(src: T, seen = new Map()) {
+function clone<T>(src: T, seen = new Map()): T {
   // Immutable things - null, undefined, functions, symbols, etc.
   if (!src || typeof src !== 'object')
     return src

@@ -3,7 +3,7 @@
  * @returns A boolean value.
  * @linkcode https://github.com/GreatAuk/utopia-utils/blob/main/packages/dom/src/isAndroid.ts
  */
-export function isAndroid() {
+export function isAndroid(): boolean {
   if (typeof navigator === 'undefined')
     return false
   return /android/i.test(navigator.userAgent)

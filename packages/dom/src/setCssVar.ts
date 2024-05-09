@@ -10,7 +10,7 @@ import { isPlainObject } from '@utopia-utils/share'
  * refers to the root element of the current document.
  * @linkcode https://github.com/GreatAuk/utopia-utils/blob/main/packages/dom/src/setCssVar.ts
  */
-export function setCssVar(variables: Record<string, string | null>, root = window?.document?.documentElement) {
+export function setCssVar(variables: Record<string, string | null>, root = window?.document?.documentElement): void {
   if (variables && isPlainObject(variables) && root) {
     Object.keys(variables).forEach((key) => {
       root.style.setProperty(key, variables[key])

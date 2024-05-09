@@ -1,3 +1,6 @@
+/**
+ * Options for {@link loadCSS} function
+ */
 interface LoadCSSOptions {
   /**
    * Media query for styles to apply
@@ -12,6 +15,14 @@ interface LoadCSSOptions {
 }
 
 /**
+ * return type of {@link loadCSS} function
+ */
+interface LoadCSSReturn {
+  unload: () => void
+  linkTag: HTMLLinkElement
+}
+
+/**
  * It loads a CSS file into the page
  * @param {string} path - the path to the CSS file
  * @param {LoadCSSOptions} [options] - {
@@ -20,7 +31,7 @@ interface LoadCSSOptions {
  *   - linkTag: the link tag that was created
  * @linkcode https://github.com/GreatAuk/utopia-utils/blob/main/packages/dom/src/loadCSS.ts
  */
-export function loadCSS(path: string, options?: LoadCSSOptions) {
+export function loadCSS(path: string, options?: LoadCSSOptions): LoadCSSReturn {
   const {
     attrs = {},
     media,
@@ -48,7 +59,7 @@ export function loadCSS(path: string, options?: LoadCSSOptions) {
 }
 
 /** remove the script tag */
-function unload(path: string) {
+function unload(path: string): void {
   const linkEl = document.querySelector(`link[href="${path}"]`)
   if (linkEl)
     linkEl.remove()

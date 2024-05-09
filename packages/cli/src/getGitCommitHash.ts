@@ -4,7 +4,7 @@ import { execSync } from 'node:child_process'
  * return the current commit hash
  * @returns The git commit hash
  */
-export function getGitCommitHash() {
+export function getGitCommitHash(): string | undefined {
   try {
     const hash = execSync('git rev-parse --short HEAD').toString().replace('\n', '').trim()
     if (hash === 'undefined')

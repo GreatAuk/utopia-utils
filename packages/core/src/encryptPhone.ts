@@ -8,6 +8,6 @@
  * encryptPhone('18312345678') // '183****5678'
  * ```
  */
-export function encryptPhone(phone: `${number}`) {
+export function encryptPhone(phone: `${number}`): string {
   return phone.replace(/(\d{3})\d{4}(\d{4})/, '$1****$2')
 }

@@ -34,7 +34,7 @@ interface Options {
     // output 'a', 'c', 'b'
   * ```
  */
-export function breadthFirstTraverse<TreeNode>(tree: TreeNode[] | TreeNode, action: (node: TreeNode) => unknown, options?: Options) {
+export function breadthFirstTraverse<TreeNode>(tree: TreeNode[] | TreeNode, action: (node: TreeNode) => unknown, options?: Options): void {
   if (!isFunction(action))
     throw new Error('traverse action should be a function')
 

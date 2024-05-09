@@ -3,7 +3,7 @@
  * @returns A boolean value.
  * @linkcode https://github.com/GreatAuk/utopia-utils/blob/main/packages/dom/src/isMobile.ts
  */
-export function isMobile() {
+export function isMobile(): boolean {
   if (typeof navigator === 'undefined' || typeof window === 'undefined')
     return false
 

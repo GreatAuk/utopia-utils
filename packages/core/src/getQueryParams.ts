@@ -19,7 +19,7 @@ import type { LocationQuery } from './parseQuery'
  * ```
  * @linkcode https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/getQueryParams.ts
  */
-export function getQueryParams<T extends LocationQuery>(location: string) {
+export function getQueryParams<T extends LocationQuery>(location: string): Partial<T> {
   let query: LocationQuery = {}
 
   const searchPos = location.indexOf('?')

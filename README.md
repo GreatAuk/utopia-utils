@@ -66,6 +66,7 @@ pnpm add @utopia-utils/dom
 * canUseDom: 判断是否可以使用 `document` 和 `window` 对象，判断是否是 ssr 场景。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/dom/src/canUseDom.ts)
 * domContains: 原生 `Node.contains()` 的兼容写法 。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/dom/src/domContains.ts)
 * updateCSS: 注入 css 样式（通过动态插入 style 标签）。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/dom/src/dyncmicCSS.ts)
+* isAlipay: 判断是否是支付宝浏览器。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/dom/src/isAlipay.ts)
 * isAndroid: 判断是否是 Android 系统。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/dom/src/isAndroid.ts)
 * isIOS: 判断是否是 IOS 系统。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/dom/src/isIOS.ts)
 * isWeixin: 判断是否是微信浏览器。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/dom/src/isWeixin.ts)

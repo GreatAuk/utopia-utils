@@ -17,7 +17,7 @@ interface Options<TreeNode> {
  * @returns A filtered tree
  * @linkcode https://github.com/GreatAuk/utopia-utils/blob/main/packages/tree/src/treeFilterNode.ts
  */
-export function treeFilterNode<TreeNode>(tree: TreeNode[] | TreeNode, predicate: (node: TreeNode) => boolean, options?: Options<TreeNode>) {
+export function treeFilterNode<TreeNode>(tree: TreeNode[] | TreeNode, predicate: (node: TreeNode) => boolean, options?: Options<TreeNode>): TreeNode[] {
   const { fieldNames, onEachTraverse } = options || {}
   const { children } = { ...DEFAULT_FIELD_NAMES, ...fieldNames }
   const _tree = Array.isArray(tree) ? [...tree] : [tree]

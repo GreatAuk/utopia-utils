@@ -3,7 +3,7 @@
  * @returns A boolean value.
  * @linkcode https://github.com/GreatAuk/utopia-utils/blob/main/packages/dom/src/isIOS.ts
  */
-export function isIOS() {
+export function isIOS(): boolean {
   if (typeof navigator === 'undefined')
     return false
   return /iPad|iPhone|iPod/.test(navigator.userAgent)

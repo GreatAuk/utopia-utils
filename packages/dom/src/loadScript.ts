@@ -1,3 +1,6 @@
+/**
+ * options type for {@link loadScript} function
+ */
 interface LoadScriptOptions {
   /**
    * Add `async` attribute to the script tag
@@ -35,6 +38,14 @@ interface LoadScriptOptions {
 }
 
 /**
+ * return type of {@link loadScript} function
+ */
+interface LoadScriptReturn {
+  unload: () => void
+  scriptTag: HTMLScriptElement
+}
+
+/**
  * It loads a script tag into the DOM
  * @param {string} src - The URL of the script to load.
  * @param {LoadScriptOptions} [options] - LoadScriptOptions
@@ -43,7 +54,7 @@ interface LoadScriptOptions {
  *   - scriptTag: the script tag that was created
  * @linkcode https://github.com/GreatAuk/utopia-utils/blob/main/packages/dom/src/loadScript.ts
  */
-export function loadScript(src: string, options?: LoadScriptOptions) {
+export function loadScript(src: string, options?: LoadScriptOptions): LoadScriptReturn {
   const {
     async = true,
     defer,
@@ -100,7 +111,7 @@ export function loadScript(src: string, options?: LoadScriptOptions) {
 }
 
 /** remove the script tag */
-function unload(src: string) {
+function unload(src: string): void {
   const script = document.querySelector(`script[src="${src}"]`)
   if (script)
     script.remove()

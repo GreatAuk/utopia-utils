@@ -46,7 +46,7 @@ interface Options<TreeNode> {
     // ]
  * ```
  */
-export function flattenTree<TreeNode>(tree: TreeNode | TreeNode[], options?: Options<TreeNode>) {
+export function flattenTree<TreeNode>(tree: TreeNode | TreeNode[], options?: Options<TreeNode>): TreeNode[] {
   const { fieldNames, onEachTraverse } = options || {}
   const { children } = { ...DEFAULT_FIELD_NAMES, ...fieldNames }
 

@@ -45,7 +45,7 @@ export function decode(text: string | number): string {
     expect(params.sex).toBe(null)
   ```
  */
-export function parseQuery<T extends LocationQuery>(search: string) {
+export function parseQuery<T extends LocationQuery>(search: string): T {
   const query: LocationQuery = {}
   // avoid creating an object with an empty key and empty value
   // because of split('&')

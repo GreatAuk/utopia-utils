@@ -40,7 +40,7 @@ interface TraverseAction<TreeNode> {
  * // output 'a', 'b', 'c'
  * ```
  */
-export function deepFirstTraverse<TreeNode>(tree: TreeNode | TreeNode[], action: TraverseAction<TreeNode>, options?: Options) {
+export function deepFirstTraverse<TreeNode>(tree: TreeNode | TreeNode[], action: TraverseAction<TreeNode>, options?: Options): void {
   if (!isFunction(action))
     throw new Error('traverse action should be a function')
 

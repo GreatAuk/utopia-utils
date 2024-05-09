@@ -5,7 +5,7 @@ import { access } from 'node:fs/promises'
  * @param {string} path - The path to check.
  * @returns A promise that resolves to a boolean.
  */
-export async function pathExists(path: string) {
+export async function pathExists(path: string): Promise<boolean> {
   try {
     await access(path)
     return true

@@ -11,6 +11,6 @@
  * getFileName('C:\\foo\\bar\\baz\\name.test.txt') // 'name.test.txt'
  * ```
  */
-export function getFileName(path: string) {
+export function getFileName(path: string): string {
   return path.replace(/^.*(\\|\/)/, '')
 }

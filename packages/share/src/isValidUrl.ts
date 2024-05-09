@@ -12,7 +12,7 @@
  * ```
  * @linkcode https://github.com/GreatAuk/utopia-utils/blob/main/packages/share/src/isValidUrl.ts
  */
-export function isValidUrl(urlString: string) {
+export function isValidUrl(urlString: string): boolean {
   try {
     return Boolean(new URL(urlString))
   }
