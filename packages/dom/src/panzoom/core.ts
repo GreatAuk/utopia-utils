@@ -84,7 +84,7 @@ export function panzoom(target: HTMLElement, {
   parentNode.addEventListener('wheel', mouseWheelHandler)
 
   function zoomTo(offsetX: number, offsetY: number, ratio: number) {
-    if (isNaN(offsetX) || isNaN(offsetY) || isNaN(ratio))
+    if (Number.isNaN(offsetX) || Number.isNaN(offsetY) || Number.isNaN(ratio))
       throw new Error('zoom requires valid numbers')
 
     const newScale = transform.scale * ratio

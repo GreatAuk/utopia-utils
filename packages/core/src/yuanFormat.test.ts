@@ -14,7 +14,7 @@ describe('yuanFormat', () => {
     expect(yuanFormat([] as any)).toBe('-')
     expect(yuanFormat(true as any)).toBe('-')
     expect(yuanFormat(false as any)).toBe('-')
-    expect(yuanFormat(NaN as any)).toBe('-')
+    expect(yuanFormat(Number.NaN as any)).toBe('-')
   })
   it('happy path', () => {
     expect(yuanFormat(0)).toBe('0.00')

@@ -5,7 +5,7 @@ import { isFunction, isNumber } from '@utopia-utils/share'
  *
  * if call times more than limit, return latest called value
  * @param {T} fn - The function to call
- * @param [limit=1] - The number of times the function can be called.
+ * @param [limit] - The number of times the function can be called.
  * @returns {Function} new function that calls the original function the specified number of times
  * @example
  * ```ts

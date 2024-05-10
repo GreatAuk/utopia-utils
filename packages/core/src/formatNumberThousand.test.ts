@@ -20,7 +20,7 @@ describe('formatNumberThousand', () => {
   })
 
   it('should return empty string for NaN', () => {
-    const num = NaN
+    const num = Number.NaN
     const expected = ''
     const result = formatNumberThousand(num)
     expect(result).toBe(expected)

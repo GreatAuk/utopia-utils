@@ -31,7 +31,7 @@ function clone<T>(src: T, seen = new Map()): T {
   }
   else if (Array.isArray(src)) {
     // Array
-    copy = new Array(src.length)
+    copy = Array.from({ length: src.length })
     seen.set(src, copy)
     for (let i = 0; i < src.length; i++) copy[i] = clone(src[i], seen)
   }

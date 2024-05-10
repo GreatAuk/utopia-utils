@@ -1,20 +1,19 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
 import { loadScript } from '@utopia-utils/core'
+import HelloWorld from './components/HelloWorld.vue'
 
-let unload_
+let unload_: any
 
-const foo = () => {
-  console.log('[9]-App.vue', unload_)
+function foo() {
+  // console.log('[9]-App.vue', unload_)
   unload_()
 }
 
-const loadScript_ = () => {
+function loadScript_() {
   const { unload } = loadScript('https://unpkg.com/browse/axios@1.3.224/index.js', {
     appendPosition: 'body',
-    onStatusChange: (status) => {
-      console.log(status)
+    onStatusChange: () => {
     },
   })
   unload_ = unload
@@ -23,15 +22,21 @@ const loadScript_ = () => {
 
 <template>
   <header>
-    <button @click="loadScript_">load</button>
-    <button @click="foo">unload</button>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
+    <button @click="loadScript_">
+      load
+    </button>
+    <button @click="foo">
+      unload
+    </button>
+    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125">
 
     <div class="wrapper">
       <HelloWorld msg="You did it!" />
 
       <nav>
-        <RouterLink to="/">Home</RouterLink>
+        <RouterLink to="/">
+          Home
+        </RouterLink>
       </nav>
     </div>
   </header>

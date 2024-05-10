@@ -15,7 +15,7 @@ describe('fenToYuan', () => {
     expect(fenToYuan([] as any)).toBe(undefined)
     expect(fenToYuan(true as any)).toBe(undefined)
     expect(fenToYuan(false as any)).toBe(undefined)
-    expect(fenToYuan(NaN as any)).toBe(undefined)
+    expect(fenToYuan(Number.NaN as any)).toBe(undefined)
   })
   it('happy path', () => {
     expect(fenToYuan(0)).toBe(0)

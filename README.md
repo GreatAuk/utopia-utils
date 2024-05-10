@@ -248,8 +248,6 @@ export const MUSIC_TYPE_OPTIONS = get_MUSIC_TYPE_OPTIONS()
 // ]
 ```
 
-
-
 ##### ~~createEnumFromOptions~~
 
 通过 `options` 自动生成对应的 `enum`， 后期只需要维护 `options`。**typesafe**
@@ -286,7 +284,7 @@ console.log(enumLevel)
 
 ```ts
 let callNum = 0
-const fn = () => {
+function fn() {
   callNum++
   return Promise.reject(new Error('foo'))
 }
@@ -467,8 +465,6 @@ treeFilterNode(tree, node => node.id.includes('1'))
 //   },
 // ]
 ```
-
-
 
 ## License
 

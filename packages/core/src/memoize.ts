@@ -9,7 +9,7 @@ interface MemoizeOptions<T extends (this: any, ...args: any[]) => any> {
 export interface MemoizedFn<T extends (this: any, ...args: any[]) => any> {
   /**
    * clear cache of current memoized function.
-  */
+   */
   clear: () => void
   cache: Map<string, ReturnType<T>>
   (this: ThisParameterType<T>, ...args: Parameters<T>): ReturnType<T>

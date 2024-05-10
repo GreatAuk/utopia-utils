@@ -11,7 +11,7 @@ import { isNumber } from '@utopia-utils/share'
  * fenToYuan(99) // 0.99
  * fenToYuan('not number') // undefined
  * ```
- * */
+ */
 export function fenToYuan(fen: number | undefined): number | undefined {
   try {
     if (!isNumber(fen) || Number.isNaN(fen))

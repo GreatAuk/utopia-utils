@@ -8,9 +8,9 @@ interface SortOptions<T> {
  *
  * @template T - The type of the array elements.
  * @param {readonly T[]} arr - The array to be sorted.
- * @param {SortOptions<T>} [options={}] - The sorting options.
+ * @param {SortOptions<T>} [options] - The sorting options.
  * @param {Function} [options.getter] - The getter function to extract the value to be used for sorting.
- * @param {boolean} [options.desc=false] - Specifies whether to sort in descending order.
+ * @param {boolean} [options.desc] - Specifies whether to sort in descending order.
  * @returns {T[]} - The sorted array.
  * @example
  * ```ts

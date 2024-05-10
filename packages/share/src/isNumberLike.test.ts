@@ -10,7 +10,7 @@ describe('isNumberLike', () => {
       ['0.2', true],
       ['5', true],
       [-1, true],
-      [Infinity, true],
+      [Number.POSITIVE_INFINITY, true],
       ['Infinity', true],
       [1.1e2, true],
       ['1.1e2', true],
@@ -27,7 +27,7 @@ describe('isNumberLike', () => {
 
   it('should return false', () => {
     const testCases = [
-      [NaN, false],
+      [Number.NaN, false],
       ['NaN', false],
       ['', false],
       [' ', false],

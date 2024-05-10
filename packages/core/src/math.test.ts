@@ -9,7 +9,7 @@ describe('math functions', () => {
   it('average', () => {
     expect(average([1, 2, 3])).toBe(2)
     expect(average([1, 3])).toBe(2)
-    expect(average([])).toBe(NaN)
+    expect(average([])).toBe(Number.NaN)
     expect(average([{ value: 1 }, { value: 2 }], item => item.value)).toBe(1.5)
   })
   it('sum', () => {

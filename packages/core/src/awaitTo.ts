@@ -1,6 +1,6 @@
 /**
  * @param { Promise } promise
- * @param { Object= } errorExt - Additional Information you can pass to the err object
+ * @param {object=} errorExt - Additional Information you can pass to the err object
  * @return { Promise }
  * @linkcode https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/awaitTo.ts
  */

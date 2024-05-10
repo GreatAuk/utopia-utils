@@ -1,15 +1,15 @@
 {
   "compilerOptions": {
     "target": "es2018",
-    "module": "esnext",
     "lib": ["esnext", "DOM"],
+    "module": "esnext",
     "moduleResolution": "node",
-    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "types": ["vitest/globals"],
     "strict": true,
     "strictNullChecks": true,
-    "resolveJsonModule": true,
-    "skipLibCheck": true,
+    "esModuleInterop": true,
     "skipDefaultLibCheck": true,
-    "types": ["vitest/globals"]
+    "skipLibCheck": true
   }
 }
