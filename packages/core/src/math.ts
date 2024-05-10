@@ -29,14 +29,20 @@ export function average(...args: number[]): number {
 
 /**
  * Calculates the sum of the given numbers.
- * @param args - The numbers to be summed.
+ * @param arr - The numbers to be summed.
  * @returns The sum of the numbers.
  * @example
  * ```ts
- * sum(1, 2, 3) // 6
- * sum(1, 2, 3, 4) // 10
+ * sum([1, 2, 3]) // 6
+ * sum([]) // 0
+ * sum([{ value: 1 }, { value: 2 }], item => item.value) // 3
  * ```
  */
-export function sum(...args: number[]): number {
-  return args.reduce((a, b) => a + b, 0)
+export function sum<T extends number>(arr: readonly T[]): number
+export function sum<T extends object>(
+  arr: readonly T[],
+  fn: (item: T) => number
+): number
+export function sum<T extends object | number>(arr: readonly any[], fn?: (item: T) => number): number {
+  return (arr || []).reduce((acc, item) => acc + (fn ? fn(item) : item), 0)
 }

@@ -1,4 +1,4 @@
-import { average, toFixedWithoutZeros, sum } from './math'
+import { average, sum, toFixedWithoutZeros } from './math'
 
 describe('math functions', () => {
   it('toFixedWithoutZeros', () => {
@@ -12,8 +12,13 @@ describe('math functions', () => {
     expect(average(...[])).toBe(NaN)
   })
   it('sum', () => {
-    expect(sum(1, 2, 3)).toBe(6)
-    expect(sum(1, 2, 3, 4)).toBe(10)
-    expect(sum(...[])).toBe(0)
+    expect(sum([1, 2, 3])).toBe(6)
+    expect(sum([1, 2, 3, 4])).toBe(10)
+    expect(sum([])).toBe(0)
+    expect(sum([
+      { value: 1 },
+      { value: 2 },
+      { value: 3 },
+    ], item => item.value)).toBe(6)
   })
 })
