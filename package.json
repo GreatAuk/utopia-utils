@@ -2,7 +2,7 @@
   "name": "utopia-utils-monorepo",
   "type": "module",
   "version": "0.3.24",
-  "packageManager": "^pnpm@8.7.6",
+  "packageManager": "pnpm@9.1.0",
   "description": "",
   "author": "Utopia <https://github.com/GreatAuk>",
   "license": "MIT",
@@ -13,10 +13,15 @@
   },
   "bugs": "https://github.com/GreatAuk/utopia-utils/issues",
   "keywords": [],
+  "engines": {
+    "node": ">=18.18.0",
+    "pnpm": ">=9.1.0"
+  },
   "scripts": {
     "build": "pnpm --filter=./packages/** build",
     "example": "pnpm --filter=example dev",
     "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "release": "bumpp package.json packages/**/package.json",
     "test": "vitest",
     "coverage": "vitest run --coverage",
@@ -26,12 +31,12 @@
     "happy-dom": "^8.9.0"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^0.36.0",
+    "@antfu/eslint-config": "^2.17.0",
     "@antfu/ni": "^0.20.0",
     "@types/node": "^18.14.6",
     "@vitest/coverage-v8": "^1.5.2",
     "bumpp": "^9.0.0",
-    "eslint": "^8.35.0",
+    "eslint": "^9.2.0",
     "rimraf": "^4.4.0",
     "tsup": "^6.6.0",
     "tsx": "^3.12.3",
