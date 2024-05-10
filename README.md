@@ -88,7 +88,9 @@ pnpm add @utopia-utils/dom
 * [awaitTo](https://github.com/scopsy/await-to-js): Async await wrapper for easy error handling without try-catch。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/awaitTo.ts)
 * escapeStringRegexp: 把字符串中的特殊字符转义为它可以在正则表达式中使用的形式。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/escapeStringRegexp.ts)
 * toFixedWithoutZeros: `Number.toFixed` 并移除末尾的零。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/math.ts)
-* average: 计算数组的平均值。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/math.ts)
+* average: 计算数组的平均值，支持 `object`。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/math.ts)
+* sum: 计算数组的和，支持 `object`。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/math.ts)
+* sort: 数组排序，支持 `object`。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/sort.ts)
 * [debounce](https://github.com/niksy/throttle-debounce#debounce): 防抖。（export from [throttle-debounce](https://github.com/niksy/throttle-debounce)）
 * [throttle](https://github.com/niksy/throttle-debounce#throttle): 节流。（export from [throttle-debounce](https://github.com/niksy/throttle-debounce)）
 * callLimit: 限制函数调用次数。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/callLimit.ts)

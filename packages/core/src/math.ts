@@ -27,13 +27,13 @@ export function toFixedWithoutZeros(num: number, precision: number): string {
 export function average<T extends number>(arr: readonly T[]): number
 export function average<T extends object>(
   arr: readonly T[],
-  fn: (item: T) => number
+  getter: (item: T) => number
 ): number
 export function average<T extends object | number>(
   arr: readonly any[],
-  fn?: (item: T) => number,
+  getter?: (item: T) => number,
 ): number {
-  return arr.reduce((acc, item) => acc + (fn ? fn(item) : item), 0) / arr.length
+  return arr.reduce((acc, item) => acc + (getter ? getter(item) : item), 0) / arr.length
 }
 
 /**
@@ -50,8 +50,8 @@ export function average<T extends object | number>(
 export function sum<T extends number>(arr: readonly T[]): number
 export function sum<T extends object>(
   arr: readonly T[],
-  fn: (item: T) => number
+  getter: (item: T) => number
 ): number
-export function sum<T extends object | number>(arr: readonly any[], fn?: (item: T) => number): number {
-  return (arr || []).reduce((acc, item) => acc + (fn ? fn(item) : item), 0)
+export function sum<T extends object | number>(arr: readonly any[], getter?: (item: T) => number): number {
+  return (arr || []).reduce((acc, item) => acc + (getter ? getter(item) : item), 0)
 }
