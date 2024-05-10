@@ -36,3 +36,25 @@ export function sort<T extends object | number>(
 
   return arr.slice().sort(desc ? dsc : asc)
 }
+
+interface AlphabeticalOptions<T> {
+  getter?: (item: T) => string
+  desc?: boolean
+}
+export function alphabetical<T extends string>(arr: readonly T[], options?: AlphabeticalOptions<T>): T[]
+export function alphabetical<T extends object>(
+  arr: readonly T[],
+  options: AlphabeticalOptions<T>
+): T[]
+export function alphabetical<T extends object | string>(
+  arr: readonly T[],
+  options: AlphabeticalOptions<T> = {},
+): T[] {
+  const { getter, desc = false } = options
+
+  const getter_ = (item: T) => getter ? getter(item) : item as string
+  const asc = (a: T, b: T) => getter_(a).localeCompare(getter_(b))
+  const dsc = (a: T, b: T) => getter_(b).localeCompare(getter_(a))
+
+  return arr.slice().sort(desc ? dsc : asc)
+}

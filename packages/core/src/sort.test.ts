@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 
-import { sort } from './sort'
+import { alphabetical, sort } from './sort'
 
 describe('sort', () => {
   it('sorts numbers in ascending order', () => {
@@ -22,5 +22,53 @@ describe('sort', () => {
     const sorted = sort(arr)
     expect(sorted).toEqual([1, 2, 3])
     expect(sorted).not.toBe(arr)
+  })
+})
+
+describe('alphabetical', () => {
+  it('sorts strings alphabetically', () => {
+    const arr = ['b', 'a', 'c']
+    expect(alphabetical(arr)).toEqual(['a', 'b', 'c'])
+
+    const arrChineseName = ['张三', '王五', '李四', '赵六', '钱七']
+    expect(alphabetical(arrChineseName)).toMatchInlineSnapshot(`
+      [
+        "张三",
+        "李四",
+        "王五",
+        "赵六",
+        "钱七",
+      ]
+    `)
+  })
+
+  it('sorts strings alphabetically in descending order', () => {
+    const arr = ['b', 'a', 'c']
+    expect(alphabetical(arr, { desc: true })).toEqual(['c', 'b', 'a'])
+  })
+
+  it('sorts objects alphabetically', () => {
+    const arr = [{ name: 'b' }, { name: 'a' }, { name: 'c' }]
+    expect(alphabetical(arr, { getter: item => item.name })).toEqual([
+      { name: 'a' },
+      { name: 'b' },
+      { name: 'c' },
+    ])
+  })
+
+  it('sorts objects alphabetically in descending order', () => {
+    const arr = [{ name: 'b' }, { name: 'a' }, { name: 'c' }]
+    expect(alphabetical(arr, { getter: item => item.name, desc: true })).toEqual([
+      { name: 'c' },
+      { name: 'b' },
+      { name: 'a' },
+    ])
+  })
+
+  it('return a new array', () => {
+    const arr = ['b', 'a', 'c']
+    const res = alphabetical(arr)
+    expect(res).toEqual(['a', 'b', 'c'])
+    expect(res).not.toBe(arr)
   })
 })

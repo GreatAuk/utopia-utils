@@ -91,6 +91,7 @@ pnpm add @utopia-utils/dom
 * average: 计算数组的平均值，支持 `object`。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/math.ts)
 * sum: 计算数组的和，支持 `object`。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/math.ts)
 * sort: 数组排序，支持 `object`。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/sort.ts)
+* alphabetical: 数组按字母顺序排序，支持 `object`。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/sort.ts)
 * [debounce](https://github.com/niksy/throttle-debounce#debounce): 防抖。（export from [throttle-debounce](https://github.com/niksy/throttle-debounce)）
 * [throttle](https://github.com/niksy/throttle-debounce#throttle): 节流。（export from [throttle-debounce](https://github.com/niksy/throttle-debounce)）
 * callLimit: 限制函数调用次数。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/callLimit.ts)
