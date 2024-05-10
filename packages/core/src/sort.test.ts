@@ -31,13 +31,13 @@ describe('alphabetical', () => {
     expect(alphabetical(arr)).toEqual(['a', 'b', 'c'])
 
     const arrChineseName = ['张三', '王五', '李四', '赵六', '钱七']
-    expect(alphabetical(arrChineseName)).toMatchInlineSnapshot(`
+    expect(alphabetical(arrChineseName, { locales: 'zh-Hans-CN' })).toMatchInlineSnapshot(`
       [
-        "张三",
         "李四",
-        "王五",
-        "赵六",
         "钱七",
+        "王五",
+        "张三",
+        "赵六",
       ]
     `)
   })

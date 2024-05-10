@@ -40,6 +40,7 @@ export function sort<T extends object | number>(
 interface AlphabeticalOptions<T> {
   getter?: (item: T) => string
   desc?: boolean
+  locales?: Intl.LocalesArgument
 }
 export function alphabetical<T extends string>(arr: readonly T[], options?: AlphabeticalOptions<T>): T[]
 export function alphabetical<T extends object>(
