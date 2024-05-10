@@ -18,13 +18,22 @@ export function toFixedWithoutZeros(num: number, precision: number): string {
  * get the average of all the numbers passed in
  * @example
  * ```ts
- * average(1, 2, 3) // 2
- * average(...[1, 2, 3]) // 2
+ * average([1, 2, 3]) // 2
+ * average([]) // NaN
+ * average([{ value: 1 }, { value: 2 }], item => item.value) // 1.5
  * ```
  * @linkcode https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/math.ts
  */
-export function average(...args: number[]): number {
-  return args.reduce((a, b) => a + b, 0) / args.length
+export function average<T extends number>(arr: readonly T[]): number
+export function average<T extends object>(
+  arr: readonly T[],
+  fn: (item: T) => number
+): number
+export function average<T extends object | number>(
+  arr: readonly any[],
+  fn?: (item: T) => number,
+): number {
+  return arr.reduce((acc, item) => acc + (fn ? fn(item) : item), 0) / arr.length
 }
 
 /**
