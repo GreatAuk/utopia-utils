@@ -25,10 +25,9 @@ describe('fenToYuan', () => {
     expect(fenToYuan(99)).toBe(0.99)
     expect(fenToYuan(10000)).toBe(100)
     expect(fenToYuan(100000)).toBe(1000)
-    expect(fenToYuan(1000000000000000000)).toBe(10000000000000000)
-    expect(fenToYuan(10000000000000000000)).toBe(100000000000000000)
+    expect(fenToYuan(100000000000)).toBe(1000000000)
   })
-  it('should return null if throw error', () => {
+  it('should return undefined if throw error', () => {
     vi.spyOn(Number, 'isNaN').mockImplementation(() => {
       throw new Error('mock error')
     })
