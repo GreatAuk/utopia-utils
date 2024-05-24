@@ -35,7 +35,7 @@ export * from './pipe'
 export * from './randomInt'
 export * from './randomString'
 export * from './retry'
-export * from './sleep'
+export * from './sleep'mch
 export * from './sort'
 export * from './stringFormatter'
 export * from './union'

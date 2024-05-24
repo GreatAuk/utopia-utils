@@ -127,6 +127,9 @@ pnpm add @utopia-utils/dom
 * yuanToFen: 人民币：元转分。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/yuanToFen.ts)
 * fenToYuan: 人民币：分转元。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/fenToYuan.ts)
 * yuanFormat: 人民币格式化（单位默认是分，会进行分转元再格式化）。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/yuanFormat.ts)
+* formatterBankCard: 银行卡号格式化。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/stringFormatter.ts)
+* formatterPhoneNumber: 手机号格式化。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/stringFormatter.ts)
+
 ### 类型判断
 
 ```bash
