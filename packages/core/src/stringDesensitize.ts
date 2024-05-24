@@ -29,3 +29,22 @@ export function desensitizeName(name?: string) {
 
   return name[0] + '*'.repeat(length - 2) + name[length - 1]
 }
+
+/**
+ * Desensitizes a phone number by replacing the middle digits with asterisks.
+ * @param phone - The phone number to desensitize.
+ * @returns The desensitized phone number.
+ * @example
+ * ```ts
+ * desensitizePhone('12345678910') // '123****8910'
+ * desensitizePhone('') // ''
+ * desensitizePhone(undefined) // undefined
+ * ```
+ * @linkcode https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/stringDesensitize.ts
+ */
+export function desensitizePhone(phone?: string) {
+  if (!isString(phone))
+    return phone
+
+  return phone.replace(/(\d{3})\d{4}(\d{4})/, '$1****$2')
+}
