@@ -129,6 +129,7 @@ pnpm add @utopia-utils/dom
 * yuanFormat: 人民币格式化（单位默认是分，会进行分转元再格式化）。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/yuanFormat.ts)
 * formatterBankCard: 银行卡号格式化。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/stringFormatter.ts)
 * formatterPhoneNumber: 手机号格式化。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/stringFormatter.ts)
+* formatterIdCard: 身份证呈格式化。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/stringFormatter.ts)
 
 ### 类型判断
 

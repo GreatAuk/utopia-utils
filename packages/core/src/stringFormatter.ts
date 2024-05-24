@@ -38,3 +38,28 @@ export function formatterPhoneNumber(str: string) {
       return `${$1} ${$2} ${$3}`
     })
 }
+
+const ID_CARD_LENGTH = 18
+/**
+ * Formats an ID card number by removing non-numeric characters and adding spaces for better readability.
+ * @param str - The ID card number to format.
+ * @returns The formatted ID card number.
+ * @example
+ * ```ts
+ * formatterIdCard('36072119941229004X') // '360721 19941229 004X'
+ * formatterIdCard(' fsd  36072119941229004X') // '360721 19941229 004X'
+ * formatterIdCard(undefined) // ''
+ * ```
+ */
+export function formatterIdCard(str: string) {
+  return `${str}`
+    .replace(/[^0-9xX]/g, '')
+    .substring(0, ID_CARD_LENGTH)
+    .replace(/(\d{6})(\d{0,8})?(\d{0,4})?/, (res, $1, $2, $3) => {
+      if (res.length <= 6)
+        return $1
+      if (res.length <= 14)
+        return `${$1} ${$2}`
+      return `${$1} ${$2} ${$3}`
+    })
+}

@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 
-import { formatterBankCard, formatterPhoneNumber } from './stringFormatter'
+import { formatterBankCard, formatterIdCard, formatterPhoneNumber } from './stringFormatter'
 
 describe('stringFormatter', () => {
   it('formatterBankCard', () => {
@@ -22,5 +22,14 @@ describe('stringFormatter', () => {
     expect(formatterPhoneNumber('null')).toMatchInlineSnapshot(`""`)
     // @ts-expect-error test undefined
     expect(formatterPhoneNumber(undefined)).toMatchInlineSnapshot(`""`)
+  })
+
+  it('formatterIdCard', () => {
+    expect(formatterIdCard('36072119941229004X')).toMatchInlineSnapshot(`"360721 19941229 004X"`)
+    expect(formatterIdCard(' fsd  36072119941229004X')).toMatchInlineSnapshot(`"360721 19941229 004X"`)
+    expect(formatterIdCard('')).toMatchInlineSnapshot(`""`)
+    expect(formatterIdCard('null')).toMatchInlineSnapshot(`""`)
+    // @ts-expect-error test undefined
+    expect(formatterIdCard(undefined)).toMatchInlineSnapshot(`""`)
   })
 })
