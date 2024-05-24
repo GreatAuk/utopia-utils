@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 
-import { desensitizeIDCard, desensitizeName, desensitizePhone } from './stringDesensitize'
+import { desensitizeEmail, desensitizeIDCard, desensitizeName, desensitizePhone } from './stringDesensitize'
 
 describe('stringDesensitize', () => {
   it('desensitizeName', () => {
@@ -34,5 +34,15 @@ describe('stringDesensitize', () => {
     expect(desensitizeIDCard('12345678901234567X', 'high')).toMatchInlineSnapshot(`"1****************X"`)
     expect(desensitizeIDCard('12345678901234567x', 'high')).toMatchInlineSnapshot(`"1****************x"`)
     expect(desensitizeIDCard('123456789012345678', 'high')).toMatchInlineSnapshot(`"1****************8"`)
+  })
+
+  it('desensitizeEmail', () => {
+    expect(desensitizeEmail()).toBeUndefined()
+    expect(desensitizeEmail('')).toMatchInlineSnapshot(`""`)
+    expect(desensitizeEmail('230450504@qq.com')).toMatchInlineSnapshot(`"230****04@qq.com"`)
+    expect(desensitizeEmail('230450504@gmail.com')).toMatchInlineSnapshot(`"230****04@gmail.com"`)
+    expect(desensitizeEmail('2@gmail.com')).toMatchInlineSnapshot(`"2@gmail.com"`)
+    expect(desensitizeEmail('@gmail.com')).toMatchInlineSnapshot(`"@gmail.com"`)
+    expect(desensitizeEmail('23@gmail.com')).toMatchInlineSnapshot(`"23@gmail.com"`)
   })
 })

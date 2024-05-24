@@ -83,3 +83,34 @@ export function desensitizeIDCard(idCard?: string, level: Level = 'low') {
 
   return idCard.replace(/(\d{1})\d{16}([\dxX]{1})/, '$1****************$2')
 }
+
+/**
+ * Desensitizes an email address by replacing part of the name with asterisks.
+ * if the email address is not a string, it will be returned as is.
+ * @param email - The email address to desensitize.
+ * @returns The desensitized email address.
+ * @example
+ * ```ts
+ * desensitizeEmail('230450504@qq.com') // '230****04@qq.com
+ * desensitizeEmail('2@gmail.com') // '2@gmail.com'
+ * desensitizeEmail('') // ''
+ * ```
+ * @linkcode https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/stringDesensitize.ts
+ */
+export function desensitizeEmail(email?: string) {
+  if (!isString(email))
+    return email
+
+  try {
+    const [name, domain] = email.split('@')
+
+    if (!name || !domain)
+      return email
+
+    return `${name.replace(/(\w{3})\w*(\w{2})/, '$1****$2')}@${domain}`
+  }
+  catch (err) {
+    console.error(err)
+    return email
+  }
+}

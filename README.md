@@ -133,6 +133,7 @@ pnpm add @utopia-utils/dom
 * desensitizeName: 姓名脱敏。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/stringDesensitize.ts)
 * desensitizePhone: 手机号脱敏。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/stringDesensitize.ts)
 * desensitizeIdCard: 身份证脱敏。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/stringDesensitize.ts)
+* desensitizeEmail: 邮箱脱敏。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/stringDesensitize.ts)
 
 ### 类型判断
 
