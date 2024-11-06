@@ -59,6 +59,9 @@ importers:
       '@utopia-utils/core':
         specifier: workspace:*
         version: link:../packages/core
+      '@utopia-utils/vueuse':
+        specifier: workspace:^
+        version: link:../packages/vueuse
       vue:
         specifier: ^3.2.45
         version: 3.2.47
@@ -152,6 +155,12 @@ importers:
       '@utopia-utils/share':
         specifier: workspace:*
         version: link:../share
+
+  packages/vueuse:
+    devDependencies:
+      vue:
+        specifier: ^3.2.47
+        version: 3.2.47
 
 packages:
 

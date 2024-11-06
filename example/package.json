@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@utopia-utils/core": "workspace:*",
+    "@utopia-utils/vueuse": "workspace:^",
     "vue": "^3.2.45",
     "vue-router": "^4.1.6"
   },

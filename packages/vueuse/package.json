@@ -1,0 +1,48 @@
+{
+  "name": "@utopia-utils/vueuse",
+  "type": "module",
+  "version": "0.3.23",
+  "description": "Collection of common vue hooks",
+  "author": "Utopia <https://github.com/GreatAuk>",
+  "license": "MIT",
+  "homepage": "https://github.com/GreatAuk/utopia-utils#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GreatAuk/utopia-utils.git",
+    "directory": "packages/vueuse"
+  },
+  "bugs": {
+    "url": "https://github.com/GreatAuk/utopia-utils/issues"
+  },
+  "keywords": [
+    "utils",
+    "vue hooks",
+    "vueuse"
+  ],
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.js"
+    }
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "lint": "eslint .",
+    "start": "tsx src/index.ts",
+    "test": "vitest",
+    "typecheck": "tsc --noEmit"
+  },
+  "peerDependencies": {
+    "vue": "^3.2.47"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "vue": "^3.2.47"
+  }
+}
