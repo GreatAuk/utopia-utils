@@ -1,4 +1,5 @@
 import { isArray } from '@utopia-utils/share'
+
 export type LocationQueryValue = string | null
 
 export type LocationQuery = Record<

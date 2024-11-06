@@ -130,12 +130,13 @@ type ToValueKey<T> = T extends readonly [infer A, ...infer B]
         color: 'blue',
       },
     ] as const, 'MUSIC_TYPE') // !!! as const is required for type safe
-
+ 
     export const MUSIC_TYPE_KEYS = get_MUSIC_TYPE_KEYS()
     // ['POP', 'ROCK']
     export const MUSIC_TYPE_VALUES = get_MUSIC_TYPE_VALUES()
     // [1, 2]
     export const MUSIC_TYPE_KV = get_MUSIC_TYPE_KV()
+    export type MusicType = keyof typeof MUSIC_TYPE_KV
     // { POP: 1, ROCK: 2 }
     export const MUSIC_TYPE_VK = get_MUSIC_TYPE_VK()
     // { 1: 'POP', 2: 'ROCK' }

@@ -19,12 +19,12 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Install pnpm
-        uses: pnpm/action-setup@v2
+        uses: pnpm/action-setup@v4
 
       - name: Set node
         uses: actions/setup-node@v3
         with:
-          node-version: 16.x
+          node-version: 18.20.2
           cache: pnpm
 
       - name: Setup
@@ -42,12 +42,12 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Install pnpm
-        uses: pnpm/action-setup@v2
+        uses: pnpm/action-setup@v4
 
       - name: Set node
         uses: actions/setup-node@v3
         with:
-          node-version: 16.x
+          node-version: 18.20.2
           cache: pnpm
 
       - name: Setup
@@ -72,7 +72,7 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Install pnpm
-        uses: pnpm/action-setup@v2
+        uses: pnpm/action-setup@v4
 
       - name: Set node ${{ matrix.node }}
         uses: actions/setup-node@v3

@@ -32,7 +32,7 @@ interface Options {
       }
     })
     // output 'a', 'c', 'b'
-  * ```
+ * ```
  */
 export function breadthFirstTraverse<TreeNode>(tree: TreeNode[] | TreeNode, action: (node: TreeNode) => unknown, options?: Options): void {
   if (!isFunction(action))

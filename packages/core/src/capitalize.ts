@@ -3,6 +3,10 @@
  * @param {string} str - string - The string to capitalize.
  * @returns {string} - The capitalized string.
  * @linkcode https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/capitalize.ts
+ * @example
+ * ```ts
+ * capitalize('hello') // 'Hello'
+ * ```
  */
 export function capitalize<T extends string>(str: T): Capitalize<T> {
   return str.charAt(0).toUpperCase() + str.slice(1) as Capitalize<T>

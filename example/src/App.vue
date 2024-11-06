@@ -1,28 +1,41 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
 import { loadScript } from '@utopia-utils/core'
-import { useSmsCountdown } from '@utopia-utils/vueuse'
+import HelloWorld from './components/HelloWorld.vue'
 
-let able = ref(false)
+let unload_: any
 
-const { counts, startCountdown, text, canSend, stopCountdown } = useSmsCountdown({
-  sendAble: able,
-  startText: 'send',
-  durationText: 'x秒重取'
-})
+function foo() {
+  // console.log('[9]-App.vue', unload_)
+  unload_()
+}
+
+function loadScript_() {
+  const { unload } = loadScript('https://unpkg.com/browse/axios@1.3.224/index.js', {
+    appendPosition: 'body',
+    onStatusChange: () => {
+    },
+  })
+  unload_ = unload
+}
 </script>
 
 <template>
   <header>
-    <button @click="able = !able">Toggle {{ able }}</button>
-    <h1>{{ counts }}{{ canSend }}</h1>
-    <button @click="stopCountdown">stop</button>
-    <button @click="() => startCountdown()">{{ text }}</button>
+    <button @click="loadScript_">
+      load
+    </button>
+    <button @click="foo">
+      unload
+    </button>
+    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125">
+
     <div class="wrapper">
       <nav>
-        <RouterLink to="/">Home</RouterLink>
+        <RouterLink to="/">
+          Home
+        </RouterLink>
       </nav>
     </div>
   </header>

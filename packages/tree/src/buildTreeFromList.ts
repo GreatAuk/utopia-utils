@@ -23,7 +23,7 @@ interface Options {
  * @returns A tree structure
  * @linkcode https://github.com/GreatAuk/utopia-utils/blob/main/packages/tree/src/buildTreeFromList.ts
  * @example
-  * ```
+ * ```
     const list = [
       { uid: '1', title: 'node 1', pid: '' },
       { uid: '1-1', title: 'node 1-1', pid: '1' },

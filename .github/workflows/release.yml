@@ -19,7 +19,7 @@ jobs:
       - name: Set node
         uses: actions/setup-node@v3
         with:
-          node-version: 16.x
+          node-version: 18.20.2
 
       - run: npx changelogithub
         env:
@@ -34,14 +34,13 @@ jobs:
 
       - uses: actions/setup-node@v3
         with:
-          node-version: 16.x
+          node-version: 18.20.2
           registry-url: 'https://registry.npmjs.org'
 
-      - uses: pnpm/action-setup@v2.0.1
+      - uses: pnpm/action-setup@v4
         name: Install pnpm
         id: pnpm-install
         with:
-          version: 8.7.6
           run_install: false
 
       - name: Get pnpm store directory

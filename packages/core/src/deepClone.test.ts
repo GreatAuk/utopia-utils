@@ -4,7 +4,7 @@
 import { deepClone } from './deepClone'
 
 describe('deepClone', () => {
-  it('Returns equal data for Null/undefined/functions/etc', () => {
+  it('returns equal data for Null/undefined/functions/etc', () => {
     // Null
     expect(deepClone(null)).toBeNull()
 
@@ -21,17 +21,17 @@ describe('deepClone', () => {
     expect(deepClone(false)).toBe(false)
     expect(deepClone(true)).toBe(true)
   })
-  it('Returns equal data for Date', () => {
+  it('returns equal data for Date', () => {
     const date = '2012-01-26T13:51:50.417Z'
     expect(deepClone(new Date(date))).toEqual(new Date(date))
   })
 
-  it('Returns equal data for RegExp', () => {
+  it('returns equal data for RegExp', () => {
     const regexp = /^$/
     expect(deepClone(regexp)).toEqual(regexp)
   })
 
-  it('Returns equal data for Arrays', () => {
+  it('returns equal data for Arrays', () => {
     const tests = [
       [5, 5, 8, 'string'], // Flat
       [5, 5, 8, { a: 'string' }, [7, 9]], // Attached
@@ -44,7 +44,7 @@ describe('deepClone', () => {
     })
   })
 
-  it('Returns equal data for Object', () => {
+  it('returns equal data for Object', () => {
     const src = {
       a: 5,
       b: 6,
@@ -55,7 +55,7 @@ describe('deepClone', () => {
     expect(src).toEqual(copy)
   })
 
-  it('Returns equal data for Map', () => {
+  it('returns equal data for Map', () => {
     const src = new Map([['foo', 'bar']])
 
     const copy = deepClone(src)
@@ -63,7 +63,7 @@ describe('deepClone', () => {
     expect(src).toEqual(copy)
   })
 
-  it('Returns equal data for Set', () => {
+  it('returns equal data for Set', () => {
     const src = new Set(['foo', 'bar'])
 
     const copy = deepClone(src)
@@ -71,7 +71,7 @@ describe('deepClone', () => {
     expect(src).toEqual(copy)
   })
 
-  test('Doesn\'t clone function', () => {
+  it('doesn\'t clone function', () => {
     const src = function b() {}
 
     const copy = deepClone(src)
@@ -79,7 +79,7 @@ describe('deepClone', () => {
     expect(copy).toBe(src)
   })
 
-  test('Clones Date object', () => {
+  it('clones Date object', () => {
     const src = new Date()
 
     const copy = deepClone(src)
@@ -89,7 +89,7 @@ describe('deepClone', () => {
     expect(copy.getHours()).not.toBe(src.getHours())
   })
 
-  test('Clones RegExp', () => {
+  it('clones RegExp', () => {
     const src = /\d/g
 
     const copy = deepClone(src)
@@ -97,7 +97,7 @@ describe('deepClone', () => {
     expect(copy).not.toBe(src)
   })
 
-  test('Clones Array with nested data', () => {
+  it('clones Array with nested data', () => {
     const src = [1, 'hello', [null, 'lalka']]
 
     let copy = deepClone(src)
@@ -112,7 +112,7 @@ describe('deepClone', () => {
     expect(src.every(i => i !== 'mutated')).toBeTruthy()
   })
 
-  test('Clones nested Arrays', () => {
+  it('clones nested Arrays', () => {
     // @ts-expect-error for test
     const src = []
     // @ts-expect-error for test
@@ -124,7 +124,7 @@ describe('deepClone', () => {
     expect(copy[0]).not.toBe(src[0])
   })
 
-  test('Clones nested Objects', () => {
+  it('clones nested Objects', () => {
     const src = { a: 1, b: { c: 1, d: [1, 2, 3] } }
     const srcValues = { a: 1, b: { c: 1, d: [1, 2, 3] } }
 
@@ -146,7 +146,7 @@ describe('deepClone', () => {
     expect(deepClone(a)).toEqual(b)
   })
 
-  it('Clones Map', () => {
+  it('clones Map', () => {
     const src = new Map([['foo', 'bar']])
 
     const copy = deepClone(src)
@@ -156,7 +156,7 @@ describe('deepClone', () => {
     expect(src.get('foo')).toEqual('bar')
   })
 
-  it('Clones Set', () => {
+  it('clones Set', () => {
     const src = new Set(['foo', 'bar'])
 
     const copy = deepClone(src)

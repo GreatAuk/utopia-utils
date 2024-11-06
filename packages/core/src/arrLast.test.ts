@@ -10,6 +10,7 @@ describe('arrLast', () => {
     expect(arrLast(['a', 1, true, /r/g])).toEqual(/r/g)
     expect(arrLast([1])).toBe(1)
     expect(arrLast([])).toBe(undefined)
+    expect(arrLast<string[]>([], 'he')).toBe('he')
   })
   it('should work with readonly arrays', () => {
     const arr = [1, 2, 3, 4, 5] as const

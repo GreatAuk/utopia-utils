@@ -6,7 +6,7 @@ describe('deepEqual', () => {
     expect(deepEqual(1, 2)).toBe(false)
     expect(deepEqual(1, '1')).toBe(false)
     expect(deepEqual(-0, 0)).toBe(true)
-    expect(deepEqual(Infinity, Infinity)).toBe(true)
+    expect(deepEqual(Number.POSITIVE_INFINITY, Number.POSITIVE_INFINITY)).toBe(true)
   })
   it('bigint equal', () => {
     expect(deepEqual(BigInt(1), BigInt(1))).toBe(true)
@@ -46,9 +46,9 @@ describe('deepEqual', () => {
     expect(deepEqual(0, false)).toBe(false)
     expect(deepEqual('', false)).toBe(false)
   })
-  it('NaN equal', () => {
-    expect(deepEqual(NaN, NaN)).toBe(true)
-    expect(deepEqual(NaN, 0)).toBe(false)
+  it('naN equal', () => {
+    expect(deepEqual(Number.NaN, Number.NaN)).toBe(true)
+    expect(deepEqual(Number.NaN, 0)).toBe(false)
   })
   it('function equal', () => {
     const fn1 = () => {}

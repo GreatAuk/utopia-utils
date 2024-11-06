@@ -4,7 +4,8 @@
 interface WaitForOptions {
   /** Maximum time to wait in milliseconds, default is 30000 (30s) */
   timeoutMillisecond?: number
-  /** Instructs the user agent to observe a given target (a node)
+  /**
+   * Instructs the user agent to observe a given target (a node)
    * @default document.body
    */
   target?: Node

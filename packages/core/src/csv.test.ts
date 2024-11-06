@@ -87,9 +87,9 @@ describe('csv', () => {
     })
 
     expect(csv).toMatchInlineSnapshot(`
-      "\\"\\"A\\"\\",B,C
-      hello \\"\\"world\\"\\",2,hello \\"\\"world\\"\\"
-      \\"\\",2,\\"\\"  \\"\\""
+      """A"",B,C
+      hello ""world"",2,hello ""world""
+      "",2,""  """
     `)
   })
   it('arrayToCSV: options.prefix', () => {

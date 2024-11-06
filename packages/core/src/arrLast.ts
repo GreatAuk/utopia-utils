@@ -14,9 +14,9 @@ type ArrayLast<T extends readonly unknown[]> = T extends readonly [...infer _, i
  * ```
  * @linkcode https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/arrLast.ts
  */
-export function arrLast<T extends readonly unknown[]>(arr: T): ArrayLast<T>
-export function arrLast<T extends unknown[]>(arr: T): T[number] {
+export function arrLast<T extends readonly unknown[]>(arr: T, defaultValue?: T[number] | null | undefined): ArrayLast<T>
+export function arrLast<T extends unknown[]>(arr: T, defaultValue?: T[number] | null | undefined): T[number] {
   if (!Array.isArray(arr))
     throw new TypeError('Expected an Array')
-  return arr[arr.length - 1]
+  return arr?.length > 0 ? arr[arr.length - 1] : defaultValue
 }

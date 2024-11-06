@@ -1,7 +1,7 @@
 {
   "name": "@utopia-utils/tree",
   "type": "module",
-  "version": "0.3.24",
+  "version": "0.3.25",
   "description": "Collection of common tree utils",
   "author": "Utopia <https://github.com/GreatAuk>",
   "license": "MIT",
@@ -22,8 +22,8 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "require": "./dist/index.cjs",
-      "import": "./dist/index.js"
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
     }
   },
   "main": "./dist/index.cjs",
@@ -35,7 +35,8 @@
     "lint": "eslint .",
     "start": "tsx src/index.ts",
     "test": "vitest",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf .turbo & rm -rf node_modules & rm -rf dist"
   },
   "dependencies": {
     "@utopia-utils/share": "workspace:*"

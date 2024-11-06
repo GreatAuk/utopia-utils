@@ -165,7 +165,7 @@ export function clearContainerCache(): void {
  * ```js
  * updateCSS('body { color: red }', 'my-style')
  * ```
- * */
+ */
 export function updateCSS(css: string, key: string, option: Options = {}): HTMLStyleElement | undefined {
   const container = getContainer(option)
 

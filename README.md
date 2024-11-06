@@ -88,7 +88,10 @@ pnpm add @utopia-utils/dom
 * [awaitTo](https://github.com/scopsy/await-to-js): Async await wrapper for easy error handling without try-catch。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/awaitTo.ts)
 * escapeStringRegexp: 把字符串中的特殊字符转义为它可以在正则表达式中使用的形式。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/escapeStringRegexp.ts)
 * toFixedWithoutZeros: `Number.toFixed` 并移除末尾的零。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/math.ts)
-* average: 计算数组的平均值。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/math.ts)
+* average: 计算数组的平均值，支持 `object`。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/math.ts)
+* sum: 计算数组的和，支持 `object`。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/math.ts)
+* sort: 数组排序，支持 `object`。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/sort.ts)
+* alphabetical: 数组按字母顺序排序，支持 `object`。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/sort.ts)
 * [debounce](https://github.com/niksy/throttle-debounce#debounce): 防抖。（export from [throttle-debounce](https://github.com/niksy/throttle-debounce)）
 * [throttle](https://github.com/niksy/throttle-debounce#throttle): 节流。（export from [throttle-debounce](https://github.com/niksy/throttle-debounce)）
 * callLimit: 限制函数调用次数。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/callLimit.ts)
@@ -124,6 +127,14 @@ pnpm add @utopia-utils/dom
 * yuanToFen: 人民币：元转分。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/yuanToFen.ts)
 * fenToYuan: 人民币：分转元。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/fenToYuan.ts)
 * yuanFormat: 人民币格式化（单位默认是分，会进行分转元再格式化）。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/yuanFormat.ts)
+* formatterBankCard: 银行卡号格式化。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/stringFormatter.ts)
+* formatterPhoneNumber: 手机号格式化。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/stringFormatter.ts)
+* formatterIdCard: 身份证呈格式化。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/stringFormatter.ts)
+* desensitizeName: 姓名脱敏。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/stringDesensitize.ts)
+* desensitizePhone: 手机号脱敏。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/stringDesensitize.ts)
+* desensitizeIdCard: 身份证脱敏。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/stringDesensitize.ts)
+* desensitizeEmail: 邮箱脱敏。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/stringDesensitize.ts)
+
 ### 类型判断
 
 ```bash
@@ -145,6 +156,8 @@ pnpm add @utopia-utils/share
 * isPlainObject
 * isObject
 * isIntegerKey
+* isUndef
+* isDef
 * isEmpty  [source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/share/src/isEmpty.ts)
 * isNumberLike  [source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/share/src/isNumberLike.ts)
 * isValidUrl  [source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/share/src/isValidUrl.ts)
@@ -243,8 +256,6 @@ export const MUSIC_TYPE_OPTIONS = get_MUSIC_TYPE_OPTIONS()
 // ]
 ```
 
-
-
 ##### ~~createEnumFromOptions~~
 
 通过 `options` 自动生成对应的 `enum`， 后期只需要维护 `options`。**typesafe**
@@ -281,7 +292,7 @@ console.log(enumLevel)
 
 ```ts
 let callNum = 0
-const fn = () => {
+function fn() {
   callNum++
   return Promise.reject(new Error('foo'))
 }
@@ -462,8 +473,6 @@ treeFilterNode(tree, node => node.id.includes('1'))
 //   },
 // ]
 ```
-
-
 
 ## License
 

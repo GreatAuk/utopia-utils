@@ -8,7 +8,6 @@
     } & {
       c: string
     }
-
     type Intersected2 = Prettify<Intersected>
     // type Intersected2 = {
     //   a: string
@@ -19,6 +18,7 @@
  */
 export type Prettify<T> = {
   [K in keyof T]: T[K]
+// eslint-disable-next-line ts/ban-types
 } & {}
 
 /**

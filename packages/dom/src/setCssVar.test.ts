@@ -20,7 +20,7 @@ describe('setCssVar', () => {
     expect(root.style.getPropertyValue('--size')).toBe('10px')
   })
 
-  it('should set CSS variables on the root element of a document using the provided variables object', () => {
+  it('should set CSS variables on the root element of a document using the provided variables object2', () => {
     const variables = {
       '--color': 'red',
       '--size': '10px',
@@ -43,7 +43,7 @@ describe('setCssVar', () => {
     expect(root.style.getPropertyValue('--size')).toBe('')
   })
 
-  it('should not set CSS variables on the root element of a document if the provided variables object is not a plain object', () => {
+  it('should not set CSS variables on the root element of a document if the provided variables object is not a plain object2', () => {
     const variables = null
 
     // @ts-expect-error for test
