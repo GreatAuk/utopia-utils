@@ -9,9 +9,10 @@ export interface UseSmsCountdownOptions {
    * @default 60s
    */
   totalSecond?: number
-  /** 是否可发送
+  /**
+   * 是否可发送
    * @default true
-  */
+   */
   sendAble?: MaybeRef<boolean>
   /**
    * 开始倒计时的文本

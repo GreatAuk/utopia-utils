@@ -32,3 +32,5 @@ export type Primitive =
   | boolean
   | symbol
   | bigint
+
+export type AnyFn<T = any> = (...args: any[]) => T
