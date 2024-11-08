@@ -17,7 +17,7 @@ export const isBlob = (val: unknown): val is Blob => toTypeString(val) === 'Blob
  * Check if the value is a plain object, that is, the object created by the Object constructor
  */
 export const isPlainObject = (val: unknown): val is object => toTypeString(val) === 'Object'
-export const isPromise = (val: unknown): val is Promise<any> => toTypeString(val) === 'Promise'
+export const isPromise = (val: unknown): val is Promise<any> => toTypeString(val) === 'Promise' || isObject(val) && isFunction(val.then) && isFunction(val.catch)
 export function isPrimitive(val: unknown): val is string | number | boolean | symbol | null | undefined {
   return ['string', 'number', 'boolean', 'symbol', 'null', 'undefined'].includes(typeof val)
 }
