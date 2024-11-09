@@ -134,6 +134,8 @@ pnpm add @utopia-utils/dom
 * desensitizePhone: 手机号脱敏。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/stringDesensitize.ts)
 * desensitizeIdCard: 身份证脱敏。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/stringDesensitize.ts)
 * desensitizeEmail: 邮箱脱敏。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/stringDesensitize.ts)
+* createPoll: 创建一个轮询器。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/createPoll.ts)
+* createControledPromise: 创建一个可控的 Promise。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/createControledPromise.ts)
 
 ### 类型判断
 
