@@ -1,71 +1,73 @@
 import { createPoll } from './createPoll'
-import { createControlledPromise } from './createControledPromise'
 
 const task = () => 'hello'
-const taskP = () => Promise.resolve('hello')
-const taskDelay = () => () => new Promise(resolve => setTimeout(resolve, 10))
+const taskDelay = () => new Promise<string>(resolve => setTimeout(() => resolve('hello'), 10))
 
 describe('createPoll', () => {
-  // beforeEach(() => {
-  //   vi.useFakeTimers()
-  // })
-  // afterEach(() => {
-  //   vi.restoreAllMocks()
-  // })
+  beforeEach(() => {
+    vi.useFakeTimers()
+  })
+  afterEach(() => {
+    vi.restoreAllMocks()
+  })
   it('happy path', async () => {
-    const promise = createControlledPromise()
-    const mockTaskFn = vi.fn().mockImplementation(taskP)
+    const mockTaskFn = vi.fn().mockImplementation(taskDelay)
+    const mockOnEnd = vi.fn()
 
+    let end = 0
     const { startPoll } = createPoll({
       taskFn: mockTaskFn,
       maxTimes: 3,
       onEnd: () => {
-        promise.resolve(undefined)
+        mockOnEnd()
+        end = Date.now()
       },
+    })
+
+    const start = Date.now()
+    startPoll()
+    await vi.runAllTimersAsync()
+
+    expect(mockTaskFn).toHaveBeenCalledTimes(3)
+    expect(mockOnEnd).toHaveBeenCalledTimes(1)
+    expect(end - start).greaterThanOrEqual(30)
+  })
+
+  it('call onMaxTimes when maxTimes reached', async () => {
+    const mockTaskFn = vi.fn().mockImplementation(taskDelay)
+    const mockOnMaxTimes = vi.fn()
+
+    const { startPoll } = createPoll({
+      taskFn: mockTaskFn,
+      maxTimes: 10,
+      onMaxTimes: mockOnMaxTimes,
     })
     startPoll()
 
-    await promise
+    await vi.runAllTimersAsync()
 
-    expect(mockTaskFn).toHaveBeenCalledTimes(3)
+    expect(mockTaskFn).toHaveBeenCalledTimes(10)
+    expect(mockOnMaxTimes).toHaveBeenCalledTimes(1)
+    expect(mockOnMaxTimes).toHaveBeenLastCalledWith({
+      times: 10,
+      res: 'hello',
+      maxTimes: 10,
+    })
   })
 
-  it('maxTimes', async () => {
-    const promise = createControlledPromise()
-    let calledTimes = 0
+  it('call onEachCall every time', async () => {
+    const mockEachCall = vi.fn()
 
     const { startPoll } = createPoll({
       taskFn: task,
       maxTimes: 3,
-      onEnd({ times }) {
-        calledTimes = times
-        promise.resolve(undefined)
-      },
-    })
-    startPoll()
-
-    await promise
-
-    expect(calledTimes).toBe(3)
-  })
-
-  it('call onEachCall every time', async () => {
-    const promise = createControlledPromise()
-    const mockEachCall = vi.fn()
-
-    const { startPoll } = createPoll({
-      taskFn: taskP,
-      maxTimes: 3,
       onEachCall: (payload) => {
         mockEachCall(payload)
       },
-      onEnd: () => {
-        promise.resolve(undefined)
-      },
     })
     startPoll()
 
-    await promise
+    await vi.runAllTimersAsync()
 
     expect(mockEachCall).toHaveBeenCalledTimes(3)
     expect(mockEachCall).toHaveBeenLastCalledWith({
@@ -75,13 +77,12 @@ describe('createPoll', () => {
     })
   })
 
-  it('call onEnd when onEachCall return false', async () => {
-    const promise = createControlledPromise()
+  it('stop poll when onEachCall return false', async () => {
     const mockEnd = vi.fn()
     let calledTimes = 0
 
     const { startPoll } = createPoll({
-      taskFn: taskP,
+      taskFn: taskDelay,
       maxTimes: 10,
       onEachCall: ({ times }) => {
         if (times === 3)
@@ -90,12 +91,11 @@ describe('createPoll', () => {
       onEnd: (payload) => {
         mockEnd(payload)
         calledTimes = payload.times
-        promise.resolve(undefined)
       },
     })
     startPoll()
 
-    await promise
+    await vi.runAllTimersAsync()
 
     expect(calledTimes).toBe(3)
     expect(mockEnd).toHaveBeenCalledTimes(1)
@@ -106,73 +106,71 @@ describe('createPoll', () => {
     })
   })
 
-  it('call onMaxTimes when maxTimes reached', async () => {
-    const promise = createControlledPromise()
-    const mockMaxTimes = vi.fn()
-
-    const { startPoll } = createPoll({
-      taskFn: taskP,
-      maxTimes: 10,
-      onMaxTimes: (payload) => {
-        mockMaxTimes(payload)
-        promise.resolve(undefined)
-      },
-    })
-    startPoll()
-
-    await promise
-
-    expect(mockMaxTimes).toHaveBeenCalledTimes(1)
-    expect(mockMaxTimes).toHaveBeenLastCalledWith({
-      times: 10,
-      res: 'hello',
-      maxTimes: 10,
-    })
-  })
-
-  function executeAfterTwoHours(func) {
-    setTimeout(() => {
-      setTimeout(() => {
-        func()
-      }, 100)
-    }, 1000 * 60 * 60 * 2) // 2小时
-  }
-  const mock = vi.fn(() => console.log('executed'))
-
-  // beforeEach(() => {
-  //   vi.useFakeTimers()
-  // })
-  // afterEach(() => {
-  //   vi.restoreAllMocks()
-  // })
-  it('should execute the function', () => {
-    executeAfterTwoHours(mock)
-    vi.runAllTimers()
-    expect(mock).toHaveBeenCalledTimes(1)
-  })
   it('interval', async () => {
-    const promise = createControlledPromise()
+    let end = 0
 
     const { startPoll } = createPoll({
-      taskFn: taskP,
+      taskFn: taskDelay,
       maxTimes: 3,
-      interval: 2,
+      interval: 10,
       onEnd: () => {
-        promise.resolve(undefined)
+        end = Date.now()
       },
     })
-
-    // vi.useFakeTimers()
 
     const start = Date.now()
+    startPoll()
+    await vi.runAllTimersAsync()
+
+    expect(end - start).greaterThanOrEqual(20)
+  })
+
+  it('call stopPoll to stop poll', async () => {
+    const mockTaskFn = vi.fn().mockImplementation(task)
+    const mockOnEnd = vi.fn()
+
+    const { startPoll, stopPoll } = createPoll({
+      taskFn: mockTaskFn,
+      interval: 10,
+      onEnd: () => {
+        mockOnEnd()
+      },
+    })
 
     startPoll()
+    await vi.advanceTimersByTimeAsync(30)
+    stopPoll()
 
-    // await vi.advanceTimersByTime(2000)
+    expect(mockTaskFn).toHaveBeenCalledTimes(4)
+    expect(mockOnEnd).toHaveBeenCalledTimes(1)
+  })
 
-    await promise
-    const end = Date.now()
+  it('timeout', async () => {
+    const timeoutMs = 100
+    const mockTaskFn = vi.fn().mockImplementation(taskDelay)
+    const mockTimeout = vi.fn()
+    const mockOnEnd = vi.fn()
 
-    expect(end - start).toMatchInlineSnapshot(`11`)
+    let end = 0
+
+    const { startPoll } = createPoll({
+      taskFn: mockTaskFn,
+      interval: 10,
+      timeout: timeoutMs,
+      onTimeout: mockTimeout,
+      onEnd: () => {
+        mockOnEnd()
+        end = Date.now()
+      },
+    })
+
+    const start = Date.now()
+    startPoll()
+    await vi.runAllTimersAsync()
+
+    expect(mockTaskFn).toHaveBeenCalledTimes(5)
+    expect(mockTimeout).toHaveBeenCalledTimes(1)
+    expect(mockOnEnd).toHaveBeenCalledTimes(1)
+    expect(end - start).greaterThanOrEqual(timeoutMs)
   })
 })
