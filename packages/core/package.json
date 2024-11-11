@@ -1,7 +1,7 @@
 {
   "name": "@utopia-utils/core",
   "type": "module",
-  "version": "0.3.26",
+  "version": "0.3.27",
   "description": "Collection of common utils",
   "author": "Utopia <https://github.com/GreatAuk>",
   "license": "MIT",
