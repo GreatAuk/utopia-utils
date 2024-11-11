@@ -108,4 +108,13 @@ export function panzoom(target: HTMLElement, {
     transform.scale *= ratio
     window.requestAnimationFrame(() => applyTransform(target, transform, onTransform))
   }
+
+  function destroy() {
+    parentNode.removeEventListener('mousedown', mousedownHandler)
+    parentNode.removeEventListener('wheel', mouseWheelHandler)
+  }
+
+  return {
+    destroy,
+  }
 }
