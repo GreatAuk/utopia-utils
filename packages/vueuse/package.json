@@ -1,7 +1,7 @@
 {
   "name": "@utopia-utils/vueuse",
   "type": "module",
-  "version": "0.3.27",
+  "version": "0.3.28",
   "description": "Collection of common vue hooks",
   "author": "Utopia <https://github.com/GreatAuk>",
   "license": "MIT",
