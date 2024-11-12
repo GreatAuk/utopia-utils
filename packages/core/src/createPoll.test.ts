@@ -173,4 +173,25 @@ describe('createPoll', () => {
     expect(mockOnEnd).toHaveBeenCalledTimes(1)
     expect(end - start).greaterThanOrEqual(timeoutMs)
   })
+
+  it('options.immediate', async () => {
+    const mockTaskFn = vi.fn().mockImplementation(taskDelay)
+
+    const { startPoll } = createPoll({
+      taskFn: mockTaskFn,
+      interval: 100,
+      immediate: false,
+      maxTimes: 3,
+    })
+
+    startPoll()
+    await vi.advanceTimersByTimeAsync(90)
+    expect(mockTaskFn).toHaveBeenCalledTimes(0)
+
+    await vi.advanceTimersByTimeAsync(10)
+    expect(mockTaskFn).toHaveBeenCalledTimes(1)
+
+    await vi.runAllTimersAsync()
+    expect(mockTaskFn).toHaveBeenCalledTimes(3)
+  })
 })

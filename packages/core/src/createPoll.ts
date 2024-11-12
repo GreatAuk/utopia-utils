@@ -45,6 +45,11 @@ interface CreatePollOptions<T> {
    *
    */
   onTimeout?: onTimeout
+  /**
+   * 是否立即执行
+   * @default true
+   */
+  immediate?: boolean
 }
 
 /**
@@ -69,7 +74,7 @@ interface CreatePollOptions<T> {
  * ```
  */
 export function createPoll<T>(options: CreatePollOptions<T>) {
-  const { taskFn, interval = 0, maxTimes = 0, onEachCall, onEnd, onMaxTimes, onTimeout, timeout = 0 } = options
+  const { taskFn, interval = 0, maxTimes = 0, onEachCall, onEnd, onMaxTimes, onTimeout, timeout = 0, immediate = true } = options
 
   /**
    * 是否正在轮询
@@ -82,7 +87,7 @@ export function createPoll<T>(options: CreatePollOptions<T>) {
   /**
    * 轮询定时器
    */
-  let timer!: TimeoutReturn
+  let timerId!: TimeoutReturn
 
   /**
    * 超时定时器
@@ -92,7 +97,7 @@ export function createPoll<T>(options: CreatePollOptions<T>) {
   const stopPoll = (res?: Awaited<T>) => {
     isPolling = false
     timeoutId && clearTimeout(timeoutId)
-    timer && clearTimeout(timer)
+    timerId && clearTimeout(timerId)
     onEnd?.({ times, res, maxTimes })
   }
 
@@ -111,7 +116,7 @@ export function createPoll<T>(options: CreatePollOptions<T>) {
         stopPoll(res)
       }
       else {
-        timer = setTimeout(poll, interval)
+        timerId = setTimeout(poll, interval)
       }
     }).catch((err) => {
       console.error(err)
@@ -132,7 +137,10 @@ export function createPoll<T>(options: CreatePollOptions<T>) {
       }, timeout)
     }
 
-    poll()
+    if (immediate)
+      poll()
+    else
+      timerId = setTimeout(poll, interval)
   }
 
   return {
