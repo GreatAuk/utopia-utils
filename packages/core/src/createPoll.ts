@@ -6,7 +6,7 @@ type TimeoutReturn = ReturnType<typeof setTimeout>
 type OnEnd<T> = (options: { times: number, res: Awaited<T> | undefined, maxTimes: number }) => any
 type onMaxTimes<T> = (options: { times: number, res: Awaited<T>, maxTimes: number }) => any
 type onTimeout = (options: { times: number, timeout: number, maxTimes: number }) => any
-type OnEachCall<T> = (options: { times: number, res: Awaited<T>, maxTimes: number }) => false | void
+type OnEachCall<T> = (options: { times: number, res: Awaited<T>, maxTimes: number }) => boolean | void
 
 interface CreatePollOptions<T> {
   taskFn: AnyFn<T>
@@ -72,9 +72,9 @@ export function createPoll<T>(options: CreatePollOptions<T>) {
   const { taskFn, interval = 0, maxTimes = 0, onEachCall, onEnd, onMaxTimes, onTimeout, timeout = 0 } = options
 
   /**
-   * 是否停止轮询
+   * 是否正在轮询
    */
-  let canceled = false
+  let isPolling = false
   /**
    * 轮询次数
    */
@@ -90,16 +90,13 @@ export function createPoll<T>(options: CreatePollOptions<T>) {
   let timeoutId!: TimeoutReturn
 
   const stopPoll = (res?: Awaited<T>) => {
-    canceled = true
+    isPolling = false
     timeoutId && clearTimeout(timeoutId)
     timer && clearTimeout(timer)
     onEnd?.({ times, res, maxTimes })
   }
 
   const poll = () => {
-    if (canceled)
-      return
-
     const res_ = taskFn()
     const p = isPromise(res_) ? res_ : Promise.resolve(res_)
 
@@ -122,7 +119,10 @@ export function createPoll<T>(options: CreatePollOptions<T>) {
   }
 
   const startPoll = () => {
-    canceled = false
+    if (isPolling)
+      return
+
+    isPolling = true
     times = 0
 
     if (isNumber(timeout) && timeout > 0) {
