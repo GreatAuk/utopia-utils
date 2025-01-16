@@ -20,8 +20,8 @@
   "scripts": {
     "build": "turbo build --filter=./packages/**",
     "example": "pnpm --filter=example dev",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
+    "lint": "oxlint",
+    "lint:fix": "oxlint --fix",
     "release": "bumpp package.json packages/**/package.json",
     "test": "vitest",
     "coverage": "vitest run --coverage",
@@ -32,12 +32,11 @@
     "happy-dom": "^8.9.0"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^2.17.0",
     "@antfu/ni": "^0.20.0",
     "@types/node": "^18.14.6",
     "@vitest/coverage-v8": "^2.1.4",
     "bumpp": "^9.0.0",
-    "eslint": "^9.2.0",
+    "oxlint": "^0.15.6",
     "rimraf": "^4.4.0",
     "tsup": "^6.7.0",
     "tsx": "^3.12.3",

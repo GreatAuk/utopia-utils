@@ -21,6 +21,7 @@ export function decode(text: string | number): string {
     return decodeURIComponent(`${text}`)
   }
   catch (err) {
+    console.error(err)
     console.warn(`Error decoding "${text}". Using original value`)
   }
   return `${text}`
