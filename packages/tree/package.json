@@ -1,7 +1,7 @@
 {
   "name": "@utopia-utils/tree",
   "type": "module",
-  "version": "0.3.28",
+  "version": "0.3.29",
   "description": "Collection of common tree utils",
   "author": "Utopia <https://github.com/GreatAuk>",
   "license": "MIT",
