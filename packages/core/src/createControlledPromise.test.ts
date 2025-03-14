@@ -1,9 +1,9 @@
-import { createControledPromise } from './createControledPromise'
+import { createControlledPromise } from './createControlledPromise'
 
-describe('createControledPromise', () => {
+describe('createControlledPromise', () => {
   it('happy path', async () => {
     vi.useFakeTimers()
-    const promise = createControledPromise<number>()
+    const promise = createControlledPromise<number>()
     setTimeout (() => {
       promise.resolve(111)
     }, 60 * 1000)

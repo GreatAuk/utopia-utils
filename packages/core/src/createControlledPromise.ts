@@ -10,10 +10,10 @@ export interface ControlledPromise<T = void> extends Promise<T> {
 
 /**
  * Return a Promise with `resolve` and `reject` methods
- * @linkcode https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/createControledPromise.ts
+ * @linkcode https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/createControlledPromise.ts
  * @example
  * ```
- * const promise = createControledPromise()
+ * const promise = createControlledPromise()
  * await promise
  * // in anther context:
  * promise.resolve(data)
@@ -21,14 +21,14 @@ export interface ControlledPromise<T = void> extends Promise<T> {
  *
  * @example
  * ```
- * const promise = createControledPromise<number>()
+ * const promise = createControlledPromise<number>()
  *
  * promise.then(res => console.log(res)) // => 111
  * // in anther context:
  * promise.resolve(111)
  * ```
  */
-export function createControledPromise<T = void>(): ControlledPromise<T> {
+export function createControlledPromise<T = void>(): ControlledPromise<T> {
   let resolve: any, reject: any
   const promise = new Promise<T>((_resolve, _reject) => {
     resolve = _resolve
