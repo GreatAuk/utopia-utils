@@ -194,4 +194,160 @@ describe('createPoll', () => {
     await vi.runAllTimersAsync()
     expect(mockTaskFn).toHaveBeenCalledTimes(3)
   })
+
+  it('call onError when taskFn throws error', async () => {
+    const testError = new Error('test error')
+    const mockTaskFn = vi.fn().mockImplementation(() => Promise.reject(testError))
+    const mockOnError = vi.fn()
+    const mockOnEnd = vi.fn()
+
+    const { startPoll } = createPoll({
+      taskFn: mockTaskFn,
+      interval: 10,
+      maxTimes: 3,
+      onError: (payload) => {
+        mockOnError(payload)
+        return true // 继续轮询
+      },
+      onEnd: mockOnEnd,
+    })
+
+    startPoll()
+    await vi.advanceTimersByTimeAsync(30)
+
+    expect(mockTaskFn).toHaveBeenCalledTimes(4)
+    expect(mockOnError).toHaveBeenCalledTimes(4)
+    expect(mockOnError).toHaveBeenLastCalledWith({
+      times: 0,
+      error: testError,
+      maxTimes: 3,
+    })
+    expect(mockOnEnd).not.toHaveBeenCalled()
+  })
+
+  it('stop poll when onError returns false', async () => {
+    const testError = new Error('test error')
+    const mockTaskFn = vi.fn().mockImplementation(() => Promise.reject(testError))
+    const mockOnError = vi.fn().mockReturnValue(false)
+    const mockOnEnd = vi.fn()
+
+    const { startPoll } = createPoll({
+      taskFn: mockTaskFn,
+      interval: 10,
+      maxTimes: 10,
+      onError: mockOnError,
+      onEnd: mockOnEnd,
+    })
+
+    startPoll()
+    await vi.runAllTimersAsync()
+
+    expect(mockTaskFn).toHaveBeenCalledTimes(1)
+    expect(mockOnError).toHaveBeenCalledTimes(1)
+    expect(mockOnError).toHaveBeenCalledWith({
+      times: 0,
+      error: testError,
+      maxTimes: 10,
+    })
+    expect(mockOnEnd).toHaveBeenCalledTimes(1)
+    expect(mockOnEnd).toHaveBeenCalledWith({
+      times: 0,
+      res: undefined,
+      maxTimes: 10,
+      error: testError,
+    })
+  })
+
+  it('getPollStatus returns current polling status', async () => {
+    const mockTaskFn = vi.fn().mockImplementation(taskDelay)
+
+    const { startPoll, getPollStatus, stopPoll } = createPoll({
+      taskFn: mockTaskFn,
+      interval: 10,
+      maxTimes: 5,
+    })
+
+    // 初始状态
+    expect(getPollStatus()).toEqual({
+      isPolling: false,
+      times: 0,
+      maxTimes: 5,
+    })
+
+    startPoll()
+    expect(getPollStatus().isPolling).toBe(true)
+
+    // 执行一次后
+    await vi.advanceTimersByTimeAsync(15)
+    expect(getPollStatus()).toEqual({
+      isPolling: true,
+      times: 1,
+      maxTimes: 5,
+    })
+
+    // 手动停止
+    stopPoll()
+    expect(getPollStatus().isPolling).toBe(false)
+  })
+
+  it('throws error for invalid parameter values', () => {
+    const mockTaskFn = vi.fn()
+
+    // 测试负数 interval
+    expect(() => {
+      createPoll({
+        taskFn: mockTaskFn,
+        interval: -10,
+      })
+    }).toThrow('interval must be a non-negative number')
+
+    // 测试负数 maxTimes
+    expect(() => {
+      createPoll({
+        taskFn: mockTaskFn,
+        maxTimes: -5,
+      })
+    }).toThrow('maxTimes must be a non-negative number')
+
+    // 测试负数 timeout
+    expect(() => {
+      createPoll({
+        taskFn: mockTaskFn,
+        timeout: -100,
+      })
+    }).toThrow('timeout must be a non-negative number')
+  })
+
+  it('works with non-Promise return values', async () => {
+    const mockOnEachCall = vi.fn()
+    const mockTaskFn = vi.fn().mockReturnValue(42)
+    const mockOnEnd = vi.fn()
+
+    const { startPoll } = createPoll({
+      taskFn: mockTaskFn,
+      maxTimes: 3,
+      interval: 5,
+      onEachCall: (payload) => {
+        mockOnEachCall(payload)
+      },
+      onEnd: mockOnEnd,
+    })
+
+    startPoll()
+    await vi.runAllTimersAsync()
+
+    expect(mockTaskFn).toHaveBeenCalledTimes(3)
+    expect(mockOnEachCall).toHaveBeenCalledTimes(3)
+    expect(mockOnEachCall).toHaveBeenLastCalledWith({
+      times: 3,
+      res: 42,
+      maxTimes: 3,
+    })
+    expect(mockOnEnd).toHaveBeenCalledTimes(1)
+    expect(mockOnEnd).toHaveBeenCalledWith({
+      times: 3,
+      res: 42,
+      maxTimes: 3,
+    })
+  })
 })
