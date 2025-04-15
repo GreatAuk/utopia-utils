@@ -9,6 +9,11 @@ import { isPlainObject } from '@utopia-utils/share'
  * the CSS variables should be set. By default, it is set to `window?.document?.documentElement`, which
  * refers to the root element of the current document.
  * @linkcode https://github.com/GreatAuk/utopia-utils/blob/main/packages/dom/src/setCssVar.ts
+ * @example
+ * ```ts
+ * setCssVar({ '--color': 'red', '--size': '10px' })
+ * setCssVar({ '--color': 'red', '--size': '10px' }, document.body)
+ * ```
  */
 export function setCssVar(variables: Record<string, string | null>, root = window?.document?.documentElement): void {
   if (variables && isPlainObject(variables) && root) {
