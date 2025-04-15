@@ -10,13 +10,24 @@ import { isNumber } from '@utopia-utils/share'
  * yuanToFen(1) // 100
  * yuanToFen(0.99) // 99
  * yuanToFen('not number') // undefined
+ * yuanToFen('1.23') // 123
  * ```
  */
-export function yuanToFen(yuan: number | undefined): number | undefined {
+export function yuanToFen(yuan: number | string | undefined): number | undefined {
   try {
-    if (!isNumber(yuan) || Number.isNaN(yuan))
+    /* 处理非数字输入 */
+    if (yuan === undefined || yuan === null || yuan === '')
       return undefined
-    return times(yuan, 100)
+
+    /* 尝试将字符串转换为数字 */
+    const numValue = typeof yuan === 'string' ? Number(yuan) : yuan
+
+    /* 验证转换后的值是否为有效数字 */
+    if (!isNumber(numValue) || Number.isNaN(numValue))
+      return undefined
+
+    /* 使用 number-precision 避免浮点数精度问题 */
+    return times(numValue, 100)
   }
   catch (err) {
     console.error(err)
