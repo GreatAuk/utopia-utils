@@ -41,4 +41,9 @@ describe('yuanFormat', () => {
     expect(yuanFormat(1032432.23, { unit: 'yuan' })).toMatchInlineSnapshot('"1,032,432.23"')
     expect(yuanFormat(1032432.2323, { unit: 'yuan' })).toMatchInlineSnapshot('"1,032,432.23"')
   })
+  it('negative', () => {
+    expect(yuanFormat(-100)).toMatchInlineSnapshot('"-1.00"')
+    expect(yuanFormat(-1000000, { unit: 'yuan' })).toMatchInlineSnapshot(`"-1,000,000.00"`)
+    expect(yuanFormat(-9432432.34, { unit: 'yuan'})).toMatchInlineSnapshot(`"-9,432,432.34"`)
+  })
 })
