@@ -4,7 +4,7 @@ import { fenToYuan } from './fenToYuan'
 
 interface Options {
   /**
-   * 单位，分或元, 如果单位是分，会自动转换为元再格式化
+   * 单位，分或元, 如果单位是分，则会将金额转换为元
    * @default 'fen'
    */
   unit?: 'fen' | 'yuan'

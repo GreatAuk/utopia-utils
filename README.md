@@ -165,6 +165,7 @@ pnpm add @utopia-utils/share
 * isValidUrl  [source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/share/src/isValidUrl.ts)
 * isPositiveNumber  [source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/share/src/isPositiveNumber.ts)
 * isNegativeNumber  [source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/share/src/isNegativeNumber.ts)
+* isKeyOf  [source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/share/src/isKeyOf.ts)
 ------
 
 ### vendor

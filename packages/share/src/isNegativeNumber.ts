@@ -11,6 +11,7 @@ import { isNumber } from './is'
  * isNegativeNumber('1') // false
  * isNegativeNumber('-1') // true
  * ```
+ * @linkcode https://github.com/GreatAuk/utopia-utils/blob/main/packages/share/src/isNegativeNumber.ts
  */
 export function isNegativeNumber(val: unknown): boolean {
   return isNumber(val) && val < 0
