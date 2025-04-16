@@ -26,7 +26,8 @@
     "test": "vitest",
     "coverage": "vitest run --coverage",
     "clean": "turbo clean --filter=./packages/**",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "preinstall": "npx only-allow pnpm"
   },
   "dependencies": {
     "happy-dom": "^8.9.0"
