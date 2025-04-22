@@ -1,0 +1,27 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+# 项目结构概述
+
+Utopia-Utils 是一个实用工具集合库，采用单体仓库（monorepo）结构组织。主要包含以下几个包：
+
+## 核心包
+
+- [packages/core/src/index.ts](mdc:packages/core/src/index.ts) - 核心工具函数的主入口
+- [packages/share/](mdc:packages/share) - 共享工具和类型判断函数
+- [packages/tree/src/index.ts](mdc:packages/tree/src/index.ts) - 树结构相关工具函数的主入口
+- [packages/dom/src/index.ts](mdc:packages/dom/src/index.ts) - DOM 操作相关工具函数的主入口
+- [packages/message/](mdc:packages/message) - 消息通知相关功能
+- [packages/vueuse/](mdc:packages/vueuse) - Vue 相关实用工具集
+
+## 项目配置
+
+- [package.json](mdc:package.json) - 项目主配置文件
+- [tsconfig.json](mdc:tsconfig.json) - TypeScript 配置
+- [pnpm-workspace.yaml](mdc:pnpm-workspace.yaml) - PNPM 工作区配置
+
+## 示例和测试
+
+- [example/](mdc:example) - 使用示例项目

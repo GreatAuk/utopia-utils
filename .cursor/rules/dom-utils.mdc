@@ -1,0 +1,34 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+# DOM工具函数
+
+[packages/dom/src/index.ts](mdc:packages/dom/src/index.ts) 提供了一系列操作DOM和浏览器环境的工具函数。
+
+## DOM操作
+
+- [packages/dom/src/waitForSelector.ts](mdc:packages/dom/src/waitForSelector.ts) - 等待选择器匹配的元素出现
+- [packages/dom/src/domContains.ts](mdc:packages/dom/src/domContains.ts) - 判断DOM元素是否包含另一个元素
+- [packages/dom/src/setCssVar.ts](mdc:packages/dom/src/setCssVar.ts) - 设置CSS变量
+- [packages/dom/src/dynamicCSS.ts](mdc:packages/dom/src/dynamicCSS.ts) - 动态注入CSS样式
+
+## 资源加载
+
+- [packages/dom/src/loadScript.ts](mdc:packages/dom/src/loadScript.ts) - 动态加载脚本
+- [packages/dom/src/loadCSS.ts](mdc:packages/dom/src/loadCSS.ts) - 动态加载CSS
+
+## 环境检测
+
+- [packages/dom/src/canUseDom.ts](mdc:packages/dom/src/canUseDom.ts) - 判断是否可以使用DOM
+- [packages/dom/src/isAlipay.ts](mdc:packages/dom/src/isAlipay.ts) - 判断是否是支付宝浏览器
+- [packages/dom/src/isAndroid.ts](mdc:packages/dom/src/isAndroid.ts) - 判断是否是Android系统
+- [packages/dom/src/isIOS.ts](mdc:packages/dom/src/isIOS.ts) - 判断是否是iOS系统
+- [packages/dom/src/isWeixin.ts](mdc:packages/dom/src/isWeixin.ts) - 判断是否是微信浏览器
+- [packages/dom/src/isMobile.ts](mdc:packages/dom/src/isMobile.ts) - 判断是否是移动端浏览器
+- [packages/dom/src/webp.ts](mdc:packages/dom/src/webp.ts) - 检测浏览器是否支持webp
+
+## 交互组件
+
+- [packages/dom/src/panzoom/core.ts](mdc:packages/dom/src/panzoom/core.ts) - 为元素添加拖拽缩放功能
