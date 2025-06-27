@@ -1,4 +1,4 @@
-import { defineConfig } from 'tsup'
+import { defineConfig } from 'tsdown'
 
 export default defineConfig((options) => { // The options here is derived from CLI flags.
   return {
@@ -8,7 +8,7 @@ export default defineConfig((options) => { // The options here is derived from C
     sourcemap: true,
     clean: true,
     dts: true,
-    format: ['cjs', 'esm'],
+    fixedExtension: true,
     minify: !options.watch,
   }
 })

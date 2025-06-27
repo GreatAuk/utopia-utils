@@ -1,15 +1,14 @@
-import { defineConfig } from 'tsup'
+import { defineConfig } from 'tsdown'
 
 export default defineConfig((options) => { // The options here is derived from CLI flags.
   return {
     entry: {
       index: 'src/index.ts',
     },
-    splitting: false,
     sourcemap: true,
     clean: true,
     dts: true,
-    format: ['cjs', 'esm'],
+    fixedExtension: true,
     minify: !options.watch,
   }
 })
