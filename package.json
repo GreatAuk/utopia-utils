@@ -14,8 +14,8 @@
   "bugs": "https://github.com/GreatAuk/utopia-utils/issues",
   "keywords": [],
   "engines": {
-    "node": ">=18.18.0",
-    "pnpm": ">=10"
+    "node": ">=22.16.0",
+    "pnpm": ">=10.8.0"
   },
   "scripts": {
     "build": "turbo build --filter=./packages/**",

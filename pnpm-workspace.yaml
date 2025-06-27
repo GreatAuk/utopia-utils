@@ -2,6 +2,6 @@ packages:
   - example
   - packages/*
 
-useNodeVersion: 18.20.2
-nodeVersion: 18.20.2
+useNodeVersion: 22.16.0
+nodeVersion: 22.16.0
 engineStrict: true
