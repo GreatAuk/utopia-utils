@@ -39,7 +39,10 @@
   "peerDependencies": {
     "vue": "^3.2.47"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@utopia-utils/core": "workspace:*",
+    "@vueuse/core": "^13.4.0"
+  },
   "devDependencies": {
     "vue": "^3.2.47"
   }

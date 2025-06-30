@@ -5,6 +5,7 @@ export default defineConfig((options) => { // The options here is derived from C
     entry: {
       index: 'src/index.ts',
     },
+    unbundle: true,
     sourcemap: true,
     clean: true,
     dts: true,
