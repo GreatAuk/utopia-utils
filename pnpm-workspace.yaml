@@ -4,4 +4,4 @@ packages:
 
 useNodeVersion: 22.16.0
 nodeVersion: 22.16.0
-engineStrict: true
+engineStrict: false
