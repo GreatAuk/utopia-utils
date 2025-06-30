@@ -24,6 +24,7 @@
     "lint:fix": "oxlint --fix",
     "release": "stale-dep && bumpp package.json packages/**/package.json",
     "test": "stale-dep && vitest",
+    "test:once": "stale-dep && vitest run",
     "coverage": "stale-dep && vitest run --coverage",
     "clean": "turbo clean --filter=./packages/**",
     "typecheck": "tsc --noEmit",
