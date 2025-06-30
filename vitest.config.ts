@@ -4,6 +4,9 @@ export default defineConfig({
   test: {
     coverage: {
       reporter: ['html', 'lcov'],
+      exclude: [
+        '**/dist/**',
+      ],
     },
     // environment: 'happy-dom',
     environmentMatchGlobs: [
