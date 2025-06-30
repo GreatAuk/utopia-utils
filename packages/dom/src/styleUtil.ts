@@ -2,7 +2,7 @@
  * Split the className string into an array of class names, and filter out any empty strings.
  * @param [cls] - The className string
  */
-export function classNameToArray(cls = '') {
+export function classNameToArray(cls = ''): string[] {
   return cls.split(' ').filter(v => !!v.trim())
 }
 
