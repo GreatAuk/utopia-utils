@@ -35,7 +35,7 @@ importers:
         version: 0.8.2
       tsdown:
         specifier: ^0.12.9
-        version: 0.12.9(@arethetypeswrong/core@0.18.2)(typescript@5.4.5)
+        version: 0.12.9(@arethetypeswrong/core@0.18.2)(typescript@5.8.3)
       tsx:
         specifier: ^3.12.3
         version: 3.12.3
@@ -43,8 +43,8 @@ importers:
         specifier: ^2.5.4
         version: 2.5.4
       typescript:
-        specifier: ^5.4.5
-        version: 5.4.5
+        specifier: ^5.8.3
+        version: 5.8.3
       vite:
         specifier: ^4.1.4
         version: 4.1.4(@types/node@18.14.6)
@@ -2507,13 +2507,13 @@ packages:
     engines: {node: '>=4.2.0'}
     hasBin: true
 
-  typescript@5.4.5:
-    resolution: {integrity: sha512-vcI4UpRgg81oIRUFwR0WSIHKt11nJ7SAVlYNIu+QpqeyXP+gpQJy/Z4+F0aGxSE4MqwjyXvW/TzgkLAx2AGHwQ==}
+  typescript@5.6.1-rc:
+    resolution: {integrity: sha512-E3b2+1zEFu84jB0YQi9BORDjz9+jGbwwy1Zi3G0LUNw7a7cePUrHMRNy8aPh53nXpkFGVHSxIZo5vKTfYaFiBQ==}
     engines: {node: '>=14.17'}
     hasBin: true
 
-  typescript@5.6.1-rc:
-    resolution: {integrity: sha512-E3b2+1zEFu84jB0YQi9BORDjz9+jGbwwy1Zi3G0LUNw7a7cePUrHMRNy8aPh53nXpkFGVHSxIZo5vKTfYaFiBQ==}
+  typescript@5.8.3:
+    resolution: {integrity: sha512-p1diW6TqL9L07nNxvRMM7hMMw4c5XOo/1ibL4aAIGmSAt9slTE1Xgw5KWuof2uTOvCg9BY7ZRi+GaF+7sfgPeQ==}
     engines: {node: '>=14.17'}
     hasBin: true
 
@@ -4632,7 +4632,7 @@ snapshots:
     dependencies:
       glob: 9.2.1
 
-  rolldown-plugin-dts@0.13.12(rolldown@1.0.0-beta.21)(typescript@5.4.5):
+  rolldown-plugin-dts@0.13.12(rolldown@1.0.0-beta.21)(typescript@5.8.3):
     dependencies:
       '@babel/generator': 7.27.5
       '@babel/parser': 7.27.7
@@ -4644,7 +4644,7 @@ snapshots:
       get-tsconfig: 4.10.1
       rolldown: 1.0.0-beta.21
     optionalDependencies:
-      typescript: 5.4.5
+      typescript: 5.8.3
     transitivePeerDependencies:
       - oxc-resolver
       - supports-color
@@ -4880,7 +4880,7 @@ snapshots:
 
   tr46@0.0.3: {}
 
-  tsdown@0.12.9(@arethetypeswrong/core@0.18.2)(typescript@5.4.5):
+  tsdown@0.12.9(@arethetypeswrong/core@0.18.2)(typescript@5.8.3):
     dependencies:
       ansis: 4.1.0
       cac: 6.7.14
@@ -4890,14 +4890,14 @@ snapshots:
       empathic: 2.0.0
       hookable: 5.5.3
       rolldown: 1.0.0-beta.21
-      rolldown-plugin-dts: 0.13.12(rolldown@1.0.0-beta.21)(typescript@5.4.5)
+      rolldown-plugin-dts: 0.13.12(rolldown@1.0.0-beta.21)(typescript@5.8.3)
       semver: 7.7.2
       tinyexec: 1.0.1
       tinyglobby: 0.2.14
       unconfig: 7.3.2
     optionalDependencies:
       '@arethetypeswrong/core': 0.18.2
-      typescript: 5.4.5
+      typescript: 5.8.3
     transitivePeerDependencies:
       - '@typescript/native-preview'
       - oxc-resolver
@@ -4965,10 +4965,10 @@ snapshots:
 
   typescript@4.7.4: {}
 
-  typescript@5.4.5: {}
-
   typescript@5.6.1-rc:
     optional: true
+
+  typescript@5.8.3: {}
 
   unbox-primitive@1.0.2:
     dependencies:
