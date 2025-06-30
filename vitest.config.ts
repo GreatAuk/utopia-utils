@@ -1,4 +1,4 @@
-import { defineConfig } from 'vitest/config'
+import { defineConfig, type ViteUserConfig } from 'vitest/config'
 
 export default defineConfig({
   test: {
@@ -13,4 +13,4 @@ export default defineConfig({
     globals: true,
     // exclude: ['example/**'],
   },
-})
+}) as ViteUserConfig

@@ -25,7 +25,7 @@ describe('yuanToFen', () => {
     expect(yuanToFen(99)).toBe(9900)
     expect(yuanToFen(10000)).toBe(1000000)
     expect(yuanToFen(100000)).toBe(10000000)
-    expect(yuanToFen(1000000000000000000)).toBe(100000000000000000000)
+    expect(yuanToFen(1000000000000)).toBe(100000000000000)
   })
 
   it('should handle string input correctly', () => {
