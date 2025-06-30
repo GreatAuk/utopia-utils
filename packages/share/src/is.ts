@@ -5,7 +5,7 @@ export const isString = (val: unknown): val is string => typeof val === 'string'
 export const isNumber = (val: unknown): val is number => typeof val === 'number'
 export const isFunction = (val: unknown): val is Function => typeof val === 'function'
 export const isSymbol = (val: unknown): val is symbol => typeof val === 'symbol'
-export const isArray = Array.isArray
+export const isArray = (val: unknown): val is any[] => Array.isArray(val)
 export const isRegExp = (val: unknown): val is RegExp => toTypeString(val) === 'RegExp'
 export const isMap = (val: unknown): val is Map<any, any> => toTypeString(val) === 'Map'
 export const isSet = (val: unknown): val is Set<any> => toTypeString(val) === 'Set'

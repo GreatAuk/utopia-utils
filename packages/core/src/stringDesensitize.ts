@@ -17,7 +17,7 @@ type Level = 'low' | 'medium' | 'high'
  * ```
  * @linkcode https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/stringDesensitize.ts
  */
-export function desensitizeName(name?: string) {
+export function desensitizeName(name?: string): string | undefined {
   if (!isString(name))
     return name
 
@@ -44,7 +44,7 @@ export function desensitizeName(name?: string) {
  * ```
  * @linkcode https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/stringDesensitize.ts
  */
-export function desensitizePhone(phone?: string) {
+export function desensitizePhone(phone?: string): string | undefined {
   if (!isString(phone))
     return phone
 
@@ -72,7 +72,7 @@ export function desensitizePhone(phone?: string) {
  * ```
  * @linkcode https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/stringDesensitize.ts
  */
-export function desensitizeIDCard(idCard?: string, level: Level = 'low') {
+export function desensitizeIDCard(idCard?: string, level: Level = 'low'): string | undefined {
   if (!isString(idCard))
     return idCard
 
@@ -97,7 +97,7 @@ export function desensitizeIDCard(idCard?: string, level: Level = 'low') {
  * ```
  * @linkcode https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/stringDesensitize.ts
  */
-export function desensitizeEmail(email?: string) {
+export function desensitizeEmail(email?: string): string | undefined {
   if (!isString(email))
     return email
 

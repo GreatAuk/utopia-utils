@@ -64,6 +64,12 @@ interface PollStatus {
   maxTimes: number
 }
 
+interface CreatePollReturn<T> {
+  startPoll: () => void
+  stopPoll: () => void
+  getPollStatus: () => PollStatus
+}
+
 /**
  * 创建一个轮询器
  * @linkcode https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/createPoll.ts
@@ -86,7 +92,7 @@ interface PollStatus {
  * startPoll()
  * ```
  */
-export function createPoll<T>(options: CreatePollOptions<T>) {
+export function createPoll<T>(options: CreatePollOptions<T>): CreatePollReturn<T> {
   if (isNegativeNumber(options.interval))
     throw new Error('interval must be a non-negative number')
   if (isNegativeNumber(options.maxTimes))

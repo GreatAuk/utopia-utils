@@ -1,9 +1,10 @@
 import { computed, ref } from 'vue'
+import type { Ref, ComputedRef } from 'vue'
 
 import type { MaybeRef } from '../types'
 import { toValue, tryOnScopeDispose } from '../utils'
 
-export interface UseSmsCountdownOptions {
+export type UseSmsCountdownOptions = {
   /**
    * 倒计时总共的时间(s)
    * @default 60s
@@ -25,8 +26,15 @@ export interface UseSmsCountdownOptions {
    */
   durationText?: string
 }
+type UseSmsCountdownReturn = {
+  counts: Ref<number>
+  canSend: ComputedRef<boolean>
+  text: ComputedRef<string>
+  startCountdown: () => void
+  stopCountdown: () => void
+}
 
-export function useSmsCountdown(options?: UseSmsCountdownOptions) {
+export function useSmsCountdown(options?: UseSmsCountdownOptions): UseSmsCountdownReturn {
   const { totalSecond = 60, sendAble = true, startText = '获取验证码', durationText = 'x秒后重发' } = options || {}
 
   if (totalSecond <= 0 && totalSecond % 1 !== 0)

@@ -1,4 +1,4 @@
-import type { Ref } from 'vue';
+import type { Ref, ShallowRef } from 'vue';
 
 import { onScopeDispose, ref, shallowRef } from 'vue';
 
@@ -29,6 +29,17 @@ type TableSort = {
   field: string;
   order?: 'ascend' | 'descend' | null;
 };
+type UseTableReturn<Filters> = {
+  pageSize: Ref<number>;
+  currentPage: Ref<number>;
+  sort: ShallowRef<TableSort | undefined>;
+  filters: Ref<Filters>;
+  search: {
+    submit: () => void;
+    reset: () => void;
+    formState: Ref<Filters>;
+  };
+};
 
 /* 强制刷新标识符，避免污染用户数据 */
 const FORCE_REFRESH_SYMBOL = '__now__';
@@ -39,7 +50,7 @@ const FORCE_REFRESH_SYMBOL = '__now__';
  */
 export function useTable<Filters extends Record<string, any>>(
   options?: UseTableOptions<Filters>,
-) {
+): UseTableReturn<Filters> {
   const {
     defaultFilters = {} as Filters,
     searchType = 'advance',
@@ -66,9 +77,9 @@ export function useTable<Filters extends Record<string, any>>(
     if (currentPage.value !== 1) currentPage.value = 1; // 更新 currentPage, 会触发 watch, 重新设置 query
   };
 
-  const submit = () => onFormChange({ forceRefresh: true });
+  const submit: () => void = () => onFormChange({ forceRefresh: true });
 
-  const reset = () => {
+  const reset: () => void = () => {
     formState.value = deepClone(getDefaultFilters(defaultFilters));
 
     onFormChange({ forceRefresh: true });

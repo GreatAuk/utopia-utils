@@ -1,6 +1,9 @@
 import type { PanZoomOptions, Transform } from './type'
 import { applyTransform, getScaleMultiplier } from './utils'
 
+type PanZoomReturn = {
+  destroy: () => void
+}
 /**
  * @linkcode https://github.com/GreatAuk/utopia-utils/blob/main/packages/dom/src/panzoom/index.ts
  */
@@ -9,7 +12,7 @@ export function panzoom(target: HTMLElement, {
   maxZoom = 5,
   minZoom = 0.2,
   onTransform,
-}: PanZoomOptions = {}) {
+}: PanZoomOptions = {}): PanZoomReturn {
   const parentNode = target.parentNode as HTMLElement
 
   if (!parentNode)

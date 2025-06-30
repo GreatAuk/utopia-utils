@@ -10,7 +10,7 @@
  * ```
  * @linkcode https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/stringFormatter.ts
  */
-export function formatterBankCard(str?: string) {
+export function formatterBankCard(str?: string): string {
   return `${str}`.replace(/\D/g, '').replace(/(\d{4})(?=\d)/g, '$1 ')
 }
 
@@ -28,7 +28,7 @@ const PHONE_LENGTH = 11
  * ```
  * @linkcode https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/stringFormatter.ts
  */
-export function formatterPhoneNumber(str?: string) {
+export function formatterPhoneNumber(str?: string): string {
   return `${str}`
     .replace(/\D/g, '')
     .substring(0, PHONE_LENGTH)
@@ -54,7 +54,7 @@ const ID_CARD_LENGTH = 18
  * ```
  * @linkcode https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/stringFormatter.ts
  */
-export function formatterIdCard(str?: string) {
+export function formatterIdCard(str?: string): string {
   return `${str}`
     .replace(/[^0-9xX]/g, '')
     .substring(0, ID_CARD_LENGTH)

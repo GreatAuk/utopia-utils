@@ -15,7 +15,7 @@ import { isPlainObject } from '@utopia-utils/share'
  * setCssVar({ '--color': 'red', '--size': '10px' }, document.body)
  * ```
  */
-export function setCssVar(variables: Record<string, string | null>, root = window?.document?.documentElement): void {
+export function setCssVar(variables: Record<string, string | null>, root: HTMLElement = window?.document?.documentElement): void {
   if (variables && isPlainObject(variables) && root) {
     Object.keys(variables).forEach((key) => {
       root.style.setProperty(key, variables[key])
