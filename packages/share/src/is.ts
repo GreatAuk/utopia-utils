@@ -9,7 +9,7 @@ export const isArray = (val: unknown): val is any[] => Array.isArray(val)
 export const isRegExp = (val: unknown): val is RegExp => toTypeString(val) === 'RegExp'
 export const isMap = (val: unknown): val is Map<any, any> => toTypeString(val) === 'Map'
 export const isSet = (val: unknown): val is Set<any> => toTypeString(val) === 'Set'
-export const isDate = (val: unknown): val is Date => toTypeString(val) === 'Date]'
+export const isDate = (val: unknown): val is Date => toTypeString(val) === 'Date'
 export const isFile = (val: unknown): val is File => toTypeString(val) === 'File'
 export const isBlob = (val: unknown): val is Blob => toTypeString(val) === 'Blob'
 
@@ -49,6 +49,11 @@ export function isIntegerKey(key: unknown): boolean {
 export function isStringNumber(val: string): boolean {
   if (!isString(val))
     return false
+
+  /* 排除空字符串和只包含空格的字符串 */
+  if (val.trim() === '')
+    return false
+
   return !Number.isNaN(Number(val))
 }
 
