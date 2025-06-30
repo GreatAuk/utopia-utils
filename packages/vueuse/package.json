@@ -34,7 +34,8 @@
     "dev": "tsdown --watch",
     "start": "tsx src/index.ts",
     "test": "vitest",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf .turbo & rm -rf node_modules & rm -rf dist"
   },
   "peerDependencies": {
     "vue": "^3.2.47"
