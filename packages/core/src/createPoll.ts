@@ -64,7 +64,7 @@ interface PollStatus {
   maxTimes: number
 }
 
-interface CreatePollReturn<T> {
+interface CreatePollReturn {
   startPoll: () => void
   stopPoll: () => void
   getPollStatus: () => PollStatus
@@ -92,7 +92,7 @@ interface CreatePollReturn<T> {
  * startPoll()
  * ```
  */
-export function createPoll<T>(options: CreatePollOptions<T>): CreatePollReturn<T> {
+export function createPoll<T>(options: CreatePollOptions<T>): CreatePollReturn {
   if (isNegativeNumber(options.interval))
     throw new Error('interval must be a non-negative number')
   if (isNegativeNumber(options.maxTimes))
