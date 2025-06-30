@@ -36,17 +36,15 @@
     "clean": "rm -rf .turbo & rm -rf node_modules & rm -rf dist"
   },
   "dependencies": {
-    "@utopia-utils/dom": "workspace:*",
     "@utopia-utils/share": "workspace:*",
-    "@utopia-utils/tree": "workspace:*",
-    "deepmerge": "^4.3.1"
-  },
-  "devDependencies": {
-    "@types/js-cookie": "^3.0.2",
-    "@types/throttle-debounce": "^5.0.0",
+    "deepmerge": "^4.3.1",
     "js-cookie": "^3.0.5",
     "mitt": "^3.0.1",
     "number-precision": "^1.6.0",
     "throttle-debounce": "^5.0.0"
+  },
+  "devDependencies": {
+    "@types/js-cookie": "^3.0.2",
+    "@types/throttle-debounce": "^5.0.0"
   }
 }

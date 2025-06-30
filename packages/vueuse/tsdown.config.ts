@@ -1,11 +1,11 @@
 import { defineConfig } from 'tsdown'
+import type { UserConfig, UserConfigFn } from 'tsdown'
 
-export default defineConfig((options) => { // The options here is derived from CLI flags.
+const config: UserConfigFn | UserConfig = defineConfig((options) => {
   return {
     entry: {
       index: 'src/index.ts',
     },
-    unbundle: true,
     sourcemap: true,
     clean: true,
     dts: true,
@@ -13,3 +13,5 @@ export default defineConfig((options) => { // The options here is derived from C
     minify: !options.watch,
   }
 })
+
+export default config
