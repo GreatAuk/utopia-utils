@@ -4,9 +4,8 @@ export default defineConfig({
   test: {
     coverage: {
       reporter: ['html', 'lcov'],
-      exclude: [
-        '**/dist/**',
-      ],
+      include: ['packages/**/src/**/*.ts'],
+      exclude: ['packages/**/src/index.ts'],
     },
     // environment: 'happy-dom',
     environmentMatchGlobs: [
