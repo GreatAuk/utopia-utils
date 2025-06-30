@@ -4,5 +4,10 @@
  * @linkcode https://github.com/GreatAuk/utopia-utils/blob/main/packages/dom/src/canUseDom.ts
  */
 export function canUseDom(): boolean {
-  return !!(typeof window !== 'undefined' && window.document && window.document.createElement)
+  return !!(
+    typeof window !== 'undefined' &&
+    window &&
+    window.document &&
+    window.document.createElement
+  )
 }
