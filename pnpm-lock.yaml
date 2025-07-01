@@ -108,9 +108,15 @@ importers:
 
   packages/core:
     dependencies:
+      '@utopia-utils/dom':
+        specifier: workspace:*
+        version: link:../dom
       '@utopia-utils/share':
         specifier: workspace:*
         version: link:../share
+      '@utopia-utils/tree':
+        specifier: workspace:*
+        version: link:../tree
       deepmerge:
         specifier: ^4.3.1
         version: 4.3.1
