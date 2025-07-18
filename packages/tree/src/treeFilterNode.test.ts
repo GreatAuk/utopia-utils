@@ -179,4 +179,143 @@ describe('treeFilterNode', () => {
       ]
     `)
   })
+
+  it('should return empty array for empty tree', () => {
+    expect(treeFilterNode([], node => true)).toEqual([])
+  })
+
+  it('should return empty array when no nodes match the predicate', () => {
+    const tree = [
+      {
+        id: 'root',
+        children: [
+          {
+            id: 'child1',
+            children: [
+              {
+                id: 'child1-1',
+              },
+            ],
+          },
+          {
+            id: 'child2',
+          },
+        ],
+      },
+    ]
+    expect(treeFilterNode(tree, node => node.id === 'nonexistent')).toEqual([])
+  })
+
+  it('should handle tree with empty children array', () => {
+    const tree = [
+      {
+        id: 'root',
+        children: [],
+      },
+      {
+        id: 'node',
+        children: [],
+      },
+    ]
+    expect(treeFilterNode(tree, node => node.id === 'root')).toMatchInlineSnapshot(`
+      [
+        {
+          "children": [],
+          "id": "root",
+        },
+      ]
+    `)
+  })
+
+  it('should handle complex nested tree structure', () => {
+    const tree = [
+      {
+        id: 'root',
+        children: [
+          {
+            id: 'level1-1',
+            children: [
+              {
+                id: 'level2-1',
+                children: [
+                  { id: 'level3-1' },
+                  { id: 'level3-2' }
+                ]
+              },
+              {
+                id: 'level2-2',
+              },
+            ],
+          },
+          {
+            id: 'level1-2',
+            children: [
+              {
+                id: 'level2-3',
+                children: [
+                  { id: 'level3-3' }
+                ]
+              }
+            ]
+          },
+        ],
+      },
+    ]
+
+    // 测试深层次过滤
+    expect(treeFilterNode(tree, node => node.id === 'level3-1')).toMatchInlineSnapshot(`
+      [
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "id": "level3-1",
+                    },
+                  ],
+                  "id": "level2-1",
+                },
+              ],
+              "id": "level1-1",
+            },
+          ],
+          "id": "root",
+        },
+      ]
+    `)
+
+    // 测试多层级同时匹配
+    expect(treeFilterNode(tree, node => node.id.includes('level2'))).toMatchInlineSnapshot(`
+      [
+        {
+          "children": [
+            {
+              "children": [
+                {
+                  "children": [],
+                  "id": "level2-1",
+                },
+                {
+                  "id": "level2-2",
+                },
+              ],
+              "id": "level1-1",
+            },
+            {
+              "children": [
+                {
+                  "children": [],
+                  "id": "level2-3",
+                },
+              ],
+              "id": "level1-2",
+            },
+          ],
+          "id": "root",
+        },
+      ]
+    `)
+  })
 })
