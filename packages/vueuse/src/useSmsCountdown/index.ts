@@ -1,7 +1,6 @@
 import { computed, ref } from 'vue'
-import type { Ref, ComputedRef } from 'vue'
+import type { Ref, ComputedRef, MaybeRefOrGetter } from 'vue'
 
-import type { MaybeRef } from '../types'
 import { toValue, tryOnScopeDispose } from '../utils'
 
 export type UseSmsCountdownOptions = {
@@ -14,7 +13,7 @@ export type UseSmsCountdownOptions = {
    * 是否可发送
    * @default true
    */
-  sendAble?: MaybeRef<boolean>
+  sendAble?: ComputedRef<boolean> | MaybeRefOrGetter<boolean>
   /**
    * 开始倒计时的文本
    * @default '获取验证码'
