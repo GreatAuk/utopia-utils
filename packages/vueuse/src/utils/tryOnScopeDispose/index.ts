@@ -6,7 +6,7 @@ import type { Fn } from '../../types'
  *
  * @param fn
  */
-export function tryOnScopeDispose(fn: Fn) {
+export function tryOnScopeDispose(fn: Fn): boolean {
   if (getCurrentScope()) {
     onScopeDispose(fn)
     return true
