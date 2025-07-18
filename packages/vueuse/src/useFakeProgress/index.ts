@@ -3,6 +3,8 @@ import { ref, type Ref } from 'vue'
 
 import { tryOnScopeDispose } from '../utils'
 
+import type { TimeOut } from '../types'
+
 /**
  * useFakeProgress 配置选项
  */
@@ -88,6 +90,8 @@ interface UseFakeProgressReturn {
  * // 停止自动递增
  * stopProgress()
  * ```
+ *
+ * @see https://github.com/GreatAuk/utopia-utils/blob/main/packages/vueuse/src/useFakeProgress/README.md
  */
 export function useFakeProgress(options?: Options): UseFakeProgressReturn {
   const {
@@ -100,7 +104,7 @@ export function useFakeProgress(options?: Options): UseFakeProgressReturn {
   } = options || {}
 
   /** 定时器引用，用于控制自动递增 */
-  let timer: ReturnType<typeof setTimeout> | null = null
+  let timer: TimeOut | null = null
   /** 当前进度值 (0-1) */
   const progress = ref<number>(0)
 

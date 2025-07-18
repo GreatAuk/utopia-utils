@@ -33,6 +33,26 @@ type UseSmsCountdownReturn = {
   stopCountdown: () => void
 }
 
+/**
+ * `useSmsCountdown` 是一个用于处理短信验证码倒计时的 Vue 3 组合式函数。
+ *
+ * 提供了倒计时功能，支持自定义开始文本和倒计时文本。
+ *
+ * @param options - 配置选项
+ * @returns 返回倒计时状态和控制方法
+ *
+ * @example
+ * ```ts
+ * const { counts, canSend, text, startCountdown, stopCountdown } = useSmsCountdown({
+ *   totalSecond: 60,
+ *   sendAble: phoneValid, // 手机号合法时才能发送
+ *   startText: '发送验证码',
+ *   durationText: '%s秒后可重新发送'
+ * })
+ * ```
+ *
+ * @see https://github.com/GreatAuk/utopia-utils/blob/main/packages/vueuse/src/useSmsCountdown/README.md
+ */
 export function useSmsCountdown(options?: UseSmsCountdownOptions): UseSmsCountdownReturn {
   const { totalSecond = 60, sendAble = true, startText = '获取验证码', durationText = 'x秒后重发' } = options || {}
 

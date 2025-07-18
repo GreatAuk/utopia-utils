@@ -46,7 +46,10 @@ const FORCE_REFRESH_SYMBOL = '__now__';
 
 /**
  * `useTable` 是一个用于管理表格状态的 Vue 3 组合式函数，提供了分页、排序、过滤和搜索功能的完整解决方案。
- * 使用文档可以参考 src/hooks/useTable.README.md
+ *
+ * 轻量封装，减少模板代码
+ *
+ * @see https://github.com/GreatAuk/utopia-utils/blob/main/packages/vueuse/src/useTable/README.md
  */
 export function useTable<Filters extends Record<string, any>>(
   options?: UseTableOptions<Filters>,
