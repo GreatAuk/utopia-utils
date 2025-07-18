@@ -123,4 +123,97 @@ describe('deepTraverse', () => {
 
     expect(result).toEqual(['a', 'b', 'c'])
   })
+
+  it('should handle empty tree array', () => {
+    const result: string[] = []
+    deepFirstTraverse([] as any[], () => {
+      // This action should not be called
+      result.push('should not be called')
+    })
+    expect(result).toEqual([])
+  })
+
+  it('should handle nodes without children property', () => {
+    const tree = [
+      { name: 'a' },
+      { name: 'b' },
+    ]
+    const result: string[] = []
+    deepFirstTraverse(tree, (node) => {
+      result.push(node.name)
+    })
+    expect(result).toEqual(['a', 'b'])
+  })
+
+  it('should pass correct parent to action', () => {
+    const parentChildPairs: Array<[string | null, string]> = []
+    deepFirstTraverse(commonTree, (node, parent) => {
+      parentChildPairs.push([parent?.name || null, node.name])
+    })
+    expect(parentChildPairs).toEqual([
+      [null, 'a'],
+      ['a', 'b'],
+      ['a', 'c'],
+      [null, 'd'],
+      ['d', 'e'],
+      ['d', 'f'],
+    ])
+  })
+
+  it('should handle deeply nested tree structure', () => {
+    const deepTree = {
+      name: 'root',
+      children: [
+        {
+          name: 'level1-1',
+          children: [
+            {
+              name: 'level2-1',
+              children: [
+                { name: 'level3-1' },
+                { name: 'level3-2' },
+              ],
+            },
+            { name: 'level2-2' },
+          ],
+        },
+        {
+          name: 'level1-2',
+          children: [
+            { name: 'level2-3' },
+          ],
+        },
+      ],
+    }
+
+    const preOrderResult: string[] = []
+    deepFirstTraverse(deepTree, (node) => {
+      preOrderResult.push(node.name)
+    })
+    expect(preOrderResult).toEqual([
+      'root',
+      'level1-1',
+      'level2-1',
+      'level3-1',
+      'level3-2',
+      'level2-2',
+      'level1-2',
+      'level2-3',
+    ])
+
+    const postOrderResult: string[] = []
+    deepFirstTraverse(deepTree, (node) => {
+      postOrderResult.push(node.name)
+    }, { order: 'post' })
+    expect(postOrderResult).toEqual([
+      'level3-1',
+      'level3-2',
+      'level2-1',
+      'level2-2',
+      'level1-1',
+      'level2-3',
+      'level1-2',
+      'root',
+    ])
+  })
 })
