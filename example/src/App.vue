@@ -24,6 +24,9 @@ function loadScript_() {
         <RouterLink to="/use-fake-progress">
           UseFakeProgress
         </RouterLink>
+        <RouterLink to="/use-sms-countdown">
+          UseSmsCountdown
+        </RouterLink>
       </nav>
     </div>
   </header>

@@ -17,6 +17,11 @@ const router = createRouter({
       // which is lazy-loaded when the route is visited.
       component: () => import('../views/UseFakeProgressView.vue'),
     },
+    {
+      path: '/use-sms-countdown',
+      name: 'use-sms-countdown',
+      component: () => import('../views/UseSmsCountdownView.vue'),
+    }
   ],
 })
 
