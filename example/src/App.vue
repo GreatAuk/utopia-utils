@@ -27,6 +27,9 @@ function loadScript_() {
         <RouterLink to="/use-sms-countdown">
           UseSmsCountdown
         </RouterLink>
+        <RouterLink to="/use-delayed-loading">
+          UseDelayedLoading
+        </RouterLink>
       </nav>
     </div>
   </header>

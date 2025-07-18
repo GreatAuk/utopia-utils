@@ -1,14 +1,28 @@
 <script setup lang='ts'>
+import { ref } from 'vue'
 import { useFakeProgress } from '@utopia-utils/vueuse'
+
+const state = ref<'idle' | 'loading' | 'success' | 'error'>('idle')
 
 const { progress, startProgress, stopProgress, incProgress, doneProgress, resetProgress, setProgress } = useFakeProgress()
 
 function start() {
   startProgress()
-  // 假设某个异步操作完成后，设置进度为100%
-  setTimeout(() => {
+  request()
+}
+
+// 模拟异步请求
+const request = async () => {
+  state.value = 'loading'
+
+  try {
+    // 模拟API请求
+    await new Promise(resolve => setTimeout(resolve, 30 * 1000))
+    state.value = 'success'
     doneProgress()
-  }, 4000)
+  } catch (error) {
+    state.value = 'error'
+  }
 }
 </script>
 
@@ -23,6 +37,9 @@ function start() {
 
     <div>
       Current progress: {{ progress }}
+    </div>
+    <div>
+      接口请求状态: <span :style="{ color: state === 'success' ? 'green' : '' }">{{ state }}</span>
     </div>
 
     <div class="buttons">

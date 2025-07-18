@@ -21,7 +21,12 @@ const router = createRouter({
       path: '/use-sms-countdown',
       name: 'use-sms-countdown',
       component: () => import('../views/UseSmsCountdownView.vue'),
-    }
+    },
+    {
+      path: '/use-delayed-loading',
+      name: 'use-delayed-loading',
+      component: () => import('../views/UseDelayedLoadingView.vue'),
+    },
   ],
 })
 
