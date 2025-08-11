@@ -1,4 +1,5 @@
 # Utopia-Utils
+
 <p align="center">
     <a href="https://codecov.io/gh/GreatAuk/utopia-utils" >
     <img src="https://codecov.io/gh/GreatAuk/utopia-utils/branch/main/graph/badge.svg?token=KU3KJCHA4V"/>
@@ -105,7 +106,7 @@ pnpm add @utopia-utils/cli
 
 * [sleep](#sleep): 等待指定的时间。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/sleep.ts)
 * [retry](#retry): 重试函数（如果函数抛出错误）直到成功或者达到最大重试次数。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/retry.ts)
-* [awaitTo](#awaitto): 一个让你在 async/await 中轻松处理错误的装饰器，免于使用 try-catch。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/awaitTo.ts)
+* [to](#to): 一个让你在 async/await 中轻松处理错误的装饰器，免于使用 try-catch。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/awaitTo.ts)
 * [onlyResolvesLast](#onlyresolveslast): 解决竞态问题，只保留最后一次调用的结果。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/onlyResolvesLast.ts)
 * [onTimeout](#ontimeout): `setTimeout` 的封装, 返回一个清除定时器的函数。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/onTimeout.ts)
 * [createPoll](#createpoll): 创建一个轮询器。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/createPoll.ts)
@@ -122,7 +123,7 @@ pnpm add @utopia-utils/cli
 * [formatterIdCard](#formatteridcard): 身份证呈格式化。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/stringFormatter.ts)
 * [desensitizeName](#desensitizename): 姓名脱敏。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/stringDesensitize.ts)
 * [desensitizePhone](#desensitizephone): 手机号脱敏。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/stringDesensitize.ts)
-* [desensitizeIdCard](#desensitizeidcard): 身份证脱敏。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/stringDesensitize.ts)
+* [desensitizeIDCard](#desensitizeidcard): 身份证脱敏。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/stringDesensitize.ts)
 * [desensitizeEmail](#desensitizeemail): 邮箱脱敏。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/stringDesensitize.ts)
 
 #### 数值
@@ -158,7 +159,9 @@ pnpm add @utopia-utils/cli
 #### Vue Composables
 
 * [useSmsCountdown](#usesmscountdown): 短信验证码倒计时的 Vue composable 函数，提供完整的验证码发送倒计时功能。支持自定义倒计时时长、控制发送状态、自定义显示文本等。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/vueuse/src/useSmsCountdown)
-* [useTable](#usetable): 表格状态管理 Hook，提供分页、排序、过滤和搜索功能的完整解决方案。支持简单搜索模式（实时搜索）和高级搜索模式（手动搜索）。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/vueuse/src/useTable)
+* [useTable](#usetable): 表格状态管理 Hook 的简单封装，减少模板代码。提供分页、排序、过滤和搜索功能的完整解决方案。支持简单搜索模式（实时搜索）和高级搜索模式（手动搜索）。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/vueuse/src/useTable)
+* [useFakeProgress](#usefakeprogress): 可控的假进度条 Hook，支持自动递增、手动控制、自定义递增算法，提供进度变化/完成回调，适用于上传、异步加载等场景。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/vueuse/src/useFakeProgress)
+* [useDelayedLoading](#usedelayedloading): 延迟显示与最小显示时间控制的 loading 状态管理 Hook，可有效避免短请求导致的 loading 闪烁问题。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/vueuse/src/useDelayedLoading)
 
 #### DOM
 
