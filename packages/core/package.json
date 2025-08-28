@@ -39,6 +39,7 @@
     "@utopia-utils/share": "workspace:*",
     "@utopia-utils/tree": "workspace:*",
     "@utopia-utils/dom": "workspace:*",
+    "@utopia-utils/type": "workspace:*",
     "deepmerge": "^4.3.1",
     "js-cookie": "^3.0.5",
     "mitt": "^3.0.1",

@@ -117,6 +117,9 @@ importers:
       '@utopia-utils/tree':
         specifier: workspace:*
         version: link:../tree
+      '@utopia-utils/type':
+        specifier: workspace:*
+        version: link:../type
       deepmerge:
         specifier: ^4.3.1
         version: 4.3.1
@@ -146,19 +149,31 @@ importers:
         specifier: workspace:*
         version: link:../share
 
-  packages/share: {}
+  packages/share:
+    dependencies:
+      '@utopia-utils/type':
+        specifier: workspace:*
+        version: link:../type
 
   packages/tree:
     dependencies:
       '@utopia-utils/share':
         specifier: workspace:*
         version: link:../share
+      '@utopia-utils/type':
+        specifier: workspace:*
+        version: link:../type
+
+  packages/type: {}
 
   packages/vueuse:
     dependencies:
       '@utopia-utils/core':
         specifier: workspace:*
         version: link:../core
+      '@utopia-utils/type':
+        specifier: workspace:*
+        version: link:../type
       '@vueuse/core':
         specifier: ^13.4.0
         version: 13.4.0(vue@3.5.13(typescript@5.8.3))

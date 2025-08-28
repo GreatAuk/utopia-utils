@@ -34,6 +34,7 @@ type UseTableReturn<Filters> = {
   currentPage: Ref<number>;
   sort: ShallowRef<TableSort | undefined>;
   filters: Ref<Filters>;
+  setDefaultFilters: (filters: Filters) => void;
   search: {
     submit: () => void;
     reset: () => void;

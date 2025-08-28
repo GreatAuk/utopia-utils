@@ -3,7 +3,7 @@ import { ref, type Ref } from 'vue'
 
 import { tryOnScopeDispose } from '../utils'
 
-import type { TimeOut } from '../types'
+import type { TimeOut } from '@utopia-utils/type'
 
 /**
  * useFakeProgress 配置选项

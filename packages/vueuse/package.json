@@ -42,6 +42,7 @@
   },
   "dependencies": {
     "@utopia-utils/core": "workspace:*",
+    "@utopia-utils/type": "workspace:*",
     "@vueuse/core": "^13.4.0"
   },
   "devDependencies": {

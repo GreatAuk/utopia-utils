@@ -1,5 +1,5 @@
 import type { Ref, MaybeRefOrGetter} from 'vue'
-import type { TimeOut } from '../types';
+import type { TimeOut } from '@utopia-utils/type';
 
 import { ref, watch, toValue } from 'vue';
 

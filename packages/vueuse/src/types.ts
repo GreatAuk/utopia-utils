@@ -17,18 +17,3 @@ export type MaybeRef<T> = T | Ref<T>
  * ```
  */
 export type MaybeRefOrGetter<T> = MaybeRef<T> | (() => T)
-
-/**
- * Void function
- */
-export type Fn = () => void
-
-/**
- * Any function
- */
-export type AnyFn = (...args: any[]) => any
-
-/**
- * setTimeout return type
- */
-export type TimeOut = ReturnType<typeof setTimeout>

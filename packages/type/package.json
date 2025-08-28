@@ -1,43 +1,35 @@
 {
-  "name": "@utopia-utils/tree",
+  "name": "@utopia-utils/type",
   "type": "module",
-  "version": "1.1.0",
-  "description": "Collection of common tree utils",
+  "version": "1.0.0",
+  "description": "Collection of common type",
   "author": "Utopia <https://github.com/GreatAuk>",
   "license": "MIT",
   "homepage": "https://github.com/GreatAuk/utopia-utils#readme",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/GreatAuk/utopia-utils.git",
-    "directory": "packages/tree"
+    "directory": "packages/type"
   },
   "bugs": {
     "url": "https://github.com/GreatAuk/utopia-utils/issues"
   },
   "keywords": [
     "utils",
-    "tree-utils"
+    "type"
   ],
   "sideEffects": false,
   "exports": {
     ".": {
-      "types": "./dist/index.d.mts",
-      "default": "./dist/index.mjs"
+      "types": "./index.ts",
+      "default": "./index.ts"
     }
   },
-  "main": "./dist/index.mjs",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.mts",
+  "main": "./index.ts",
+  "module": "./index.ts",
+  "types": "./index.ts",
   "scripts": {
-    "build": "tsdown",
-    "dev": "tsdown --watch",
-    "start": "tsx src/index.ts",
-    "test": "vitest",
     "typecheck": "tsc --noEmit",
     "clean": "rm -rf .turbo & rm -rf node_modules & rm -rf dist"
-  },
-  "dependencies": {
-    "@utopia-utils/share": "workspace:*",
-    "@utopia-utils/type": "workspace:*"
   }
 }
