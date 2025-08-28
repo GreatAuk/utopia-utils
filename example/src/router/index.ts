@@ -27,6 +27,11 @@ const router = createRouter({
       name: 'use-delayed-loading',
       component: () => import('../views/UseDelayedLoadingView.vue'),
     },
+    {
+      path: '/use-deferred-toggle',
+      name: 'use-deferred-toggle',
+      component: () => import('../views/UseDeferredToggleView.vue'),
+    },
   ],
 })
 

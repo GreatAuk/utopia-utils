@@ -1,6 +1,5 @@
 ---
-description: 与单元测试相关时
-globs:
+description: 与单元测试相关时自动引用
 alwaysApply: false
 ---
 # 单元测试规范

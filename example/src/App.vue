@@ -30,6 +30,9 @@ function loadScript_() {
         <RouterLink to="/use-delayed-loading">
           UseDelayedLoading
         </RouterLink>
+        <RouterLink to="/use-deferred-toggle">
+          UseDeferredToggle
+        </RouterLink>
       </nav>
     </div>
   </header>
