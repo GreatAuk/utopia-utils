@@ -54,7 +54,7 @@ type UseSmsCountdownReturn = {
  * @see https://github.com/GreatAuk/utopia-utils/blob/main/packages/vueuse/src/useSmsCountdown/README.md
  */
 export function useSmsCountdown(options?: UseSmsCountdownOptions): UseSmsCountdownReturn {
-  const { totalSecond = 60, sendAble = true, startText = '获取验证码', durationText = 'x秒后重发' } = options || {}
+  const { totalSecond = 60, sendAble = true, startText = '获取验证码', durationText = '%s秒后重发' } = options || {}
 
   if (totalSecond <= 0 && totalSecond % 1 !== 0)
     throw new Error('倒计时的时间应该为一个正整数！')
