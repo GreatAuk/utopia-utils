@@ -29,6 +29,17 @@ export interface DeferredToggle {
  * @param openFn 原始“显示”方法
  * @param hideFn 原始“隐藏”方法
  * @param opts 延迟与最短展示时间配置
+ * @example
+ * ```ts
+ * const { open, hide } = createDeferredToggle(
+      () => uni.showLoading({ title: '加载中...' }),
+      () => uni.hideLoading({
+        noConflict: true, // 微信小程序中避免与 toast 冲突
+      }),
+      { delay: 300, minDisplayTime: 500 },
+    )
+ * ```
+ * @linkcode https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/createDeferredToggle.ts
  */
 export function createDeferredToggle(
   openFn: AnyFn,

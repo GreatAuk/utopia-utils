@@ -16,12 +16,22 @@ export interface UseDeferredToggleResult {
 /**
  * useDeferredToggle
  *
- * 轻量封装 `createDeferredToggle`，在 Vue 组件/EffectScope 内使用时会在作用域
- * 组件销毁时自动 `cancel`，避免计时器泄漏。
+ * 传入原始 open / hide 方法，返回带防闪烁逻辑的新 open / hide。
  *
  * @param openFn   真正执行“显示”的函数 (例如 uni.showLoading)
  * @param hideFn   真正执行“隐藏”的函数 (例如 uni.hideLoading)
  * @param options  延迟与最短展示时间配置
+ * @example
+ * ```ts
+ * const { open, hide } = useDeferredToggle(
+      () => uni.showLoading({ title: '加载中...' }),
+      () => uni.hideLoading({
+        noConflict: true, // 微信小程序中避免与 toast 冲突
+      }),
+      { delay: 300, minDisplayTime: 500 },
+    )
+ * ```
+ * @see https://github.com/GreatAuk/utopia-utils/blob/main/packages/vueuse/src/useDeferredToggle/README.md
  */
 export function useDeferredToggle(
   openFn: AnyFn,

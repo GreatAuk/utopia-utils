@@ -21,7 +21,7 @@ pnpm add @utopia-utils/vueuse
 <script setup lang="ts">
 import { useDeferredToggle } from '@utopia-utils/vueuse'
 
-const { show, hide } = useDeferredToggle(
+const { open, hide } = useDeferredToggle(
   () => uni.showLoading({ title: '加载中...' }),
   () => uni.hideLoading({
     noConflict: true, // 微信小程序中避免与 toast 冲突
@@ -31,7 +31,7 @@ const { show, hide } = useDeferredToggle(
 
 async function fetchData() {
   try {
-    show()
+    open()
     await apiCall()
   } finally {
     hide()
@@ -46,7 +46,7 @@ async function fetchData() {
 
 ## API
 
-### `useDeferredToggle(showFn, hideFn, options?)`
+### `useDeferredToggle(openFn, hideFn, options?)`
 
 | 参数          | 说明                              | 类型                              | 默认值 |
 | ------------- | --------------------------------- | --------------------------------- | ------ |
@@ -58,8 +58,8 @@ async function fetchData() {
 
 | 属性            | 说明                                       | 类型     | 默认值 |
 | --------------- | ------------------------------------------ | -------- | ------ |
-| `delay`         | 延迟触发 `show` 的时间(ms)                 | `number` | 300    |
-| `minDisplayTime`| `show` 真正触发后最短展示时长(ms)         | `number` | 500    |
+| `delay`         | 延迟触发 `open` 的时间(ms)                 | `number` | 300    |
+| `minDisplayTime`| `open` 真正触发后最短展示时长(ms)         | `number` | 500    |
 
 ### 返回值
 

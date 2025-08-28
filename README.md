@@ -162,6 +162,7 @@ pnpm add @utopia-utils/cli
 * [useTable](#usetable): 表格状态管理 Hook 的简单封装，减少模板代码。提供分页、排序、过滤和搜索功能的完整解决方案。支持简单搜索模式（实时搜索）和高级搜索模式（手动搜索）。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/vueuse/src/useTable)
 * [useFakeProgress](#usefakeprogress): 可控的假进度条 Hook，支持自动递增、手动控制、自定义递增算法，提供进度变化/完成回调，适用于上传、异步加载等场景。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/vueuse/src/useFakeProgress)
 * [useDelayedLoading](#usedelayedloading): 延迟显示与最小显示时间控制的 loading 状态管理 Hook，可有效避免短请求导致的 loading 闪烁问题。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/vueuse/src/useDelayedLoading)
+* [useDeferredToggle](#usedeferredtoggle): 传入原始 open / hide 方法，返回带防闪烁逻辑的新 open / hide。。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/vueuse/src/useDeferredToggle)
 
 #### DOM
 
@@ -223,6 +224,7 @@ pnpm add @utopia-utils/cli
 
 * [getFileName](#getfilename): 获取文件名。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/getFileName.ts)
 * [mitt](#mitt): 轻量级的事件发布/订阅库。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/vendor.ts)
+* [createDeferredToggle](#createdeferredtoggle): 传入原始 open / hide 方法，返回带防闪烁逻辑的新 open / hide。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/createDeferredToggle.ts)
 
 ---
 
