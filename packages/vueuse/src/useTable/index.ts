@@ -34,7 +34,6 @@ type UseTableReturn<Filters> = {
   currentPage: Ref<number>;
   sort: ShallowRef<TableSort | undefined>;
   filters: Ref<Filters>;
-  setDefaultFilters: (filters: Filters) => void;
   search: {
     submit: () => void;
     reset: () => void;
@@ -89,15 +88,15 @@ export function useTable<Filters extends Record<string, any>>(
     onFormChange({ forceRefresh: true });
   };
 
+  /* 处理内存泄漏：保存清理函数 */
+  let stopWatcher: (() => void) | undefined;
+
   if (searchType === 'simple') {
-    watchDebounced(formState, onFormChange, {
+    stopWatcher = watchDebounced(formState, onFormChange, {
       debounce: searchDebounce,
       deep: true,
     });
   }
-
-  /* 处理内存泄漏：保存清理函数 */
-  let stopWatcher: (() => void) | undefined;
 
   /* 组件卸载时清理监听器 */
   onScopeDispose(() => {
