@@ -56,8 +56,12 @@ type UseSmsCountdownReturn = {
 export function useSmsCountdown(options?: UseSmsCountdownOptions): UseSmsCountdownReturn {
   const { totalSecond = 60, sendAble = true, startText = '获取验证码', durationText = '%s秒后重发' } = options || {}
 
-  if (totalSecond <= 0 && totalSecond % 1 !== 0)
-    throw new Error('倒计时的时间应该为一个正整数！')
+  /* 参数校验 */
+  if (totalSecond <= 0 || totalSecond % 1 !== 0)
+    throw new Error(`totalSecond 应为正整数`)
+
+  if (!/%s/i.test(durationText))
+    throw new Error('durationText 必须包含 "%s" 占位符')
 
   const counts = ref(totalSecond)
 
@@ -73,28 +77,38 @@ export function useSmsCountdown(options?: UseSmsCountdownOptions): UseSmsCountdo
     return durationText.replace(/%s/i, counts.value.toString())
   })
 
-  let intervalId: ReturnType<typeof setInterval> | null = null
+  let timerId: ReturnType<typeof setTimeout> | null = null
+
+  /**
+   * 单次递归 tick，实现 1s 递减，倒计时结束自动复位
+   */
+  const tick = () => {
+    if (counts.value <= 0) {
+      counts.value = totalSecond
+      timerId = null
+      return
+    }
+    counts.value--
+    timerId = setTimeout(tick, 1000)
+  }
 
   function startCountdown() {
-    if (!canSend.value)
+    // 不可发送 或 已在运行中 -> 直接返回
+    if (!canSend.value || timerId)
       return
 
     counts.value--
-    intervalId = setInterval(() => {
-      counts.value--
-      if (counts.value <= 0) {
-        counts.value = totalSecond
-        clearInterval(intervalId!)
-      }
-    }, 1000)
+    timerId = setTimeout(tick, 1000)
   }
 
   /**
-   * 停止计时
+   * 停止计时并复位
    */
   function stopCountdown() {
-    intervalId && clearInterval(intervalId)
-    intervalId = null
+    if (timerId) {
+      clearTimeout(timerId)
+      timerId = null
+    }
     counts.value = totalSecond
   }
   tryOnScopeDispose(stopCountdown)

@@ -29,12 +29,12 @@ interface Result {
 /**
  * 处理异步请求时 loading 的闪烁问题。
  *
- * 思路：是延迟（300ms）显示 loading，如果请求在 300ms 内完成，则不显示 loading；如果超过 300ms 则显示 loading，并且最少显示 500ms。
+ * 思路：延迟（默认 300ms）显示 loading，如果请求在 300ms 内完成，则不显示 loading；如果超过 300ms 则显示 loading，并且最少显示 500ms（默认）。
  *
  * @param {Ref<boolean>} loading - 用于控制 loading 状态的响应式引用
  * @param {object} options - 配置项
- * @param {number} [options.delay=300] - 延迟显示 loading 的毫秒数
- * @param {number} [options.minDisplayTime=500] - loading 动画的最小显示时间 (ms)
+ * @param {MaybeRefOrGetter<number>} [options.delay=300] - 延迟显示 loading 的毫秒数
+ * @param {MaybeRefOrGetter<number>} [options.minDisplayTime=500] - loading 动画的最小显示时间 (ms)
  *
  * @see https://github.com/GreatAuk/utopia-utils/blob/main/packages/vueuse/src/useDelayedLoading/README.md
  */
