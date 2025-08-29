@@ -4,11 +4,11 @@ import { createDeferredToggle } from '@utopia-utils/core'
 
 import { tryOnScopeDispose } from '../utils'
 
-export interface UseDeferredToggleResult {
+export interface UseDeferredToggleResult<O extends AnyFn, H extends AnyFn> {
   /** 触发“显示”逻辑（可能被延迟） */
-  open: () => void
+  open: (...args: Parameters<O>) => void
   /** 触发“隐藏”逻辑（可能被延迟以保证最短展示时长） */
-  hide: () => void
+  hide: (...args: Parameters<H>) => void
   /** 立即清理所有定时器，通常在组件卸载或页面跳转时调用 */
   cancel: () => void
 }
@@ -33,11 +33,11 @@ export interface UseDeferredToggleResult {
  * ```
  * @see https://github.com/GreatAuk/utopia-utils/blob/main/packages/vueuse/src/useDeferredToggle/README.md
  */
-export function useDeferredToggle(
-  openFn: AnyFn,
-  hideFn: AnyFn,
-  options: DeferredToggleOptions = {},
-): UseDeferredToggleResult {
+export function useDeferredToggle<O extends AnyFn, H extends AnyFn>(
+  openFn: O,
+  hideFn: H,
+  options: DeferredToggleOptions = { delay: 300, minDisplayTime: 500 },
+): UseDeferredToggleResult<O, H> {
   const { open, hide, cancel } = createDeferredToggle(openFn, hideFn, options)
 
   // 组件销毁或 effect scope 结束时自动清理

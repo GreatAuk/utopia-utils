@@ -8,12 +8,28 @@ export interface DeferredToggleOptions {
   minDisplayTime?: number
 }
 
-export interface DeferredToggle {
-  /** 触发“显示”逻辑（可能被延迟） */
-  open: () => void
-  /** 触发“隐藏”逻辑（可能被延迟以保证最短展示时长） */
-  hide: () => void
-  /** 立即清理所有定时器，通常在组件卸载或页面跳转时调用 */
+/**
+ * createDeferredToggle 返回值
+ *
+ * 使用泛型参数，保证调用 open/hide 时的参数与原始 openFn/hideFn 一致
+ */
+export interface DeferredToggle<
+  O extends AnyFn = AnyFn,
+  H extends AnyFn = AnyFn,
+> {
+  /**
+   * 触发“显示”逻辑（可能被延迟）
+   * 参数与传入的 openFn 完全一致
+   */
+  open: (...args: Parameters<O>) => void
+  /**
+   * 触发“隐藏”逻辑（可能被延迟以保证最短展示时长）
+   * 参数与传入的 hideFn 完全一致
+   */
+  hide: (...args: Parameters<H>) => void
+  /**
+   * 立即清理所有定时器，通常在组件卸载或页面跳转时调用
+   */
   cancel: () => void
 }
 
@@ -41,11 +57,14 @@ export interface DeferredToggle {
  * ```
  * @linkcode https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/createDeferredToggle.ts
  */
-export function createDeferredToggle(
-  openFn: AnyFn,
-  hideFn: AnyFn,
+export function createDeferredToggle<
+  O extends AnyFn = AnyFn,
+  H extends AnyFn = AnyFn,
+>(
+  openFn: O,
+  hideFn: H,
   opts: DeferredToggleOptions = {},
-): DeferredToggle {
+): DeferredToggle<O, H> {
   const { delay = 300, minDisplayTime = 500 } = opts
 
   type Timer = TimeOut | null
@@ -54,22 +73,28 @@ export function createDeferredToggle(
   let startTime: number | null = null
   let isOpen = false
 
-  /* 延迟触发 openFn */
-  const open = () => {
+  /**
+   * 延迟触发 openFn，可接受与 openFn 相同的参数列表
+   */
+  const open = (...openArgs: Parameters<O>) => {
     // 如已存在待触发或已展示状态，先重置
     cancel()
 
     openTimer = setTimeout(() => {
       startTime = Date.now()
       isOpen = true
-      openFn()
+      // 透传参数给原始 openFn
+      // eslint-disable-next-line n/no-callback-literal
+      openFn(...openArgs)
       // open 已真正执行，将 openTimer 置空，便于 hide 正常判断
       openTimer = null
     }, delay)
   }
 
-  /* 确保满足 minDisplayTime 后再触发 hideFn */
-  const hide = () => {
+  /**
+   * 在满足最短展示时长后触发 hideFn，可接受与 hideFn 相同的参数列表
+   */
+  const hide = (...hideArgs: Parameters<H>) => {
     // (1) 仍在 delay 窗口内，直接取消 openTimer => openFn 从未执行
     if (openTimer) {
       clearTimeout(openTimer)
@@ -83,11 +108,11 @@ export function createDeferredToggle(
       const remain = minDisplayTime - elapsed
       if (remain > 0) {
         hideTimer = setTimeout(() => {
-          hideFn()
+          hideFn(...hideArgs)
           reset()
         }, remain)
       } else {
-        hideFn()
+        hideFn(...hideArgs)
         reset()
       }
     }
