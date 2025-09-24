@@ -14,7 +14,7 @@ import { isNumber } from '@utopia-utils/share'
  */
 export function fenToYuan(fen: number | undefined): number | undefined {
   try {
-    if (!isNumber(fen) || Number.isNaN(fen))
+    if (!isNumber(fen) || Number.isNaN(fen) || !Number.isFinite(fen))
       return undefined
     return divide(fen, 100)
   }
