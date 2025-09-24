@@ -16,14 +16,30 @@ import { isNumber } from '@utopia-utils/share'
 export function yuanToFen(yuan: number | string | undefined): number | undefined {
   try {
     /* 处理非数字输入 */
-    if (yuan === undefined || yuan === null || yuan === '')
+    if (yuan === undefined || yuan === null)
       return undefined
 
-    /* 尝试将字符串转换为数字 */
-    const numValue = typeof yuan === 'string' ? Number(yuan) : yuan
+    /** numValue */
+    let numValue: number
+
+    if (typeof yuan === 'string') {
+      /** trimmedYuan */
+      const trimmedYuan = yuan.trim()
+
+      if (trimmedYuan === '')
+        return undefined
+
+      numValue = Number(trimmedYuan)
+    }
+    else if (isNumber(yuan)) {
+      numValue = yuan
+    }
+    else {
+      return undefined
+    }
 
     /* 验证转换后的值是否为有效数字 */
-    if (!isNumber(numValue) || Number.isNaN(numValue))
+    if (!Number.isFinite(numValue))
       return undefined
 
     /* 使用 number-precision 避免浮点数精度问题 */

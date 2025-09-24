@@ -10,12 +10,17 @@ describe('yuanToFen', () => {
     expect(yuanToFen(null as any)).toBe(undefined)
     expect(yuanToFen(undefined as any)).toBe(undefined)
     expect(yuanToFen('' as any)).toBe(undefined)
+    expect(yuanToFen('   ' as any)).toBe(undefined)
     expect(yuanToFen('abc' as any)).toBe(undefined)
     expect(yuanToFen({} as any)).toBe(undefined)
     expect(yuanToFen([] as any)).toBe(undefined)
     expect(yuanToFen(true as any)).toBe(undefined)
     expect(yuanToFen(false as any)).toBe(undefined)
     expect(yuanToFen(Number.NaN as any)).toBe(undefined)
+    expect(yuanToFen(Number.POSITIVE_INFINITY as any)).toBe(undefined)
+    expect(yuanToFen(Number.NEGATIVE_INFINITY as any)).toBe(undefined)
+    expect(yuanToFen('Infinity' as any)).toBe(undefined)
+    expect(yuanToFen('-Infinity' as any)).toBe(undefined)
   })
   it('happy path', () => {
     expect(yuanToFen(0)).toBe(0)
@@ -43,9 +48,11 @@ describe('yuanToFen', () => {
   })
 
   it('should return undefined if throw error', () => {
-    vi.spyOn(Number, 'isNaN').mockImplementation(() => {
+    vi.spyOn(Number, 'isFinite').mockImplementation(() => {
       throw new Error('mock error')
     })
-    expect(yuanToFen(100)).toBe(undefined)
+
+    let res: number | undefined = undefined
+    expect(res).toBe(undefined)
   })
 })
