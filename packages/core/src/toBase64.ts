@@ -6,7 +6,7 @@ import { isBlob, isFile, isString } from '@utopia-utils/share'
  * or string.
  * @returns a Promise that resolves to a string.
  */
-export async function toBase64(o: File | Blob | string) {
+export async function toBase64(o: File | Blob | string): Promise<string> {
   if (isFile(o) || isBlob(o))
     return await fileToBase64(o)
 

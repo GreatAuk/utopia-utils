@@ -160,7 +160,17 @@ export function createPoll<T>(options: CreatePollOptions<T>): CreatePollReturn {
    * 执行轮询任务
    */
   const poll = () => {
-    const res_ = taskFn()
+    /** res_: taskFn 的返回值，可能是同步值或 Promise */
+    let res_: ReturnType<AnyFn<T>>
+
+    try {
+      res_ = taskFn()
+    }
+    catch (err) {
+      handleError(err instanceof Error ? err : new Error(String(err)))
+      return
+    }
+
     const p = isPromise(res_) ? res_ : Promise.resolve(res_)
 
     p.then((res) => {

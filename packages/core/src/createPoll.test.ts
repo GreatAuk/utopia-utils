@@ -258,6 +258,41 @@ describe('createPoll', () => {
     })
   })
 
+  it('handles synchronous error from taskFn', async () => {
+    /** testError: 同步抛出的错误实例 */
+    const testError = new Error('sync error')
+    const mockTaskFn = vi.fn().mockImplementation(() => {
+      throw testError
+    })
+    const mockOnError = vi.fn().mockReturnValue(false)
+    const mockOnEnd = vi.fn()
+
+    const { startPoll } = createPoll({
+      taskFn: mockTaskFn,
+      interval: 10,
+      onError: mockOnError,
+      onEnd: mockOnEnd,
+    })
+
+    startPoll()
+    await vi.runAllTimersAsync()
+
+    expect(mockTaskFn).toHaveBeenCalledTimes(1)
+    expect(mockOnError).toHaveBeenCalledTimes(1)
+    expect(mockOnError).toHaveBeenCalledWith({
+      times: 0,
+      error: testError,
+      maxTimes: 0,
+    })
+    expect(mockOnEnd).toHaveBeenCalledTimes(1)
+    expect(mockOnEnd).toHaveBeenCalledWith({
+      times: 0,
+      res: undefined,
+      maxTimes: 0,
+      error: testError,
+    })
+  })
+
   it('getPollStatus returns current polling status', async () => {
     const mockTaskFn = vi.fn().mockImplementation(taskDelay)
 

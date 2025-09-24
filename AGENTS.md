@@ -4,6 +4,7 @@
 - 仓库使用 pnpm workspace 管理多包，所有源码位于 `packages/*/src`，各包自带 `package.json` 与 `tsdown.config.ts`，保持 API 在主入口 `index.ts` 汇出。
 - 通用示例与手动验证放在 `example/`（Vite + Vue），端到端脚本置于 `example/e2e`；公共配置如 `tsconfig.json`、`turbo.json` 位于根目录。
 - 生成产物写入各包 `dist/`，不要直接修改；测试覆盖率报告在 `coverage/`，可用于追踪回归。
+- 其中 `packages/shared` 放置跨包共用工具函数，`packages/type` 定义全局类型，重复功能可以直接引用。
 
 ## 构建、测试与开发命令
 - 初次安装使用 `pnpm install`（遵循 `preinstall` only-allow 约束，不要用 npm/yarn）。
