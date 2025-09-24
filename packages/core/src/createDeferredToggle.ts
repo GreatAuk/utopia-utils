@@ -73,6 +73,12 @@ export function createDeferredToggle<
   let startTime: number | null = null
   let isOpen = false
 
+  /* 重置内部状态 */
+  const reset = () => {
+    startTime = null
+    isOpen = false
+  }
+
   /**
    * 延迟触发 openFn，可接受与 openFn 相同的参数列表
    */
@@ -106,13 +112,21 @@ export function createDeferredToggle<
     if (isOpen && startTime !== null) {
       const elapsed = Date.now() - startTime
       const remain = minDisplayTime - elapsed
+
+      if (hideTimer) {
+        clearTimeout(hideTimer)
+        hideTimer = null
+      }
+
       if (remain > 0) {
         hideTimer = setTimeout(() => {
           hideFn(...hideArgs)
+          hideTimer = null
           reset()
         }, remain)
       } else {
         hideFn(...hideArgs)
+        hideTimer = null
         reset()
       }
     }
@@ -124,12 +138,6 @@ export function createDeferredToggle<
     if (hideTimer) clearTimeout(hideTimer)
     openTimer = hideTimer = null
     reset()
-  }
-
-  /* 重置内部状态 */
-  const reset = () => {
-    startTime = null
-    isOpen = false
   }
 
   return { open, hide, cancel }

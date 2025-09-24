@@ -82,6 +82,29 @@ describe('createDeferredToggle', () => {
     expect(hideSpy).toHaveBeenCalledTimes(1)
   })
 
+  it('should debounce multiple hide calls and keep latest arguments', () => {
+    /** hideSpyWithArgs: 断言 hideFn 的参数与调用次数 */
+    const hideSpyWithArgs = vi.fn()
+    const toggle = createDeferredToggle(openSpy, hideSpyWithArgs, {
+      delay: DELAY,
+      minDisplayTime: MIN_DISPLAY,
+    })
+
+    toggle.open()
+    vi.advanceTimersByTime(DELAY)
+
+    toggle.hide('first')
+    vi.advanceTimersByTime(100)
+    toggle.hide('second')
+
+    vi.advanceTimersByTime(MIN_DISPLAY - 100 - 1)
+    expect(hideSpyWithArgs).not.toHaveBeenCalled()
+
+    vi.advanceTimersByTime(1)
+    expect(hideSpyWithArgs).toHaveBeenCalledTimes(1)
+    expect(hideSpyWithArgs).toHaveBeenLastCalledWith('second')
+  })
+
   it('cancel should clear all timers and reset state', () => {
     const toggle = createDeferredToggle(openSpy, hideSpy, {
       delay: DELAY,
