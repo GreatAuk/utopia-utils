@@ -5,7 +5,7 @@ describe('yuanFormat', () => {
   afterEach(() => {
     vi.restoreAllMocks()
   })
-  it('should return "-" when input is not number', () => {
+  it('should return "-" when input is not finite number', () => {
     expect(yuanFormat(null as any)).toBe('-')
     expect(yuanFormat(undefined as any)).toBe('-')
     expect(yuanFormat('' as any)).toBe('-')
@@ -15,6 +15,10 @@ describe('yuanFormat', () => {
     expect(yuanFormat(true as any)).toBe('-')
     expect(yuanFormat(false as any)).toBe('-')
     expect(yuanFormat(Number.NaN as any)).toBe('-')
+    expect(yuanFormat(Number.POSITIVE_INFINITY)).toBe('-')
+    expect(yuanFormat(Number.NEGATIVE_INFINITY)).toBe('-')
+    expect(yuanFormat(Number.POSITIVE_INFINITY, { unit: 'yuan' })).toBe('-')
+    expect(yuanFormat(Number.NEGATIVE_INFINITY, { unit: 'yuan' })).toBe('-')
   })
   it('happy path', () => {
     expect(yuanFormat(0)).toBe('0.00')

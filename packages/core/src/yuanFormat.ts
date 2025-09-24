@@ -45,7 +45,7 @@ interface Options {
  */
 export function yuanFormat(num?: number, options?: Options): string | '-' {
   try {
-    if (!isNumber(num) || Number.isNaN(num))
+    if (!isNumber(num) || Number.isNaN(num) || !Number.isFinite(num))
       return '-'
     const { unit = 'fen', prefix, space } = options ?? {}
     const yuan = unit === 'fen' ? fenToYuan(num) : num
