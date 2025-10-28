@@ -125,6 +125,7 @@ pnpm add @utopia-utils/cli
 * [desensitizePhone](#desensitizephone): 手机号脱敏。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/stringDesensitize.ts)
 * [desensitizeIDCard](#desensitizeidcard): 身份证脱敏。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/stringDesensitize.ts)
 * [desensitizeEmail](#desensitizeemail): 邮箱脱敏。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/stringDesensitize.ts)
+* [toUpperFirstLetter](#toupperfirstletter): 首字母转大写。[source](https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/toUpperFirstLetter.ts)
 
 #### 数值
 
