@@ -167,6 +167,7 @@ export function createPoll<T>(options: CreatePollOptions<T>): CreatePollReturn {
       res_ = taskFn()
     }
     catch (err) {
+      times++
       handleError(err instanceof Error ? err : new Error(String(err)))
       return
     }
@@ -191,6 +192,10 @@ export function createPoll<T>(options: CreatePollOptions<T>): CreatePollReturn {
         scheduleNextPoll()
       }
     }).catch((err) => {
+      if (!isPolling)
+        return
+
+      times++
       handleError(err instanceof Error ? err : new Error(String(err)))
     })
   }
@@ -206,9 +211,18 @@ export function createPoll<T>(options: CreatePollOptions<T>): CreatePollReturn {
 
     if (shouldContinue === false) {
       stopPoll(undefined, error)
-    } else {
-      scheduleNextPoll()
+      return
     }
+
+    if (maxTimes && times >= maxTimes) {
+      if (lastResult !== undefined)
+        onMaxTimes?.({ times, res: lastResult as Awaited<T>, maxTimes })
+
+      stopPoll(undefined, error)
+      return
+    }
+
+    scheduleNextPoll()
   }
 
   /**

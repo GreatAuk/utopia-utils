@@ -201,10 +201,9 @@ describe('createPoll', () => {
     const mockOnError = vi.fn()
     const mockOnEnd = vi.fn()
 
-    const { startPoll } = createPoll({
+    const { startPoll, stopPoll } = createPoll({
       taskFn: mockTaskFn,
       interval: 10,
-      maxTimes: 3,
       onError: (payload) => {
         mockOnError(payload)
         return true // 继续轮询
@@ -218,11 +217,14 @@ describe('createPoll', () => {
     expect(mockTaskFn).toHaveBeenCalledTimes(4)
     expect(mockOnError).toHaveBeenCalledTimes(4)
     expect(mockOnError).toHaveBeenLastCalledWith({
-      times: 0,
+      times: 4,
       error: testError,
-      maxTimes: 3,
+      maxTimes: 0,
     })
     expect(mockOnEnd).not.toHaveBeenCalled()
+
+    stopPoll()
+    expect(mockOnEnd).toHaveBeenCalledTimes(1)
   })
 
   it('stop poll when onError returns false', async () => {
@@ -245,15 +247,52 @@ describe('createPoll', () => {
     expect(mockTaskFn).toHaveBeenCalledTimes(1)
     expect(mockOnError).toHaveBeenCalledTimes(1)
     expect(mockOnError).toHaveBeenCalledWith({
-      times: 0,
+      times: 1,
       error: testError,
       maxTimes: 10,
     })
     expect(mockOnEnd).toHaveBeenCalledTimes(1)
     expect(mockOnEnd).toHaveBeenCalledWith({
-      times: 0,
+      times: 1,
       res: undefined,
       maxTimes: 10,
+      error: testError,
+    })
+  })
+
+  it('stops when maxTimes reached after consecutive errors', async () => {
+    /** testError: 连续失败时抛出的错误 */
+    const testError = new Error('persistent error')
+    /** mockTaskFn: 持续抛出错误的任务函数 */
+    const mockTaskFn = vi.fn().mockRejectedValue(testError)
+    /** mockOnError: 记录错误回调的调用信息 */
+    const mockOnError = vi.fn()
+    /** mockOnEnd: 记录结束回调的调用信息 */
+    const mockOnEnd = vi.fn()
+
+    const { startPoll } = createPoll({
+      taskFn: mockTaskFn,
+      interval: 10,
+      maxTimes: 3,
+      onError: mockOnError,
+      onEnd: mockOnEnd,
+    })
+
+    startPoll()
+    await vi.runAllTimersAsync()
+
+    expect(mockTaskFn).toHaveBeenCalledTimes(3)
+    expect(mockOnError).toHaveBeenCalledTimes(3)
+    expect(mockOnError).toHaveBeenLastCalledWith({
+      times: 3,
+      error: testError,
+      maxTimes: 3,
+    })
+    expect(mockOnEnd).toHaveBeenCalledTimes(1)
+    expect(mockOnEnd).toHaveBeenCalledWith({
+      times: 3,
+      res: undefined,
+      maxTimes: 3,
       error: testError,
     })
   })
@@ -280,13 +319,13 @@ describe('createPoll', () => {
     expect(mockTaskFn).toHaveBeenCalledTimes(1)
     expect(mockOnError).toHaveBeenCalledTimes(1)
     expect(mockOnError).toHaveBeenCalledWith({
-      times: 0,
+      times: 1,
       error: testError,
       maxTimes: 0,
     })
     expect(mockOnEnd).toHaveBeenCalledTimes(1)
     expect(mockOnEnd).toHaveBeenCalledWith({
-      times: 0,
+      times: 1,
       res: undefined,
       maxTimes: 0,
       error: testError,
