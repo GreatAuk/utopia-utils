@@ -1,7 +1,7 @@
 {
   "name": "@utopia-utils/type",
   "type": "module",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Collection of common type",
   "author": "Utopia <https://github.com/GreatAuk>",
   "license": "MIT",

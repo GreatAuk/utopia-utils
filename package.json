@@ -1,7 +1,7 @@
 {
   "name": "utopia-utils-monorepo",
   "type": "module",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "packageManager": "pnpm@10.8.0",
   "description": "",
   "author": "Utopia <https://github.com/GreatAuk>",
