@@ -16,6 +16,40 @@ interface Options<TreeNode> {
  * @param {Options} [options] - {
  * @returns A filtered tree
  * @linkcode https://github.com/GreatAuk/utopia-utils/blob/main/packages/tree/src/treeFilterNode.ts
+ * @example
+ * ```
+    const tree = [
+      {
+        id: 'root',
+        children: [
+          {
+            id: 'child1',
+            children: [
+              {
+                id: 'child1-1',
+              },
+            ],
+          },
+          {
+            id: 'child2',
+          },
+        ],
+      },
+    ]
+    const filteredTree = treeFilterNode(tree, node => node.id === 'child2')
+    console.log(filteredTree)
+    // output
+    // [
+    //   {
+    //     "children": [
+    //       {
+    //         "id": "child2",
+    //       },
+    //     ],
+    //     "id": "root",
+    //   },
+    // ]
+ * ```
  */
 export function treeFilterNode<TreeNode>(tree: TreeNode[] | TreeNode, predicate: (node: TreeNode) => boolean, options?: Options<TreeNode>): TreeNode[] {
   const { fieldNames, onEachTraverse } = options || {}

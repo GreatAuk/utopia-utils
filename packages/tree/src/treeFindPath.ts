@@ -27,31 +27,31 @@ interface Options {
       },
     ]
 
-    const path = treeFindPath(tree, node => node.name === 'b')
-    console.log(path?.map(v => v.name)) // ['a', 'b']
+    const pathNodes = treeFindPath(tree, node => node.name === 'b')
+    console.log(pathNodes?.map(v => v.name)) // ['a', 'b']
  * ```
  */
 export function treeFindPath<TreeNode>(tree: TreeNode[] | TreeNode, predicate: (node: TreeNode) => boolean, options?: Options): TreeNode[] | null {
   const { fieldNames } = options || {}
   const { children: childrenField } = { ...DEFAULT_FIELD_NAMES, ...fieldNames }
 
-  const path: TreeNode[] = []
+  const pathNodes: TreeNode[] = []
   const queue = Array.isArray(tree) ? [...tree] : [tree]
   const visitedSet = new Set<TreeNode>()
 
   while (queue.length) {
     const node = queue[0]
     if (visitedSet.has(node)) {
-      path.pop()
+      pathNodes.pop()
       queue.shift()
     }
     else {
       visitedSet.add(node)
       // @ts-expect-error - dynamic field name
       node[childrenField] && queue.unshift(...node[childrenField])
-      path.push(node)
+      pathNodes.push(node)
       if (predicate(node))
-        return path
+        return pathNodes
     }
   }
   return null
