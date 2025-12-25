@@ -180,14 +180,12 @@ describe('useDeferredToggle', () => {
     it('应该在 effectScope dispose 时自动清理定时器', () => {
       const scope = effectScope()
 
-      let cancel: (() => void) | undefined
 
       scope.run(() => {
         const result = useDeferredToggle(openSpy, hideSpy, {
           delay: DELAY,
           minDisplayTime: MIN_DISPLAY,
         })
-        cancel = result.cancel
         result.open()
       })
 

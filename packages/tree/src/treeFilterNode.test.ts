@@ -181,7 +181,7 @@ describe('treeFilterNode', () => {
   })
 
   it('should return empty array for empty tree', () => {
-    expect(treeFilterNode([], node => true)).toEqual([])
+    expect(treeFilterNode([], _node => true)).toEqual([])
   })
 
   it('should return empty array when no nodes match the predicate', () => {

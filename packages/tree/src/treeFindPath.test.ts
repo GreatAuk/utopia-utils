@@ -123,7 +123,7 @@ describe('treeFindPath', () => {
     ]
     const path = treeFindPath(tree, node => node.name === 'b')
     expect(path?.length).toBe(2)
-    expect((path?.[1] as TreeNode).id).toBe(1) // Should find the first 'b' with id=1
+    expect((path?.[1] as TreeNode)?.id).toBe(1) // Should find the first 'b' with id=1
   })
 
   it('should handle nodes without children', () => {

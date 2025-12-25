@@ -309,7 +309,7 @@ describe('useFakeProgress', () => {
 
   describe('自定义 amount 函数', () => {
     it('应该使用自定义 amount 函数计算增量', () => {
-      const customAmount = vi.fn((p: number) => {
+      const customAmount = vi.fn(() => {
         /* 固定增量 0.1 */
         return 0.1
       })

@@ -358,7 +358,6 @@ describe('useTable', () => {
     it('应该在 simple 模式下 effectScope dispose 时停止 watcher', async () => {
       const scope = effectScope()
 
-      let search: any
       let filters: any
       let formState: any
 
