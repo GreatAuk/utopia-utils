@@ -10,6 +10,7 @@
     "strictNullChecks": true,
     "esModuleInterop": true,
     "skipDefaultLibCheck": true,
+    "declarationMap": true,
     "skipLibCheck": true,
     "declaration": true,
     "isolatedDeclarations": true

@@ -8,7 +8,9 @@ const config: UserConfigFn | UserConfig = defineConfig((options) => {
     },
     sourcemap: true,
     clean: true,
-    dts: true,
+    dts: {
+      sourcemap: true,
+    },
     fixedExtension: true,
     minify: !options.watch,
   }
