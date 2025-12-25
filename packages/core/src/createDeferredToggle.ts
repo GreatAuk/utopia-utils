@@ -18,12 +18,12 @@ export interface DeferredToggle<
   H extends AnyFn = AnyFn,
 > {
   /**
-   * 触发“显示”逻辑（可能被延迟）
+   * 触发"显示"逻辑（可能被延迟）
    * 参数与传入的 openFn 完全一致
    */
   open: (...args: Parameters<O>) => void
   /**
-   * 触发“隐藏”逻辑（可能被延迟以保证最短展示时长）
+   * 触发"隐藏"逻辑（可能被延迟以保证最短展示时长）
    * 参数与传入的 hideFn 完全一致
    */
   hide: (...args: Parameters<H>) => void
@@ -42,18 +42,18 @@ export interface DeferredToggle<
  * 2. 若在 delay 之内就调用 hideFn，则 openFn 根本不会被触发。
  * 3. 一旦 openFn 真被触发，就至少保持 minDisplayTime ms(默认 500ms)，再允许 hideFn 真正触发。
  *
- * @param openFn 原始“显示”方法
- * @param hideFn 原始“隐藏”方法
+ * @param openFn 原始"显示"方法
+ * @param hideFn 原始"隐藏"方法
  * @param opts 延迟与最短展示时间配置
  * @example
  * ```ts
  * const { open, hide } = createDeferredToggle(
-      () => uni.showLoading({ title: '加载中...' }),
-      () => uni.hideLoading({
-        noConflict: true, // 微信小程序中避免与 toast 冲突
-      }),
-      { delay: 300, minDisplayTime: 500 },
-    )
+     () => uni.showLoading({ title: '加载中...' }),
+     () => uni.hideLoading({
+       noConflict: true, // 微信小程序中避免与 toast 冲突
+     }),
+     { delay: 300, minDisplayTime: 500 },
+   )
  * ```
  * @linkcode https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/createDeferredToggle.ts
  */
@@ -67,6 +67,11 @@ export function createDeferredToggle<
 ): DeferredToggle<O, H> {
   const { delay = 300, minDisplayTime = 500 } = opts
 
+  /* 参数校验 */
+  if (delay < 0 || minDisplayTime < 0) {
+    throw new Error('delay 和 minDisplayTime 不能为负数')
+  }
+
   type Timer = TimeOut | null
   let openTimer: Timer = null
   let hideTimer: Timer = null
@@ -79,20 +84,33 @@ export function createDeferredToggle<
     isOpen = false
   }
 
+  /* 清理所有计时器 */
+  const clearAllTimers = () => {
+    if (openTimer) {
+      clearTimeout(openTimer)
+      openTimer = null
+    }
+    if (hideTimer) {
+      clearTimeout(hideTimer)
+      hideTimer = null
+    }
+  }
+
   /**
    * 延迟触发 openFn，可接受与 openFn 相同的参数列表
    */
   const open = (...openArgs: Parameters<O>) => {
-    // 如已存在待触发或已展示状态，先重置
-    cancel()
+    /* 清理所有计时器和状态，确保干净的起点 */
+    clearAllTimers()
+    reset()
 
     openTimer = setTimeout(() => {
       startTime = Date.now()
       isOpen = true
-      // 透传参数给原始 openFn
+      /* 透传参数给原始 openFn */
       // eslint-disable-next-line n/no-callback-literal
       openFn(...openArgs)
-      // open 已真正执行，将 openTimer 置空，便于 hide 正常判断
+      /* open 已真正执行，将 openTimer 置空 */
       openTimer = null
     }, delay)
   }
@@ -101,42 +119,46 @@ export function createDeferredToggle<
    * 在满足最短展示时长后触发 hideFn，可接受与 hideFn 相同的参数列表
    */
   const hide = (...hideArgs: Parameters<H>) => {
-    // (1) 仍在 delay 窗口内，直接取消 openTimer => openFn 从未执行
+    /* (1) 仍在 delay 窗口内，直接取消 openTimer => openFn 从未执行 */
     if (openTimer) {
       clearTimeout(openTimer)
       openTimer = null
+      reset()
       return
     }
 
-    // (2) openFn 已执行，需要判断最短展示时长
-    if (isOpen && startTime !== null) {
-      const elapsed = Date.now() - startTime
-      const remain = minDisplayTime - elapsed
+    /* (2) openFn 还未执行或已经完全隐藏，无需处理 */
+    if (!isOpen || startTime === null) {
+      return
+    }
 
-      if (hideTimer) {
-        clearTimeout(hideTimer)
-        hideTimer = null
-      }
+    /* (3) openFn 已执行，需要判断最短展示时长 */
+    const elapsed = Date.now() - startTime
+    const remain = minDisplayTime - elapsed
 
-      if (remain > 0) {
-        hideTimer = setTimeout(() => {
-          hideFn(...hideArgs)
-          hideTimer = null
-          reset()
-        }, remain)
-      } else {
+    /* 清除之前的 hideTimer（如果多次调用 hide） */
+    if (hideTimer) {
+      clearTimeout(hideTimer)
+      hideTimer = null
+    }
+
+    if (remain > 0) {
+      /* 还未达到最短展示时长，延迟执行 */
+      hideTimer = setTimeout(() => {
         hideFn(...hideArgs)
         hideTimer = null
         reset()
-      }
+      }, remain)
+    } else {
+      /* 已经达到最短展示时长，立即执行 */
+      hideFn(...hideArgs)
+      reset()
     }
   }
 
   /* 立即终止一切计时器，不调用 openFn/hideFn */
   const cancel = () => {
-    if (openTimer) clearTimeout(openTimer)
-    if (hideTimer) clearTimeout(hideTimer)
-    openTimer = hideTimer = null
+    clearAllTimers()
     reset()
   }
 
