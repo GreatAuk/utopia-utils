@@ -367,7 +367,6 @@ describe('useTable', () => {
           searchType: 'simple',
           searchDebounce: 100,
         })
-        search = result.search
         filters = result.filters
         formState = result.search.formState
       })
