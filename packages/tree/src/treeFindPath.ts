@@ -48,7 +48,9 @@ export function treeFindPath<TreeNode>(tree: TreeNode[] | TreeNode, predicate: (
     else {
       visitedSet.add(node)
       // @ts-expect-error - dynamic field name
-      node[childrenField] && queue.unshift(...node[childrenField])
+      if (node[childrenField])
+        // @ts-expect-error - dynamic field name
+        queue.unshift(...node[childrenField])
       pathNodes.push(node)
       if (predicate(node))
         return pathNodes

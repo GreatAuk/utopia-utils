@@ -267,6 +267,7 @@ describe('is', () => {
 
     it('should return true for thenable objects', () => {
       const thenable = {
+        // oxlint-disable-next-line no-thenable - test
         then: () => {},
         catch: () => {},
       }
@@ -275,7 +276,9 @@ describe('is', () => {
 
     it('should return false for non-Promise values', () => {
       expect(isPromise({})).toBe(false)
+      // oxlint-disable-next-line no-thenable - test
       expect(isPromise({ then: 'not a function' })).toBe(false)
+      // oxlint-disable-next-line no-thenable - test
       expect(isPromise({ then: () => {} })).toBe(false) /* 缺少 catch 方法 */
       expect(isPromise(null)).toBe(false)
       expect(isPromise(undefined)).toBe(false)
