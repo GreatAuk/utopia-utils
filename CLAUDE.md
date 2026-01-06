@@ -143,16 +143,6 @@ describe('functionName', () => {
 3. 在子包的 `src/index.ts` 中导出
 4. 如果是 core 包，需要在根目录 README.md 中添加 API 文档
 
-### 树结构工具的特点
-所有 tree utils 支持自定义字段名（`fieldNames`）：
-```typescript
-interface FieldNames {
-  id?: string
-  children?: string
-  parentId?: string
-}
-```
-
 ### Node 版本要求
 - Node >= 22.16.0
 - pnpm >= 10.8.0
