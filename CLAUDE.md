@@ -56,6 +56,12 @@ pnpm lint
 
 # 自动修复 lint 问题
 pnpm lint:fix
+
+# 格式化代码（oxfmt）
+pnpm format
+
+# 检查代码格式（oxfmt --check）
+pnpm format:check
 ```
 
 ### 发布
