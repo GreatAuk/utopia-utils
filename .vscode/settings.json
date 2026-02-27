@@ -1,14 +1,11 @@
 {
-  "cSpell.words": [
-    "deepmerge"
-  ],
-  // Disable the default formatter, use eslint instead
-  "prettier.enable": false,
-  "editor.formatOnSave": false,
-
+  "cSpell.words": ["deepmerge"],
   // Auto fix
   "editor.codeActionsOnSave": {
     "source.fixAll.oxc": "explicit",
     "source.organizeImports": "never"
   },
+  "oxc.fmt.configPath": ".oxfmtrc.json",
+  "editor.defaultFormatter": "oxc.oxc-vscode",
+  "editor.formatOnSave": true
 }
