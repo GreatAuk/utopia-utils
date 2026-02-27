@@ -40,9 +40,12 @@ interface TraverseAction<TreeNode> {
  * // output 'a', 'b', 'c'
  * ```
  */
-export function deepFirstTraverse<TreeNode>(tree: TreeNode | TreeNode[], action: TraverseAction<TreeNode>, options?: Options): void {
-  if (!isFunction(action))
-    throw new Error('traverse action should be a function')
+export function deepFirstTraverse<TreeNode>(
+  tree: TreeNode | TreeNode[],
+  action: TraverseAction<TreeNode>,
+  options?: Options,
+): void {
+  if (!isFunction(action)) throw new Error('traverse action should be a function')
 
   const { fieldNames, order = 'pre' } = options || {}
   const { children } = { ...DEFAULT_FIELD_NAMES, ...fieldNames }
@@ -50,21 +53,18 @@ export function deepFirstTraverse<TreeNode>(tree: TreeNode | TreeNode[], action:
   const traverseInner = (tree: TreeNode[], parent: TreeNode | null, level: number) => {
     for (const node of tree) {
       if (order === 'pre') {
-        if (action(node, parent, level) === false)
-          return false
+        if (action(node, parent, level) === false) return false
       }
 
       // @ts-expect-error - children field is dynamic
       if (node[children]) {
         // @ts-expect-error - children field is dynamic
         const res = traverseInner(node[children], node, level + 1)
-        if (res === false)
-          return false
+        if (res === false) return false
       }
 
       if (order === 'post') {
-        if (action(node, parent, level) === false)
-          return false
+        if (action(node, parent, level) === false) return false
       }
     }
   }

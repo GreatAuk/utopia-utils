@@ -45,8 +45,15 @@ interface Options {
  */
 export function buildTreeFromList<TreeNode>(list: any[], options?: Options): TreeNode[] {
   const { listFieldNames, treeFieldNames } = options || {}
-  const { id: listIdField, parentId: listParentIdField } = { ...DEFAULT_FIELD_NAMES, ...listFieldNames }
-  const { id: treeIdField, parentId: treeParentIdField, children: treeChildrenField } = { ...DEFAULT_FIELD_NAMES, ...treeFieldNames }
+  const { id: listIdField, parentId: listParentIdField } = {
+    ...DEFAULT_FIELD_NAMES,
+    ...listFieldNames,
+  }
+  const {
+    id: treeIdField,
+    parentId: treeParentIdField,
+    children: treeChildrenField,
+  } = { ...DEFAULT_FIELD_NAMES, ...treeFieldNames }
 
   const nodeMap = new Map<string, any>()
   const treeRes: TreeNode[] = []
@@ -62,11 +69,8 @@ export function buildTreeFromList<TreeNode>(list: any[], options?: Options): Tre
 
   list.forEach((item) => {
     const parent = nodeMap.get(item[listParentIdField])
-    if (parent)
-      parent[treeChildrenField].push(item)
-
-    else
-      treeRes.push(item)
+    if (parent) parent[treeChildrenField].push(item)
+    else treeRes.push(item)
   })
 
   return treeRes

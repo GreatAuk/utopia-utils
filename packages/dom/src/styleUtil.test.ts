@@ -86,7 +86,9 @@ describe('styleUtil', () => {
       })
 
       it('当类名包含空格时应抛出错误', () => {
-        expect(() => hasClass(testElement, 'class with space')).toThrow('className should not contain space.')
+        expect(() => hasClass(testElement, 'class with space')).toThrow(
+          'className should not contain space.',
+        )
       })
     })
   })
@@ -109,7 +111,7 @@ describe('styleUtil', () => {
       addClass(testElement, 'existing new-class')
 
       /* classList.add 不会重复添加已存在的类名 */
-      expect(testElement.className.split(' ').filter(c => c === 'existing').length).toBe(1)
+      expect(testElement.className.split(' ').filter((c) => c === 'existing').length).toBe(1)
       expect(testElement.classList.contains('new-class')).toBe(true)
     })
 
@@ -229,10 +231,10 @@ describe('styleUtil', () => {
       const classArray = classNameToArray(classNames)
 
       /* 使用数组中的类名逐个添加 */
-      classArray.forEach(cls => addClass(testElement, cls))
+      classArray.forEach((cls) => addClass(testElement, cls))
 
       /* 验证所有类名都被添加 */
-      classArray.forEach(cls => {
+      classArray.forEach((cls) => {
         expect(hasClass(testElement, cls)).toBe(true)
       })
 
@@ -240,7 +242,7 @@ describe('styleUtil', () => {
       removeClass(testElement, classNames)
 
       /* 验证所有类名都被移除 */
-      classArray.forEach(cls => {
+      classArray.forEach((cls) => {
         expect(hasClass(testElement, cls)).toBe(false)
       })
     })

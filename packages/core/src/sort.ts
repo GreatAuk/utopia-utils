@@ -20,17 +20,14 @@ interface SortOptions<T> {
  * ```
  */
 export function sort<T extends number>(arr: readonly T[], options?: SortOptions<T>): T[]
-export function sort<T extends object>(
-  arr: readonly T[],
-  options: SortOptions<T>
-): T[]
+export function sort<T extends object>(arr: readonly T[], options: SortOptions<T>): T[]
 export function sort<T extends object | number>(
   arr: readonly T[],
   options: SortOptions<T> = {},
 ): T[] {
   const { getter, desc = false } = options
 
-  const getter_ = (item: T) => getter ? getter(item) : item as number
+  const getter_ = (item: T) => (getter ? getter(item) : (item as number))
   const asc = (a: T, b: T) => getter_(a) - getter_(b)
   const dsc = (a: T, b: T) => getter_(b) - getter_(a)
 
@@ -42,10 +39,13 @@ interface AlphabeticalOptions<T> {
   desc?: boolean
   locales?: Intl.LocalesArgument
 }
-export function alphabetical<T extends string>(arr: readonly T[], options?: AlphabeticalOptions<T>): T[]
+export function alphabetical<T extends string>(
+  arr: readonly T[],
+  options?: AlphabeticalOptions<T>,
+): T[]
 export function alphabetical<T extends object>(
   arr: readonly T[],
-  options: AlphabeticalOptions<T>
+  options: AlphabeticalOptions<T>,
 ): T[]
 export function alphabetical<T extends object | string>(
   arr: readonly T[],
@@ -53,7 +53,7 @@ export function alphabetical<T extends object | string>(
 ): T[] {
   const { getter, desc = false } = options
 
-  const getter_ = (item: T) => getter ? getter(item) : item as string
+  const getter_ = (item: T) => (getter ? getter(item) : (item as string))
   const asc = (a: T, b: T) => getter_(a).localeCompare(getter_(b))
   const dsc = (a: T, b: T) => getter_(b).localeCompare(getter_(a))
 

@@ -23,30 +23,30 @@
 function useDelayedLoading(
   loading: Ref<boolean>,
   options?: {
-    delay?: MaybeRefOrGetter<number>,
+    delay?: MaybeRefOrGetter<number>
     minDisplayTime?: MaybeRefOrGetter<number>
-  }
+  },
 ): {
-  loadingDelayed: Ref<boolean>,
+  loadingDelayed: Ref<boolean>
   cleanup: () => void
 }
 ```
 
 ### 参数
 
-| 参数 | 类型 | 说明 |
-| --- | --- | --- |
-| loading | `Ref<boolean>` | 用于控制 loading 状态的响应式引用 |
-| options | `object` | 可选配置项 |
-| options.delay | `MaybeRefOrGetter<number>` | 延迟显示 loading 的毫秒数，默认为 300ms |
+| 参数                   | 类型                       | 说明                                     |
+| ---------------------- | -------------------------- | ---------------------------------------- |
+| loading                | `Ref<boolean>`             | 用于控制 loading 状态的响应式引用        |
+| options                | `object`                   | 可选配置项                               |
+| options.delay          | `MaybeRefOrGetter<number>` | 延迟显示 loading 的毫秒数，默认为 300ms  |
 | options.minDisplayTime | `MaybeRefOrGetter<number>` | loading 动画的最小显示时间，默认为 500ms |
 
 ### 返回值
 
-| 属性 | 类型 | 说明 |
-| --- | --- | --- |
+| 属性           | 类型           | 说明                                          |
+| -------------- | -------------- | --------------------------------------------- |
 | loadingDelayed | `Ref<boolean>` | 经过延迟处理的 loading 状态，用于在 UI 中显示 |
-| cleanup | `() => void` | 清理函数，用于手动清理定时器，防止内存泄漏 |
+| cleanup        | `() => void`   | 清理函数，用于手动清理定时器，防止内存泄漏    |
 
 ## 示例
 
@@ -54,25 +54,25 @@ function useDelayedLoading(
 
 ```vue
 <script setup>
-import { ref } from 'vue';
-import { useDelayedLoading } from '@utopia/vueuse';
+import { ref } from 'vue'
+import { useDelayedLoading } from '@utopia/vueuse'
 
 // 模拟一个异步请求的 loading 状态
-const isLoading = ref(false);
+const isLoading = ref(false)
 
 // 使用 useDelayedLoading 优化 loading 状态
-const { loadingDelayed } = useDelayedLoading(isLoading);
+const { loadingDelayed } = useDelayedLoading(isLoading)
 
 // 模拟一个请求函数
 const fetchData = async () => {
-  isLoading.value = true;
+  isLoading.value = true
   try {
     // 模拟异步请求
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    await new Promise((resolve) => setTimeout(resolve, 1000))
   } finally {
-    isLoading.value = false;
+    isLoading.value = false
   }
-};
+}
 </script>
 
 <template>
@@ -88,26 +88,26 @@ const fetchData = async () => {
 
 ```vue
 <script setup>
-import { ref } from 'vue';
-import { useDelayedLoading } from '@utopia/vueuse';
+import { ref } from 'vue'
+import { useDelayedLoading } from '@utopia/vueuse'
 
-const isLoading = ref(false);
+const isLoading = ref(false)
 
 // 自定义延迟时间和最小显示时间
 const { loadingDelayed } = useDelayedLoading(isLoading, {
-  delay: 500,           // 500ms 后才显示 loading
-  minDisplayTime: 1000  // 一旦显示，至少显示 1000ms
-});
+  delay: 500, // 500ms 后才显示 loading
+  minDisplayTime: 1000, // 一旦显示，至少显示 1000ms
+})
 
 // 模拟请求函数
 const fetchData = async () => {
-  isLoading.value = true;
+  isLoading.value = true
   try {
-    await new Promise(resolve => setTimeout(resolve, 2000));
+    await new Promise((resolve) => setTimeout(resolve, 2000))
   } finally {
-    isLoading.value = false;
+    isLoading.value = false
   }
-};
+}
 </script>
 ```
 

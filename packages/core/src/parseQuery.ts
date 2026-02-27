@@ -2,10 +2,7 @@ import { isArray } from '@utopia-utils/share'
 
 export type LocationQueryValue = string | null
 
-export type LocationQuery = Record<
-  string,
-  LocationQueryValue | LocationQueryValue[]
->
+export type LocationQuery = Record<string, LocationQueryValue | LocationQueryValue[]>
 
 const PLUS_RE = /\+/g // %2B
 
@@ -19,8 +16,7 @@ const PLUS_RE = /\+/g // %2B
 export function decode(text: string | number): string {
   try {
     return decodeURIComponent(`${text}`)
-  }
-  catch (err) {
+  } catch (err) {
     console.error(err)
     console.warn(`Error decoding "${text}". Using original value`)
   }
@@ -51,8 +47,7 @@ export function parseQuery<T extends LocationQuery>(search: string): T {
   const query: LocationQuery = {}
   // avoid creating an object with an empty key and empty value
   // because of split('&')
-  if (search === '' || search === '?')
-    return query as T
+  if (search === '' || search === '?') return query as T
   const hasLeadingIM = search[0] === '?'
   const searchParams = (hasLeadingIM ? search.slice(1) : search).split('&')
   for (let i = 0; i < searchParams.length; ++i) {
@@ -69,10 +64,9 @@ export function parseQuery<T extends LocationQuery>(search: string): T {
       if (!isArray(currentValue))
         currentValue = query[key] = [currentValue]
 
-      // we force the modification
+        // we force the modification
       ;(currentValue as LocationQueryValue[]).push(value)
-    }
-    else {
+    } else {
       query[key] = value
     }
   }

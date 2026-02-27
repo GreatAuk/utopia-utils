@@ -11,10 +11,10 @@ describe('onlyResolvesLast', () => {
     let lastValue = 0
 
     await Promise.race([
-      foo(1).then(v => lastValue = v),
-      foo(2).then(v => lastValue = v),
-      foo(3).then(v => lastValue = v),
-      foo(4).then(v => lastValue = v),
+      foo(1).then((v) => (lastValue = v)),
+      foo(2).then((v) => (lastValue = v)),
+      foo(3).then((v) => (lastValue = v)),
+      foo(4).then((v) => (lastValue = v)),
     ])
     expect(lastValue).toBe(4)
   })
@@ -28,9 +28,9 @@ describe('onlyResolvesLast', () => {
     let lastError = 0
 
     await Promise.race([
-      foo(1).catch(e => lastError = e),
-      foo(2).catch(e => lastError = e),
-      foo(3).catch(e => lastError = e),
+      foo(1).catch((e) => (lastError = e)),
+      foo(2).catch((e) => (lastError = e)),
+      foo(3).catch((e) => (lastError = e)),
     ])
     expect(lastError).toBe(3)
   })

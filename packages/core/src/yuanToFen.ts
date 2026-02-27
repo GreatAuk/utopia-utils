@@ -16,8 +16,7 @@ import { isNumber } from '@utopia-utils/share'
 export function yuanToFen(yuan: number | string | undefined): number | undefined {
   try {
     /* 处理非数字输入 */
-    if (yuan === undefined || yuan === null)
-      return undefined
+    if (yuan === undefined || yuan === null) return undefined
 
     /** numValue */
     let numValue: number
@@ -26,26 +25,21 @@ export function yuanToFen(yuan: number | string | undefined): number | undefined
       /** trimmedYuan */
       const trimmedYuan = yuan.trim()
 
-      if (trimmedYuan === '')
-        return undefined
+      if (trimmedYuan === '') return undefined
 
       numValue = Number(trimmedYuan)
-    }
-    else if (isNumber(yuan)) {
+    } else if (isNumber(yuan)) {
       numValue = yuan
-    }
-    else {
+    } else {
       return undefined
     }
 
     /* 验证转换后的值是否为有效数字 */
-    if (!Number.isFinite(numValue))
-      return undefined
+    if (!Number.isFinite(numValue)) return undefined
 
     /* 使用 number-precision 避免浮点数精度问题 */
     return times(numValue, 100)
-  }
-  catch (err) {
+  } catch (err) {
     console.error(err)
     return undefined
   }

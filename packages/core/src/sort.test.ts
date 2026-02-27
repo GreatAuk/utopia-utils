@@ -11,11 +11,19 @@ describe('sort', () => {
   })
   it('sorts objects in ascending order', () => {
     const arr = [{ value: 3 }, { value: 1 }, { value: 2 }]
-    expect(sort(arr, { getter: item => item.value })).toEqual([{ value: 1 }, { value: 2 }, { value: 3 }])
+    expect(sort(arr, { getter: (item) => item.value })).toEqual([
+      { value: 1 },
+      { value: 2 },
+      { value: 3 },
+    ])
   })
   it('sorts objects in descending order', () => {
     const arr = [{ value: 3 }, { value: 1 }, { value: 2 }]
-    expect(sort(arr, { getter: item => item.value, desc: true })).toEqual([{ value: 3 }, { value: 2 }, { value: 1 }])
+    expect(sort(arr, { getter: (item) => item.value, desc: true })).toEqual([
+      { value: 3 },
+      { value: 2 },
+      { value: 1 },
+    ])
   })
   it('return a new array', () => {
     const arr = [3, 1, 2]
@@ -49,7 +57,7 @@ describe('alphabetical', () => {
 
   it('sorts objects alphabetically', () => {
     const arr = [{ name: 'b' }, { name: 'a' }, { name: 'c' }]
-    expect(alphabetical(arr, { getter: item => item.name })).toEqual([
+    expect(alphabetical(arr, { getter: (item) => item.name })).toEqual([
       { name: 'a' },
       { name: 'b' },
       { name: 'c' },
@@ -58,7 +66,7 @@ describe('alphabetical', () => {
 
   it('sorts objects alphabetically in descending order', () => {
     const arr = [{ name: 'b' }, { name: 'a' }, { name: 'c' }]
-    expect(alphabetical(arr, { getter: item => item.name, desc: true })).toEqual([
+    expect(alphabetical(arr, { getter: (item) => item.name, desc: true })).toEqual([
       { name: 'c' },
       { name: 'b' },
       { name: 'a' },

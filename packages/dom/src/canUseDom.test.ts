@@ -16,8 +16,8 @@ describe('canUseDom', () => {
     globalThis.document = originalDocument
   })
 
-    describe('DOM 可用性检测', () => {
-                it('应正确检测 DOM 可用性', () => {
+  describe('DOM 可用性检测', () => {
+    it('应正确检测 DOM 可用性', () => {
       /* 在当前测试环境中测试 canUseDom 的实际行为 */
       const result = canUseDom()
       expect(typeof result).toBe('boolean')
@@ -55,17 +55,17 @@ describe('canUseDom', () => {
       /* 模拟 document 存在但 createElement 不存在的环境 */
       // @ts-ignore - 为了测试目的创建不完整的 document
       globalThis.window = {
-        document: {} as Document
+        document: {} as Document,
       } as Window
 
       expect(canUseDom()).toBe(false)
     })
 
-        it('当 createElement 为 null 时应返回 false', () => {
+    it('当 createElement 为 null 时应返回 false', () => {
       /* 模拟 createElement 为 null 的情况 */
       // @ts-ignore - 为了测试目的设置 createElement 为 null
       globalThis.window = {
-        document: { createElement: null } as unknown as Document
+        document: { createElement: null } as unknown as Document,
       } as Window
 
       expect(canUseDom()).toBe(false)
@@ -89,13 +89,13 @@ describe('canUseDom', () => {
       expect(canUseDom()).toBe(false)
     })
 
-            it('应验证 createElement 是可调用的函数', () => {
+    it('应验证 createElement 是可调用的函数', () => {
       /* 模拟 createElement 存在但不是函数的情况 */
       /* 由于 JavaScript 的真值判断，字符串 'not a function' 仍然是真值 */
       /* 所以这个测试实际上会返回 true，我们需要使用 falsy 值 */
       // @ts-ignore - 为了测试目的设置为 falsy 值
       globalThis.window = {
-        document: { createElement: '' } as unknown as Document
+        document: { createElement: '' } as unknown as Document,
       } as Window
 
       expect(canUseDom()).toBe(false)
@@ -108,7 +108,7 @@ describe('canUseDom', () => {
       expect(typeof result).toBe('boolean')
     })
 
-        it('在任何情况下都不应抛出异常', () => {
+    it('在任何情况下都不应抛出异常', () => {
       expect(() => canUseDom()).not.toThrow()
 
       /* 测试各种异常情况下都不抛出错误 */
@@ -128,7 +128,7 @@ describe('canUseDom', () => {
   })
 
   describe('功能验证测试', () => {
-        it('在真实 DOM 环境中能够使用 createElement', () => {
+    it('在真实 DOM 环境中能够使用 createElement', () => {
       /* 如果 canUseDom 返回 true，应该能够实际创建元素 */
       if (canUseDom()) {
         expect(() => globalThis.window.document.createElement('div')).not.toThrow()
@@ -139,7 +139,7 @@ describe('canUseDom', () => {
       }
     })
 
-        it('应与实际 DOM 操作能力保持一致', () => {
+    it('应与实际 DOM 操作能力保持一致', () => {
       const canUse = canUseDom()
 
       if (canUse) {
@@ -151,7 +151,8 @@ describe('canUseDom', () => {
         /* 如果检测 DOM 不可用，相关对象应该确实不可用 */
         const hasValidWindow = typeof globalThis.window !== 'undefined' && globalThis.window
         const hasValidDocument = hasValidWindow && globalThis.window.document
-        const hasCreateElement = hasValidDocument && typeof globalThis.window.document.createElement === 'function'
+        const hasCreateElement =
+          hasValidDocument && typeof globalThis.window.document.createElement === 'function'
 
         expect(hasValidWindow && hasValidDocument && hasCreateElement).toBe(false)
       }

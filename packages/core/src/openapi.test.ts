@@ -109,10 +109,7 @@ describe('patchOpenApiJSON', () => {
 
     const result = patchOpenApiJSON(input)
 
-    expect(result.paths['/api/user'].get.tags).toEqual([
-      'User Management',
-      'Permission Management',
-    ])
+    expect(result.paths['/api/user'].get.tags).toEqual(['User Management', 'Permission Management'])
   })
 
   it('should handle empty tags array', () => {

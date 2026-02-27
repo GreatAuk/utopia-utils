@@ -11,15 +11,15 @@ import type { TimeOut } from '@utopia-utils/type'
 interface Options {
   /** progress 最小值, 默认是 0.08 (8%)，所以进度条是从 8% 开始的
    * @default 0.08 (8%)
-  */
+   */
   minimum?: number
   /** progress 最大值, 默认是 99%， 如果想最终完成（100%），可以调用 doneProgress 方法
    * @default 0.99 (99%)
-  */
+   */
   maximum?: number
   /** 自动递增的时间间隔，单位毫秒
    * @default 800ms
-  */
+   */
   speed?: number
   /** 自定义进度递增量计算函数，接收当前进度返回递增量 */
   amount?: (progress: number) => number
@@ -115,7 +115,8 @@ export function useFakeProgress(options?: Options): UseFakeProgressReturn {
    * @param max - 最大值
    * @returns 限制后的数值
    */
-  const clamp = (value: number, min: number, max: number): number => Math.min(Math.max(value, min), max)
+  const clamp = (value: number, min: number, max: number): number =>
+    Math.min(Math.max(value, min), max)
 
   /**
    * 设置进度值

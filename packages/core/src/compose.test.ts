@@ -24,26 +24,14 @@ describe('compose', () => {
     type sFunc = (x: number, y: number) => number
     const square = (x: number) => x * x
 
-    expect(
-      () => compose(square, false as unknown as sFunc)(1, 2),
-    )
-      .toThrow()
+    expect(() => compose(square, false as unknown as sFunc)(1, 2)).toThrow()
     expect(
       // @ts-expect-error for test
       () => compose(square, undefined)(1, 2),
-    )
-      .toThrow()
-    expect(
-      () => compose(square, true as unknown as sFunc)(1, 2),
-    )
-      .toThrow()
-    expect(
-      () => compose(square, Number.NaN as unknown as sFunc)(1, 2),
-    )
-      .toThrow()
-    expect(
-      () => compose(square, '42' as unknown as sFunc)(1, 2),
     ).toThrow()
+    expect(() => compose(square, true as unknown as sFunc)(1, 2)).toThrow()
+    expect(() => compose(square, Number.NaN as unknown as sFunc)(1, 2)).toThrow()
+    expect(() => compose(square, '42' as unknown as sFunc)(1, 2)).toThrow()
   })
 
   it('can be seeded with multiple arguments', () => {

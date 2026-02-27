@@ -63,11 +63,13 @@ describe('flattenTree', () => {
         },
       ],
     }
-    expect(flattenTree(tree, {
-      fieldNames: {
-        id: 'ID',
-      },
-    })).toMatchInlineSnapshot(`
+    expect(
+      flattenTree(tree, {
+        fieldNames: {
+          id: 'ID',
+        },
+      }),
+    ).toMatchInlineSnapshot(`
       [
         {
           "ID": 1,
@@ -96,7 +98,7 @@ describe('flattenTree', () => {
 
     const ids: number[] = []
     flattenTree(tree, {
-      onEachTraverse: node => ids.push(node.id),
+      onEachTraverse: (node) => ids.push(node.id),
     })
     expect(ids).toEqual([1, 2])
   })
@@ -120,19 +122,21 @@ describe('flattenTree', () => {
           subItems: [
             {
               id: 3,
-            }
-          ]
-        }
-      ]
+            },
+          ],
+        },
+      ],
     }
-    expect(flattenTree(tree, {
-      fieldNames: {
-        children: 'subItems',
-      },
-    })).toEqual([
+    expect(
+      flattenTree(tree, {
+        fieldNames: {
+          children: 'subItems',
+        },
+      }),
+    ).toEqual([
       { id: 1, subItems: [{ id: 2, subItems: [{ id: 3 }] }] },
       { id: 2, subItems: [{ id: 3 }] },
-      { id: 3 }
+      { id: 3 },
     ])
   })
 
@@ -148,19 +152,17 @@ describe('flattenTree', () => {
               children: [
                 {
                   id: 4,
-                  children: [
-                    { id: 5 }
-                  ]
-                }
-              ]
-            }
-          ]
-        }
-      ]
+                  children: [{ id: 5 }],
+                },
+              ],
+            },
+          ],
+        },
+      ],
     }
 
     const result = flattenTree(tree)
     expect(result.length).toBe(5)
-    expect(result.map(node => node.id)).toEqual([1, 2, 3, 4, 5])
+    expect(result.map((node) => node.id)).toEqual([1, 2, 3, 4, 5])
   })
 })

@@ -24,25 +24,11 @@ describe('pipe', () => {
     type sFunc = (x: number, y: number) => number
     const square = (x: number) => x * x
 
-    expect(
-      () => pipe(false as unknown as sFunc, square)(1, 2),
-    )
-      .toThrow()
-    expect(
-      () => pipe(undefined as unknown as sFunc, square)(1, 2),
-    )
-      .toThrow()
-    expect(
-      () => pipe(true as unknown as sFunc, square)(1, 2),
-    )
-      .toThrow()
-    expect(
-      () => pipe(Number.NaN as unknown as sFunc, square)(1, 2),
-    )
-      .toThrow()
-    expect(
-      () => pipe('42' as unknown as sFunc, square)(1, 2),
-    ).toThrow()
+    expect(() => pipe(false as unknown as sFunc, square)(1, 2)).toThrow()
+    expect(() => pipe(undefined as unknown as sFunc, square)(1, 2)).toThrow()
+    expect(() => pipe(true as unknown as sFunc, square)(1, 2)).toThrow()
+    expect(() => pipe(Number.NaN as unknown as sFunc, square)(1, 2)).toThrow()
+    expect(() => pipe('42' as unknown as sFunc, square)(1, 2)).toThrow()
   })
 
   it('can be seeded with multiple arguments', () => {

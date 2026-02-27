@@ -25,10 +25,7 @@ export function toFixedWithoutZeros(num: number, precision: number): string {
  * @linkcode https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/math.ts
  */
 export function average<T extends number>(arr: readonly T[]): number
-export function average<T extends object>(
-  arr: readonly T[],
-  getter: (item: T) => number
-): number
+export function average<T extends object>(arr: readonly T[], getter: (item: T) => number): number
 export function average<T extends object | number>(
   arr: readonly any[],
   getter?: (item: T) => number,
@@ -48,10 +45,10 @@ export function average<T extends object | number>(
  * ```
  */
 export function sum<T extends number>(arr: readonly T[]): number
-export function sum<T extends object>(
-  arr: readonly T[],
-  getter: (item: T) => number
-): number
-export function sum<T extends object | number>(arr: readonly any[], getter?: (item: T) => number): number {
+export function sum<T extends object>(arr: readonly T[], getter: (item: T) => number): number
+export function sum<T extends object | number>(
+  arr: readonly any[],
+  getter?: (item: T) => number,
+): number {
   return (arr || []).reduce((acc, item) => acc + (getter ? getter(item) : item), 0)
 }

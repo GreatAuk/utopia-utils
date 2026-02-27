@@ -23,13 +23,11 @@ export function getQueryParams<T extends LocationQuery>(location: string): Parti
   let query: LocationQuery = {}
 
   const searchPos = location.indexOf('?')
-  let searchString = location.slice(
-    searchPos + 1,
-    location.length,
-  )
+  let searchString = location.slice(searchPos + 1, location.length)
 
   const hashPos = searchString.indexOf('#')
-  if (hashPos > -1) // maybe http://url.com/page?name=Adam&surname=Smith&id#home
+  if (hashPos > -1)
+    // maybe http://url.com/page?name=Adam&surname=Smith&id#home
     searchString = searchString.slice(0, hashPos)
 
   query = parseQuery(searchString)

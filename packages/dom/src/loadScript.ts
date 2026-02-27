@@ -22,7 +22,15 @@ interface LoadScriptOptions {
   /**
    * @see https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/script#attr-referrerpolicy
    */
-  referrerPolicy?: 'no-referrer' | 'no-referrer-when-downgrade' | 'origin' | 'origin-when-cross-origin' | 'same-origin' | 'strict-origin' | 'strict-origin-when-cross-origin' | 'unsafe-url'
+  referrerPolicy?:
+    | 'no-referrer'
+    | 'no-referrer-when-downgrade'
+    | 'origin'
+    | 'origin-when-cross-origin'
+    | 'same-origin'
+    | 'strict-origin'
+    | 'strict-origin-when-cross-origin'
+    | 'unsafe-url'
   noModule?: boolean
   /**
    * Add custom attribute to the script tag
@@ -69,8 +77,7 @@ export function loadScript(src: string, options?: LoadScriptOptions): LoadScript
   let scriptTag = document.querySelector<HTMLScriptElement>(`script[src="${src}"]`)
 
   // if the script is exist, it has high probability loaded
-  if (scriptTag)
-    onStatusChange?.('loaded')
+  if (scriptTag) onStatusChange?.('loaded')
 
   if (!scriptTag) {
     scriptTag = document.createElement('script')
@@ -78,14 +85,10 @@ export function loadScript(src: string, options?: LoadScriptOptions): LoadScript
     scriptTag.type = type
     scriptTag.async = async
 
-    if (defer)
-      scriptTag.defer = defer
-    if (crossOrigin)
-      scriptTag.crossOrigin = crossOrigin
-    if (referrerPolicy)
-      scriptTag.referrerPolicy = referrerPolicy
-    if (noModule)
-      scriptTag.noModule = noModule
+    if (defer) scriptTag.defer = defer
+    if (crossOrigin) scriptTag.crossOrigin = crossOrigin
+    if (referrerPolicy) scriptTag.referrerPolicy = referrerPolicy
+    if (noModule) scriptTag.noModule = noModule
     Object.entries(attrs).forEach(([name, value]) => scriptTag?.setAttribute(name, value))
 
     const appendTarget = appendPosition === 'head' ? document.head : document.body
@@ -113,6 +116,5 @@ export function loadScript(src: string, options?: LoadScriptOptions): LoadScript
 /** remove the script tag */
 function unload(src: string): void {
   const script = document.querySelector(`script[src="${src}"]`)
-  if (script)
-    script.remove()
+  if (script) script.remove()
 }

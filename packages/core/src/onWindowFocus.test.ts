@@ -26,7 +26,11 @@ describe('onWindowFocus', () => {
     onWindowFocus(mockCallback)
 
     expect(addEventListenerSpy).toHaveBeenCalledWith('focus', expect.any(Function), false)
-    expect(addEventListenerSpy).toHaveBeenCalledWith('visibilitychange', expect.any(Function), false)
+    expect(addEventListenerSpy).toHaveBeenCalledWith(
+      'visibilitychange',
+      expect.any(Function),
+      false,
+    )
     expect(addEventListenerSpy).toHaveBeenCalledTimes(2)
   })
 
@@ -44,7 +48,7 @@ describe('onWindowFocus', () => {
     expect(mockCallback).toHaveBeenCalledTimes(1)
   })
 
-    it('should execute callback when document becomes visible', () => {
+  it('should execute callback when document becomes visible', () => {
     /* 测试文档可见时的 visibilitychange 事件 */
     vi.useFakeTimers()
     onWindowFocus(mockCallback)
@@ -64,7 +68,7 @@ describe('onWindowFocus', () => {
     expect(mockCallback).toHaveBeenCalledTimes(1)
   })
 
-    it('should not execute callback when document is hidden', () => {
+  it('should not execute callback when document is hidden', () => {
     /* 测试文档隐藏时不触发回调 */
     vi.useFakeTimers()
     onWindowFocus(mockCallback)
@@ -146,7 +150,7 @@ describe('onWindowFocus', () => {
     /* 测试异步回调函数 */
     vi.useFakeTimers()
     const asyncCallback = vi.fn(async () => {
-      await new Promise(resolve => setTimeout(resolve, 10))
+      await new Promise((resolve) => setTimeout(resolve, 10))
     })
 
     onWindowFocus(asyncCallback)

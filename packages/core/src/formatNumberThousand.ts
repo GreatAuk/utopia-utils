@@ -20,12 +20,13 @@ interface Options {
  * @linkcode https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/formatNumberThousand.ts
  */
 export function formatNumberThousand(num: number, options: Options = {}): string {
-  if (Number.isNaN(num))
-    return ''
+  if (Number.isNaN(num)) return ''
 
   const { precision = 0, groupSeparator = ',' } = options
 
   const [integer, decimal] = num.toString().split('.')
-  const decimalStr = decimal ? `.${decimal.padEnd(precision, '0').slice(0, precision > 0 ? precision : 0)}` : ''
+  const decimalStr = decimal
+    ? `.${decimal.padEnd(precision, '0').slice(0, precision > 0 ? precision : 0)}`
+    : ''
   return integer.replace(/\B(?=(\d{3})+(?!\d))/g, groupSeparator) + decimalStr
 }

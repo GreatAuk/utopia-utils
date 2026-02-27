@@ -16,12 +16,17 @@ interface ReturnType {
  * removeTimeout() // on Destroy, cancel the timeout
  */
 export function onTimeout(callback: (args: void) => void, ms?: number): ReturnType
-export function onTimeout<TArgs extends any[]>(callback: (...args: TArgs) => void, ms?: number, ...args: TArgs): ReturnType
-export function onTimeout<TArgs extends any[]>(callback: (...args: TArgs) => void, ms?: number, ...args: TArgs) {
-  const timeoutId = setTimeout(
-    () => callback(...args),
-    ms,
-  )
+export function onTimeout<TArgs extends any[]>(
+  callback: (...args: TArgs) => void,
+  ms?: number,
+  ...args: TArgs
+): ReturnType
+export function onTimeout<TArgs extends any[]>(
+  callback: (...args: TArgs) => void,
+  ms?: number,
+  ...args: TArgs
+) {
+  const timeoutId = setTimeout(() => callback(...args), ms)
 
   const removeTimeout = () => {
     clearTimeout(timeoutId)

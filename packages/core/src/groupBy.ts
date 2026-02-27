@@ -22,9 +22,21 @@ interface GroupByOptions {
  * @linkcode https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/groupBy.ts
  */
 export function groupBy<T, K extends string>(array: T[], iteratee: (item: T) => K): Record<K, T[]>
-export function groupBy<T, K extends string>(array: T[], iteratee: (item: T) => K, options: { oneToOne: false }): Record<K, T[]>
-export function groupBy<T, K extends string>(array: T[], iteratee: (item: T) => K, options: { oneToOne: true }): Record<K, T>
-export function groupBy<T, K extends string>(array: T[], iteratee: (item: T) => K, options?: GroupByOptions): Record<K, T[]> | Record<K, T> {
+export function groupBy<T, K extends string>(
+  array: T[],
+  iteratee: (item: T) => K,
+  options: { oneToOne: false },
+): Record<K, T[]>
+export function groupBy<T, K extends string>(
+  array: T[],
+  iteratee: (item: T) => K,
+  options: { oneToOne: true },
+): Record<K, T>
+export function groupBy<T, K extends string>(
+  array: T[],
+  iteratee: (item: T) => K,
+  options?: GroupByOptions,
+): Record<K, T[]> | Record<K, T> {
   const { oneToOne } = options || {}
   return array.reduce<Record<string, T[]> | Record<string, T>>((acc, item) => {
     const key = iteratee(item)
@@ -34,10 +46,8 @@ export function groupBy<T, K extends string>(array: T[], iteratee: (item: T) => 
       return acc
     }
 
-    if (acc[key])
-      (acc as Record<K, T[]>)[key].push(item)
-    else
-      (acc as Record<K, T[]>)[key] = [item]
+    if (acc[key]) (acc as Record<K, T[]>)[key].push(item)
+    else (acc as Record<K, T[]>)[key] = [item]
     return acc
   }, {})
 }

@@ -1,7 +1,8 @@
 import { loadScript } from './loadScript'
 
 describe('loadScript', () => {
-  const src = 'https://unpkg.com/@plugin-web-update-notification/core@1.3.1/dist/webUpdateNoticeInjectScript.js'
+  const src =
+    'https://unpkg.com/@plugin-web-update-notification/core@1.3.1/dist/webUpdateNoticeInjectScript.js'
   const getScriptTag = (): HTMLScriptElement | null =>
     document.head.querySelector(`script[src="${src}"]`)
 
@@ -45,7 +46,7 @@ describe('loadScript', () => {
 
   it('should support attributes', async () => {
     const { unload } = loadScript(src, {
-      attrs: { 'id': 'id-value', 'data-test': 'data-test-value' },
+      attrs: { id: 'id-value', 'data-test': 'data-test-value' },
       defer: true,
       crossOrigin: 'anonymous',
     })

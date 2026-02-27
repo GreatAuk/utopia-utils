@@ -18,16 +18,13 @@ type Level = 'low' | 'medium' | 'high'
  * @linkcode https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/stringDesensitize.ts
  */
 export function desensitizeName(name?: string): string | undefined {
-  if (!isString(name))
-    return name
+  if (!isString(name)) return name
 
   const length = name.length
 
-  if (length < 2)
-    return name
+  if (length < 2) return name
 
-  if (length === 2)
-    return `${name[0]}*`
+  if (length === 2) return `${name[0]}*`
 
   return name[0] + '*'.repeat(length - 2) + name[length - 1]
 }
@@ -45,8 +42,7 @@ export function desensitizeName(name?: string): string | undefined {
  * @linkcode https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/stringDesensitize.ts
  */
 export function desensitizePhone(phone?: string): string | undefined {
-  if (!isString(phone))
-    return phone
+  if (!isString(phone)) return phone
 
   return phone.replace(/(\d{3})\d{4}(\d{4})/, '$1****$2')
 }
@@ -73,13 +69,10 @@ export function desensitizePhone(phone?: string): string | undefined {
  * @linkcode https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/stringDesensitize.ts
  */
 export function desensitizeIDCard(idCard?: string, level: Level = 'low'): string | undefined {
-  if (!isString(idCard))
-    return idCard
+  if (!isString(idCard)) return idCard
 
-  if (level === 'low')
-    return idCard.replace(/(\d{6})\d{8}([\dxX]{4})/, '$1********$2')
-  else if (level === 'medium')
-    return idCard.replace(/(\d{3})\d{12}([\dxX]{3})/, '$1************$2')
+  if (level === 'low') return idCard.replace(/(\d{6})\d{8}([\dxX]{4})/, '$1********$2')
+  else if (level === 'medium') return idCard.replace(/(\d{3})\d{12}([\dxX]{3})/, '$1************$2')
 
   return idCard.replace(/(\d{1})\d{16}([\dxX]{1})/, '$1****************$2')
 }
@@ -98,18 +91,15 @@ export function desensitizeIDCard(idCard?: string, level: Level = 'low'): string
  * @linkcode https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/stringDesensitize.ts
  */
 export function desensitizeEmail(email?: string): string | undefined {
-  if (!isString(email))
-    return email
+  if (!isString(email)) return email
 
   try {
     const [name, domain] = email.split('@')
 
-    if (!name || !domain)
-      return email
+    if (!name || !domain) return email
 
     return `${name.replace(/(\w{3})\w*(\w{2})/, '$1****$2')}@${domain}`
-  }
-  catch (err) {
+  } catch (err) {
     console.error(err)
     return email
   }

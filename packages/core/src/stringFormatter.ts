@@ -33,10 +33,8 @@ export function formatterPhoneNumber(str?: string): string {
     .replace(/\D/g, '')
     .substring(0, PHONE_LENGTH)
     .replace(/(\d{3})(\d{0,4})?(\d{0,4})?/, (res, $1, $2, $3) => {
-      if (res.length <= 3)
-        return $1
-      if (res.length <= 7)
-        return `${$1} ${$2}`
+      if (res.length <= 3) return $1
+      if (res.length <= 7) return `${$1} ${$2}`
       return `${$1} ${$2} ${$3}`
     })
 }
@@ -59,10 +57,8 @@ export function formatterIdCard(str?: string): string {
     .replace(/[^0-9xX]/g, '')
     .substring(0, ID_CARD_LENGTH)
     .replace(/(\d{6})(\d{0,8})?(\d{0,4})?/, (res, $1, $2, $3) => {
-      if (res.length <= 6)
-        return $1
-      if (res.length <= 14)
-        return `${$1} ${$2}`
+      if (res.length <= 6) return $1
+      if (res.length <= 14) return `${$1} ${$2}`
       return `${$1} ${$2} ${$3}`
     })
 }

@@ -5,7 +5,13 @@ import { arrLast } from './arrLast'
 describe('arrLast', () => {
   it('should return the last element of an array', () => {
     expect(arrLast([1, 2, 3, 4, 5])).toBe(5)
-    expect(arrLast([[1, 2, 3], [4, 5, 6], [7, 8, 9]])).toEqual([7, 8, 9])
+    expect(
+      arrLast([
+        [1, 2, 3],
+        [4, 5, 6],
+        [7, 8, 9],
+      ]),
+    ).toEqual([7, 8, 9])
     expect(arrLast([{ a: 1 }, { b: 2 }, { c: 3 }, { d: 4 }])).toEqual({ d: 4 })
     expect(arrLast(['a', 1, true, /r/g])).toEqual(/r/g)
     expect(arrLast([1])).toBe(1)

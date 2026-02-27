@@ -31,7 +31,11 @@ interface Options {
     console.log(pathNodes?.map(v => v.name)) // ['a', 'b']
  * ```
  */
-export function treeFindPath<TreeNode>(tree: TreeNode[] | TreeNode, predicate: (node: TreeNode) => boolean, options?: Options): TreeNode[] | null {
+export function treeFindPath<TreeNode>(
+  tree: TreeNode[] | TreeNode,
+  predicate: (node: TreeNode) => boolean,
+  options?: Options,
+): TreeNode[] | null {
   const { fieldNames } = options || {}
   const { children: childrenField } = { ...DEFAULT_FIELD_NAMES, ...fieldNames }
 
@@ -44,16 +48,14 @@ export function treeFindPath<TreeNode>(tree: TreeNode[] | TreeNode, predicate: (
     if (visitedSet.has(node)) {
       pathNodes.pop()
       queue.shift()
-    }
-    else {
+    } else {
       visitedSet.add(node)
       // @ts-expect-error - dynamic field name
       if (node[childrenField])
         // @ts-expect-error - dynamic field name
         queue.unshift(...node[childrenField])
       pathNodes.push(node)
-      if (predicate(node))
-        return pathNodes
+      if (predicate(node)) return pathNodes
     }
   }
   return null

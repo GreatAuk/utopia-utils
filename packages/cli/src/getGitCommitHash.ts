@@ -7,11 +7,9 @@ import { execSync } from 'node:child_process'
 export function getGitCommitHash(): string | undefined {
   try {
     const hash = execSync('git rev-parse --short HEAD').toString().replace('\n', '').trim()
-    if (hash === 'undefined')
-      throw new Error('Could not retrieve git commit hash.')
+    if (hash === 'undefined') throw new Error('Could not retrieve git commit hash.')
     return hash
-  }
-  catch {
+  } catch {
     console.error('Could not retrieve git commit hash.')
   }
 }

@@ -38,7 +38,9 @@
             </div>
             <div class="status-item">
               <span>延迟加载状态 (loadingDelayed):</span>
-              <span :class="{ 'status-active': loadingDelayed }">{{ loadingDelayed ? '显示' : '隐藏' }}</span>
+              <span :class="{ 'status-active': loadingDelayed }">
+                {{ loadingDelayed ? '显示' : '隐藏' }}
+              </span>
             </div>
           </div>
           <div class="loading-container">
@@ -85,8 +87,14 @@ onUnmounted(() => {
     <div class="explanation">
       <h2>说明</h2>
       <ul>
-        <li><strong>加载延迟 (delay)</strong>: 当异步操作开始时，等待指定时间后再显示加载动画，避免闪烁</li>
-        <li><strong>最小显示时间 (minDisplayTime)</strong>: 一旦显示加载动画，确保它至少显示指定的时间，避免过快消失造成的视觉混乱</li>
+        <li>
+          <strong>加载延迟 (delay)</strong>:
+          当异步操作开始时，等待指定时间后再显示加载动画，避免闪烁
+        </li>
+        <li>
+          <strong>最小显示时间 (minDisplayTime)</strong>:
+          一旦显示加载动画，确保它至少显示指定的时间，避免过快消失造成的视觉混乱
+        </li>
         <li><strong>清理功能 (cleanup)</strong>: 在组件卸载时调用，防止内存泄漏</li>
       </ul>
     </div>
@@ -113,7 +121,7 @@ const isOptimized = ref(true)
 // 使用延迟加载Hook的函数和值
 let { loadingDelayed, cleanup } = useDelayedLoading(loading, {
   delay: delay,
-  minDisplayTime: minDisplayTime
+  minDisplayTime: minDisplayTime,
 })
 
 let now = Date.now()
@@ -132,7 +140,7 @@ const startLoading = async () => {
 
   try {
     // 模拟API请求
-    await new Promise(resolve => setTimeout(resolve, requestTime.value))
+    await new Promise((resolve) => setTimeout(resolve, requestTime.value))
     content.value = `数据已更新 (${new Date().toLocaleTimeString()})`
   } catch (error) {
     content.value = '加载失败'
@@ -150,14 +158,18 @@ onUnmounted(cleanup)
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-family:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 }
 
-h1, h2 {
+h1,
+h2 {
   color: #2c3e50;
 }
 
-.demo-section, .code-section, .explanation {
+.demo-section,
+.code-section,
+.explanation {
   margin-bottom: 30px;
   border: 1px solid #eaeaea;
   border-radius: 8px;
@@ -213,7 +225,7 @@ label {
   gap: 10px;
 }
 
-input[type="range"] {
+input[type='range'] {
   flex: 1;
 }
 
@@ -264,7 +276,9 @@ input[type="range"] {
 }
 
 @keyframes spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .content {

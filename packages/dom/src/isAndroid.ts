@@ -4,7 +4,6 @@
  * @linkcode https://github.com/GreatAuk/utopia-utils/blob/main/packages/dom/src/isAndroid.ts
  */
 export function isAndroid(): boolean {
-  if (typeof navigator === 'undefined')
-    return false
+  if (typeof navigator === 'undefined') return false
   return /android/i.test(navigator.userAgent)
 }

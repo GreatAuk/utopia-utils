@@ -24,23 +24,20 @@ interface Options {
 }
 
 function getMark({ mark }: Options = {}): string {
-  if (mark)
-    return mark.startsWith('data-') ? mark : `data-${mark}`
+  if (mark) return mark.startsWith('data-') ? mark : `data-${mark}`
 
   return MARK_KEY
 }
 
 function getContainer(option: Options) {
-  if (option.attachTo)
-    return option.attachTo
+  if (option.attachTo) return option.attachTo
 
   const head = document.querySelector('head')
   return head || document.body
 }
 
 function getOrder(prepend?: Prepend): AppendType {
-  if (prepend === 'queue')
-    return 'prependQueue'
+  if (prepend === 'queue') return 'prependQueue'
 
   return prepend ? 'prepend' : 'append'
 }
@@ -49,14 +46,13 @@ function getOrder(prepend?: Prepend): AppendType {
  * Find style which inject by rc-util
  */
 function findStyles(container: ContainerType): HTMLStyleElement[] {
-  return Array.from(
-    (containerCache.get(container) || container).children,
-  ).filter(node => node.tagName === 'STYLE') as HTMLStyleElement[]
+  return Array.from((containerCache.get(container) || container).children).filter(
+    (node) => node.tagName === 'STYLE',
+  ) as HTMLStyleElement[]
 }
 
 export function injectCSS(css: string, option: Options = {}): HTMLStyleElement | null {
-  if (!canUseDom())
-    return null
+  if (!canUseDom()) return null
 
   const { csp, prepend, priority = 0 } = option
   const mergedOrder = getOrder(prepend)
@@ -65,11 +61,9 @@ export function injectCSS(css: string, option: Options = {}): HTMLStyleElement |
   const styleNode = document.createElement('style')
   styleNode.setAttribute(APPEND_ORDER, mergedOrder)
 
-  if (isPrependQueue && priority)
-    styleNode.setAttribute(APPEND_PRIORITY, `${priority}`)
+  if (isPrependQueue && priority) styleNode.setAttribute(APPEND_PRIORITY, `${priority}`)
 
-  if (csp?.nonce)
-    styleNode.nonce = csp?.nonce
+  if (csp?.nonce) styleNode.nonce = csp?.nonce
 
   styleNode.innerHTML = css
 
@@ -81,10 +75,7 @@ export function injectCSS(css: string, option: Options = {}): HTMLStyleElement |
     if (isPrependQueue) {
       const existStyle = findStyles(container).filter((node) => {
         // Ignore style which not injected by rc-util with prepend
-        if (
-          !['prepend', 'prependQueue'].includes(node.getAttribute(APPEND_ORDER)!)
-        )
-          return false
+        if (!['prepend', 'prependQueue'].includes(node.getAttribute(APPEND_ORDER)!)) return false
 
         // Ignore style which priority less then new style
         const nodePriority = Number(node.getAttribute(APPEND_PRIORITY) || 0)
@@ -92,10 +83,7 @@ export function injectCSS(css: string, option: Options = {}): HTMLStyleElement |
       })
 
       if (existStyle.length) {
-        container.insertBefore(
-          styleNode,
-          existStyle[existStyle.length - 1].nextSibling,
-        )
+        container.insertBefore(styleNode, existStyle[existStyle.length - 1].nextSibling)
 
         return styleNode
       }
@@ -103,8 +91,7 @@ export function injectCSS(css: string, option: Options = {}): HTMLStyleElement |
 
     // Use `insertBefore` as `prepend`
     container.insertBefore(styleNode, firstChild)
-  }
-  else {
+  } else {
     container.appendChild(styleNode)
   }
 
@@ -114,9 +101,7 @@ export function injectCSS(css: string, option: Options = {}): HTMLStyleElement |
 function findExistNode(key: string, option: Options = {}): HTMLStyleElement | undefined {
   const container = getContainer(option)
 
-  return findStyles(container).find(
-    node => node.getAttribute(getMark(option)) === key,
-  )
+  return findStyles(container).find((node) => node.getAttribute(getMark(option)) === key)
 }
 
 export function removeCSS(key: string, option: Options = {}): void {
@@ -136,11 +121,9 @@ function syncRealContainer(container: ContainerType, option: Options): void {
   // Find real container when not cached or cached container removed
   if (!cachedRealContainer || !domContains(document, cachedRealContainer)) {
     const placeholderStyle = injectCSS('', option)
-    if (!placeholderStyle)
-      return
+    if (!placeholderStyle) return
     const { parentNode } = placeholderStyle
-    if (!parentNode)
-      return
+    if (!parentNode) return
     containerCache.set(container, parentNode)
     container.removeChild(placeholderStyle)
   }
@@ -166,7 +149,11 @@ export function clearContainerCache(): void {
  * updateCSS('body { color: red }', 'my-style')
  * ```
  */
-export function updateCSS(css: string, key: string, option: Options = {}): HTMLStyleElement | undefined {
+export function updateCSS(
+  css: string,
+  key: string,
+  option: Options = {},
+): HTMLStyleElement | undefined {
   const container = getContainer(option)
 
   // Sync real parent
@@ -178,15 +165,13 @@ export function updateCSS(css: string, key: string, option: Options = {}): HTMLS
     if (option.csp?.nonce && existNode.nonce !== option.csp?.nonce)
       existNode.nonce = option.csp?.nonce
 
-    if (existNode.innerHTML !== css)
-      existNode.innerHTML = css
+    if (existNode.innerHTML !== css) existNode.innerHTML = css
 
     return existNode
   }
 
   const newNode = injectCSS(css, option)
-  if (!newNode)
-    return
+  if (!newNode) return
   newNode.setAttribute(getMark(option), key)
   return newNode
 }

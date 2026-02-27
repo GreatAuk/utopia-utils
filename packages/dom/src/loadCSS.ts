@@ -32,10 +32,7 @@ interface LoadCSSReturn {
  * @linkcode https://github.com/GreatAuk/utopia-utils/blob/main/packages/dom/src/loadCSS.ts
  */
 export function loadCSS(path: string, options?: LoadCSSOptions): LoadCSSReturn {
-  const {
-    attrs = {},
-    media,
-  } = options || {}
+  const { attrs = {}, media } = options || {}
   let linkEl = document.querySelector<HTMLLinkElement>(`link[href="${path}"]`)
 
   if (!linkEl) {
@@ -43,8 +40,7 @@ export function loadCSS(path: string, options?: LoadCSSOptions): LoadCSSReturn {
     linkEl.rel = 'stylesheet'
     linkEl.href = path
 
-    if (media)
-      linkEl.media = media
+    if (media) linkEl.media = media
 
     Object.entries(attrs).forEach(([name, value]) => linkEl?.setAttribute(name, value))
 
@@ -61,6 +57,5 @@ export function loadCSS(path: string, options?: LoadCSSOptions): LoadCSSReturn {
 /** remove the script tag */
 function unload(path: string): void {
   const linkEl = document.querySelector(`link[href="${path}"]`)
-  if (linkEl)
-    linkEl.remove()
+  if (linkEl) linkEl.remove()
 }

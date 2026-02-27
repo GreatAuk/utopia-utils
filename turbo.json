@@ -5,12 +5,7 @@
     "build": {
       "outputs": ["dist/**"],
       "dependsOn": ["^build"],
-      "inputs": [
-        "src/**",
-        "tsdown.config.ts",
-        "../../tsconfig.json",
-        "package.json"
-      ],
+      "inputs": ["src/**", "tsdown.config.ts", "../../tsconfig.json", "package.json"],
       "outputLogs": "new-only"
     },
     "clean": {
@@ -18,10 +13,5 @@
       "outputLogs": "errors-only"
     }
   },
-  "globalDependencies": [
-    "package.json",
-    "pnpm-lock.yaml",
-    "turbo.json",
-    "tsconfig.json"
-  ]
+  "globalDependencies": ["package.json", "pnpm-lock.yaml", "turbo.json", "tsconfig.json"]
 }

@@ -15,8 +15,7 @@ import { isArray } from '@utopia-utils/share'
  * @linkcode https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/unique.ts
  */
 export function unique<T>(arr: T[]): T[] {
-  if (!isArray(arr))
-    throw new Error('arr must be an array')
+  if (!isArray(arr)) throw new Error('arr must be an array')
 
   return [...new Set(arr)]
 }

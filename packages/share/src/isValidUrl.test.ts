@@ -9,6 +9,10 @@ describe('isValidUrl', () => {
     expect(isValidUrl('www.domain.com')).toBe(false)
     expect(isValidUrl('http://www.domain.com')).toBe(true)
     expect(isValidUrl('tcp://www.domain.com')).toBe(true)
-    expect(isValidUrl('https://www.domain.com/remove-an-item-from-an-array-in-javascript/?id=23#name=utopia')).toBe(true)
+    expect(
+      isValidUrl(
+        'https://www.domain.com/remove-an-item-from-an-array-in-javascript/?id=23#name=utopia',
+      ),
+    ).toBe(true)
   })
 })

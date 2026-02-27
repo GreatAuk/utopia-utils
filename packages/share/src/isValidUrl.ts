@@ -15,8 +15,7 @@
 export function isValidUrl(urlString: string): boolean {
   try {
     return Boolean(new URL(urlString))
-  }
-  catch (err) {
+  } catch (err) {
     console.error(err)
     return false
   }

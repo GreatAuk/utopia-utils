@@ -33,7 +33,7 @@ describe('memoize', () => {
   it('should support custom serializer', () => {
     const add = (a: number, b: number) => a + b
     const addMemoized = memoize(add, {
-      serializer: args => args.join('-'),
+      serializer: (args) => args.join('-'),
     })
     addMemoized(1, 2)
     addMemoized(1, 2)

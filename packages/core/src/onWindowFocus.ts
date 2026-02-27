@@ -19,8 +19,7 @@ export function onWindowFocus(callback: (...args: any[]) => any): () => void {
   const listener = debounce(100, callback)
 
   const visibilitychangeListener = () => {
-    if (document.visibilityState === 'visible')
-      listener()
+    if (document.visibilityState === 'visible') listener()
   }
 
   window.addEventListener('focus', listener, false)

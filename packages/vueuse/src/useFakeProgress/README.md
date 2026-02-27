@@ -49,7 +49,7 @@ setTimeout(() => {
 
 <template>
   <div>
-    <div class="progress-bar" :style="{width: `${progress * 100}%`}"></div>
+    <div class="progress-bar" :style="{ width: `${progress * 100}%` }"></div>
     <div>{{ Math.floor(progress * 100) }}%</div>
 
     <button @click="startProgress">开始</button>
@@ -70,22 +70,22 @@ const {
   doneProgress,
   incProgress,
   resetProgress,
-  setProgress
+  setProgress,
 } = useFakeProgress({
-  minimum: 0.1,       // 起始进度为10%
-  maximum: 0.95,      // 自动递增最高到95%
-  speed: 500,         // 每500ms更新一次进度
+  minimum: 0.1, // 起始进度为10%
+  maximum: 0.95, // 自动递增最高到95%
+  speed: 500, // 每500ms更新一次进度
   // 自定义递增量计算函数
   amount: (p) => (1 - p) * 0.05,
   onProgress: (p) => console.log('当前进度:', p),
-  onFinish: () => console.log('进度完成!')
+  onFinish: () => console.log('进度完成!'),
 })
 
 // 手动设置进度
-setProgress(0.5)      // 设置为50%
+setProgress(0.5) // 设置为50%
 
 // 手动递增进度
-incProgress(0.1)      // 递增10%
+incProgress(0.1) // 递增10%
 
 // 重置进度
 resetProgress()
@@ -138,6 +138,7 @@ interface UseFakeProgressReturn {
 `useFakeProgress` 内部使用定时器实现进度的自动递增，并会根据当前进度值动态计算递增量，使进度增长呈现一种逐渐减缓的效果，更符合用户对加载过程的直观感受。
 
 默认情况下：
+
 - 进度起始值为8%，不会从0开始
 - 自动递增最高到99%，需调用 `doneProgress()` 才会到达100%
 - 递增量会随着进度增加而减小，模拟真实加载过程

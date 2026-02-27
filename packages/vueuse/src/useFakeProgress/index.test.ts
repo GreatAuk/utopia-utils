@@ -173,7 +173,7 @@ describe('useFakeProgress', () => {
       const { progress, incProgress } = useFakeProgress({
         minimum: 0,
         maximum: 1,
-        amount: () => 0.15, /* 固定增量 */
+        amount: () => 0.15 /* 固定增量 */,
       })
 
       incProgress()
@@ -362,8 +362,8 @@ describe('useFakeProgress', () => {
     })
 
     it('应该处理连续调用不同方法的情况', () => {
-      const { progress, startProgress, stopProgress, setProgress, doneProgress, resetProgress }
-        = useFakeProgress({
+      const { progress, startProgress, stopProgress, setProgress, doneProgress, resetProgress } =
+        useFakeProgress({
           minimum: 0,
           maximum: 1,
           speed: 100,

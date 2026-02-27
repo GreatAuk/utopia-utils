@@ -1,6 +1,11 @@
 import { describe, expect, it } from 'vitest'
 
-import { desensitizeEmail, desensitizeIDCard, desensitizeName, desensitizePhone } from './stringDesensitize'
+import {
+  desensitizeEmail,
+  desensitizeIDCard,
+  desensitizeName,
+  desensitizePhone,
+} from './stringDesensitize'
 
 describe('stringDesensitize', () => {
   it('desensitizeName', () => {
@@ -27,13 +32,25 @@ describe('stringDesensitize', () => {
     expect(desensitizeIDCard('12345678901234567x')).toMatchInlineSnapshot(`"123456********567x"`)
     expect(desensitizeIDCard('123456789012345678')).toMatchInlineSnapshot(`"123456********5678"`)
 
-    expect(desensitizeIDCard('12345678901234567X', 'medium')).toMatchInlineSnapshot(`"123************67X"`)
-    expect(desensitizeIDCard('12345678901234567x', 'medium')).toMatchInlineSnapshot(`"123************67x"`)
-    expect(desensitizeIDCard('123456789012345678', 'medium')).toMatchInlineSnapshot(`"123************678"`)
+    expect(desensitizeIDCard('12345678901234567X', 'medium')).toMatchInlineSnapshot(
+      `"123************67X"`,
+    )
+    expect(desensitizeIDCard('12345678901234567x', 'medium')).toMatchInlineSnapshot(
+      `"123************67x"`,
+    )
+    expect(desensitizeIDCard('123456789012345678', 'medium')).toMatchInlineSnapshot(
+      `"123************678"`,
+    )
 
-    expect(desensitizeIDCard('12345678901234567X', 'high')).toMatchInlineSnapshot(`"1****************X"`)
-    expect(desensitizeIDCard('12345678901234567x', 'high')).toMatchInlineSnapshot(`"1****************x"`)
-    expect(desensitizeIDCard('123456789012345678', 'high')).toMatchInlineSnapshot(`"1****************8"`)
+    expect(desensitizeIDCard('12345678901234567X', 'high')).toMatchInlineSnapshot(
+      `"1****************X"`,
+    )
+    expect(desensitizeIDCard('12345678901234567x', 'high')).toMatchInlineSnapshot(
+      `"1****************x"`,
+    )
+    expect(desensitizeIDCard('123456789012345678', 'high')).toMatchInlineSnapshot(
+      `"1****************8"`,
+    )
   })
 
   it('desensitizeEmail', () => {

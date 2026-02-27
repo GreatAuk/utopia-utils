@@ -7,14 +7,9 @@ import { isBlob, isFile, isString } from '@utopia-utils/share'
  * @returns a Promise that resolves to a string.
  */
 export async function toBase64(o: File | Blob | string): Promise<string> {
-  if (isFile(o) || isBlob(o))
-    return await fileToBase64(o)
-
-  else if (isString(o))
-    return await imgUrlToBase64(o)
-
-  else
-    throw new Error('The parameter must be a File, Blob or a string.')
+  if (isFile(o) || isBlob(o)) return await fileToBase64(o)
+  else if (isString(o)) return await imgUrlToBase64(o)
+  else throw new Error('The parameter must be a File, Blob or a string.')
 }
 /**
  * The function `fileToBase64` converts a File or Blob object to a base64 encoded string.
@@ -38,7 +33,11 @@ export function fileToBase64(file: File | Blob): Promise<string> {
  * @param {any} [quality] - the second parameter of canvas.toDataURL
  * @returns a Promise that resolves to a string.
  */
-export function imgUrlToBase64(imgUrl: string, fileType?: string, quality?: Parameters<HTMLCanvasElement['toDataURL']>[1]): Promise<string> {
+export function imgUrlToBase64(
+  imgUrl: string,
+  fileType?: string,
+  quality?: Parameters<HTMLCanvasElement['toDataURL']>[1],
+): Promise<string> {
   return new Promise((resolve, reject) => {
     const img = new Image()
     img.crossOrigin = 'Anonymous'

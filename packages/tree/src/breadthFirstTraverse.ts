@@ -34,9 +34,12 @@ interface Options {
     // output 'a', 'c', 'b'
  * ```
  */
-export function breadthFirstTraverse<TreeNode>(tree: TreeNode[] | TreeNode, action: (node: TreeNode) => unknown, options?: Options): void {
-  if (!isFunction(action))
-    throw new Error('traverse action should be a function')
+export function breadthFirstTraverse<TreeNode>(
+  tree: TreeNode[] | TreeNode,
+  action: (node: TreeNode) => unknown,
+  options?: Options,
+): void {
+  if (!isFunction(action)) throw new Error('traverse action should be a function')
 
   const { fieldNames } = options || {}
   const { children } = { ...DEFAULT_FIELD_NAMES, ...fieldNames }
@@ -44,16 +47,14 @@ export function breadthFirstTraverse<TreeNode>(tree: TreeNode[] | TreeNode, acti
 
   while (queue.length) {
     const node = queue.shift()
-    if (!node)
-      continue
+    if (!node) continue
 
     // if action return false, stop traverse
-    if (action(node) === false)
-      break
+    if (action(node) === false) break
 
     // @ts-expect-error - children field is dynamic
     if (node[children])
-    // @ts-expect-error - children field is dynamic
+      // @ts-expect-error - children field is dynamic
       queue.push(...node[children])
   }
 }

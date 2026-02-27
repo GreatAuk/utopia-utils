@@ -1,7 +1,10 @@
 import { isFunction, isNumber } from '@utopia-utils/share'
 import { sleep } from './sleep'
 
-type RetryDelay = number | ((attemptTime: number) => Promise<void>) | ((attemptTime: number) => number)
+type RetryDelay =
+  | number
+  | ((attemptTime: number) => Promise<void>)
+  | ((attemptTime: number) => number)
 
 /**
  * It retries a function until it succeeds or the retry time is exceeded
@@ -26,9 +29,12 @@ type RetryDelay = number | ((attemptTime: number) => Promise<void>) | ((attemptT
  * ```
  * @linkcode https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/retry.ts
  */
-export async function retry<T, E = Error>(fn: (() => Promise<T>) | (() => T), retryTime: number, delay?: RetryDelay): Promise<[E, null] | [null, T]> {
-  if (!isNumber(retryTime) || retryTime < 0)
-    throw new Error('retryTime must be a positive number')
+export async function retry<T, E = Error>(
+  fn: (() => Promise<T>) | (() => T),
+  retryTime: number,
+  delay?: RetryDelay,
+): Promise<[E, null] | [null, T]> {
+  if (!isNumber(retryTime) || retryTime < 0) throw new Error('retryTime must be a positive number')
 
   let attemptTime = 0
   let res: T
@@ -36,20 +42,16 @@ export async function retry<T, E = Error>(fn: (() => Promise<T>) | (() => T), re
     try {
       res = await fn()
       break
-    }
-    catch (err) {
+    } catch (err) {
       attemptTime++
 
-      if (attemptTime > retryTime)
-        return [err, null] as [E, null]
+      if (attemptTime > retryTime) return [err, null] as [E, null]
 
       if (isNumber(delay)) {
         await sleep(delay)
-      }
-      else if (isFunction(delay)) {
+      } else if (isFunction(delay)) {
         const tempRes = await delay(attemptTime)
-        if (isNumber(tempRes))
-          await sleep(tempRes)
+        if (isNumber(tempRes)) await sleep(tempRes)
       }
     }
   }

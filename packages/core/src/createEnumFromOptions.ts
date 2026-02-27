@@ -38,8 +38,7 @@ export function createEnumFromOptions<T extends readonly Option[]>(options: T): 
       res[v.value] = v.label
       res[v.label] = v.value
     })
-  }
-  catch (err) {
+  } catch (err) {
     console.error(err)
   }
   return res as MapTuple<T>
@@ -56,17 +55,19 @@ type MapTuple<T extends readonly Option[]> = {
   [label in T[number]['label']]: ArrayFindLabel<T, label>
 }
 
-type ArrayFindValue<
-  T extends readonly Option[],
-  V,
-> = T extends Readonly<[infer F, ...infer Tail]>
-  // @ts-expect-error - This is ok
-  ? F extends { value: V, label: infer Res } ? Res : ArrayFindValue<Tail, V>
-  : never
-type ArrayFindLabel<
-  T extends readonly Option[],
-  L,
-> = T extends Readonly<[infer F, ...infer Tail]>
-  // @ts-expect-error - This is ok
-  ? F extends { value: infer Res, label: L } ? Res : Tail extends unknown[] ? never : ArrayFindLabel<Tail, L>
-  : never
+type ArrayFindValue<T extends readonly Option[], V> =
+  T extends Readonly<[infer F, ...infer Tail]>
+    ? // @ts-expect-error - This is ok
+      F extends { value: V; label: infer Res }
+      ? Res
+      : ArrayFindValue<Tail, V>
+    : never
+type ArrayFindLabel<T extends readonly Option[], L> =
+  T extends Readonly<[infer F, ...infer Tail]>
+    ? // @ts-expect-error - This is ok
+      F extends { value: infer Res; label: L }
+      ? Res
+      : Tail extends unknown[]
+        ? never
+        : ArrayFindLabel<Tail, L>
+    : never

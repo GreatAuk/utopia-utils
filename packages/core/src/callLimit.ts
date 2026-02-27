@@ -18,17 +18,17 @@ import { isFunction, isNumber } from '@utopia-utils/share'
  * ```
  * @linkcode https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/callLimit.ts
  */
-export function callLimit<T extends (...args: any[]) => any>(fn: T, limit = 1): (this: ThisParameterType<T>, ...args: Parameters<T>) => ReturnType<T> {
-  if (!isFunction(fn))
-    throw new TypeError('fn expected a function')
+export function callLimit<T extends (...args: any[]) => any>(
+  fn: T,
+  limit = 1,
+): (this: ThisParameterType<T>, ...args: Parameters<T>) => ReturnType<T> {
+  if (!isFunction(fn)) throw new TypeError('fn expected a function')
 
-  if (!isNumber(limit))
-    throw new TypeError('limit expected a number')
+  if (!isNumber(limit)) throw new TypeError('limit expected a number')
 
   let cachedValue: ReturnType<T>
   return function (this: ThisParameterType<T>, ...args: Parameters<T>) {
-    if (--limit >= 0)
-      cachedValue = fn.apply(this, args)
+    if (--limit >= 0) cachedValue = fn.apply(this, args)
     // if limit < 0, can not call fn again
 
     return cachedValue

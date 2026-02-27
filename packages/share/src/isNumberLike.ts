@@ -10,6 +10,8 @@
  * @linkcode https://github.com/GreatAuk/utopia-utils/blob/main/packages/share/src/isNumberLike.ts
  */
 export function isNumberLike(val: unknown): boolean {
-  return (typeof val === 'number' && !Number.isNaN(val))
-    || (typeof val === 'string' && val.trim() !== '' && !Number.isNaN(Number(val)))
+  return (
+    (typeof val === 'number' && !Number.isNaN(val)) ||
+    (typeof val === 'string' && val.trim() !== '' && !Number.isNaN(Number(val)))
+  )
 }

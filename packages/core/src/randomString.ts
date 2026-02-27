@@ -6,11 +6,13 @@
  * @returns A random string of the length specified.
  * @linkcode https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/randomString.ts
  */
-export function randomString(length: number, chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'): string {
+export function randomString(
+  length: number,
+  chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789',
+): string {
   const maxPos = chars.length
   let str = ''
-  for (let i = 0; i < length; i++)
-    str += chars.charAt(Math.floor(Math.random() * maxPos))
+  for (let i = 0; i < length; i++) str += chars.charAt(Math.floor(Math.random() * maxPos))
 
   return str
 }

@@ -12,8 +12,8 @@ type ToProperty<
 
 type ToKeys<T> = T extends readonly [infer A, ...infer B]
   ? A extends {
-    readonly key: infer K
-  }
+      readonly key: infer K
+    }
     ? B['length'] extends 0
       ? [K]
       : [K, ...ToKeys<B>]
@@ -21,8 +21,8 @@ type ToKeys<T> = T extends readonly [infer A, ...infer B]
   : []
 type ToValues<T> = T extends readonly [infer A, ...infer B]
   ? A extends {
-    readonly value: infer K
-  }
+      readonly value: infer K
+    }
     ? B['length'] extends 0
       ? [K]
       : [K, ...ToValues<B>]
@@ -34,14 +34,12 @@ type ToSingleKeyMap<T> = T extends {
 }
   ? K extends PropertyKey
     ? {
-        readonly [Key in K]: T;
+        readonly [Key in K]: T
       }
     : never
   : never
 
-export type MergeIntersection<A> = A extends infer T
-  ? { [Key in keyof T]: T[Key] }
-  : never
+export type MergeIntersection<A> = A extends infer T ? { [Key in keyof T]: T[Key] } : never
 
 type ToKeyMap<T> = T extends readonly [infer A, ...infer B]
   ? B['length'] extends 0
@@ -54,7 +52,7 @@ type ToSingleValueMap<T> = T extends {
 }
   ? K extends PropertyKey
     ? {
-        readonly [Key in K]: T;
+        readonly [Key in K]: T
       }
     : never
   : never
@@ -71,7 +69,7 @@ type ToSingleKeyValue<T> = T extends {
 }
   ? K extends PropertyKey
     ? {
-        readonly [Key in K]: V;
+        readonly [Key in K]: V
       }
     : never
   : never
@@ -88,7 +86,7 @@ type ToSingleValueKey<T> = T extends {
 }
   ? V extends PropertyKey
     ? {
-        readonly [Key in V]: K;
+        readonly [Key in V]: K
       }
     : never
   : never
@@ -186,17 +184,16 @@ type ToValueKey<T> = T extends readonly [infer A, ...infer B]
  * ```
  * @linkcode https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/defineDictionary.ts
  */
-export function defineDictionary<
-  T extends readonly BaseOption[],
-  N extends string,
->(options: T, namespace: N) {
-  if (!namespace)
-    throw new Error('namespace is required')
+export function defineDictionary<T extends readonly BaseOption[], N extends string>(
+  options: T,
+  namespace: N,
+) {
+  if (!namespace) throw new Error('namespace is required')
 
   const prefix = `get_${namespace}_`
   return {
-    [`${prefix}KEYS`]: () => options.map(item => item.key),
-    [`${prefix}VALUES`]: () => options.map(item => item.value),
+    [`${prefix}KEYS`]: () => options.map((item) => item.key),
+    [`${prefix}VALUES`]: () => options.map((item) => item.value),
     [`${prefix}KV`]: () => {
       return options.reduce(
         (prev, cur) => ({

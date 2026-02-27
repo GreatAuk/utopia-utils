@@ -48,7 +48,7 @@ describe('yuanFormat', () => {
   it('negative', () => {
     expect(yuanFormat(-100)).toMatchInlineSnapshot('"-1.00"')
     expect(yuanFormat(-1000000, { unit: 'yuan' })).toMatchInlineSnapshot(`"-1,000,000.00"`)
-    expect(yuanFormat(-9432432.34, { unit: 'yuan'})).toMatchInlineSnapshot(`"-9,432,432.34"`)
+    expect(yuanFormat(-9432432.34, { unit: 'yuan' })).toMatchInlineSnapshot(`"-9,432,432.34"`)
   })
 
   describe('prefix option', () => {
@@ -107,7 +107,9 @@ describe('yuanFormat', () => {
       expect(yuanFormat(12345, { prefix: 'CNY', space: false })).toBe('CNY123.45')
       // with unit: yuan
       expect(yuanFormat(123.45, { prefix: true, space: true, unit: 'yuan' })).toBe('¥ 123.45')
-      expect(yuanFormat(123456.78, { prefix: 'USD', space: true, unit: 'yuan' })).toBe('USD 123,456.78')
+      expect(yuanFormat(123456.78, { prefix: 'USD', space: true, unit: 'yuan' })).toBe(
+        'USD 123,456.78',
+      )
     })
   })
 

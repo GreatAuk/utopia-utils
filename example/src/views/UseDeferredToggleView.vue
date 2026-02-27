@@ -1,4 +1,4 @@
-<script setup lang='ts'>
+<script setup lang="ts">
 import { ref } from 'vue'
 import { useDeferredToggle } from '@utopia-utils/vueuse'
 import Code from '../components/Code.vue'
@@ -8,8 +8,12 @@ const overlayVisible = ref(false)
 const costTime = ref(0)
 
 const { open, hide } = useDeferredToggle(
-  () => { overlayVisible.value = true },
-  () => { overlayVisible.value = false },
+  () => {
+    overlayVisible.value = true
+  },
+  () => {
+    overlayVisible.value = false
+  },
   { delay: 300, minDisplayTime: 500 },
 )
 
@@ -18,7 +22,7 @@ async function request() {
   try {
     const time = Math.random() * 700 + 100
     // 模拟异步任务（随机 100~800ms）
-    await new Promise(resolve => setTimeout(resolve, time))
+    await new Promise((resolve) => setTimeout(resolve, time))
     costTime.value = time
   } finally {
     hide()

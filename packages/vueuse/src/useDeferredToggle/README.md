@@ -23,9 +23,10 @@ import { useDeferredToggle } from '@utopia-utils/vueuse'
 
 const { open, hide } = useDeferredToggle(
   () => uni.showLoading({ title: '加载中...' }),
-  () => uni.hideLoading({
-    noConflict: true, // 微信小程序中避免与 toast 冲突
-  }),
+  () =>
+    uni.hideLoading({
+      noConflict: true, // 微信小程序中避免与 toast 冲突
+    }),
   { delay: 300, minDisplayTime: 500 },
 )
 
@@ -48,23 +49,23 @@ async function fetchData() {
 
 ### `useDeferredToggle(openFn, hideFn, options?)`
 
-| 参数          | 说明                              | 类型                              | 默认值 |
-| ------------- | --------------------------------- | --------------------------------- | ------ |
-| `openFn`      | 真正执行“显示”的函数 (例如 uni.showLoading) | `AnyFn` | —      |
-| `hideFn`      | 真正执行“隐藏”的函数 (例如 uni.hideLoading) | `AnyFn` | —      |
-| `options`     | 延迟与最短展示配置，可选          | `DeferredToggleOptions`           | —      |
+| 参数      | 说明                                        | 类型                    | 默认值 |
+| --------- | ------------------------------------------- | ----------------------- | ------ |
+| `openFn`  | 真正执行“显示”的函数 (例如 uni.showLoading) | `AnyFn`                 | —      |
+| `hideFn`  | 真正执行“隐藏”的函数 (例如 uni.hideLoading) | `AnyFn`                 | —      |
+| `options` | 延迟与最短展示配置，可选                    | `DeferredToggleOptions` | —      |
 
 ### `DeferredToggleOptions`
 
-| 属性            | 说明                                       | 类型     | 默认值 |
-| --------------- | ------------------------------------------ | -------- | ------ |
-| `delay`         | 延迟触发 `open` 的时间(ms)                 | `number` | 300    |
-| `minDisplayTime`| `open` 真正触发后最短展示时长(ms)         | `number` | 500    |
+| 属性             | 说明                              | 类型     | 默认值 |
+| ---------------- | --------------------------------- | -------- | ------ |
+| `delay`          | 延迟触发 `open` 的时间(ms)        | `number` | 300    |
+| `minDisplayTime` | `open` 真正触发后最短展示时长(ms) | `number` | 500    |
 
 ### 返回值
 
-| 属性     | 说明                                       | 类型         |
-| -------- | ------------------------------------------ | ------------ |
-| `open`   | 触发“显示”逻辑（可能被延迟）                   | `AnyFn` |
-| `hide`   | 触发“隐藏”逻辑（可能被延迟以保证最短展示时长）  | `AnyFn` |
-| `cancel` | 立即终止所有计时器并重置(`hide` 不被触发)   | `() => void` |
+| 属性     | 说明                                           | 类型         |
+| -------- | ---------------------------------------------- | ------------ |
+| `open`   | 触发“显示”逻辑（可能被延迟）                   | `AnyFn`      |
+| `hide`   | 触发“隐藏”逻辑（可能被延迟以保证最短展示时长） | `AnyFn`      |
+| `cancel` | 立即终止所有计时器并重置(`hide` 不被触发)      | `() => void` |

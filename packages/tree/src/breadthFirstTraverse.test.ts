@@ -36,7 +36,7 @@ describe('breadthFirstTraverse', () => {
     ]
     const titles: string[] = []
     let callNum = 0
-    breadthFirstTraverse(tree, node => {
+    breadthFirstTraverse(tree, (node) => {
       titles.push(node.title)
       callNum++
     })
@@ -47,9 +47,7 @@ describe('breadthFirstTraverse', () => {
     const tree = [
       {
         name: 'a',
-        Children_: [
-          { name: 'b' },
-        ],
+        Children_: [{ name: 'b' }],
       },
       {
         name: 'c',
@@ -57,7 +55,7 @@ describe('breadthFirstTraverse', () => {
     ]
 
     const names: string[] = []
-    breadthFirstTraverse(tree, node => names.push(node.name), {
+    breadthFirstTraverse(tree, (node) => names.push(node.name), {
       fieldNames: {
         children: 'Children_',
       },
@@ -74,9 +72,7 @@ describe('breadthFirstTraverse', () => {
     const tree = [
       {
         name: 'a',
-        children: [
-          { name: 'b' },
-        ],
+        children: [{ name: 'b' }],
       },
       {
         name: 'c',
@@ -93,28 +89,26 @@ describe('breadthFirstTraverse', () => {
     const tree = [
       {
         name: 'a',
-        children: [
-          { name: 'b' },
-        ],
+        children: [{ name: 'b' }],
       },
     ]
-    expect(() => breadthFirstTraverse(tree, null as any)).toThrowError('traverse action should be a function')
+    expect(() => breadthFirstTraverse(tree, null as any)).toThrowError(
+      'traverse action should be a function',
+    )
   })
   it('support argument tree be a object instead of array', () => {
     const tree = {
       name: 'a',
-      children: [
-        { name: 'b' },
-      ],
+      children: [{ name: 'b' }],
     }
     const names: string[] = []
-    breadthFirstTraverse(tree, node => names.push(node.name))
+    breadthFirstTraverse(tree, (node) => names.push(node.name))
     expect(names).toEqual(['a', 'b'])
   })
   it('should handle empty tree array', () => {
     const tree: any[] = []
     const results: any[] = []
-    breadthFirstTraverse(tree, node => results.push(node))
+    breadthFirstTraverse(tree, (node) => results.push(node))
     expect(results).toEqual([])
   })
 
@@ -133,7 +127,7 @@ describe('breadthFirstTraverse', () => {
       },
     ]
     const names: string[] = []
-    breadthFirstTraverse(tree, node => names.push(node.name))
+    breadthFirstTraverse(tree, (node) => names.push(node.name))
     expect(names).toEqual(['a', 'b', 'c'])
   })
 
@@ -147,9 +141,7 @@ describe('breadthFirstTraverse', () => {
             { name: 'level3-1' },
             {
               name: 'level3-2',
-              children: [
-                { name: 'level4-1' }
-              ]
+              children: [{ name: 'level4-1' }],
             },
           ],
         },
@@ -158,7 +150,7 @@ describe('breadthFirstTraverse', () => {
     }
 
     const names: string[] = []
-    breadthFirstTraverse(tree, node => names.push(node.name))
+    breadthFirstTraverse(tree, (node) => names.push(node.name))
     expect(names).toEqual(['level1', 'level2-1', 'level2-2', 'level3-1', 'level3-2', 'level4-1'])
   })
 
@@ -168,25 +160,20 @@ describe('breadthFirstTraverse', () => {
       items: [
         {
           name: 'child1',
-          items: [
-            { name: 'grandchild1' },
-            { name: 'grandchild2' }
-          ]
+          items: [{ name: 'grandchild1' }, { name: 'grandchild2' }],
         },
         {
           name: 'child2',
-          items: [
-            { name: 'grandchild3' }
-          ]
-        }
-      ]
+          items: [{ name: 'grandchild3' }],
+        },
+      ],
     }
 
     const names: string[] = []
-    breadthFirstTraverse(tree, node => names.push(node.name), {
+    breadthFirstTraverse(tree, (node) => names.push(node.name), {
       fieldNames: {
-        children: 'items'
-      }
+        children: 'items',
+      },
     })
     expect(names).toEqual(['root', 'child1', 'child2', 'grandchild1', 'grandchild2', 'grandchild3'])
   })
@@ -194,7 +181,7 @@ describe('breadthFirstTraverse', () => {
   it('should handle single node without children', () => {
     const tree = { name: 'standalone' }
     const names: string[] = []
-    breadthFirstTraverse(tree, node => names.push(node.name))
+    breadthFirstTraverse(tree, (node) => names.push(node.name))
     expect(names).toEqual(['standalone'])
   })
 
@@ -204,24 +191,20 @@ describe('breadthFirstTraverse', () => {
       items: [
         {
           name: 'child1',
-          children: [
-            { name: 'grandchild1' }
-          ]
+          children: [{ name: 'grandchild1' }],
         },
         {
           name: 'child2',
-          items: [
-            { name: 'grandchild2' }
-          ]
-        }
-      ]
+          items: [{ name: 'grandchild2' }],
+        },
+      ],
     }
 
     const names: string[] = []
-    breadthFirstTraverse(tree, node => names.push(node.name), {
+    breadthFirstTraverse(tree, (node) => names.push(node.name), {
       fieldNames: {
-        children: 'items'
-      }
+        children: 'items',
+      },
     })
 
     // Should only traverse using the 'items' field, not 'children'
@@ -234,19 +217,17 @@ describe('breadthFirstTraverse', () => {
       children: [
         {
           name: 'child1',
-          children: []
+          children: [],
         },
         {
           name: 'child2',
-          children: [
-            { name: 'grandchild' }
-          ]
-        }
-      ]
+          children: [{ name: 'grandchild' }],
+        },
+      ],
     }
 
     const names: string[] = []
-    breadthFirstTraverse(tree, node => names.push(node.name))
+    breadthFirstTraverse(tree, (node) => names.push(node.name))
     expect(names).toEqual(['root', 'child1', 'child2', 'grandchild'])
   })
 })

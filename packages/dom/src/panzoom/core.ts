@@ -7,16 +7,13 @@ type PanZoomReturn = {
 /**
  * @linkcode https://github.com/GreatAuk/utopia-utils/blob/main/packages/dom/src/panzoom/index.ts
  */
-export function panzoom(target: HTMLElement, {
-  zoomFactor = 1,
-  maxZoom = 5,
-  minZoom = 0.2,
-  onTransform,
-}: PanZoomOptions = {}): PanZoomReturn {
+export function panzoom(
+  target: HTMLElement,
+  { zoomFactor = 1, maxZoom = 5, minZoom = 0.2, onTransform }: PanZoomOptions = {},
+): PanZoomReturn {
   const parentNode = target.parentNode as HTMLElement
 
-  if (!parentNode)
-    throw new Error('target element must have a parent node!')
+  if (!parentNode) throw new Error('target element must have a parent node!')
 
   // TODO 为了缩放时以鼠标为中心， parent 最好是 inline-block, 并且宽高自动由 target 决定。target 也不要有 absolute 定位。
 
@@ -32,8 +29,7 @@ export function panzoom(target: HTMLElement, {
   }
 
   const mousemove = (e: MouseEvent) => {
-    if (!isDragging)
-      return
+    if (!isDragging) return
     const dx = e.clientX - lastMousePosition.x
     const dy = e.clientY - lastMousePosition.y
     transform.x = transform.x + dx
@@ -70,8 +66,7 @@ export function panzoom(target: HTMLElement, {
   }
   const mouseWheelHandler = (e: WheelEvent) => {
     let delta = e.deltaY
-    if (e.deltaMode > 0)
-      delta *= 100
+    if (e.deltaMode > 0) delta *= 100
 
     const scaleMultiplier = getScaleMultiplier(delta, zoomFactor)
 
@@ -93,14 +88,12 @@ export function panzoom(target: HTMLElement, {
     const newScale = transform.scale * ratio
 
     if (newScale < minZoom) {
-      if (transform.scale === minZoom)
-        return
+      if (transform.scale === minZoom) return
 
       ratio = minZoom / transform.scale
     }
     if (newScale > maxZoom) {
-      if (transform.scale === maxZoom)
-        return
+      if (transform.scale === maxZoom) return
 
       ratio = maxZoom / transform.scale
     }

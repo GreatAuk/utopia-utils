@@ -10,18 +10,15 @@
  * @linkcode https://github.com/GreatAuk/utopia-utils/blob/main/packages/dom/src/contains.ts
  */
 export function domContains(root: Node | null | undefined, n: Node | null): boolean {
-  if (!root)
-    return false
+  if (!root) return false
 
   // Use native if support
-  if (root.contains)
-    return root.contains(n)
+  if (root.contains) return root.contains(n)
 
   // `document.contains` not support with IE11
   let node = n
   while (node) {
-    if (node === root)
-      return true
+    if (node === root) return true
 
     node = node.parentNode
   }

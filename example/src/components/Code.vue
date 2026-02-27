@@ -1,15 +1,14 @@
-<script setup lang='ts'>
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <div class="code-section">
     <h2>代码示例</h2>
-      <slot></slot>
+    <slot></slot>
   </div>
 </template>
 
 <style>
-.code-section{
+.code-section {
   margin-bottom: 30px;
   border: 1px solid #eaeaea;
   border-radius: 8px;

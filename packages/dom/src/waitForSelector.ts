@@ -18,7 +18,10 @@ interface WaitForOptions {
  * @returns A promise that resolves to an element that matches the selector.
  * @linkcode https://github.com/GreatAuk/utopia-utils/blob/main/packages/dom/src/waitForSelector.ts
  */
-export function waitForSelector<T extends Element>(selector: string, options?: WaitForOptions): Promise<T | null> {
+export function waitForSelector<T extends Element>(
+  selector: string,
+  options?: WaitForOptions,
+): Promise<T | null> {
   return new Promise((resolve) => {
     if (typeof window.MutationObserver === 'undefined')
       throw new Error('MutationObserver is not supported in this browser')
@@ -27,7 +30,13 @@ export function waitForSelector<T extends Element>(selector: string, options?: W
     const timeoutId = setTimeout(onTimeoutDone, timeoutMillisecond)
 
     const observer = new MutationObserver((mutations) => {
-      if (mutations.some(mutation => Array.from(mutation.addedNodes).some(node => node instanceof Element && node.matches(selector)))) {
+      if (
+        mutations.some((mutation) =>
+          Array.from(mutation.addedNodes).some(
+            (node) => node instanceof Element && node.matches(selector),
+          ),
+        )
+      ) {
         clearTimeout(timeoutId)
         checkDom()
       }

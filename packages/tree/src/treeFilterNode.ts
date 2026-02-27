@@ -51,14 +51,18 @@ interface Options<TreeNode> {
     // ]
  * ```
  */
-export function treeFilterNode<TreeNode>(tree: TreeNode[] | TreeNode, predicate: (node: TreeNode) => boolean, options?: Options<TreeNode>): TreeNode[] {
+export function treeFilterNode<TreeNode>(
+  tree: TreeNode[] | TreeNode,
+  predicate: (node: TreeNode) => boolean,
+  options?: Options<TreeNode>,
+): TreeNode[] {
   const { fieldNames, onEachTraverse } = options || {}
   const { children } = { ...DEFAULT_FIELD_NAMES, ...fieldNames }
   const _tree = Array.isArray(tree) ? [...tree] : [tree]
 
   function recursionFilter(_tree: TreeNode[]) {
     // copy the array to avoid mutating the original tree
-    const copyTree = _tree.map(node => ({ ...node }))
+    const copyTree = _tree.map((node) => ({ ...node }))
     return copyTree.filter((node) => {
       // @ts-expect-error - dynamic field name
       if (node[children])

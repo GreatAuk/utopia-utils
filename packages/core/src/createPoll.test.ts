@@ -1,7 +1,7 @@
 import { createPoll } from './createPoll'
 
 const task = () => 'hello'
-const taskDelay = () => new Promise<string>(resolve => setTimeout(() => resolve('hello'), 10))
+const taskDelay = () => new Promise<string>((resolve) => setTimeout(() => resolve('hello'), 10))
 
 describe('createPoll', () => {
   beforeEach(() => {
@@ -85,8 +85,7 @@ describe('createPoll', () => {
       taskFn: taskDelay,
       maxTimes: 10,
       onEachCall: ({ times }) => {
-        if (times === 3)
-          return false
+        if (times === 3) return false
       },
       onEnd: (payload) => {
         mockEnd(payload)

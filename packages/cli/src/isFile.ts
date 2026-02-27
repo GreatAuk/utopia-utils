@@ -9,8 +9,7 @@ export async function isFile(path: string): Promise<boolean> {
   try {
     const stat = await fs.stat(path)
     return stat.isFile()
-  }
-  catch {
+  } catch {
     return false
   }
 }

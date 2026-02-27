@@ -18,29 +18,29 @@
 
 ```typescript
 type UseTableOptions<Filters> = {
-  defaultFilters?: Filters;
+  defaultFilters?: Filters
   /** 默认分页数量 @default 10 */
-  defaultPageSize?: number;
+  defaultPageSize?: number
   /** searchType 为 simple 时，表单项更新的 debounce 时间 @default 400 */
-  searchDebounce?: number;
+  searchDebounce?: number
   /** 表单类型 @default 'advance' */
-  searchType?: 'advance' | 'simple';
-};
+  searchType?: 'advance' | 'simple'
+}
 
 type TableSort = {
-  field: string;
-  order?: 'ascend' | 'descend' | null;
-};
+  field: string
+  order?: 'ascend' | 'descend' | null
+}
 ```
 
 ## 参数说明
 
-| 参数 | 类型 | 默认值 | 描述 |
-|------|------|-------|------|
-| `defaultFilters` | `Filters` | `{}` | 默认过滤器值 |
-| `defaultPageSize` | `number` | `10` | 默认每页显示数量 |
-| `searchDebounce` | `number` | `400` | 简单搜索模式下的防抖时间（毫秒） |
-| `searchType` | `'advance' \| 'simple'` | `'advance'` | 搜索模式类型 |
+| 参数              | 类型                    | 默认值      | 描述                             |
+| ----------------- | ----------------------- | ----------- | -------------------------------- |
+| `defaultFilters`  | `Filters`               | `{}`        | 默认过滤器值                     |
+| `defaultPageSize` | `number`                | `10`        | 默认每页显示数量                 |
+| `searchDebounce`  | `number`                | `400`       | 简单搜索模式下的防抖时间（毫秒） |
+| `searchType`      | `'advance' \| 'simple'` | `'advance'` | 搜索模式类型                     |
 
 ### 搜索模式说明
 
@@ -100,11 +100,11 @@ type TableSort = {
 </template>
 
 <script setup lang="ts">
-import { useTable } from '@/hooks/useTable';
+import { useTable } from '@/hooks/useTable'
 
 interface SearchFilters {
-  username?: string;
-  status?: string;
+  username?: string
+  status?: string
 }
 
 /* 初始化 useTable，使用简单搜索模式 */
@@ -116,25 +116,25 @@ const { pageSize, currentPage, filters, search } = useTable<SearchFilters>({
     username: '',
     status: '',
   },
-});
+})
 
 /* 监听 filters 变化，发起 API 请求 */
 watchEffect(() => {
-  fetchTableData();
-});
+  fetchTableData()
+})
 
 const fetchTableData = async () => {
   const params = {
     page: currentPage.value,
     size: pageSize.value,
     ...filters.value,
-  };
+  }
 
   /* 发起 API 请求 */
-  const response = await getUserList(params);
-  tableData.value = response.data;
-  total.value = response.total;
-};
+  const response = await getUserList(params)
+  tableData.value = response.data
+  total.value = response.total
+}
 </script>
 ```
 
@@ -166,11 +166,11 @@ const fetchTableData = async () => {
 </template>
 
 <script setup lang="ts">
-import { useTable } from '@/hooks/useTable';
+import { useTable } from '@/hooks/useTable'
 
 interface SearchFilters {
-  username?: string;
-  createTime?: [string, string];
+  username?: string
+  createTime?: [string, string]
 }
 
 /* 初始化 useTable，使用高级搜索模式 */
@@ -180,12 +180,12 @@ const { pageSize, currentPage, sort, filters, search } = useTable<SearchFilters>
     username: '',
     createTime: undefined,
   },
-});
+})
 
 /* 监听 filters、分页、排序变化 */
 watchEffect(() => {
-  fetchTableData();
-});
+  fetchTableData()
+})
 
 const fetchTableData = async () => {
   const params = {
@@ -194,12 +194,12 @@ const fetchTableData = async () => {
     sortField: sort.value?.field,
     sortOrder: sort.value?.order,
     ...filters.value,
-  };
+  }
 
   /* 发起 API 请求 */
-  const response = await getUserList(params);
+  const response = await getUserList(params)
   // 处理响应数据...
-};
+}
 </script>
 ```
 
@@ -207,20 +207,9 @@ const fetchTableData = async () => {
 
 ```vue
 <template>
-  <el-table
-    :data="tableData"
-    @sort-change="handleSortChange"
-  >
-    <el-table-column
-      prop="username"
-      label="用户名"
-      sortable="custom"
-    />
-    <el-table-column
-      prop="createTime"
-      label="创建时间"
-      sortable="custom"
-    />
+  <el-table :data="tableData" @sort-change="handleSortChange">
+    <el-table-column prop="username" label="用户名" sortable="custom" />
+    <el-table-column prop="createTime" label="创建时间" sortable="custom" />
   </el-table>
 </template>
 
@@ -230,8 +219,8 @@ const handleSortChange = ({ prop, order }: any) => {
   sort.value = {
     field: prop,
     order: order === 'ascending' ? 'ascend' : order === 'descending' ? 'descend' : null,
-  };
-};
+  }
+}
 </script>
 ```
 
@@ -240,39 +229,40 @@ const handleSortChange = ({ prop, order }: any) => {
 ### 1. 与 TanStack Query 结合使用
 
 ```typescript
-import { useQuery, keepPreviousData } from '@tanstack/vue-query';
+import { useQuery, keepPreviousData } from '@tanstack/vue-query'
 
 const { filters, pageSize, currentPage } = useTable<SearchFilters>({
   searchType: 'advance',
-});
+})
 
 /* 使用 TanStack Query 管理数据获取 */
 const { data: tableData, isLoading } = useQuery({
   queryKey: ['users', filters, pageSize, currentPage],
-  queryFn: () => getUserList({
-    page: currentPage.value,
-    size: pageSize.value,
-    ...filters.value,
-  }),
+  queryFn: () =>
+    getUserList({
+      page: currentPage.value,
+      size: pageSize.value,
+      ...filters.value,
+    }),
   placeholderData: keepPreviousData,
-});
+})
 ```
 
 ### 2. URL 同步
 
 ```typescript
-import { useRouter, useRoute } from 'vue-router';
+import { useRouter, useRoute } from 'vue-router'
 
-const router = useRouter();
-const route = useRoute();
+const router = useRouter()
+const route = useRoute()
 
 /* 从 URL 初始化过滤器 */
 const { filters, search } = useTable<SearchFilters>({
   defaultFilters: {
-    username: route.query.username as string || '',
-    status: route.query.status as string || '',
+    username: (route.query.username as string) || '',
+    status: (route.query.status as string) || '',
   },
-});
+})
 
 /* 监听过滤器变化，同步到 URL */
 watchEffect(() => {
@@ -283,19 +273,15 @@ watchEffect(() => {
       page: currentPage.value,
       size: pageSize.value,
     },
-  });
-});
+  })
+})
 ```
 
 ### 3. 表单验证
 
 ```vue
 <template>
-  <el-form
-    ref="formRef"
-    :model="search.formState"
-    :rules="rules"
-  >
+  <el-form ref="formRef" :model="search.formState" :rules="rules">
     <el-form-item label="用户名" prop="username">
       <el-input v-model="search.formState.username" />
     </el-form-item>
@@ -306,22 +292,20 @@ watchEffect(() => {
 </template>
 
 <script setup lang="ts">
-const formRef = ref();
+const formRef = ref()
 
 const rules = {
-  username: [
-    { required: true, message: '请输入用户名', trigger: 'blur' },
-  ],
-};
+  username: [{ required: true, message: '请输入用户名', trigger: 'blur' }],
+}
 
 const handleSubmit = async () => {
   try {
-    await formRef.value.validate();
-    search.submit();
+    await formRef.value.validate()
+    search.submit()
   } catch (error) {
-    console.log('表单验证失败', error);
+    console.log('表单验证失败', error)
   }
-};
+}
 </script>
 ```
 

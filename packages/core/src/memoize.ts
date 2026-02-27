@@ -37,14 +37,16 @@ export interface MemoizedFn<T extends (this: any, ...args: any[]) => any> {
  * ```
  * @linkcode https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/memoize.ts
  */
-export function memoize<T extends (...args: any[]) => any>(fn: T, options?: MemoizeOptions<T>): MemoizedFn<T> {
+export function memoize<T extends (...args: any[]) => any>(
+  fn: T,
+  options?: MemoizeOptions<T>,
+): MemoizedFn<T> {
   const { serializer = serializerDefault } = options || {}
 
   function memoizeFn(this: ThisParameterType<T>, ...args: Parameters<T>): ReturnType<T> {
     const key = serializer(args)
     const cache = memoizeFn.cache
-    if (cache.has(key))
-      return cache.get(key) as ReturnType<T>
+    if (cache.has(key)) return cache.get(key) as ReturnType<T>
 
     const res = fn.apply(this, args)
     cache.set(key, res)

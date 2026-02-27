@@ -9,11 +9,12 @@ function escapeDoubleQuotes(val: string): string {
  * @param {string} separator
  */
 function checkSeparator(separator: string): void {
-  if (!separator)
-    throw new Error('The separator cannot be empty')
+  if (!separator) throw new Error('The separator cannot be empty')
 
   if (!/^[^\n"]$/.test(separator))
-    throw new Error('The separator must be single-character and cannot be a newline or double quotes')
+    throw new Error(
+      'The separator must be single-character and cannot be a newline or double quotes',
+    )
 }
 
 interface ArrayToCSVOptions<T> {
@@ -68,31 +69,31 @@ interface ArrayToCSVOptions<T> {
  * ```
  * @linkcode https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/csv.ts
  */
-export function arrayToCSV<T extends (any[] | object)>(arr: T[], options: ArrayToCSVOptions<T> = {}): string {
+export function arrayToCSV<T extends any[] | object>(
+  arr: T[],
+  options: ArrayToCSVOptions<T> = {},
+): string {
   const { headers, separator = ',', getRow, withPrefix } = options
 
   checkSeparator(separator)
 
-  let csv = arr.map((item) => {
-    if (getRow)
-      return getRow(item).join(separator)
+  let csv = arr
+    .map((item) => {
+      if (getRow) return getRow(item).join(separator)
 
-    if (isArray(item))
-      return item.join(separator)
+      if (isArray(item)) return item.join(separator)
 
-    if (isPlainObject(item))
-      return Object.values(item).join(separator)
+      if (isPlainObject(item)) return Object.values(item).join(separator)
 
-    return ''
-  }).join('\n')
+      return ''
+    })
+    .join('\n')
 
-  if (headers)
-    csv = `${headers.join(separator)}\n${csv}`
+  if (headers) csv = `${headers.join(separator)}\n${csv}`
 
   csv = escapeDoubleQuotes(csv)
 
-  if (withPrefix)
-    csv = `data:text/csv;charset=utf-8,${csv}`
+  if (withPrefix) csv = `data:text/csv;charset=utf-8,${csv}`
 
   return csv
 }

@@ -1,4 +1,4 @@
-<script setup lang='ts'>
+<script setup lang="ts">
 import { ref, computed } from 'vue'
 import { useSmsCountdown } from '@utopia-utils/vueuse'
 
@@ -12,7 +12,7 @@ const { counts, canSend, text, startCountdown, stopCountdown } = useSmsCountdown
   totalSecond: 60,
   sendAble: phoneValid, // 手机号合法时才能发送
   startText: '发送验证码',
-  durationText: '%s秒后可重新发送'
+  durationText: '%s秒后可重新发送',
 })
 
 // 自定义配置示例
@@ -21,11 +21,11 @@ const {
   canSend: customCanSend,
   text: customText,
   startCountdown: startCustomCountdown,
-  stopCountdown: stopCustomCountdown
+  stopCountdown: stopCustomCountdown,
 } = useSmsCountdown({
   totalSecond: 10, // 更短的倒计时
   startText: '获取验证码',
-  durationText: '请等待%s秒'
+  durationText: '请等待%s秒',
 })
 
 // 模拟发送短信 API

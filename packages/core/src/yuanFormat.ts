@@ -45,24 +45,23 @@ interface Options {
  */
 export function yuanFormat(num?: number, options?: Options): string | '-' {
   try {
-    if (!isNumber(num) || Number.isNaN(num) || !Number.isFinite(num))
-      return '-'
+    if (!isNumber(num) || Number.isNaN(num) || !Number.isFinite(num)) return '-'
     const { unit = 'fen', prefix, space } = options ?? {}
     const yuan = unit === 'fen' ? fenToYuan(num) : num
-    if (yuan === null || yuan === undefined)
-      return '-'
+    if (yuan === null || yuan === undefined) return '-'
 
-    const formattedAmount = yuan.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+    const formattedAmount = yuan
+      .toFixed(2)
+      .toString()
+      .replace(/\B(?=(\d{3})+(?!\d))/g, ',')
 
-    if (!prefix)
-      return formattedAmount
+    if (!prefix) return formattedAmount
 
     const prefixStr = prefix === true ? '¥' : prefix
     const spacing = space ? ' ' : ''
 
     return `${prefixStr}${spacing}${formattedAmount}`
-  }
-  catch (err) {
+  } catch (err) {
     console.error(err)
     return '-'
   }

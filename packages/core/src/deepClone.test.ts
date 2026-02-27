@@ -71,7 +71,7 @@ describe('deepClone', () => {
     expect(src).toEqual(copy)
   })
 
-  it('doesn\'t clone function', () => {
+  it("doesn't clone function", () => {
     const src = function b() {}
 
     const copy = deepClone(src)
@@ -107,9 +107,9 @@ describe('deepClone', () => {
     // @ts-expect-error for test
     expect(src[2][0]).toBeNull()
 
-    copy = copy.map(_ => 'mutated')
+    copy = copy.map((_) => 'mutated')
 
-    expect(src.every(i => i !== 'mutated')).toBeTruthy()
+    expect(src.every((i) => i !== 'mutated')).toBeTruthy()
   })
 
   it('clones nested Arrays', () => {

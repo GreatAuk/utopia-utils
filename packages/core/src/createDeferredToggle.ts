@@ -13,10 +13,7 @@ export interface DeferredToggleOptions {
  *
  * 使用泛型参数，保证调用 open/hide 时的参数与原始 openFn/hideFn 一致
  */
-export interface DeferredToggle<
-  O extends AnyFn = AnyFn,
-  H extends AnyFn = AnyFn,
-> {
+export interface DeferredToggle<O extends AnyFn = AnyFn, H extends AnyFn = AnyFn> {
   /**
    * 触发"显示"逻辑（可能被延迟）
    * 参数与传入的 openFn 完全一致
@@ -57,10 +54,7 @@ export interface DeferredToggle<
  * ```
  * @linkcode https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/createDeferredToggle.ts
  */
-export function createDeferredToggle<
-  O extends AnyFn = AnyFn,
-  H extends AnyFn = AnyFn,
->(
+export function createDeferredToggle<O extends AnyFn = AnyFn, H extends AnyFn = AnyFn>(
   openFn: O,
   hideFn: H,
   opts: DeferredToggleOptions = {},

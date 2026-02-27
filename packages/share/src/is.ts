@@ -17,8 +17,12 @@ export const isBlob = (val: unknown): val is Blob => toTypeString(val) === 'Blob
  * Check if the value is a plain object, that is, the object created by the Object constructor
  */
 export const isPlainObject = (val: unknown): val is object => toTypeString(val) === 'Object'
-export const isPromise = (val: unknown): val is Promise<any> => toTypeString(val) === 'Promise' || isObject(val) && isFunction(val.then) && isFunction(val.catch)
-export function isPrimitive(val: unknown): val is string | number | boolean | symbol | null | undefined {
+export const isPromise = (val: unknown): val is Promise<any> =>
+  toTypeString(val) === 'Promise' ||
+  (isObject(val) && isFunction(val.then) && isFunction(val.catch))
+export function isPrimitive(
+  val: unknown,
+): val is string | number | boolean | symbol | null | undefined {
   return ['string', 'number', 'boolean', 'symbol', 'null', 'undefined'].includes(typeof val)
 }
 
@@ -31,13 +35,11 @@ export function isObject(val: unknown): val is Record<any, any> {
   return val !== null && toTypeString(val) === 'Object'
 }
 
-export const isWindow = (val: unknown): boolean => typeof window !== 'undefined' && toTypeString(val) === 'Window'
+export const isWindow = (val: unknown): boolean =>
+  typeof window !== 'undefined' && toTypeString(val) === 'Window'
 
 export function isIntegerKey(key: unknown): boolean {
-  return isString(key)
-    && key !== 'NaN'
-    && key[0] !== '-'
-    && `${Number.parseInt(key, 10)}` === key
+  return isString(key) && key !== 'NaN' && key[0] !== '-' && `${Number.parseInt(key, 10)}` === key
 }
 
 /**
@@ -47,16 +49,14 @@ export function isIntegerKey(key: unknown): boolean {
  * @linkcode https://github.com/GreatAuk/utopia-utils/blob/main/packages/share/src/is.ts
  */
 export function isStringNumber(val: string): boolean {
-  if (!isString(val))
-    return false
+  if (!isString(val)) return false
 
   /* 排除空字符串和只包含空格的字符串 */
-  if (val.trim() === '')
-    return false
+  if (val.trim() === '') return false
 
   return !Number.isNaN(Number(val))
 }
 
 export const isDef = <T>(val: T): val is NonNullable<T> => val !== undefined && val !== null
 
-export const isUndef = (val: any): val is (undefined | null) => val === undefined || val === null
+export const isUndef = (val: any): val is undefined | null => val === undefined || val === null

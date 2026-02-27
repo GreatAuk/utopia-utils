@@ -1,11 +1,9 @@
 function clone<T>(src: T, seen = new Map()): T {
   // Immutable things - null, undefined, functions, symbols, etc.
-  if (!src || typeof src !== 'object')
-    return src
+  if (!src || typeof src !== 'object') return src
 
   // Things we've seen already (circular refs)
-  if (seen.has(src))
-    return seen.get(src)
+  if (seen.has(src)) return seen.get(src)
 
   // Basic pattern for cloning something below here is:
   // 1. Create copy
@@ -18,42 +16,35 @@ function clone<T>(src: T, seen = new Map()): T {
     // DOM Node
     copy = src.cloneNode(true)
     seen.set(src, copy)
-  }
-  else if (src instanceof Date) {
+  } else if (src instanceof Date) {
     // Date
     copy = new Date(src.getTime())
     seen.set(src, copy)
-  }
-  else if (src instanceof RegExp) {
+  } else if (src instanceof RegExp) {
     // RegExp
     copy = new RegExp(src)
     seen.set(src, copy)
-  }
-  else if (Array.isArray(src)) {
+  } else if (Array.isArray(src)) {
     // Array
     copy = Array.from({ length: src.length })
     seen.set(src, copy)
     for (let i = 0; i < src.length; i++) copy[i] = clone(src[i], seen)
-  }
-  else if (src instanceof Map) {
+  } else if (src instanceof Map) {
     // Map
     copy = new Map()
     seen.set(src, copy)
     for (const [k, v] of src.entries()) copy.set(k, clone(v, seen))
-  }
-  else if (src instanceof Set) {
+  } else if (src instanceof Set) {
     // Set
     copy = new Set()
     seen.set(src, copy)
     for (const v of src) copy.add(clone(v, seen))
-  }
-  else if (src instanceof Object) {
+  } else if (src instanceof Object) {
     // Object
     copy = {} as any
     seen.set(src, copy)
     for (const [k, v] of Object.entries(src)) copy[k] = clone(v, seen)
-  }
-  else {
+  } else {
     // Unrecognized thing.  It's better to throw here than to return `src`, as
     // we don't know whether src needs to be deep-copied here.
     throw new TypeError(`Unable to clone ${src}`)

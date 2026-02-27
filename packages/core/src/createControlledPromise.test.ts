@@ -4,7 +4,7 @@ describe('createControlledPromise', () => {
   it('happy path', async () => {
     vi.useFakeTimers()
     const promise = createControlledPromise<number>()
-    setTimeout (() => {
+    setTimeout(() => {
       promise.resolve(111)
     }, 60 * 1000)
 

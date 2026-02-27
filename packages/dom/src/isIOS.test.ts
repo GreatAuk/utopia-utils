@@ -8,7 +8,7 @@ describe('isIOS', () => {
     expect(isIOS()).toBe(false)
   })
   it('return true if ios', () => {
-    vi.spyOn(navigator, 'userAgent', 'get').mockReturnValueOnce(('iPad'))
+    vi.spyOn(navigator, 'userAgent', 'get').mockReturnValueOnce('iPad')
     expect(isIOS()).toBe(true)
   })
 })

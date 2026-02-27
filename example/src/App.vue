@@ -7,8 +7,7 @@ let unload_: any
 function loadScript_() {
   const { unload } = loadScript('https://unpkg.com/browse/axios@1.3.224/index.js', {
     appendPosition: 'body',
-    onStatusChange: () => {
-    },
+    onStatusChange: () => {},
   })
   unload_ = unload
 }
@@ -18,26 +17,16 @@ function loadScript_() {
   <header>
     <div class="wrapper">
       <nav>
-        <RouterLink to="/">
-          HomeView
-        </RouterLink>
-        <RouterLink to="/use-fake-progress">
-          UseFakeProgress
-        </RouterLink>
-        <RouterLink to="/use-sms-countdown">
-          UseSmsCountdown
-        </RouterLink>
-        <RouterLink to="/use-delayed-loading">
-          UseDelayedLoading
-        </RouterLink>
-        <RouterLink to="/use-deferred-toggle">
-          UseDeferredToggle
-        </RouterLink>
+        <RouterLink to="/"> HomeView </RouterLink>
+        <RouterLink to="/use-fake-progress"> UseFakeProgress </RouterLink>
+        <RouterLink to="/use-sms-countdown"> UseSmsCountdown </RouterLink>
+        <RouterLink to="/use-delayed-loading"> UseDelayedLoading </RouterLink>
+        <RouterLink to="/use-deferred-toggle"> UseDeferredToggle </RouterLink>
       </nav>
     </div>
   </header>
 
-  <div style="padding: 1rem;">
+  <div style="padding: 1rem">
     <RouterView />
   </div>
 </template>

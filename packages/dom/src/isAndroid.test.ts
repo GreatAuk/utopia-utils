@@ -8,7 +8,7 @@ describe('isAndroid', () => {
     expect(isAndroid()).toBe(false)
   })
   it('return true if android', () => {
-    vi.spyOn(navigator, 'userAgent', 'get').mockReturnValueOnce(('Android'))
+    vi.spyOn(navigator, 'userAgent', 'get').mockReturnValueOnce('Android')
     expect(isAndroid()).toBe(true)
   })
 })

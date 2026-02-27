@@ -83,7 +83,7 @@ describe('is', () => {
   describe('isFunction', () => {
     it('should return true for function values', () => {
       expect(isFunction(() => {})).toBe(true)
-      expect(isFunction(function() {})).toBe(true)
+      expect(isFunction(function () {})).toBe(true)
       expect(isFunction(async () => {})).toBe(true)
       expect(isFunction(String)).toBe(true)
       expect(isFunction(Array)).toBe(true)
@@ -241,7 +241,9 @@ describe('is', () => {
     it('should return true for plain objects', () => {
       expect(isPlainObject({})).toBe(true)
       expect(isPlainObject({ a: 1 })).toBe(true)
-      expect(isPlainObject(Object.create(null))).toBe(true) /* Object.create(null) 也被识别为普通对象 */
+      expect(isPlainObject(Object.create(null))).toBe(
+        true,
+      ) /* Object.create(null) 也被识别为普通对象 */
       expect(isPlainObject(new Object())).toBe(true)
     })
 

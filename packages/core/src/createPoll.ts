@@ -3,11 +3,25 @@ import type { AnyFn } from './type'
 
 type TimeoutReturn = ReturnType<typeof setTimeout>
 
-type OnEnd<T> = (options: { times: number, res: Awaited<T> | undefined, maxTimes: number, error?: Error }) => any
-type OnMaxTimes<T> = (options: { times: number, res: Awaited<T>, maxTimes: number }) => any
-type OnTimeout<T> = (options: { times: number, timeout: number, maxTimes: number, lastResult?: Awaited<T> }) => any
-type OnEachCall<T> = (options: { times: number, res: Awaited<T>, maxTimes: number }) => boolean | void
-type OnError = (options: { times: number, error: Error, maxTimes: number }) => boolean | void
+type OnEnd<T> = (options: {
+  times: number
+  res: Awaited<T> | undefined
+  maxTimes: number
+  error?: Error
+}) => any
+type OnMaxTimes<T> = (options: { times: number; res: Awaited<T>; maxTimes: number }) => any
+type OnTimeout<T> = (options: {
+  times: number
+  timeout: number
+  maxTimes: number
+  lastResult?: Awaited<T>
+}) => any
+type OnEachCall<T> = (options: {
+  times: number
+  res: Awaited<T>
+  maxTimes: number
+}) => boolean | void
+type OnError = (options: { times: number; error: Error; maxTimes: number }) => boolean | void
 
 interface CreatePollOptions<T> {
   taskFn: AnyFn<T>
@@ -93,12 +107,9 @@ interface CreatePollReturn {
  * ```
  */
 export function createPoll<T>(options: CreatePollOptions<T>): CreatePollReturn {
-  if (isNegativeNumber(options.interval))
-    throw new Error('interval must be a non-negative number')
-  if (isNegativeNumber(options.maxTimes))
-    throw new Error('maxTimes must be a non-negative number')
-  if (isNegativeNumber(options.timeout))
-    throw new Error('timeout must be a non-negative number')
+  if (isNegativeNumber(options.interval)) throw new Error('interval must be a non-negative number')
+  if (isNegativeNumber(options.maxTimes)) throw new Error('maxTimes must be a non-negative number')
+  if (isNegativeNumber(options.timeout)) throw new Error('timeout must be a non-negative number')
 
   const {
     taskFn,
@@ -138,8 +149,7 @@ export function createPoll<T>(options: CreatePollOptions<T>): CreatePollReturn {
    * 停止轮询
    */
   const stopPoll = (res?: Awaited<T>, error?: Error) => {
-    if (!isPolling)
-      return
+    if (!isPolling) return
 
     isPolling = false
 
@@ -165,8 +175,7 @@ export function createPoll<T>(options: CreatePollOptions<T>): CreatePollReturn {
 
     try {
       res_ = taskFn()
-    }
-    catch (err) {
+    } catch (err) {
       times++
       handleError(err instanceof Error ? err : new Error(String(err)))
       return
@@ -175,25 +184,21 @@ export function createPoll<T>(options: CreatePollOptions<T>): CreatePollReturn {
     const p = isPromise(res_) ? res_ : Promise.resolve(res_)
 
     p.then((res) => {
-      if (!isPolling)
-        return
+      if (!isPolling) return
 
       lastResult = res
       times++
 
       if (onEachCall?.({ times, res, maxTimes }) === false) {
         stopPoll(res)
-      }
-      else if (maxTimes && times >= maxTimes) {
+      } else if (maxTimes && times >= maxTimes) {
         onMaxTimes?.({ times, res, maxTimes })
         stopPoll(res)
-      }
-      else {
+      } else {
         scheduleNextPoll()
       }
     }).catch((err) => {
-      if (!isPolling)
-        return
+      if (!isPolling) return
 
       times++
       handleError(err instanceof Error ? err : new Error(String(err)))
@@ -204,8 +209,7 @@ export function createPoll<T>(options: CreatePollOptions<T>): CreatePollReturn {
    * 处理错误
    */
   const handleError = (error: Error) => {
-    if (!isPolling)
-      return
+    if (!isPolling) return
 
     const shouldContinue = onError?.({ times, error, maxTimes })
 
@@ -215,8 +219,7 @@ export function createPoll<T>(options: CreatePollOptions<T>): CreatePollReturn {
     }
 
     if (maxTimes && times >= maxTimes) {
-      if (lastResult !== undefined)
-        onMaxTimes?.({ times, res: lastResult as Awaited<T>, maxTimes })
+      if (lastResult !== undefined) onMaxTimes?.({ times, res: lastResult as Awaited<T>, maxTimes })
 
       stopPoll(undefined, error)
       return
@@ -229,8 +232,7 @@ export function createPoll<T>(options: CreatePollOptions<T>): CreatePollReturn {
    * 安排下一次轮询
    */
   const scheduleNextPoll = () => {
-    if (!isPolling)
-      return
+    if (!isPolling) return
 
     timerId = setTimeout(poll, interval)
   }
@@ -239,8 +241,7 @@ export function createPoll<T>(options: CreatePollOptions<T>): CreatePollReturn {
    * 开始轮询
    */
   const startPoll = () => {
-    if (isPolling)
-      return
+    if (isPolling) return
 
     isPolling = true
     times = 0
@@ -255,10 +256,8 @@ export function createPoll<T>(options: CreatePollOptions<T>): CreatePollReturn {
       }, timeout)
     }
 
-    if (immediate)
-      poll()
-    else
-      timerId = setTimeout(poll, interval)
+    if (immediate) poll()
+    else timerId = setTimeout(poll, interval)
   }
 
   /**

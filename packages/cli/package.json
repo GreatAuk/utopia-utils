@@ -1,33 +1,33 @@
 {
   "name": "@utopia-utils/cli",
-  "type": "module",
   "version": "1.1.2",
   "description": "Collection of common cli utils",
-  "author": "Utopia <https://github.com/GreatAuk>",
-  "license": "MIT",
+  "keywords": [
+    "cli-utils",
+    "utils"
+  ],
   "homepage": "https://github.com/GreatAuk/utopia-utils#readme",
+  "bugs": {
+    "url": "https://github.com/GreatAuk/utopia-utils/issues"
+  },
+  "license": "MIT",
+  "author": "Utopia <https://github.com/GreatAuk>",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/GreatAuk/utopia-utils.git",
     "directory": "packages/cli"
   },
-  "bugs": {
-    "url": "https://github.com/GreatAuk/utopia-utils/issues"
-  },
-  "keywords": [
-    "utils",
-    "cli-utils"
-  ],
+  "type": "module",
   "sideEffects": false,
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.mts",
   "exports": {
     ".": {
       "types": "./dist/index.d.mts",
       "default": "./dist/index.mjs"
     }
   },
-  "main": "./dist/index.mjs",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.mts",
   "scripts": {
     "build": "tsdown",
     "dev": "tsdown --watch",

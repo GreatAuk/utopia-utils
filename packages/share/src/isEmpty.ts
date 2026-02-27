@@ -7,14 +7,11 @@ import { isArray, isMap, isObject, isSet, isString } from './is'
  * @linkcode https://github.com/GreatAuk/utopia-utils/blob/main/packages/share/src/isEmpty.ts
  */
 export function isEmpty(value: any): boolean {
-  if (isArray(value) || isString(value))
-    return !value.length
+  if (isArray(value) || isString(value)) return !value.length
 
-  if (isMap(value) || isSet(value))
-    return !value.size
+  if (isMap(value) || isSet(value)) return !value.size
 
-  if (isObject(value))
-    return !Object.keys(value).length
+  if (isObject(value)) return !Object.keys(value).length
 
   return true
 }

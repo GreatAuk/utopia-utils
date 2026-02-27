@@ -54,14 +54,17 @@ type UseSmsCountdownReturn = {
  * @see https://github.com/GreatAuk/utopia-utils/blob/main/packages/vueuse/src/useSmsCountdown/README.md
  */
 export function useSmsCountdown(options?: UseSmsCountdownOptions): UseSmsCountdownReturn {
-  const { totalSecond = 60, sendAble = true, startText = '获取验证码', durationText = '%s秒后重发' } = options || {}
+  const {
+    totalSecond = 60,
+    sendAble = true,
+    startText = '获取验证码',
+    durationText = '%s秒后重发',
+  } = options || {}
 
   /* 参数校验 */
-  if (totalSecond <= 0 || totalSecond % 1 !== 0)
-    throw new Error(`totalSecond 应为正整数`)
+  if (totalSecond <= 0 || totalSecond % 1 !== 0) throw new Error(`totalSecond 应为正整数`)
 
-  if (!/%s/i.test(durationText))
-    throw new Error('durationText 必须包含 "%s" 占位符')
+  if (!/%s/i.test(durationText)) throw new Error('durationText 必须包含 "%s" 占位符')
 
   const counts = ref(totalSecond)
 
@@ -71,8 +74,7 @@ export function useSmsCountdown(options?: UseSmsCountdownOptions): UseSmsCountdo
   })
 
   const text = computed(() => {
-    if (counts.value === totalSecond)
-      return startText
+    if (counts.value === totalSecond) return startText
 
     return durationText.replace(/%s/i, counts.value.toString())
   })
@@ -94,8 +96,7 @@ export function useSmsCountdown(options?: UseSmsCountdownOptions): UseSmsCountdo
 
   function startCountdown() {
     // 不可发送 或 已在运行中 -> 直接返回
-    if (!canSend.value || timerId)
-      return
+    if (!canSend.value || timerId) return
 
     counts.value--
     timerId = setTimeout(tick, 1000)

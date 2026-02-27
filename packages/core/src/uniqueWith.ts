@@ -22,12 +22,10 @@ import { isArray } from '@utopia-utils/share'
  * @linkcode https://github.com/GreatAuk/utopia-utils/blob/main/packages/core/src/uniqueWith.ts
  */
 export function uniqueWith<T>(arr: T[], comparator: (a: T, b: T) => boolean): T[] {
-  if (!isArray(arr))
-    throw new Error('arr must be an array')
+  if (!isArray(arr)) throw new Error('arr must be an array')
 
   return arr.reduce<T[]>((acc, cur) => {
-    if (acc.some(v => comparator(v, cur)))
-      return acc
+    if (acc.some((v) => comparator(v, cur))) return acc
 
     return [...acc, cur]
   }, [])

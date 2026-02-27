@@ -3,9 +3,7 @@ import { treeFindNode } from './treeFindNode'
 const tree = [
   {
     name: 'a',
-    children: [
-      { name: 'b' },
-    ],
+    children: [{ name: 'b' }],
   },
   {
     name: 'c',
@@ -13,33 +11,35 @@ const tree = [
 ]
 describe('treeFindNode', () => {
   it('should find the first node', () => {
-    const res = treeFindNode(tree, node => node.name === 'b')
+    const res = treeFindNode(tree, (node) => node.name === 'b')
     expect(res).toEqual([{ name: 'b' }])
   })
   it('should return empty array if not found', () => {
-    const res = treeFindNode(tree, node => node.name === 'd')
+    const res = treeFindNode(tree, (node) => node.name === 'd')
     expect(res).toEqual([])
   })
   it('should find all nodes', () => {
-    const res = treeFindNode(tree, node => node.name === 'b' || node.name === 'c', { isFindAll: true })
+    const res = treeFindNode(tree, (node) => node.name === 'b' || node.name === 'c', {
+      isFindAll: true,
+    })
     expect(res).toEqual([{ name: 'c' }, { name: 'b' }])
   })
   it('fieldNames should work', () => {
     const customTree = [
       {
         name: 'a',
-        Children_: [
-          { name: 'b' },
-        ],
+        Children_: [{ name: 'b' }],
       },
     ]
-    const res = treeFindNode(customTree, node => node.name === 'b', { fieldNames: { children: 'Children_' } })
+    const res = treeFindNode(customTree, (node) => node.name === 'b', {
+      fieldNames: { children: 'Children_' },
+    })
     expect(res).toEqual([{ name: 'b' }])
   })
   it('options.onEachTraverse should be called for each node', () => {
     const ids: string[] = []
-    treeFindNode(tree, node => node.name === 'b', {
-      onEachTraverse: node => ids.push(node.name),
+    treeFindNode(tree, (node) => node.name === 'b', {
+      onEachTraverse: (node) => ids.push(node.name),
     })
     expect(ids).toEqual(['a', 'c', 'b'])
   })
@@ -52,12 +52,9 @@ describe('treeFindNode', () => {
   it('should support tree as a single node object', () => {
     const singleNodeTree = {
       name: 'a',
-      children: [
-        { name: 'b' },
-        { name: 'c' },
-      ],
+      children: [{ name: 'b' }, { name: 'c' }],
     }
-    const res = treeFindNode(singleNodeTree, node => node.name === 'c')
+    const res = treeFindNode(singleNodeTree, (node) => node.name === 'c')
     expect(res).toEqual([{ name: 'c' }])
   })
 
@@ -71,24 +68,22 @@ describe('treeFindNode', () => {
             children: [
               {
                 name: 'level3-1',
-                children: [
-                  { name: 'level4-1' }
-                ]
-              }
-            ]
+                children: [{ name: 'level4-1' }],
+              },
+            ],
           },
-          { name: 'level2-2' }
-        ]
-      }
+          { name: 'level2-2' },
+        ],
+      },
     ]
 
-    const res = treeFindNode(deepTree, node => node.name === 'level4-1')
+    const res = treeFindNode(deepTree, (node) => node.name === 'level4-1')
     expect(res).toEqual([{ name: 'level4-1' }])
   })
 
   it('should stop traversing after finding the first match when isFindAll is false', () => {
     const visitedNodes: string[] = []
-    treeFindNode(tree, node => {
+    treeFindNode(tree, (node) => {
       visitedNodes.push(node.name)
       return node.name === 'c'
     })
@@ -98,21 +93,25 @@ describe('treeFindNode', () => {
 
   it('should continue traversing after finding a match when isFindAll is true', () => {
     const visitedNodes: string[] = []
-    treeFindNode(tree, node => {
-      visitedNodes.push(node.name)
-      return node.name === 'a'
-    }, { isFindAll: true })
+    treeFindNode(
+      tree,
+      (node) => {
+        visitedNodes.push(node.name)
+        return node.name === 'a'
+      },
+      { isFindAll: true },
+    )
     // 匹配到a后应继续遍历全部节点
     expect(visitedNodes).toEqual(['a', 'c', 'b'])
 
     // 验证返回结果中只包含a
-    const res = treeFindNode(tree, node => node.name === 'a', { isFindAll: true })
-    expect(res).toEqual([{
-      name: 'a',
-      children: [
-        { name: 'b' },
-      ],
-    }])
+    const res = treeFindNode(tree, (node) => node.name === 'a', { isFindAll: true })
+    expect(res).toEqual([
+      {
+        name: 'a',
+        children: [{ name: 'b' }],
+      },
+    ])
   })
 
   it('should handle large trees efficiently', () => {
@@ -128,7 +127,7 @@ describe('treeFindNode', () => {
       return {
         id: `node-${depth}-${Math.random().toString(36).substring(2, 6)}`,
         value: Math.random(),
-        children
+        children,
       }
     }
 
@@ -139,7 +138,7 @@ describe('treeFindNode', () => {
     const nodeToFind = {
       id: 'target-node',
       value: targetValue,
-      children: []
+      children: [],
     }
 
     // 将目标节点添加到树的某个位置
@@ -147,7 +146,7 @@ describe('treeFindNode', () => {
     someNode.children.push(nodeToFind)
 
     // 查找目标节点
-    const result = treeFindNode(largeTree, node => node.value === targetValue)
+    const result = treeFindNode(largeTree, (node) => node.value === targetValue)
 
     // 验证找到的是正确的节点
     expect(result.length).toBe(1)

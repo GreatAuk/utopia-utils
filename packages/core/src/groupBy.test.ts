@@ -8,7 +8,7 @@ describe('groupBy', () => {
       { name: 'Jack', age: 20 },
     ]
 
-    const result = groupBy(array, item => `${item.age}`)
+    const result = groupBy(array, (item) => `${item.age}`)
 
     expect(result).toEqual({
       20: [
@@ -19,7 +19,7 @@ describe('groupBy', () => {
     })
 
     const arr2 = [4.2, 6.3, 6.5]
-    const result2 = groupBy(arr2, v => `${Math.floor(v)}`)
+    const result2 = groupBy(arr2, (v) => `${Math.floor(v)}`)
     expect(result2).toEqual({
       4: [4.2],
       6: [6.3, 6.5],
@@ -33,7 +33,7 @@ describe('groupBy', () => {
       { name: 'Jack', age: 100 },
     ]
 
-    const result = groupBy(array, item => `${item.name}`, { oneToOne: true })
+    const result = groupBy(array, (item) => `${item.name}`, { oneToOne: true })
     expect(result).toEqual({
       John: { name: 'John', age: 20 },
       Jane: { name: 'Jane', age: 25 },

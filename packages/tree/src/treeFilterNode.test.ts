@@ -20,7 +20,7 @@ describe('treeFilterNode', () => {
         ],
       },
     ]
-    expect(treeFilterNode(tree, node => node.id.includes('1'))).toMatchInlineSnapshot(`
+    expect(treeFilterNode(tree, (node) => node.id.includes('1'))).toMatchInlineSnapshot(`
       [
         {
           "children": [
@@ -37,7 +37,7 @@ describe('treeFilterNode', () => {
         },
       ]
     `)
-    expect(treeFilterNode(tree, node => node.id === 'child2')).toMatchInlineSnapshot(`
+    expect(treeFilterNode(tree, (node) => node.id === 'child2')).toMatchInlineSnapshot(`
       [
         {
           "children": [
@@ -50,7 +50,7 @@ describe('treeFilterNode', () => {
       ]
     `)
 
-    expect(treeFilterNode(tree, node => node.id === 'child1')).toMatchInlineSnapshot(`
+    expect(treeFilterNode(tree, (node) => node.id === 'child1')).toMatchInlineSnapshot(`
       [
         {
           "children": [
@@ -84,7 +84,7 @@ describe('treeFilterNode', () => {
       },
     ]
     expect(
-      treeFilterNode(tree, node => node.id.includes('1'), {
+      treeFilterNode(tree, (node) => node.id.includes('1'), {
         fieldNames: {
           children: 'sub',
         },
@@ -136,8 +136,10 @@ describe('treeFilterNode', () => {
       },
     ]
     const titles: string[] = []
-    treeFilterNode(tree, node => node.id.includes('1'), {
-      onEachTraverse: (node) => { titles.push(node.title) },
+    treeFilterNode(tree, (node) => node.id.includes('1'), {
+      onEachTraverse: (node) => {
+        titles.push(node.title)
+      },
     })
     expect(titles).toMatchInlineSnapshot(`
       [
@@ -164,7 +166,7 @@ describe('treeFilterNode', () => {
         },
       ],
     }
-    expect(treeFilterNode(tree, node => node.id === '1-1')).toMatchInlineSnapshot(`
+    expect(treeFilterNode(tree, (node) => node.id === '1-1')).toMatchInlineSnapshot(`
       [
         {
           "children": [
@@ -181,7 +183,7 @@ describe('treeFilterNode', () => {
   })
 
   it('should return empty array for empty tree', () => {
-    expect(treeFilterNode([], _node => true)).toEqual([])
+    expect(treeFilterNode([], (_node) => true)).toEqual([])
   })
 
   it('should return empty array when no nodes match the predicate', () => {
@@ -203,7 +205,7 @@ describe('treeFilterNode', () => {
         ],
       },
     ]
-    expect(treeFilterNode(tree, node => node.id === 'nonexistent')).toEqual([])
+    expect(treeFilterNode(tree, (node) => node.id === 'nonexistent')).toEqual([])
   })
 
   it('should handle tree with empty children array', () => {
@@ -217,7 +219,7 @@ describe('treeFilterNode', () => {
         children: [],
       },
     ]
-    expect(treeFilterNode(tree, node => node.id === 'root')).toMatchInlineSnapshot(`
+    expect(treeFilterNode(tree, (node) => node.id === 'root')).toMatchInlineSnapshot(`
       [
         {
           "children": [],
@@ -237,10 +239,7 @@ describe('treeFilterNode', () => {
             children: [
               {
                 id: 'level2-1',
-                children: [
-                  { id: 'level3-1' },
-                  { id: 'level3-2' }
-                ]
+                children: [{ id: 'level3-1' }, { id: 'level3-2' }],
               },
               {
                 id: 'level2-2',
@@ -252,18 +251,16 @@ describe('treeFilterNode', () => {
             children: [
               {
                 id: 'level2-3',
-                children: [
-                  { id: 'level3-3' }
-                ]
-              }
-            ]
+                children: [{ id: 'level3-3' }],
+              },
+            ],
           },
         ],
       },
     ]
 
     // 测试深层次过滤
-    expect(treeFilterNode(tree, node => node.id === 'level3-1')).toMatchInlineSnapshot(`
+    expect(treeFilterNode(tree, (node) => node.id === 'level3-1')).toMatchInlineSnapshot(`
       [
         {
           "children": [
@@ -287,7 +284,7 @@ describe('treeFilterNode', () => {
     `)
 
     // 测试多层级同时匹配
-    expect(treeFilterNode(tree, node => node.id.includes('level2'))).toMatchInlineSnapshot(`
+    expect(treeFilterNode(tree, (node) => node.id.includes('level2'))).toMatchInlineSnapshot(`
       [
         {
           "children": [

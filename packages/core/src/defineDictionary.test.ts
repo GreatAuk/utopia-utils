@@ -2,20 +2,32 @@ import { defineDictionary } from './defineDictionary'
 
 describe('defineDictionary', () => {
   it('should define a dictionary', () => {
-    const { get_MUSIC_TYPE_KEYS, get_MUSIC_TYPE_KV, get_MUSIC_TYPE_MAP, get_MUSIC_TYPE_MAP_BY_KEY, get_MUSIC_TYPE_MAP_BY_VALUE, get_MUSIC_TYPE_OPTIONS, get_MUSIC_TYPE_VALUES, get_MUSIC_TYPE_VK } = defineDictionary([
-      {
-        key: 'POP',
-        value: 1,
-        label: '流行音乐',
-        color: 'red',
-      },
-      {
-        key: 'ROCK',
-        value: 2,
-        label: '摇滚音乐',
-        color: 'blue',
-      },
-    ] as const, 'MUSIC_TYPE')
+    const {
+      get_MUSIC_TYPE_KEYS,
+      get_MUSIC_TYPE_KV,
+      get_MUSIC_TYPE_MAP,
+      get_MUSIC_TYPE_MAP_BY_KEY,
+      get_MUSIC_TYPE_MAP_BY_VALUE,
+      get_MUSIC_TYPE_OPTIONS,
+      get_MUSIC_TYPE_VALUES,
+      get_MUSIC_TYPE_VK,
+    } = defineDictionary(
+      [
+        {
+          key: 'POP',
+          value: 1,
+          label: '流行音乐',
+          color: 'red',
+        },
+        {
+          key: 'ROCK',
+          value: 2,
+          label: '摇滚音乐',
+          color: 'blue',
+        },
+      ] as const,
+      'MUSIC_TYPE',
+    )
     const MUSIC_TYPE_KEYS = get_MUSIC_TYPE_KEYS()
     const MUSIC_TYPE_VALUES = get_MUSIC_TYPE_VALUES()
     const MUSIC_TYPE_KV = get_MUSIC_TYPE_KV()
@@ -75,14 +87,16 @@ describe('defineDictionary', () => {
     ])
   })
   it('throw a error if namespace is not defined', () => {
-    expect(() => defineDictionary(
-      [
-        {
-          key: 'POP',
-          value: 1,
-        },
-      ] as const,
-      '',
-    )).toThrowError('namespace is required')
+    expect(() =>
+      defineDictionary(
+        [
+          {
+            key: 'POP',
+            value: 1,
+          },
+        ] as const,
+        '',
+      ),
+    ).toThrowError('namespace is required')
   })
 })
