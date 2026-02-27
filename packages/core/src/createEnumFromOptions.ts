@@ -57,15 +57,13 @@ type MapTuple<T extends readonly Option[]> = {
 
 type ArrayFindValue<T extends readonly Option[], V> =
   T extends Readonly<[infer F, ...infer Tail]>
-    ? // @ts-expect-error - This is ok
-      F extends { value: V; label: infer Res }
+    ? F extends { value: V; label: infer Res }
       ? Res
       : ArrayFindValue<Tail, V>
     : never
 type ArrayFindLabel<T extends readonly Option[], L> =
   T extends Readonly<[infer F, ...infer Tail]>
-    ? // @ts-expect-error - This is ok
-      F extends { value: infer Res; label: L }
+    ? F extends { value: infer Res; label: L }
       ? Res
       : Tail extends unknown[]
         ? never

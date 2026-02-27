@@ -14,7 +14,6 @@ describe('stringFormatter', () => {
     )
     expect(formatterBankCard('')).toMatchInlineSnapshot(`""`)
     expect(formatterBankCard('null')).toMatchInlineSnapshot(`""`)
-    // @ts-expect-error test undefined
     expect(formatterBankCard(undefined)).toMatchInlineSnapshot(`""`)
   })
 
@@ -26,7 +25,6 @@ describe('stringFormatter', () => {
     )
     expect(formatterPhoneNumber('')).toMatchInlineSnapshot(`""`)
     expect(formatterPhoneNumber('null')).toMatchInlineSnapshot(`""`)
-    // @ts-expect-error test undefined
     expect(formatterPhoneNumber(undefined)).toMatchInlineSnapshot(`""`)
   })
 
@@ -37,7 +35,6 @@ describe('stringFormatter', () => {
     )
     expect(formatterIdCard('')).toMatchInlineSnapshot(`""`)
     expect(formatterIdCard('null')).toMatchInlineSnapshot(`""`)
-    // @ts-expect-error test undefined
     expect(formatterIdCard(undefined)).toMatchInlineSnapshot(`""`)
   })
 })
